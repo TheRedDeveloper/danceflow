@@ -1,5 +1,8 @@
 # Danceflow
 
+> [!NOTE]  
+> None of this is implemented yet.
+
 The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean
 interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 

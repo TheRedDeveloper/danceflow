@@ -1,24 +1,18 @@
 ✔ Fork the newest version of Dance @done(25-04-03 16:03)
-☐ Change Readme, Extension Info
-☐ rename “normal” → “move”, “insert” → “modify”, “visual” → “select”
+✔ Change Readme, Extension Info @done(25-04-03 22:33)
+☐ rename "normal" → "move", "insert" → "modify", "visual" → "select"
 ☐ Add select mode
   ☐ Anchors stay when moving around
-☐ Adapt modify mode
+☐ Adapt move mode
   ☐ Blocky cursor
 ☐ Keys will be grouped as
-  Global Keys: `esc` `⎈o` `⇧1`
-  Modify Keys: `d` `p`/`⎈v` `⇧p` `u`/`⎈z` `⇧u`/`⎈⇧z` `i` `⇧i` `a` `⇧a` `c` `r` `⇧r` `o` `⇧o` `tab` `⇧tab` `.` `enter`  `⇧j` `⎈up`/`⎈k` `⎈down`/`⎈j` `q` `⎇=` ****`⎈=` `⎈⇧=` `⇧c`
-  Move keys: `h` `j` `k` `l` `w` `⇧w` `e` `⇧e` `b` `⇧b` `x` `v` `;` `⇧;` `⎇c` `⎇⇧c` `s` `⎇s` `⇧s` `f` `⇧f` `⎈f` `t` `⇧t` `)` `(` `)` `⎇(` `[` `]` `m` `⎈d` `⎈u`/`⎈⇧d` `⇧k` `%` `_` `"`
-  Static Keys: `y`/`⎈c` `1` `2` `3` `4` `5` `6` `7` `8` `9` `0` `⇧q` `⎈q` `⎈⇧q` `space`
-  ☐ Remove goto
-  ☐ Remove align key
-  ☐ Remove “buffers”, and “registers”, just the clipboard and files
-  ☐ It should have `p` and `⇧p` reversed
-  ☐ `⎈c` and `⎈v` still work the same
-  ☐ `⇧;` not `⎇;` to swap sides, swap case is `⎇=`, lower is `⎈=`, Upper is `⎈⇧=`, `⎇c` is add cursor below, Comment is `⇧c`, `⇧q` records, `q` plays, `⎈q` loads, `⇧⎈q` saves macros, `⎈⇧d` is a `⎈u` alias and `⎈⇧u` is a `⎈d` alias,`⎈up`/`⎈k` increases numbers, `⎈down`/`⎈j` decreases numbers, `⎈o` pops this tab into a new window, `⇧1` toggles the explorer on the left
+  Global Keys: `esc` `⎈p` `⎈o` `⎈r` `⇧1` `⇧2` `⇧3` `⇧4` `⇧5` `⇧6` `⇧8` `⎈⇧s` `⎈tab` `⎈⇧tab` `⎈t` `⎈s` `⎈g` `⎈w` `⎈⇧g` `⎈⇧e` `⎈⇧c` `⎈⎇i` `⎈⎇⇧c` `⎈⎇⇧i` `⎈⇧d` `⎈⇧x` `⎈⇧p`
+  Modify Keys: `d`/`⎈x` `⇧d` `⎇d` `⎈⇧d`/`⎈del`/`⎈backspace` `⎈d`/`del`/`backspace` `p`/`⎈v` `⇧p`/`⎈⇧v` `u`/`⎈z`/`⎈⇧y` `⇧u`/`⎈⇧z`/`⎈y` `i` `⇧i` `a` `⇧a` `c` `r` `⇧r` `o` `⇧o` `tab` `⇧tab` `⎇space` `⎇⇧space` `⇧j` `-` `⇧c` `"` `=` `⎇=` `⎈=` `⎈⇧=` `⎈up`/`⎈k` `⎈down`/`⎈j` `q` `.`
+  Move Keys: `h` `j` `k` `l` `w` `⇧w` `e` `⇧e` `b` `⇧b` `x` `v` `;` `⇧;` `⎈f` `n` `⇧n` `⎈n` `⎈⇧n` `s` `⎇s` `⇧s` `⇧m` `⎇⇧]` `⎇⇧[` `'` `[` `]` `m` `⎈d` `⎈u` `⎈⇧d` `⎈⇧u` `⇧k` `⎈a` `⇧-`
+  Static Keys: `y`/`⎈c` `[0-9]` `⇧q` `⎈q` `⎈⇧q` `space`
   ☐ Respond properly based on mode
     Modify Mode:
-    Active: Global, Typing~self
+    Active: Global, Typing(*)~self
     Inactive: Modify, Move, Static
     Move Mode:
     Active: Global, Static, Modify, Move~self
@@ -26,47 +20,45 @@
     Active: Global, Static, Move~self
     Breakout → Move: Modify
     Inspect Mode:
-    Active: Global, Static, Inspect~self
+    Active: Global, Static, Inspect(`f` `t` `z` `g` `r` `y` `space`)~self
     Breakout → Move: Modify, Move
+☐ The last cursor should always be the primary cursor
 ☐ There should be a simpler editor window
   ☐ Remove the weird orange bar
-  ☐ We completely disallow splitting it's distracting and ugly and just open another window with `⇧1`
-  ☐ You should almost always be in zen mode
-    ☐ with the status bar
-    ☐ without centering
-    ☐ with line numbers
-    ☐ without tabs
-    ☐ with notifications
+  ☐ We completely disallow splitting it's distracting and ugly and just open another window with `⎈p`
+  ☐ Hide tabs
+  ☐ Hide the menu bar
+  ☐ Hide the activity bar
   ☐ You should be able to move in the explorer with move keys
       ☐ `a` is new file, `⇧a` is new folder
       ☐ `r`/`F2` is rename
   ☐ You should be able to move in Code Lens and Code Actions with them too
 ☐ splitlines exclude Eol true
 ☐ Add to jump history, when changing more than one line
-  ☐ `"` add jump location
-  ☐ `[` previous jump location
-  ☐ `]` next jump location
-☐ Update object select `m`
+  ☐ `'` Create jumppoint
+  ☐ `[` To previous jump location
+  ☐ `]` To next jump location
+☐ Update object select `m￼`
 ☐ Make select mode work with VSCode find
-☐ Add (hover) mode, it should have:
-  ☐ `space` enter hover mode or if a url/file is under the main cursor then follow it
+☐ Add Inspect mode:
+  ☐ `space` enter inspect mode or if a url/file is under the main cursor then follow it
   ☐ it should select the hovered symbols and hide the cursors
   ☐ multiple cursors → main cursor inspector is shown, rename on all heads
-  ☐ `f` to definition
-  ☐ `t` to type definition
-  ☐ `z` to implementations
-  ☐ `g` to references
-  ☐ `r` rename
-  ☐ `⇧r` rename to clipboard
-  ☐ `y`/`⎈c` yeet this symbol
-  ☐ `⇧y`/`⎈⇧c` yeet the description
-  ☐ `space` code actions if available
-  ☐ `esc` back to normal mode
-  ☐ `MOV`, `MOD` any move or modify key should exit hover mode and run
+  ☐ `f` Go to definition
+  ☐ `t` Go to type definition
+  ☐ `z` Go to implementations
+  ☐ `g` Go to references
+  ☐ `r` Rename
+  ☐ `⇧r` Rename to clipboard
+  ☐ `y`/`⎈c` Copy the symbol
+  ☐ `⇧y`/`⎈⇧c` Copy the symbol info
+  ☐ `space` Quick Fix if available
+  ☐ `esc` back to move mode
+  ☐ Any move or change key should exit inspect mode and run
 ☐ Scripting with live preview
   ☐ `/` to pipe each selection through a JavaScript Expression
   ☐ `⇧/` to evaluate all selections in a JavaScript Expression, showing result below in the prompt
-  ☐ `⎈/` to create a JavaScript file with a run function  somewhere which selections are piped through until the file is closed
+  ☐ `⎈/` to create a JavaScript file with a run function somewhere which selections are piped through until the file is closed
   ☐ `⇧⎈/` create a javascript file with the selections as a constant *sels*
 ☐ When over a new line character the cursor should extend infinitely to the right.
 ☐ There should be a tutorial
