@@ -1,15 +1,14 @@
 {
-  "name": "dance",
-  "description": "Kakoune-inspired key bindings, modes, menus and scripting.",
+  "name": "danceflow",
+  "description": "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Dance, inspired by Helix.",
   "version": "0.5.15",
   "license": "ISC",
   "author": {
-    "name": "Grégoire Geis",
-    "email": "opensource@gregoirege.is"
+    "name": "RedDev"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/71/dance.git"
+    "url": "https://github.com/TheRedDeveloper/danceflow"
   },
   "main": "./out/extension.js",
   "browser": "./out/web-extension.js",
