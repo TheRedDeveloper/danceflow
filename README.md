@@ -7,19 +7,19 @@ The ultimate [Neovim](https://github.com/neovim/neovim) alternative for VSCode. 
 interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix](https://github.com/helix-editor/helix).
 
 ## Features
-- 🎯 **No touching the mouse** • Pure keyboard efficiency
+- ⌨️ **No touching the mouse** • Pure keyboard efficiency
 - ✨ **Beautiful Zen interface** • Distraction-free flow state
 - 🚀 **Quick Scripting and Macros** • Automate your workflow
 - 🌟 **Teleport through your codebase** • Lightning-fast navigation
 - 🎓 **Easy to learn** • Natural key mappings
-- 🎹 **Modal editing perfected** • Move, modify, select, inspect
+- 🧑‍💻 **Modal editing perfected** • Move, modify, select, inspect
 - 🔮 **Smart selections** • Multi-cursor magic at your fingertips
 
 ## Modes
-- **Move mode**: Navigate with vim-like motions (`h`, `j`, `k`, `l`, etc.)
-- **Modify mode**: Write and edit code
-- **Select mode**: Change your selection
-- **Inspect mode**: Explore code details with definitions, references, and more.
+- 🚶 **Move mode**: Navigate with vim-like motions (`h`, `j`, `k`, `l`, etc.)
+- ✏️ **Modify mode**: Write and edit code
+- 🔍 **Select mode**: Change your selection
+- 💡 **Inspect mode**: Explore code details with definitions, references, and more.
 
 ## Key Bindings
 
