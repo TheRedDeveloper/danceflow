@@ -33,11 +33,11 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⇧2`/`⎈⇧e` Toggle explorer
 
-`⇧3`/`⎈⇧c`/`⎈⎇i` Toggle copilot chat
+`⇧3`/`⎈⇧c` Toggle copilot chat
 
-`⇧4`/`⎈⎇⇧c`/`⎈⎇⇧i` Toggle copilot edits
+`⇧4`/`⎈⇧i` Toggle copilot edits
 
-`⇧5` Toggle search
+`⇧5`/`⎈⇧s` Toggle search
 
 `⇧7`/`⎈⇧d` Toggle debugger
 
