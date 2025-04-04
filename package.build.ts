@@ -85,19 +85,29 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // Common package.json properties.
   // ==========================================================================
 
-  name: "dance",
-  description: "Kakoune-inspired key bindings, modes, menus and scripting.",
+  name: "danceflow",
+  description: "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Dance, inspired by Helix.",
   version,
   license: "ISC",
 
   author: {
-    name: "Grégoire Geis",
-    email: "opensource@gregoirege.is",
+    name: "RedDev"
   },
+
+  contributors: [
+    {
+      name: "Grégoire Geis",
+      email: "opensource@gregoirege.is"
+    },
+    {
+      name: "Rémi Lavergne",
+      url: "https://github.com/Strackeror"
+    }
+  ],
 
   repository: {
     type: "git",
-    url: "https://github.com/71/dance.git",
+    url: "https://github.com/reddev/danceflow.git",
   },
 
   main: "./out/extension.js",
@@ -162,8 +172,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Dance",
-  publisher: "gregoire",
+  displayName: "Danceflow",
+  publisher: "reddev",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
   icon: "assets/dance.png",
@@ -313,9 +323,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 isWholeLine: true,
               },
             },
-            input: {
-              cursorStyle: "underline-thin",
-            },
             insert: {
               onLeaveMode: [
                 [".selections.save", {
@@ -323,9 +330,13 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 }],
               ],
             },
-            select: {},
+            select: {
+              cursorStyle: "block",
+              selectionBehavior: "character",
+            },
             normal: {
-              lineNumbers: "relative",
+              cursorStyle: "block",
+              selectionBehavior: "character",
               decorations: {
                 applyTo: "main",
                 backgroundColor: "$editor.hoverHighlightBackground",
@@ -354,8 +365,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           description: "Controls the different modes available in Dance.",
         },
 
-        "dance.menus": {
-          type: "object",
+      "dance.menus": {
+        type: "object",
           scope: "language-overridable",
           description: "Controls the different menus available in Dance.",
           additionalProperties: {
@@ -389,40 +400,50 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             additionalProperties: false,
           },
           default: {
+            "match": {
+              title: "Match",
+              items: {
+                // Should be jump in normal mode, extend in select mode, but jump for seek.enclosing is not implemented
+                "m": { command: "dance.seek.enclosing", text: "Goto matching bracket" },
+                "a": { command: "dance.openMenu", args: [{ menu: "object", title: "Match around" }], text: "Select around object" },
+                "i": { command: "dance.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Select inside object" },
+              },
+            },
+
             "object": {
               title: "Select object...",
               items: ((command = "dance.seek.object") => ({
-                "b()": {
+                "()": {
                   command,
                   args: [{ input: "\\((?#inner)\\)" }],
                   text: "parenthesis block",
                 },
-                "B{}": {
+                "{}": {
                   command,
                   args: [{ input: "\\{(?#inner)\\}" }],
                   text: "braces block",
                 },
-                "r[]": {
+                "[]": {
                   command,
                   args: [{ input: "\\[(?#inner)\\]" }],
                   text: "brackets block",
                 },
-                "a<>": {
+                "<>": {
                   command,
                   args: [{ input: "<(?#inner)>" }],
                   text: "angle block",
                 },
-                'Q"': {
+                '"': {
                   command,
                   args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
                   text: "double quote string",
                 },
-                "q'": {
+                "'": {
                   command,
                   args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
                   text: "single quote string",
                 },
-                "g`": {
+                "`": {
                   command,
                   args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
                   text: "grave quote string",
@@ -437,46 +458,40 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   args: [{ input: "[\\S]+(?<after>[^\\S\\n]+)" }],
                   text: "WORD",
                 },
-                "s": {
-                  command,
-                  args: [{ input: "(?#predefined=sentence)" }],
-                  text: "sentence",
-                },
                 "p": {
                   command,
                   args: [{ input: "(?#predefined=paragraph)" }],
                   text: "paragraph",
                 },
-                " ": {
-                  command,
-                  args: [{ input: "(?<before>[\\s]+)[^\\S\\n]+(?<after>[\\s]+)" }],
-                  text: "whitespaces",
-                },
-                "i": {
-                  command,
-                  args: [{ input: "(?#predefined=indent)" }],
-                  text: "indent",
-                },
-                "n": {
-                  command,
-                  args: [{ input: "(?#singleline)-?[\\d_]+(\\.[0-9]+)?([eE]\\d+)?" }],
-                  text: "number",
-                },
-                "u": {
+                "a": {
                   command,
                   args: [{ input: "(?#predefined=argument)" }],
                   text: "argument",
                 },
-                "c": {
+                "!": {
                   command,
-                  text: "custom object desc",
+                  text: "custom object desc"
                 },
               }))(),
             },
 
             "goto": {
-              title: "Go...",
+              title: "Goto",
               items: {
+                "g": {
+                  text: "to line number else file start",
+                  command: "dance.select.lineStart",
+                  "args": [{ "count": 1 }],
+                },
+                "e": {
+                  text: "to last line",
+                  command: "dance.select.lineEnd",
+                  args: [{ count: 2 ** 31 - 1 }],
+                },
+                "f": {
+                  text: "to file/URLs in selections",
+                  command: "dance.selections.open",
+                },
                 "h": {
                   text: "to line start",
                   command: "dance.select.lineStart",
@@ -485,35 +500,33 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   text: "to line end",
                   command: "dance.select.lineEnd",
                 },
-                "i": {
-                  text: "to non-blank line start",
+                "s": {
+                  text: "to first non-blank in line",
                   command: "dance.select.lineStart",
-                  args: [{ skipBlank: true }],
+                  args: [{ skipBlank: true }]
                 },
-                "gk": {
-                  text: "to first line",
-                  command: "dance.select.lineStart",
-                  args: [{ count: 1 }],
+                "d": {
+                  text: "to definition",
+                  command: "editor.action.revealDefinition",
+                },
+                "r": {
+                  text: "to references",
+                  command: "editor.action.goToReferences",
                 },
                 "j": {
                   text: "to last line",
                   command: "dance.select.lastLine",
                 },
-                "e": {
-                  text: "to last char of last line",
-                  command: "dance.select.lineEnd",
-                  args: [{ count: 2 ** 31 - 1 }],
-                },
                 "t": {
-                  text: "to first displayed line",
+                  text: "to window top",
                   command: "dance.select.firstVisibleLine",
                 },
                 "c": {
-                  text: "to middle displayed line",
+                  text: "to window center",
                   command: "dance.select.middleVisibleLine",
                 },
                 "b": {
-                  text: "to last displayed line",
+                  text: "to window bottom",
                   command: "dance.select.lastVisibleLine",
                 },
                 "a": {
@@ -532,18 +545,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   text: "to next buffer",
                   command: "workbench.action.nextEditor",
                 },
-                "f": {
-                  text: "to file whose name is selected",
-                  command: "dance.selections.open",
-                },
-                "d": {
-                  text: "to definition",
-                  command: "editor.action.revealDefinition",
-                },
-                "r": {
-                  text: "to references",
-                  command: "editor.action.goToReferences",
-                },
                 ".": {
                   text: "to last buffer modification position",
                   command: "dance.selections.restore",
@@ -555,35 +556,46 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "view": {
               title: "View",
               items: {
-                // AFAIK, we can't implement these yet since VS Code only
-                // exposes vertical view ranges:
-                // - m, center cursor horizontally
-                // - h, scroll left
-                // - l, scroll right
-                "vc": {
-                  text: "center cursor vertically",
+                "cz": {
+                  text: "Align view center",
                   command: "dance.view.line",
-                  args: [{ at: "center" }],
+                  args: [{ "at": "center" }],
                 },
                 "t": {
-                  text: "cursor on top",
+                  text: "Align view top",
                   command: "dance.view.line",
-                  args: [{ at: "top" }],
+                  args: [{ "at": "top" }],
                 },
                 "b": {
-                  text: "cursor on bottom",
+                  text: "Align view bottom",
                   command: "dance.view.line",
-                  args: [{ at: "bottom" }],
-                },
-                "j": {
-                  text: "scroll down",
-                  command: "editorScroll",
-                  args: [{ to: "down", by: "line", revealCursor: true }],
+                  args: [{ "at": "bottom" }],
                 },
                 "k": {
-                  text: "scroll up",
+                  text: "Scroll view up",
                   command: "editorScroll",
-                  args: [{ to: "up", by: "line", revealCursor: true }],
+                  args: [{ "by": "line", "revealCursor": true, "to": "up" }],
+                },
+                "j": {
+                  text: "Scroll view down",
+                  command: "editorScroll",
+                  args: [{ "by": "line", "revealCursor": true, "to": "down" }],
+                },
+                "/": {
+                  text: "Search for regex pattern",
+                  command: "dance.search",
+                },
+                "?": {
+                  text: "Reverse search for regex pattern",
+                  command: "dance.search.backward",
+                },
+                "n": {
+                  text: "Select next search match",
+                  command: "dance.search.next",
+                },
+                "N": {
+                  text: "Select previous search match",
+                  command: "dance.search.previous",
                 },
               },
             },
@@ -712,7 +724,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
         },
       },
     },
-
+    
     // Views.
     // ========================================================================
 
@@ -760,7 +772,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     keybindings: (() => {
       const keybindings = modules
         .flatMap((module) => module.keybindings)
-        .filter((keybinding) => ["core", "kakoune", undefined].includes(keybinding.category))
+        .filter((keybinding) => ["core", "helix", undefined].includes(keybinding.category))
         .map(({ category, ...kb }) => kb);
 
       return [

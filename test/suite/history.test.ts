@@ -67,7 +67,7 @@ suite("History tests", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    extension = (await vscode.extensions.getExtension("gregoire.dance")!.activate()).extension;
+    extension = (await vscode.extensions.getExtension("reddev.danceflow")!.activate()).extension;
 
     await new Promise<void>((resolve) => {
       const disposable = extension.editors.onModeDidChange(async () => {

@@ -80,7 +80,7 @@ export function groupTestsByParentName(toplevel: Mocha.Suite) {
  */
 export async function executeCommand(command: string, ...args: readonly any[]) {
   const extension =
-    vscode.extensions.getExtension<{ extension: Extension }>("gregoire.dance")!.exports.extension;
+    vscode.extensions.getExtension<{ extension: Extension }>("reddev.danceflow")!.exports.extension;
 
   extension.runPromiseSafely = async (f) => {
     try {
