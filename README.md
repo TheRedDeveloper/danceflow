@@ -16,7 +16,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 - 🔮 **Smart selections** • Multi-cursor magic at your fingertips
 
 ## Modes
-- 🚶 **Move mode**: Navigate with vim-like motions (`h`, `j`, `k`, `l`, etc.)
+- 🧭 **Move mode**: Navigate with vim-like motions (`h`, `j`, `k`, `l`, etc.)
 - ✏️ **Modify mode**: Write and edit code
 - 🔍 **Select mode**: Change your selection
 - 💡 **Inspect mode**: Explore code details with definitions, references, and more.
