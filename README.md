@@ -49,9 +49,13 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⎈p` Pop this tab out into a new window
 
+`⎈m` Make one more window
+
 `⎈⇧p` Join this tab back
 
 `⎈o` Open a file/folder
+
+`⎈⇧o` Open a new temporary file
 
 `⎈r` Switch to recent project
 
@@ -61,6 +65,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⎈w` Close tab
 
+`⎈h` Switch between header and source file
 
 ### Change Code
 
@@ -73,6 +78,8 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 `p`/`⎈v` Paste
 
 `⇧p`/`⎈⇧v` Paste after selection
+
+`⎇p` Dublicate line to below, `⎇⇧p` above
 
 `u`/`⎈z`/`⎈⇧y` Undo
 
@@ -87,6 +94,8 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 `⇧a⌨` Append ⌨ at line end
 
 `c⌨` Change seletion to ⌨ after Copy, `⎈⇧r` without copying
+
+`⎇j` move line down, `⎇k` up
 
 `r◌` Replace each character with ◌
 
@@ -151,6 +160,8 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⎈f` Search
 
+`⎈⇧f` Search and Replace
+
 `n` Next search result, `⇧n` previous result
 
 `⎈n` Select next ocurrence of selection, `⎈⇧n` previous ocurrence
@@ -180,6 +191,8 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 `⎈d`/`⎈⇧u` Halfpage down
 
 `⎈u`/`⎈⇧d` Halfpage up
+
+`z` Toggle Fold at cursor
 
 `⇧k` Keep selections matching regex
 
@@ -223,6 +236,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `space` Quick Fix if available
 
+`e` Inspect next problem, `⇧e` previous problem
 
 ### Menus
 
