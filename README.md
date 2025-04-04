@@ -65,7 +65,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Files
 
-`⎈s` Save file 81
+`⎈s` Save file
 
 `⎈o` Open a file/folder
 
@@ -186,19 +186,19 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Insert
 
-`i⌨` Insert ⌨ before selection
+`i ⌨` Insert ⌨ before selection
 
-`a⌨` Append ⌨ after selection
+`a ⌨` Append ⌨ after selection
 
-`⇧i⌨` Insert ⌨ at line start
+`⇧i ⌨` Insert ⌨ at line start
 
-`⇧a⌨` Append ⌨ at line end
+`⇧a ⌨` Append ⌨ at line end
 
-`o⌨` Add ⌨ as newline below, `⇧o⌨` above
+`o ⌨` Add ⌨ as newline below, `⇧o ⌨` above
 
 #### Replace
 
-`c⌨` Change seletion to ⌨ after Copy, `⎈⇧r` without copying
+`c ⌨` Change seletion to ⌨ after Copy, `⎈⎇c ⌨` without copying
 
 `r◌` Replace each character with ◌
 
@@ -224,13 +224,13 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⇧c` Comment selected lines (toggle)
 
-`"〈〉` Surround in 〈〉
+`"￼` Enclose as ￼
 
 `=` Format selection
 
 `⎇=` Switch case, `⎈=` Convert to lowercase, `⎈⇧=` uppercase
 
-#### Macros
+#### Repeat
 
 `q` Execute this macro
 
@@ -238,7 +238,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Other
 
-`⎈up`/`⎈k` increment number, `⎈down`/`⎈j` decrement number
+`⎈k`/`⎈up` increment selected number, `⎈j`/`⎈down` decrement
 
 `⎇⇧]` Cycle selection content forward, `⎇⇧[` backward
 
@@ -277,7 +277,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⇧r` Rename to clipboard
 
-`space` Quick Fix if available
+`space` Quick Fix
 
 `e` Inspect next problem, `⇧e` previous problem
 
@@ -285,7 +285,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `y`/`⎈c` Copy the symbol
 
-`⇧y`/`⎈⇧c` Copy the symbol info
+`⇧y` Copy the symbol info
 
 ### Menus
 
