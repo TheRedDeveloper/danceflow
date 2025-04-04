@@ -1,5 +1,5 @@
 {
-  "name": "danceflow",
+  "name": "dance",
   "description": "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Dance, inspired by Helix.",
   "version": "0.5.15",
   "license": "ISC",

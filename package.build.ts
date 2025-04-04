@@ -85,7 +85,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // Common package.json properties.
   // ==========================================================================
 
-  name: "danceflow",
+  name: "dance",
   description: "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Dance, inspired by Helix.",
   version,
   license: "ISC",
@@ -107,7 +107,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
   repository: {
     type: "git",
-    url: "https://github.com/reddev/danceflow.git",
+    url: "https://github.com/71/dance.git",
   },
 
   main: "./out/extension.js",
@@ -172,8 +172,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Danceflow",
-  publisher: "reddev",
+  displayName: "Dance",
+  publisher: "gregoire",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
   icon: "assets/dance.png",
