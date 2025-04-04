@@ -18,7 +18,7 @@
 
 - .seek.enclosing
 
-Since the active of selection #0 is not on a brace / bracket character, Dance
+Since the active of selection #0 is not on a brace / bracket character, Danceflow
 will find the next bracket (`]`) and then match from there, moving the active to
 the previous matching `[`, selecting the text during the move (i.e. backwards
 from `]` to `[`). Same for selection #1.

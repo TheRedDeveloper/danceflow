@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -31,7 +31,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:11:1", 6, String.raw`
@@ -54,7 +54,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:34:1", 6, String.raw`
@@ -76,7 +76,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:56:1", 6, String.raw`
@@ -97,7 +97,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:77:1", 6, String.raw`
@@ -118,7 +118,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:98:1", 6, String.raw`
@@ -139,7 +139,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.indent");
+    await executeCommand("danceflow.edit.indent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-indent.md:120:1", 6, String.raw`

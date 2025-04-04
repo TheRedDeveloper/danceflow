@@ -271,433 +271,433 @@ import {
 } from "./view";
 
 /**
- * All defined Dance commands.
+ * All defined Danceflow commands.
  */
 export const commands: Commands = function () {
   // Normal commands.
   const commands = {
-    "dance.cancel": new CommandDescriptor(
-      "dance.cancel",
+    "danceflow.cancel": new CommandDescriptor(
+      "danceflow.cancel",
       (_) => _.runAsync(async (_) => await cancel(_.extension)),
       CommandDescriptor.Flags.None,
     ),
-    "dance.changeInput": new CommandDescriptor(
-      "dance.changeInput",
+    "danceflow.changeInput": new CommandDescriptor(
+      "danceflow.changeInput",
       (_, argument) => _.runAsync(async (_) => await changeInput(argument["action"])),
       CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.dev.copyLastErrorMessage": new CommandDescriptor(
-      "dance.dev.copyLastErrorMessage",
+    "danceflow.dev.copyLastErrorMessage": new CommandDescriptor(
+      "danceflow.dev.copyLastErrorMessage",
       (_) => _.runAsync(async (_) => await dev_copyLastErrorMessage(_.extension)),
       CommandDescriptor.Flags.None,
     ),
-    "dance.dev.setSelectionBehavior": new CommandDescriptor(
-      "dance.dev.setSelectionBehavior",
+    "danceflow.dev.setSelectionBehavior": new CommandDescriptor(
+      "danceflow.dev.setSelectionBehavior",
       (_, argument) => _.runAsync(async (_) => await dev_setSelectionBehavior(_, _.extension, argument["mode"], argument["value"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.align": new CommandDescriptor(
-      "dance.edit.align",
+    "danceflow.edit.align": new CommandDescriptor(
+      "danceflow.edit.align",
       (_, argument) => _.runAsync(async (_) => await edit_align(_, argument["fill"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.case.swap": new CommandDescriptor(
-      "dance.edit.case.swap",
+    "danceflow.edit.case.swap": new CommandDescriptor(
+      "danceflow.edit.case.swap",
       (_) => _.runAsync(async (_) => await edit_case_swap(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.case.toLower": new CommandDescriptor(
-      "dance.edit.case.toLower",
+    "danceflow.edit.case.toLower": new CommandDescriptor(
+      "danceflow.edit.case.toLower",
       (_) => _.runAsync(async (_) => await edit_case_toLower(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.case.toUpper": new CommandDescriptor(
-      "dance.edit.case.toUpper",
+    "danceflow.edit.case.toUpper": new CommandDescriptor(
+      "danceflow.edit.case.toUpper",
       (_) => _.runAsync(async (_) => await edit_case_toUpper(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.copyIndentation": new CommandDescriptor(
-      "dance.edit.copyIndentation",
+    "danceflow.edit.copyIndentation": new CommandDescriptor(
+      "danceflow.edit.copyIndentation",
       (_, argument) => _.runAsync(async (_) => await edit_copyIndentation(_, _.document, _.selections, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.deindent": new CommandDescriptor(
-      "dance.edit.deindent",
+    "danceflow.edit.deindent": new CommandDescriptor(
+      "danceflow.edit.deindent",
       (_, argument) => _.runAsync(async (_) => await edit_deindent(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.deindent.withIncomplete": new CommandDescriptor(
-      "dance.edit.deindent.withIncomplete",
+    "danceflow.edit.deindent.withIncomplete": new CommandDescriptor(
+      "danceflow.edit.deindent.withIncomplete",
       (_, argument) => _.runAsync(async (_) => await edit_deindent_withIncomplete(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.indent": new CommandDescriptor(
-      "dance.edit.indent",
+    "danceflow.edit.indent": new CommandDescriptor(
+      "danceflow.edit.indent",
       (_, argument) => _.runAsync(async (_) => await edit_indent(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.indent.withEmpty": new CommandDescriptor(
-      "dance.edit.indent.withEmpty",
+    "danceflow.edit.indent.withEmpty": new CommandDescriptor(
+      "danceflow.edit.indent.withEmpty",
       (_, argument) => _.runAsync(async (_) => await edit_indent_withEmpty(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.insert": new CommandDescriptor(
-      "dance.edit.insert",
+    "danceflow.edit.insert": new CommandDescriptor(
+      "danceflow.edit.insert",
       (_, argument) => _.runAsync(async (_) => await edit_insert(_, _.selections, getRegister(_, argument, "dquote", Register.Flags.CanRead), argument["adjust"], argument["all"], argument["handleNewLine"], getRepetitions(_, argument), getShift(argument), argument["text"], argument["where"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.join": new CommandDescriptor(
-      "dance.edit.join",
+    "danceflow.edit.join": new CommandDescriptor(
+      "danceflow.edit.join",
       (_, argument) => _.runAsync(async (_) => await edit_join(_, argument["separator"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.join.select": new CommandDescriptor(
-      "dance.edit.join.select",
+    "danceflow.edit.join.select": new CommandDescriptor(
+      "danceflow.edit.join.select",
       (_, argument) => _.runAsync(async (_) => await edit_join_select(_, argument["separator"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.newLine.above": new CommandDescriptor(
-      "dance.edit.newLine.above",
+    "danceflow.edit.newLine.above": new CommandDescriptor(
+      "danceflow.edit.newLine.above",
       (_, argument) => _.runAsync(async (_) => await edit_newLine_above(_, getRepetitions(_, argument), getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.newLine.below": new CommandDescriptor(
-      "dance.edit.newLine.below",
+    "danceflow.edit.newLine.below": new CommandDescriptor(
+      "danceflow.edit.newLine.below",
       (_, argument) => _.runAsync(async (_) => await edit_newLine_below(_, getRepetitions(_, argument), getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.edit.replaceCharacters": new CommandDescriptor(
-      "dance.edit.replaceCharacters",
+    "danceflow.edit.replaceCharacters": new CommandDescriptor(
+      "danceflow.edit.replaceCharacters",
       (_, argument) => _.runAsync(async (_) => await edit_replaceCharacters(_, getRepetitions(_, argument), getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.history.recording.play": new CommandDescriptor(
-      "dance.history.recording.play",
+    "danceflow.history.recording.play": new CommandDescriptor(
+      "danceflow.history.recording.play",
       (_, argument) => _.runAsync(async (_) => await history_recording_play(_, getRepetitions(_, argument), getRegister(_, argument, "arobase", Register.Flags.CanReadWriteMacros))),
       CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.history.recording.start": new CommandDescriptor(
-      "dance.history.recording.start",
+    "danceflow.history.recording.start": new CommandDescriptor(
+      "danceflow.history.recording.start",
       (_, argument) => _.runAsync(async (_) => await history_recording_start(_, getRegister(_, argument, "arobase", Register.Flags.CanReadWriteMacros))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.history.recording.stop": new CommandDescriptor(
-      "dance.history.recording.stop",
+    "danceflow.history.recording.stop": new CommandDescriptor(
+      "danceflow.history.recording.stop",
       (_, argument) => _.runAsync(async (_) => await history_recording_stop(_, getRegister(_, argument, "arobase", Register.Flags.CanReadWriteMacros))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.history.redo": new CommandDescriptor(
-      "dance.history.redo",
+    "danceflow.history.redo": new CommandDescriptor(
+      "danceflow.history.redo",
       (_) => _.runAsync(async (_) => await history_redo()),
       CommandDescriptor.Flags.None,
     ),
-    "dance.history.redo.selections": new CommandDescriptor(
-      "dance.history.redo.selections",
+    "danceflow.history.redo.selections": new CommandDescriptor(
+      "danceflow.history.redo.selections",
       (_) => _.runAsync(async (_) => await history_redo_selections()),
       CommandDescriptor.Flags.None,
     ),
-    "dance.history.repeat": new CommandDescriptor(
-      "dance.history.repeat",
+    "danceflow.history.repeat": new CommandDescriptor(
+      "danceflow.history.repeat",
       (_, argument) => _.runAsync(async (_) => await history_repeat(_, getRepetitions(_, argument), argument["filter"])),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.history.repeat.edit": new CommandDescriptor(
-      "dance.history.repeat.edit",
+    "danceflow.history.repeat.edit": new CommandDescriptor(
+      "danceflow.history.repeat.edit",
       (_, argument) => _.runAsync(async (_) => await history_repeat_edit(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.history.undo": new CommandDescriptor(
-      "dance.history.undo",
+    "danceflow.history.undo": new CommandDescriptor(
+      "danceflow.history.undo",
       (_) => _.runAsync(async (_) => await history_undo()),
       CommandDescriptor.Flags.None,
     ),
-    "dance.history.undo.selections": new CommandDescriptor(
-      "dance.history.undo.selections",
+    "danceflow.history.undo.selections": new CommandDescriptor(
+      "danceflow.history.undo.selections",
       (_) => _.runAsync(async (_) => await history_undo_selections()),
       CommandDescriptor.Flags.None,
     ),
-    "dance.ifEmpty": new CommandDescriptor(
-      "dance.ifEmpty",
+    "danceflow.ifEmpty": new CommandDescriptor(
+      "danceflow.ifEmpty",
       (_, argument) => _.runAsync(async (_) => await ifEmpty(_, argument, _.selections, argument["then"], argument["otherwise"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.ignore": new CommandDescriptor(
-      "dance.ignore",
+    "danceflow.ignore": new CommandDescriptor(
+      "danceflow.ignore",
       (_) => _.runAsync(async (_) => await ignore()),
       CommandDescriptor.Flags.None,
     ),
-    "dance.keybindings.setup": new CommandDescriptor(
-      "dance.keybindings.setup",
+    "danceflow.keybindings.setup": new CommandDescriptor(
+      "danceflow.keybindings.setup",
       (_, argument) => _.runAsync(async (_) => await keybindings_setup(_, getRegister(_, argument, "dquote", Register.Flags.CanWrite))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.modes.set": new CommandDescriptor(
-      "dance.modes.set",
+    "danceflow.modes.set": new CommandDescriptor(
+      "danceflow.modes.set",
       (_, argument) => _.runAsync(async (_) => await modes_set(_, getInputOr("mode", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.modes.set.temporarily": new CommandDescriptor(
-      "dance.modes.set.temporarily",
+    "danceflow.modes.set.temporarily": new CommandDescriptor(
+      "danceflow.modes.set.temporarily",
       (_, argument) => _.runAsync(async (_) => await modes_set_temporarily(_, getInputOr("mode", argument), getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.openMenu": new CommandDescriptor(
-      "dance.openMenu",
+    "danceflow.openMenu": new CommandDescriptor(
+      "danceflow.openMenu",
       (_, argument) => _.runAsync(async (_) => await openMenu(_, getInputOr("menu", argument), argument["prefix"], argument["pass"], argument["locked"], argument["delay"], argument["title"])),
       CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.run": new CommandDescriptor(
-      "dance.run",
+    "danceflow.run": new CommandDescriptor(
+      "danceflow.run",
       (_, argument) => _.runAsync(async (_) => await run(_, argument, getInputOr("code", argument), getCount(_, argument), getRepetitions(_, argument), getRegister(_, argument, "null", Register.Flags.None), argument["commands"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.search": new CommandDescriptor(
-      "dance.search",
+    "danceflow.search": new CommandDescriptor(
+      "danceflow.search",
       (_, argument) => _.runAsync(async (_) => await search(_, getRegister<[Register.Flags.CanRead, Register.Flags.CanWrite]>(_, argument, "slash", Register.Flags.CanRead | Register.Flags.CanWrite), getRepetitions(_, argument), argument["add"], getDirection(argument), argument["interactive"], getShift(argument), argument)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.search.next": new CommandDescriptor(
-      "dance.search.next",
+    "danceflow.search.next": new CommandDescriptor(
+      "danceflow.search.next",
       (_, argument) => _.runAsync(async (_) => await search_next(_, _.document, getRegister(_, argument, "slash", Register.Flags.CanRead), getRepetitions(_, argument), argument["add"], getDirection(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.search.selection": new CommandDescriptor(
-      "dance.search.selection",
+    "danceflow.search.selection": new CommandDescriptor(
+      "danceflow.search.selection",
       (_, argument) => _.runAsync(async (_) => await search_selection(_.document, _.selections, getRegister(_, argument, "slash", Register.Flags.CanWrite), argument["smart"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek": new CommandDescriptor(
-      "dance.seek",
+    "danceflow.seek": new CommandDescriptor(
+      "danceflow.seek",
       (_, argument) => _.runAsync(async (_) => await seek(_, getInputOr("input", argument), getRepetitions(_, argument), getDirection(argument), getShift(argument), argument["include"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek.enclosing": new CommandDescriptor(
-      "dance.seek.enclosing",
+    "danceflow.seek.enclosing": new CommandDescriptor(
+      "danceflow.seek.enclosing",
       (_, argument) => _.runAsync(async (_) => await seek_enclosing(_, getDirection(argument), getShift(argument), argument["open"], argument["pairs"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek.leap": new CommandDescriptor(
-      "dance.seek.leap",
+    "danceflow.seek.leap": new CommandDescriptor(
+      "danceflow.seek.leap",
       (_, argument) => _.runAsync(async (_) => await seek_leap(_, getDirection(argument), argument["labels"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek.object": new CommandDescriptor(
-      "dance.seek.object",
+    "danceflow.seek.object": new CommandDescriptor(
+      "danceflow.seek.object",
       (_, argument) => _.runAsync(async (_) => await seek_object(_, getInputOr("input", argument), argument["inner"], argument["where"], getShift(argument), _.extension.treeSitter)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek.syntax.experimental": new CommandDescriptor(
-      "dance.seek.syntax.experimental",
+    "danceflow.seek.syntax.experimental": new CommandDescriptor(
+      "danceflow.seek.syntax.experimental",
       (_, argument) => _.runAsync(async (_) => await _.extension.treeSitterOrThrow().withDocumentTree(_.document, (documentTree) => seek_syntax_experimental(_, _.extension.treeSitterOrThrow(), documentTree, argument["where"]))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.seek.word": new CommandDescriptor(
-      "dance.seek.word",
+    "danceflow.seek.word": new CommandDescriptor(
+      "danceflow.seek.word",
       (_, argument) => _.runAsync(async (_) => await seek_word(_, getRepetitions(_, argument), argument["stopAtEnd"], argument["ws"], getDirection(argument), getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.buffer": new CommandDescriptor(
-      "dance.select.buffer",
+    "danceflow.select.buffer": new CommandDescriptor(
+      "danceflow.select.buffer",
       (_) => _.runAsync(async (_) => await select_buffer(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.firstVisibleLine": new CommandDescriptor(
-      "dance.select.firstVisibleLine",
+    "danceflow.select.firstVisibleLine": new CommandDescriptor(
+      "danceflow.select.firstVisibleLine",
       (_, argument) => _.runAsync(async (_) => await select_firstVisibleLine(_, getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.horizontally": new CommandDescriptor(
-      "dance.select.horizontally",
+    "danceflow.select.horizontally": new CommandDescriptor(
+      "danceflow.select.horizontally",
       (_, argument) => _.runAsync(async (_) => await select_horizontally(_, argument["avoidEol"], getRepetitions(_, argument), getDirection(argument), getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.lastLine": new CommandDescriptor(
-      "dance.select.lastLine",
+    "danceflow.select.lastLine": new CommandDescriptor(
+      "danceflow.select.lastLine",
       (_, argument) => _.runAsync(async (_) => await select_lastLine(_, _.document, getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.lastVisibleLine": new CommandDescriptor(
-      "dance.select.lastVisibleLine",
+    "danceflow.select.lastVisibleLine": new CommandDescriptor(
+      "danceflow.select.lastVisibleLine",
       (_, argument) => _.runAsync(async (_) => await select_lastVisibleLine(_, getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.line.above": new CommandDescriptor(
-      "dance.select.line.above",
+    "danceflow.select.line.above": new CommandDescriptor(
+      "danceflow.select.line.above",
       (_, argument) => _.runAsync(async (_) => await select_line_above(_, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.line.above.extend": new CommandDescriptor(
-      "dance.select.line.above.extend",
+    "danceflow.select.line.above.extend": new CommandDescriptor(
+      "danceflow.select.line.above.extend",
       (_, argument) => _.runAsync(async (_) => await select_line_above_extend(_, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.line.below": new CommandDescriptor(
-      "dance.select.line.below",
+    "danceflow.select.line.below": new CommandDescriptor(
+      "danceflow.select.line.below",
       (_, argument) => _.runAsync(async (_) => await select_line_below(_, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.line.below.extend": new CommandDescriptor(
-      "dance.select.line.below.extend",
+    "danceflow.select.line.below.extend": new CommandDescriptor(
+      "danceflow.select.line.below.extend",
       (_, argument) => _.runAsync(async (_) => await select_line_below_extend(_, getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.lineEnd": new CommandDescriptor(
-      "dance.select.lineEnd",
+    "danceflow.select.lineEnd": new CommandDescriptor(
+      "danceflow.select.lineEnd",
       (_, argument) => _.runAsync(async (_) => await select_lineEnd(_, getCount(_, argument), getShift(argument), argument["lineBreak"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.lineStart": new CommandDescriptor(
-      "dance.select.lineStart",
+    "danceflow.select.lineStart": new CommandDescriptor(
+      "danceflow.select.lineStart",
       (_, argument) => _.runAsync(async (_) => await select_lineStart(_, getCount(_, argument), getShift(argument), argument["skipBlank"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.middleVisibleLine": new CommandDescriptor(
-      "dance.select.middleVisibleLine",
+    "danceflow.select.middleVisibleLine": new CommandDescriptor(
+      "danceflow.select.middleVisibleLine",
       (_, argument) => _.runAsync(async (_) => await select_middleVisibleLine(_, getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.to": new CommandDescriptor(
-      "dance.select.to",
+    "danceflow.select.to": new CommandDescriptor(
+      "danceflow.select.to",
       (_, argument) => _.runAsync(async (_) => await select_to(_, getCount(_, argument), argument, getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.select.vertically": new CommandDescriptor(
-      "dance.select.vertically",
+    "danceflow.select.vertically": new CommandDescriptor(
+      "danceflow.select.vertically",
       (_, argument) => _.runAsync(async (_) => await select_vertically(_, _.selections, argument["avoidEol"], getRepetitions(_, argument), getDirection(argument), getShift(argument), argument["by"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selectRegister": new CommandDescriptor(
-      "dance.selectRegister",
+    "danceflow.selectRegister": new CommandDescriptor(
+      "danceflow.selectRegister",
       (_, argument) => _.runAsync(async (_) => await selectRegister(_, getInputOr("register", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.selections.changeDirection": new CommandDescriptor(
-      "dance.selections.changeDirection",
+    "danceflow.selections.changeDirection": new CommandDescriptor(
+      "danceflow.selections.changeDirection",
       (_, argument) => _.runAsync(async (_) => await selections_changeDirection(_, getDirection(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.changeOrder": new CommandDescriptor(
-      "dance.selections.changeOrder",
+    "danceflow.selections.changeOrder": new CommandDescriptor(
+      "danceflow.selections.changeOrder",
       (_, argument) => _.runAsync(async (_) => await selections_changeOrder(_, _.selections.slice(), getDirection(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.copy": new CommandDescriptor(
-      "dance.selections.copy",
+    "danceflow.selections.copy": new CommandDescriptor(
+      "danceflow.selections.copy",
       (_, argument) => _.runAsync(async (_) => await selections_copy(_, _.document, _.selections, getRepetitions(_, argument), getDirection(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.expandToLines": new CommandDescriptor(
-      "dance.selections.expandToLines",
+    "danceflow.selections.expandToLines": new CommandDescriptor(
+      "danceflow.selections.expandToLines",
       (_) => _.runAsync(async (_) => await selections_expandToLines(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.filter": new CommandDescriptor(
-      "dance.selections.filter",
+    "danceflow.selections.filter": new CommandDescriptor(
+      "danceflow.selections.filter",
       (_, argument) => _.runAsync(async (_) => await selections_filter(_, argument, argument["defaultExpression"], argument["inverse"], argument["interactive"], getCount(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.merge": new CommandDescriptor(
-      "dance.selections.merge",
+    "danceflow.selections.merge": new CommandDescriptor(
+      "danceflow.selections.merge",
       (_) => _.runAsync(async (_) => await selections_merge(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.open": new CommandDescriptor(
-      "dance.selections.open",
+    "danceflow.selections.open": new CommandDescriptor(
+      "danceflow.selections.open",
       (_) => _.runAsync(async (_) => await selections_open(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.pipe": new CommandDescriptor(
-      "dance.selections.pipe",
+    "danceflow.selections.pipe": new CommandDescriptor(
+      "danceflow.selections.pipe",
       (_, argument) => _.runAsync(async (_) => await selections_pipe(_, getRegister(_, argument, "pipe", Register.Flags.CanWrite), getInputOr("expression", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.reduce": new CommandDescriptor(
-      "dance.selections.reduce",
+    "danceflow.selections.reduce": new CommandDescriptor(
+      "danceflow.selections.reduce",
       (_, argument) => _.runAsync(async (_) => await selections_reduce(_, argument["where"], argument["empty"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.restore": new CommandDescriptor(
-      "dance.selections.restore",
+    "danceflow.selections.restore": new CommandDescriptor(
+      "danceflow.selections.restore",
       (_, argument) => _.runAsync(async (_) => await selections_restore(_, getRegister(_, argument, "caret", Register.Flags.CanReadSelections))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.restore.withCurrent": new CommandDescriptor(
-      "dance.selections.restore.withCurrent",
+    "danceflow.selections.restore.withCurrent": new CommandDescriptor(
+      "danceflow.selections.restore.withCurrent",
       (_, argument) => _.runAsync(async (_) => await selections_restore_withCurrent(_, _.document, getRegister(_, argument, "caret", Register.Flags.CanReadSelections), argument["reverse"], argument["action"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.rotate.both": new CommandDescriptor(
-      "dance.selections.rotate.both",
+    "danceflow.selections.rotate.both": new CommandDescriptor(
+      "danceflow.selections.rotate.both",
       (_, argument) => _.runAsync(async (_) => await selections_rotate_both(_, getRepetitions(_, argument), argument["reverse"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.rotate.contents": new CommandDescriptor(
-      "dance.selections.rotate.contents",
+    "danceflow.selections.rotate.contents": new CommandDescriptor(
+      "danceflow.selections.rotate.contents",
       (_, argument) => _.runAsync(async (_) => await selections_rotate_contents(_, getRepetitions(_, argument), argument["reverse"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.rotate.selections": new CommandDescriptor(
-      "dance.selections.rotate.selections",
+    "danceflow.selections.rotate.selections": new CommandDescriptor(
+      "danceflow.selections.rotate.selections",
       (_, argument) => _.runAsync(async (_) => await selections_rotate_selections(_, getRepetitions(_, argument), argument["reverse"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.save": new CommandDescriptor(
-      "dance.selections.save",
+    "danceflow.selections.save": new CommandDescriptor(
+      "danceflow.selections.save",
       (_, argument) => _.runAsync(async (_) => await selections_save(_, _.document, _.selections, getRegister(_, argument, "caret", Register.Flags.CanWriteSelections), argument["style"], argument["until"], argument["untilDelay"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.saveText": new CommandDescriptor(
-      "dance.selections.saveText",
+    "danceflow.selections.saveText": new CommandDescriptor(
+      "danceflow.selections.saveText",
       (_, argument) => _.runAsync(async (_) => await selections_saveText(_.document, _.selections, getRegister(_, argument, "dquote", Register.Flags.CanWrite))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.select": new CommandDescriptor(
-      "dance.selections.select",
+    "danceflow.selections.select": new CommandDescriptor(
+      "danceflow.selections.select",
       (_, argument) => _.runAsync(async (_) => await selections_select(_, argument["interactive"], argument)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.sort": new CommandDescriptor(
-      "dance.selections.sort",
+    "danceflow.selections.sort": new CommandDescriptor(
+      "danceflow.selections.sort",
       (_, argument) => _.runAsync(async (_) => await selections_sort(_, getInputOr("expression", argument), getDirection(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.split": new CommandDescriptor(
-      "dance.selections.split",
+    "danceflow.selections.split": new CommandDescriptor(
+      "danceflow.selections.split",
       (_, argument) => _.runAsync(async (_) => await selections_split(_, argument["excludeEmpty"], argument["interactive"], argument)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.splitLines": new CommandDescriptor(
-      "dance.selections.splitLines",
+    "danceflow.selections.splitLines": new CommandDescriptor(
+      "danceflow.selections.splitLines",
       (_, argument) => _.runAsync(async (_) => await selections_splitLines(_, _.document, _.selections, getRepetitions(_, argument), argument["excludeEol"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.toggleIndices": new CommandDescriptor(
-      "dance.selections.toggleIndices",
+    "danceflow.selections.toggleIndices": new CommandDescriptor(
+      "danceflow.selections.toggleIndices",
       (_, argument) => _.runAsync(async (_) => await selections_toggleIndices(_, argument["display"], argument["until"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.trimLines": new CommandDescriptor(
-      "dance.selections.trimLines",
+    "danceflow.selections.trimLines": new CommandDescriptor(
+      "danceflow.selections.trimLines",
       (_) => _.runAsync(async (_) => await selections_trimLines(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.selections.trimWhitespace": new CommandDescriptor(
-      "dance.selections.trimWhitespace",
+    "danceflow.selections.trimWhitespace": new CommandDescriptor(
+      "danceflow.selections.trimWhitespace",
       (_) => _.runAsync(async (_) => await selections_trimWhitespace(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
-    "dance.updateCount": new CommandDescriptor(
-      "dance.updateCount",
+    "danceflow.updateCount": new CommandDescriptor(
+      "danceflow.updateCount",
       (_, argument) => _.runAsync(async (_) => await updateCount(_, getCount(_, argument), _.extension, getInputOr("count", argument), argument["addDigits"])),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.updateRegister": new CommandDescriptor(
-      "dance.updateRegister",
+    "danceflow.updateRegister": new CommandDescriptor(
+      "danceflow.updateRegister",
       (_, argument) => _.runAsync(async (_) => await updateRegister(_, getRegister(_, argument, "dquote", Register.Flags.CanWrite), argument["copyFrom"], getInputOr("input", argument))),
       CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     ),
-    "dance.view.line": new CommandDescriptor(
-      "dance.view.line",
+    "danceflow.view.line": new CommandDescriptor(
+      "danceflow.view.line",
       (_, argument) => _.runAsync(async (_) => await view_line(_, argument["at"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
@@ -706,703 +706,703 @@ export const commands: Commands = function () {
   // Additional commands.
   describeAdditionalCommand(
     commands,
-    "dance.edit.selectRegister-insert",
+    "danceflow.edit.selectRegister-insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selectRegister", { $include: ["register"] }], [".edit.insert", { $exclude: ["register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.paste.before",
+    "danceflow.edit.paste.before",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "start", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.paste.after",
+    "danceflow.edit.paste.after",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "end" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.paste.before.select",
+    "danceflow.edit.paste.before.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "start", shift: "select", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.paste.after.select",
+    "danceflow.edit.paste.after.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "end" , shift: "select", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.pasteAll.before",
+    "danceflow.edit.pasteAll.before",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "start", all: true, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.pasteAll.after",
+    "danceflow.edit.pasteAll.after",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "end" , all: true, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.pasteAll.before.select",
+    "danceflow.edit.pasteAll.before.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "start", all: true, shift: "select", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.pasteAll.after.select",
+    "danceflow.edit.pasteAll.after.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { handleNewLine: true, where: "end" , all: true, shift: "select", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.delete",
+    "danceflow.edit.delete",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.insert", { register: "_", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.delete-insert",
+    "danceflow.edit.delete-insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "insert", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.yank-delete",
+    "danceflow.edit.yank-delete",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.saveText", { $include: ["register"] }], [".edit.insert", { register: "_", $exclude: ["register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.yank-delete-insert",
+    "danceflow.edit.yank-delete-insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.saveText", { $include: ["register"] }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["register","mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.yank-replace",
+    "danceflow.edit.yank-replace",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.history.repeat.selection",
+    "danceflow.history.repeat.selection",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".history.repeat", { filter: "dance\\.(seek|select|selections)", $include: ["count"] }]],
+    [[".history.repeat", { filter: "danceflow\\.(seek|select|selections)", $include: ["count"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.history.repeat.seek",
+    "danceflow.history.repeat.seek",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".history.repeat", { filter: "dance\\.seek", $include: ["count"] }]],
+    [[".history.repeat", { filter: "danceflow\\.seek", $include: ["count"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.normal",
+    "danceflow.modes.set.normal",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.insert",
+    "danceflow.modes.set.insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "insert" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.select",
+    "danceflow.modes.set.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "select" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.insert.lineStart",
+    "danceflow.modes.insert.lineStart",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.insert.lineEnd",
+    "danceflow.modes.insert.lineEnd",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineEnd" , { shift: "jump" }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.temporarily.normal",
+    "danceflow.modes.set.temporarily.normal",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set.temporarily", { mode: "normal" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.set.temporarily.insert",
+    "danceflow.modes.set.temporarily.insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set.temporarily", { mode: "insert" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.extend",
+    "danceflow.search.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search", { shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.backward",
+    "danceflow.search.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search", { direction: -1 , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.backward.extend",
+    "danceflow.search.backward.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search", { direction: -1, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.selection.smart",
+    "danceflow.search.selection.smart",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search.selection", { smart: true, $include: ["register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.next.add",
+    "danceflow.search.next.add",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search.next", { add: true, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.previous",
+    "danceflow.search.previous",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search.next", { direction: -1 , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.search.previous.add",
+    "danceflow.search.previous.add",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".search.next", { direction: -1, add: true, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.extend",
+    "danceflow.seek.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.backward",
+    "danceflow.seek.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.extend.backward",
+    "danceflow.seek.extend.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.included",
+    "danceflow.seek.included",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { include: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.included.extend",
+    "danceflow.seek.included.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { include: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.included.backward",
+    "danceflow.seek.included.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { include: true, direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.included.extend.backward",
+    "danceflow.seek.included.extend.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek", { include: true, shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.enclosing.extend",
+    "danceflow.seek.enclosing.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.enclosing", { shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.enclosing.backward",
+    "danceflow.seek.enclosing.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.enclosing", { direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.enclosing.extend.backward",
+    "danceflow.seek.enclosing.extend.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.enclosing", { shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.extend",
+    "danceflow.seek.word.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.backward",
+    "danceflow.seek.word.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.extend.backward",
+    "danceflow.seek.word.extend.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.ws",
+    "danceflow.seek.word.ws",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { ws: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.ws.extend",
+    "danceflow.seek.word.ws.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { ws: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.ws.backward",
+    "danceflow.seek.word.ws.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { ws: true, direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.word.ws.extend.backward",
+    "danceflow.seek.word.ws.extend.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd",
+    "danceflow.seek.wordEnd",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { stopAtEnd: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd.extend",
+    "danceflow.seek.wordEnd.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { stopAtEnd: true , shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd.ws",
+    "danceflow.seek.wordEnd.ws",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { stopAtEnd: true , ws: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.wordEnd.ws.extend",
+    "danceflow.seek.wordEnd.ws.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.word", { stopAtEnd: true , ws: true, shift: "extend" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject",
+    "danceflow.seek.askObject",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", title: "Select whole object..." }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.inner",
+    "danceflow.seek.askObject.inner",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.start",
+    "danceflow.seek.askObject.start",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ where: "start" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.start.extend",
+    "danceflow.seek.askObject.start.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ where: "start", shift: "extend" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.inner.start",
+    "danceflow.seek.askObject.inner.start",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ inner: true, where: "start" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.inner.start.extend",
+    "danceflow.seek.askObject.inner.start.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ inner: true, where: "start", shift: "extend" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.end",
+    "danceflow.seek.askObject.end",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ where: "end" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.end.extend",
+    "danceflow.seek.askObject.end.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ where: "end" , shift: "extend" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.inner.end",
+    "danceflow.seek.askObject.inner.end",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ inner: true, where: "end" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.askObject.inner.end.extend",
+    "danceflow.seek.askObject.inner.end.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", pass: [{ inner: true, where: "end" , shift: "extend" }] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.syntax.next.experimental",
+    "danceflow.seek.syntax.next.experimental",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.syntax.experimental", { where: "next" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.syntax.previous.experimental",
+    "danceflow.seek.syntax.previous.experimental",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.syntax.experimental", { where: "previous" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.syntax.parent.experimental",
+    "danceflow.seek.syntax.parent.experimental",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.syntax.experimental", { where: "parent" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.syntax.child.experimental",
+    "danceflow.seek.syntax.child.experimental",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.syntax.experimental", { where: "child" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.seek.leap.backward",
+    "danceflow.seek.leap.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".seek.leap", { direction: -1, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.down.jump",
+    "danceflow.select.down.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.vertically", { direction: 1, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.down.extend",
+    "danceflow.select.down.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.vertically", { direction: 1, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.up.jump",
+    "danceflow.select.up.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.vertically", { direction: -1, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.up.extend",
+    "danceflow.select.up.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.vertically", { direction: -1, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.right.jump",
+    "danceflow.select.right.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.horizontally", { direction: 1, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.right.extend",
+    "danceflow.select.right.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.horizontally", { direction: 1, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.left.jump",
+    "danceflow.select.left.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.horizontally", { direction: -1, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.left.extend",
+    "danceflow.select.left.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.horizontally", { direction: -1, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.to.jump",
+    "danceflow.select.to.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.to", { shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.to.extend",
+    "danceflow.select.to.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.to", { shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lineStart.jump",
+    "danceflow.select.lineStart.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lineStart.extend",
+    "danceflow.select.lineStart.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lineStart.skipBlank.jump",
+    "danceflow.select.lineStart.skipBlank.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { skipBlank: true, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lineStart.skipBlank.extend",
+    "danceflow.select.lineStart.skipBlank.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { skipBlank: true, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.firstLine.jump",
+    "danceflow.select.firstLine.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { count: 0, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.firstLine.extend",
+    "danceflow.select.firstLine.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineStart", { count: 0, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lineEnd.extend",
+    "danceflow.select.lineEnd.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineEnd", { shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.documentEnd.jump",
+    "danceflow.select.documentEnd.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineEnd", { count: 2147483647, shift: "jump" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.documentEnd.extend",
+    "danceflow.select.documentEnd.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lineEnd", { count: 2147483647, shift: "extend", $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lastLine.jump",
+    "danceflow.select.lastLine.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lastLine", { shift: "jump" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lastLine.extend",
+    "danceflow.select.lastLine.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lastLine", { shift: "extend" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.firstVisibleLine.jump",
+    "danceflow.select.firstVisibleLine.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.firstVisibleLine", { shift: "jump" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.firstVisibleLine.extend",
+    "danceflow.select.firstVisibleLine.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.firstVisibleLine", { shift: "extend" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.middleVisibleLine.jump",
+    "danceflow.select.middleVisibleLine.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.middleVisibleLine", { shift: "jump" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.middleVisibleLine.extend",
+    "danceflow.select.middleVisibleLine.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.middleVisibleLine", { shift: "extend" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lastVisibleLine.jump",
+    "danceflow.select.lastVisibleLine.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lastVisibleLine", { shift: "jump" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.select.lastVisibleLine.extend",
+    "danceflow.select.lastVisibleLine.extend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.lastVisibleLine", { shift: "extend" }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.pipe.replace",
+    "danceflow.selections.pipe.replace",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", $exclude: ["expression","register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.pipe.append",
+    "danceflow.selections.pipe.append",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", where: "end" , shift: "select", $exclude: ["expression","register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.pipe.prepend",
+    "danceflow.selections.pipe.prepend",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", where: "start", shift: "select", $exclude: ["expression","register"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.filter.regexp",
+    "danceflow.selections.filter.regexp",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.filter", { defaultExpression: "/" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.filter.regexp.inverse",
+    "danceflow.selections.filter.regexp.inverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.filter", { defaultExpression: "/", inverse: true, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.clear.secondary",
+    "danceflow.selections.clear.secondary",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.filter", { expression: "i === count" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.clear.main",
+    "danceflow.selections.clear.main",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.filter", { expression: "i !== count" , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.select.orLeap",
+    "danceflow.selections.select.orLeap",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".ifEmpty", { then: [[".seek.leap", { $exclude: [] }]], otherwise: [[".selections.select", { $exclude: [] }]] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.splitLines.orLeap.backward",
+    "danceflow.selections.splitLines.orLeap.backward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".ifEmpty", { then: [[".seek.leap", { direction: -1, $exclude: [] }]], otherwise: [[".selections.splitLines", { $exclude: [] }]] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.reduce.edges",
+    "danceflow.selections.reduce.edges",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.reduce", { where: "both", empty: false, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.faceForward",
+    "danceflow.selections.faceForward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.changeDirection", { direction: 1 }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.faceBackward",
+    "danceflow.selections.faceBackward",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.changeDirection", { direction: -1 }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.orderDescending",
+    "danceflow.selections.orderDescending",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.changeOrder", { direction: 1 }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.orderAscending",
+    "danceflow.selections.orderAscending",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.changeOrder", { direction: -1 }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.copy.above",
+    "danceflow.selections.copy.above",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.copy", { direction: -1 }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.showIndices",
+    "danceflow.selections.showIndices",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.toggleIndices", { display: true , $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.hideIndices",
+    "danceflow.selections.hideIndices",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.toggleIndices", { display: false, $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.rotate.both.reverse",
+    "danceflow.selections.rotate.both.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.both", { reverse: true }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.rotate.contents.reverse",
+    "danceflow.selections.rotate.contents.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.contents", { reverse: true }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.selections.rotate.selections.reverse",
+    "danceflow.selections.rotate.selections.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.selections", { reverse: true }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.insert.before",
+    "danceflow.modes.insert.before",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.modes.insert.after",
+    "danceflow.modes.insert.after",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.faceForward" , { record: false }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.newLine.above.insert",
+    "danceflow.edit.newLine.above.insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "dance.edit.newLine.below.insert",
+    "danceflow.edit.newLine.below.insert",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { $exclude: [] }]],
   );

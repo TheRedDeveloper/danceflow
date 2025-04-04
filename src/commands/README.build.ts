@@ -75,7 +75,7 @@ export async function build(builder: Builder) {
   return unindent(4)`
     # Layouts
 
-    Dance uses [VS Code keybindings](https://code.visualstudio.com/docs/getstarted/keybindings)
+    Danceflow uses [VS Code keybindings](https://code.visualstudio.com/docs/getstarted/keybindings)
     to define command key-bindings. As such, its key-bindings must be configured differently
     depending on the keyboard layout. The following layouts _will be_\\* supported:
 

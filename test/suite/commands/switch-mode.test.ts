@@ -13,7 +13,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,9 +28,9 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.modes.insert.before");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.modes.insert.before");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/switch-mode.md:10:1", 6, String.raw`
@@ -47,9 +47,9 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.modes.set.normal");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.modes.set.normal");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/switch-mode.md:20:1", 6, String.raw`
@@ -66,9 +66,9 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.modes.insert.after");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.modes.insert.after");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/switch-mode.md:30:1", 6, String.raw`
@@ -87,9 +87,9 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.edit.newLine.below.insert");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.edit.newLine.below.insert");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/switch-mode.md:54:1", 6, String.raw`
@@ -111,9 +111,9 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.edit.newLine.above.insert");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.edit.newLine.above.insert");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/switch-mode.md:70:1", 6, String.raw`

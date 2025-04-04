@@ -30,7 +30,7 @@ export async function build() {
           editor.options.insertSpaces = true;
           editor.options.tabSize = 2;
 
-          await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+          await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
         });
 
         this.afterAll(async () => {
@@ -238,9 +238,9 @@ function stringifyOperations(test: Test) {
   }
 
   if (test.behavior === "character") {
-    text += `await executeCommand("dance.dev.setSelectionBehavior", `
+    text += `await executeCommand("danceflow.dev.setSelectionBehavior", `
           + `{ mode: "normal", value: "character" });\n`;
-    textEnd += `await executeCommand("dance.dev.setSelectionBehavior", `
+    textEnd += `await executeCommand("danceflow.dev.setSelectionBehavior", `
              + `{ mode: "normal", value: "caret" });\n`;
   }
 
@@ -250,7 +250,7 @@ function stringifyOperations(test: Test) {
     let command = operation.command;
 
     if (command[0] === ".") {
-      command = `dance${command}`;
+      command = `danceflow${command}`;
     }
 
     const promises = [

@@ -8,7 +8,7 @@ import type { PerEditorState } from "../state/editors";
 export function assert(condition: boolean): asserts condition {
   if (!condition) {
     const error = new Error(
-      "internal assertion failed; please report this error on https://github.com/71/dance/issues. "
+      "internal assertion failed; please report this error on https://github.com/71/danceflow/issues. "
       + "its stacktrace is available in the developer console (Command Palette > Open Developer "
       + "Tools).",
     );

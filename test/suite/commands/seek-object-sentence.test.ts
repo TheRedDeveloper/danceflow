@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -40,7 +40,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:22:1", 6, String.raw`
@@ -81,7 +81,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:44:1", 6, String.raw`
@@ -122,7 +122,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", inner: true });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:66:1", 6, String.raw`
@@ -154,7 +154,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:109:1", 6, String.raw`
@@ -172,7 +172,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:120:1", 6, String.raw`
@@ -189,7 +189,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:130:1", 6, String.raw`
@@ -209,7 +209,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", inner: true });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:161:1", 6, String.raw`
@@ -231,7 +231,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:177:1", 6, String.raw`
@@ -253,7 +253,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start", inner: true });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start", inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:195:1", 6, String.raw`
@@ -275,7 +275,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:210:1", 6, String.raw`
@@ -296,7 +296,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:243:1", 6, String.raw`
@@ -317,7 +317,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:258:1", 6, String.raw`
@@ -338,7 +338,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:274:1", 6, String.raw`
@@ -361,7 +361,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:308:1", 6, String.raw`
@@ -385,7 +385,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:321:1", 6, String.raw`
@@ -410,7 +410,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:338:1", 6, String.raw`
@@ -435,7 +435,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:373:1", 6, String.raw`
@@ -459,7 +459,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:386:1", 6, String.raw`
@@ -484,7 +484,7 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:400:1", 6, String.raw`
@@ -505,9 +505,9 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "start" });
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "start" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:424:1", 6, String.raw`
@@ -526,9 +526,9 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)", where: "end" });
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)", where: "end" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:435:1", 6, String.raw`
@@ -547,9 +547,9 @@ suite("./test/suite/commands/seek-object-sentence.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.seek.object", { input: "(?#predefined=sentence)" });
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.seek.object", { input: "(?#predefined=sentence)" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-sentence.md:446:1", 6, String.raw`

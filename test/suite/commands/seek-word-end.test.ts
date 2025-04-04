@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek-word-end.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,7 +28,7 @@ suite("./test/suite/commands/seek-word-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.wordEnd");
+    await executeCommand("danceflow.seek.wordEnd");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-word-end.md:8:1", 6, String.raw`
@@ -45,7 +45,7 @@ suite("./test/suite/commands/seek-word-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.wordEnd");
+    await executeCommand("danceflow.seek.wordEnd");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-word-end.md:18:1", 6, String.raw`
@@ -62,7 +62,7 @@ suite("./test/suite/commands/seek-word-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.wordEnd", { count: 2 });
+    await executeCommand("danceflow.seek.wordEnd", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-word-end.md:28:1", 6, String.raw`

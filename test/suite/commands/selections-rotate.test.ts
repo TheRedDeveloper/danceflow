@@ -13,7 +13,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -29,7 +29,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.both");
+    await executeCommand("danceflow.selections.rotate.both");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:9:1", 6, String.raw`
@@ -48,7 +48,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.contents");
+    await executeCommand("danceflow.selections.rotate.contents");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:20:1", 6, String.raw`
@@ -67,7 +67,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.selections");
+    await executeCommand("danceflow.selections.rotate.selections");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:31:1", 6, String.raw`
@@ -86,7 +86,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.both.reverse");
+    await executeCommand("danceflow.selections.rotate.both.reverse");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:42:1", 6, String.raw`
@@ -105,7 +105,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.contents.reverse");
+    await executeCommand("danceflow.selections.rotate.contents.reverse");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:53:1", 6, String.raw`
@@ -124,7 +124,7 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.rotate.selections.reverse");
+    await executeCommand("danceflow.selections.rotate.selections.reverse");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:64:1", 6, String.raw`

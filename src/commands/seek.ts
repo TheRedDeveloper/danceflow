@@ -833,10 +833,10 @@ export async function leap(
         // TODO: this does not properly execute the command bound to
         // `labelChar`, probably because VS Code did not have the time to switch
         // to the previous mode.
-        // A way to fix this would be to bind `dance.cancel` (renamed
-        // `dance.intercept`) to _all_ keybindings, gated by a VS Code `context`
+        // A way to fix this would be to bind `danceflow.cancel` (renamed
+        // `danceflow.intercept`) to _all_ keybindings, gated by a VS Code `context`
         // that only intercepts keys in a given array.
-        // Then `dance.intercept` would also specify which keybinding was hit.
+        // Then `danceflow.intercept` would also specify which keybinding was hit.
         return;
       }
 

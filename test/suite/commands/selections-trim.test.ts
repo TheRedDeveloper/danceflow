@@ -13,7 +13,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -38,7 +38,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.trimWhitespace");
+    await executeCommand("danceflow.selections.trimWhitespace");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:18:1", 6, String.raw`
@@ -66,7 +66,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.trimLines", { $expect: /^no selections remain$/ });
+    await executeCommand("danceflow.selections.trimLines", { $expect: /^no selections remain$/ });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:46:1", 6, String.raw`
@@ -91,7 +91,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.expandToLines");
+    await executeCommand("danceflow.selections.expandToLines");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:63:1", 6, String.raw`
@@ -116,7 +116,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.expandToLines");
+    await executeCommand("danceflow.selections.expandToLines");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:77:1", 6, String.raw`
@@ -145,7 +145,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.expandToLines");
+    await executeCommand("danceflow.selections.expandToLines");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:108:1", 6, String.raw`
@@ -178,7 +178,7 @@ suite("./test/suite/commands/selections-trim.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.trimLines");
+    await executeCommand("danceflow.selections.trimLines");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-trim.md:129:1", 6, String.raw`

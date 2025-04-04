@@ -255,7 +255,7 @@ export class Recorder implements vscode.Disposable {
 
       if (activeRecordingsCount === 0) {
         this._statusBar.recordingSegment.setContent();
-        vscode.commands.executeCommand("setContext", "dance.isRecording", false);
+        vscode.commands.executeCommand("setContext", "danceflow.isRecording", false);
       } else {
         this._statusBar.recordingSegment.setContent("" + activeRecordingsCount);
       }
@@ -277,7 +277,7 @@ export class Recorder implements vscode.Disposable {
     this._statusBar.recordingSegment.setContent("" + activeRecordingsCount);
 
     if (activeRecordingsCount === 1) {
-      vscode.commands.executeCommand("setContext", "dance.isRecording", true);
+      vscode.commands.executeCommand("setContext", "danceflow.isRecording", true);
     }
 
     return recording;
@@ -339,7 +339,7 @@ export class Recorder implements vscode.Disposable {
   }
 
   /**
-   * Records the invocation of an external (non-Dance) command.
+   * Records the invocation of an external (non-Danceflow) command.
    */
   public recordExternalCommand(identifier: string, argument: Record<string, any>) {
     const identifierIndex = this._storeObject(identifier),

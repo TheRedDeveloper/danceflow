@@ -13,7 +13,7 @@ suite("./test/suite/commands/select-lateral-tabs.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -36,7 +36,7 @@ suite("./test/suite/commands/select-lateral-tabs.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.down.jump");
+    await executeCommand("danceflow.select.down.jump");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lateral-tabs.md:19:1", 6, String.raw`
@@ -69,7 +69,7 @@ suite("./test/suite/commands/select-lateral-tabs.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.up.jump");
+    await executeCommand("danceflow.select.up.jump");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lateral-tabs.md:37:1", 6, String.raw`
@@ -102,9 +102,9 @@ suite("./test/suite/commands/select-lateral-tabs.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.select.down.jump");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.select.down.jump");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lateral-tabs.md:74:1", 6, String.raw`
@@ -137,9 +137,9 @@ suite("./test/suite/commands/select-lateral-tabs.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.select.up.jump");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.select.up.jump");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lateral-tabs.md:92:1", 6, String.raw`

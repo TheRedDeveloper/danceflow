@@ -13,7 +13,7 @@ suite("./test/suite/commands/selections-sort.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -32,7 +32,7 @@ suite("./test/suite/commands/selections-sort.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.sort", { expression: "$" });
+    await executeCommand("danceflow.selections.sort", { expression: "$" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-sort.md:12:1", 6, String.raw`
@@ -57,7 +57,7 @@ suite("./test/suite/commands/selections-sort.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.sort", { expression: "$", direction: -1 });
+    await executeCommand("danceflow.selections.sort", { expression: "$", direction: -1 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-sort.md:26:1", 6, String.raw`
@@ -82,7 +82,7 @@ suite("./test/suite/commands/selections-sort.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.sort", { expression: "($ === 'y' ? ' ' : '') + Selections.toString(Selections.nth(i))" });
+    await executeCommand("danceflow.selections.sort", { expression: "($ === 'y' ? ' ' : '') + Selections.toString(Selections.nth(i))" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-sort.md:40:1", 6, String.raw`

@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-paste.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -29,8 +29,8 @@ suite("./test/suite/commands/edit-paste.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.after");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.after");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste.md:9:1", 6, String.raw`
@@ -51,7 +51,7 @@ suite("./test/suite/commands/edit-paste.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.paste.after");
+    await executeCommand("danceflow.edit.paste.after");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste.md:22:1", 6, String.raw`
@@ -72,8 +72,8 @@ suite("./test/suite/commands/edit-paste.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.left.jump");
-    await executeCommand("dance.edit.paste.after");
+    await executeCommand("danceflow.select.left.jump");
+    await executeCommand("danceflow.edit.paste.after");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste.md:35:1", 6, String.raw`
@@ -94,9 +94,9 @@ suite("./test/suite/commands/edit-paste.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.left.extend", { count: 2 });
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.after");
+    await executeCommand("danceflow.select.left.extend", { count: 2 });
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.after");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste.md:48:1", 6, String.raw`
@@ -116,8 +116,8 @@ suite("./test/suite/commands/edit-paste.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.after", { count: 3 });
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.after", { count: 3 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste.md:70:1", 6, String.raw`

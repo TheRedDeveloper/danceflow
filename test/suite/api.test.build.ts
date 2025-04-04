@@ -32,7 +32,7 @@ export async function build(builder: Builder) {
     // Note: we use the name starting with ./ below to make sure the filename is
     // clickable.
     return unindent(4)`
-      suite(${JSON.stringify(module.path.replace(/^dance/, "."))}, function () {
+      suite(${JSON.stringify(module.path.replace(/^danceflow/, "."))}, function () {
         ${examples.map((example) => {
           let testName = `function ${example.functionName}`;
           const examplesForFunction = examplesPerFunction.get(example.functionName);

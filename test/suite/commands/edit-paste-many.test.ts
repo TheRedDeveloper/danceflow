@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -29,8 +29,8 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.after.select");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.after.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:9:1", 6, String.raw`
@@ -49,8 +49,8 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.before.select");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.before.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:21:1", 6, String.raw`
@@ -69,8 +69,8 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.pasteAll.after.select");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.pasteAll.after.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:33:1", 6, String.raw`
@@ -89,8 +89,8 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.pasteAll.before.select");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.pasteAll.before.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:45:1", 6, String.raw`

@@ -307,10 +307,10 @@ export function buildCommands(
     }
 
     if (commandName.startsWith(".")) {
-      commandName = `dance${commandName}`;
+      commandName = `danceflow${commandName}`;
     }
 
-    if (commandName.startsWith("dance.")) {
+    if (commandName.startsWith("danceflow.")) {
       const descriptor = extension.commands[commandName];
 
       if (descriptor === undefined) {

@@ -83,7 +83,7 @@ jobs:
         with:
           pat: ${{ secrets.VS_MARKETPLACE_TOKEN }}
           registryUrl: https://marketplace.visualstudio.com
-          extensionFile: dance-${{ steps.pre-release-versions.outputs.LOCAL }}.vsix
+          extensionFile: danceflow-${{ steps.pre-release-versions.outputs.LOCAL }}.vsix
           packagePath: ''  # Default is `./` and conflicts with `extensionFile`.
           yarn: true
           preRelease: true

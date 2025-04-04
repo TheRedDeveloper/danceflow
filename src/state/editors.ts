@@ -7,7 +7,7 @@ import { extensionName } from "../utils/constants";
 import { assert } from "../utils/errors";
 
 /**
- * Dance-specific state related to a single `vscode.TextEditor`.
+ * Danceflow-specific state related to a single `vscode.TextEditor`.
  */
 export class PerEditorState implements vscode.Disposable {
   private readonly _onEditorWasClosed = new vscode.EventEmitter<this>();
@@ -514,7 +514,7 @@ export class Editors implements vscode.Disposable {
   });
 
   /**
-   * The Dance-specific state for the active `vscode.TextEditor`, or `undefined`
+   * The Danceflow-specific state for the active `vscode.TextEditor`, or `undefined`
    * if `vscode.window.activeTextEditor === undefined`.
    */
   public get active() {
@@ -561,7 +561,7 @@ export class Editors implements vscode.Disposable {
   }
 
   /**
-   * Returns the Dance-specific state for the given `vscode.TextEditor`.
+   * Returns the Danceflow-specific state for the given `vscode.TextEditor`.
    */
   public getState(editor: vscode.TextEditor) {
     const state = this._editors.get(editor);

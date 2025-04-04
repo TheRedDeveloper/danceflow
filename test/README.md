@@ -1,6 +1,6 @@
-# Dance tests
+# Danceflow tests
 
-There are currently two types of tests for Dance: [API tests](#api-tests) and
+There are currently two types of tests for Danceflow: [API tests](#api-tests) and
 [command tests](#command-tests). Both of these tests use code to represent
 what documents should look like before and after performing changes, as well as
 what selections should be on the given document. This syntax is specified [at
@@ -139,7 +139,7 @@ foo bar
 - `/<pattern>/<replacement>/<flags>`: Replaces the given pattern by the given
   replacement string in all sections that inherit from the current section.
 
-When executing Dance commands, you may also pass an `$expect` argument with a
+When executing Danceflow commands, you may also pass an `$expect` argument with a
 `RegExp` to check that the error throws an error whose message matches the
 regular expression.
 

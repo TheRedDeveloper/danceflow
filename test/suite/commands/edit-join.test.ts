@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-join.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -33,7 +33,7 @@ suite("./test/suite/commands/edit-join.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.join");
+    await executeCommand("danceflow.edit.join");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-join.md:13:1", 6, String.raw`
@@ -56,7 +56,7 @@ suite("./test/suite/commands/edit-join.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.join.select");
+    await executeCommand("danceflow.edit.join.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-join.md:24:1", 6, String.raw`
@@ -79,7 +79,7 @@ suite("./test/suite/commands/edit-join.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.join");
+    await executeCommand("danceflow.edit.join");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-join.md:47:1", 6, String.raw`
@@ -104,7 +104,7 @@ suite("./test/suite/commands/edit-join.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.join.select");
+    await executeCommand("danceflow.edit.join.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-join.md:60:1", 6, String.raw`

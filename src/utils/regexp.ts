@@ -1201,7 +1201,7 @@ function parseEscaped<InCharSet extends boolean>(
 export function execLast(re: RegExp, text: string) {
   // For long inputs we could parse the RegExp, reverse it, and run it on the reversed text to avoid
   // the need to scan the whole input. We used to try to do this but the RegExp parser was broken
-  // (as reported in https://github.com/71/dance/issues/364), so we're just going to skip this
+  // (as reported in https://github.com/71/danceflow/issues/364), so we're just going to skip this
   // optimization for now.
   let lastMatch: RegExpExecArray | undefined,
       lastMatchIndex = 0;

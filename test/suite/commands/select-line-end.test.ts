@@ -13,7 +13,7 @@ suite("./test/suite/commands/select-line-end.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,7 +28,7 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lineStart");
+    await executeCommand("danceflow.select.lineStart");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:8:1", 6, String.raw`
@@ -45,7 +45,7 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lineStart.extend");
+    await executeCommand("danceflow.select.lineStart.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:18:1", 6, String.raw`
@@ -62,9 +62,9 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.select.lineStart.extend");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.select.lineStart.extend");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:28:1", 6, String.raw`
@@ -81,7 +81,7 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lineEnd");
+    await executeCommand("danceflow.select.lineEnd");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:40:1", 6, String.raw`
@@ -98,9 +98,9 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.select.lineEnd");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.select.lineEnd");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:50:1", 6, String.raw`
@@ -117,7 +117,7 @@ suite("./test/suite/commands/select-line-end.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lineEnd.extend");
+    await executeCommand("danceflow.select.lineEnd.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-line-end.md:62:1", 6, String.raw`

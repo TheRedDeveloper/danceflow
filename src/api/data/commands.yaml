@@ -1,6 +1,6 @@
 cancel:
   title:
-    en: Cancel Dance operation
+    en: Cancel Danceflow operation
 
   keys:
     qwerty: |-
@@ -9,7 +9,7 @@ cancel:
 
   doc:
     en: |+
-      Cancel Dance operation.
+      Cancel Danceflow operation.
 
 changeInput:
   title:
@@ -19,7 +19,7 @@ changeInput:
     en: |+
       Change current input.
 
-      When showing some menus, Dance can navigate their history:
+      When showing some menus, Danceflow can navigate their history:
 
       | Keybinding            | Command                                    |
       | --------------------- | ------------------------------------------ |
@@ -544,8 +544,8 @@ history.repeat:
 
       | Title                        | Identifier         | Keybinding                          | Commands                                                                      |
       | ---------------------------- | ------------------ | ------------------------------------| ----------------------------------------------------------------------------- |
-      | Repeat last selection change | `repeat.selection` |                                     | `[".history.repeat", { filter: "dance\\.(seek|select|selections)", +count }]` |
-      | Repeat last seek             | `repeat.seek`      | `a-.` (core: normal; helix: select) | `[".history.repeat", { filter: "dance\\.seek", +count }]`                     |
+      | Repeat last selection change | `repeat.selection` |                                     | `[".history.repeat", { filter: "danceflow\\.(seek|select|selections)", +count }]` |
+      | Repeat last seek             | `repeat.seek`      | `a-.` (core: normal; helix: select) | `[".history.repeat", { filter: "danceflow\\.seek", +count }]`                     |
 
 history.repeat.edit:
   title:
@@ -565,7 +565,7 @@ history.repeat.seek:
     en: Repeat last seek
 
   commands: |-
-    [".history.repeat", { filter: "dance\\.seek", $include: ["count"] }]
+    [".history.repeat", { filter: "danceflow\\.seek", $include: ["count"] }]
 
   keys:
     qwerty: |-
@@ -576,7 +576,7 @@ history.repeat.selection:
     en: Repeat last selection change
 
   commands: |-
-    [".history.repeat", { filter: "dance\\.(seek|select|selections)", $include: ["count"] }]
+    [".history.repeat", { filter: "danceflow\\.(seek|select|selections)", $include: ["count"] }]
 
 history.undo:
   title:
@@ -623,11 +623,11 @@ ignore:
 
 keybindings.setup:
   title:
-    en: Set up Dance keybindings
+    en: Set up Danceflow keybindings
 
   doc:
     en: |
-      Set up Dance keybindings.
+      Set up Danceflow keybindings.
 
 modes.insert.after:
   title:
@@ -675,11 +675,11 @@ modes.insert.lineStart:
 
 modes.set:
   title:
-    en: Set Dance mode
+    en: Set Danceflow mode
 
   doc:
     en: |+
-      Set Dance mode.
+      Set Danceflow mode.
 
       #### Variants
 
@@ -730,11 +730,11 @@ modes.set.select:
 
 modes.set.temporarily:
   title:
-    en: Set Dance mode temporarily
+    en: Set Danceflow mode temporarily
 
   doc:
     en: |+
-      Set Dance mode temporarily.
+      Set Danceflow mode temporarily.
 
       #### Variants
 
@@ -791,12 +791,12 @@ run:
 
       There are two ways to invoke this command. The first one is to provide an
       `code` string argument. This code must be a valid JavaScript string, and will
-      be executed with full access to the [Dance API](../api/README.md). For
+      be executed with full access to the [Danceflow API](../api/README.md). For
       instance,
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "code": "Selections.set(Selections.filter(text => text.includes('foo')))",
         },
@@ -809,7 +809,7 @@ run:
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "code": [
             "for (const selection of Selections.current) {",
@@ -826,10 +826,10 @@ run:
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "commands": [
-            "dance.modes.set.normal",
+            "danceflow.modes.set.normal",
           ],
         },
       },
@@ -839,10 +839,10 @@ run:
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "commands": [
-            ["dance.modes.set", { "mode": "normal" }],
+            ["danceflow.modes.set", { "mode": "normal" }],
           ],
         },
       },
@@ -852,11 +852,11 @@ run:
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "commands": [
             {
-              "command": "dance.modes.set",
+              "command": "danceflow.modes.set",
               "args": { "mode": "normal" },
             },
           ],
@@ -868,12 +868,12 @@ run:
 
       ```json
       {
-        "command": "dance.run",
+        "command": "danceflow.run",
         "args": {
           "commands": [
-            ["dance.selections.saveText", { "register": "^" }],
+            ["danceflow.selections.saveText", { "register": "^" }],
             {
-              "command": "dance.modes.set",
+              "command": "danceflow.modes.set",
               "args": { "mode": "normal" },
             },
             "hideSuggestWidget",
@@ -882,7 +882,7 @@ run:
       },
       ```
 
-      If both `code` and `commands` are given, Dance will use `code` if arbitrary
+      If both `code` and `commands` are given, Danceflow will use `code` if arbitrary
       code execution is enabled, or `commands` otherwise.
 
 search:
@@ -2633,11 +2633,11 @@ selectRegister:
 
 updateCount:
   title:
-    en: Update Dance count
+    en: Update Danceflow count
 
   doc:
     en: |+
-      Update Dance count.
+      Update Danceflow count.
 
       Update the current counter used to repeat the next command.
 

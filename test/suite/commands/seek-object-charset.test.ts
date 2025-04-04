@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek-object-charset.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,7 +28,7 @@ suite("./test/suite/commands/seek-object-charset.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: /[\p{L}]+(?<after>[^\S\n]+)/u.source, inner: true });
+    await executeCommand("danceflow.seek.object", { input: /[\p{L}]+(?<after>[^\S\n]+)/u.source, inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-charset.md:10:1", 6, String.raw`
@@ -45,7 +45,7 @@ suite("./test/suite/commands/seek-object-charset.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: /[\p{L}]+(?<after>[^\S\n]+)/u.source, inner: true });
+    await executeCommand("danceflow.seek.object", { input: /[\p{L}]+(?<after>[^\S\n]+)/u.source, inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-charset.md:19:1", 6, String.raw`

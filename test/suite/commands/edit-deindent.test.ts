@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-deindent.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -32,7 +32,7 @@ suite("./test/suite/commands/edit-deindent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.deindent.withIncomplete");
+    await executeCommand("danceflow.edit.deindent.withIncomplete");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-deindent.md:12:1", 6, String.raw`
@@ -57,7 +57,7 @@ suite("./test/suite/commands/edit-deindent.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.deindent");
+    await executeCommand("danceflow.edit.deindent");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-deindent.md:26:1", 6, String.raw`

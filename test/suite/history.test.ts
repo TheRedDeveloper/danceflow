@@ -67,7 +67,7 @@ suite("History tests", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    extension = (await vscode.extensions.getExtension("gregoire.dance")!.activate()).extension;
+    extension = (await vscode.extensions.getExtension("reddev.danceflow")!.activate()).extension;
 
     await new Promise<void>((resolve) => {
       const disposable = extension.editors.onModeDidChange(async () => {
@@ -146,8 +146,8 @@ suite("History tests", function () {
   //    | 0
   // `, async () => {
   //   await type("abc");
-  //   await executeCommand("dance.modes.set.normal");
-  //   await executeCommand("dance.select.left.jump");
+  //   await executeCommand("danceflow.modes.set.normal");
+  //   await executeCommand("danceflow.select.left.jump");
   //   await deleteBefore(1);
   // });
 });

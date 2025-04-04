@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek-object-quoted.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,7 +28,7 @@ suite("./test/suite/commands/seek-object-quoted.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#noescape)\"(?#inner)(?#noescape)\"" });
+    await executeCommand("danceflow.seek.object", { input: "(?#noescape)\"(?#inner)(?#noescape)\"" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-quoted.md:13:1", 6, String.raw`
@@ -45,7 +45,7 @@ suite("./test/suite/commands/seek-object-quoted.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.seek.object", { input: "(?#noescape)\"(?#inner)(?#noescape)\"", inner: true });
+    await executeCommand("danceflow.seek.object", { input: "(?#noescape)\"(?#inner)(?#noescape)\"", inner: true });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-quoted.md:23:1", 6, String.raw`

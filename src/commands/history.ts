@@ -55,8 +55,8 @@ export function redo_selections() {
  *
  * | Title                        | Identifier         | Keybinding                          | Commands                                                                      |
  * | ---------------------------- | ------------------ | ------------------------------------| ----------------------------------------------------------------------------- |
- * | Repeat last selection change | `repeat.selection` |                                     | `[".history.repeat", { filter: "dance\\.(seek|select|selections)", +count }]` |
- * | Repeat last seek             | `repeat.seek`      | `a-.` (core: normal; helix: select) | `[".history.repeat", { filter: "dance\\.seek", +count }]`                     |
+ * | Repeat last selection change | `repeat.selection` |                                     | `[".history.repeat", { filter: "danceflow\\.(seek|select|selections)", +count }]` |
+ * | Repeat last seek             | `repeat.seek`      | `a-.` (core: normal; helix: select) | `[".history.repeat", { filter: "danceflow\\.seek", +count }]`                     |
  */
 export async function repeat(
   _: Context,

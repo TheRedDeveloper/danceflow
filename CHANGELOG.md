@@ -2,8 +2,8 @@
 
 ## 0.5.15
 
-- Replace `!textInputFocus` by `dance.inPrompt` to limit `prompt` keybindings to
-  Dance prompts in VS Code >=1.90.
+- Replace `!textInputFocus` by `danceflow.inPrompt` to limit `prompt` keybindings to
+  Danceflow prompts in VS Code >=1.90.
 
 ## 0.5.14
 

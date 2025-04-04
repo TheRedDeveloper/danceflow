@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-paste-before.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,8 +28,8 @@ suite("./test/suite/commands/edit-paste-before.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.saveText");
-    await executeCommand("dance.edit.paste.before");
+    await executeCommand("danceflow.selections.saveText");
+    await executeCommand("danceflow.edit.paste.before");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-before.md:8:1", 6, String.raw`
@@ -46,7 +46,7 @@ suite("./test/suite/commands/edit-paste-before.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.paste.before.select");
+    await executeCommand("danceflow.edit.paste.before.select");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-before.md:19:1", 6, String.raw`

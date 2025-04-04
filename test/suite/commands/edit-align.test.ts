@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-align.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -32,7 +32,7 @@ suite("./test/suite/commands/edit-align.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.align");
+    await executeCommand("danceflow.edit.align");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-align.md:12:1", 6, String.raw`
@@ -62,7 +62,7 @@ suite("./test/suite/commands/edit-align.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.align");
+    await executeCommand("danceflow.edit.align");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-align.md:43:1", 6, String.raw`
@@ -95,7 +95,7 @@ suite("./test/suite/commands/edit-align.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.edit.align");
+    await executeCommand("danceflow.edit.align");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-align.md:77:1", 6, String.raw`
@@ -125,8 +125,8 @@ suite("./test/suite/commands/edit-align.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.changeDirection");
-    await executeCommand("dance.edit.align");
+    await executeCommand("danceflow.selections.changeDirection");
+    await executeCommand("danceflow.edit.align");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-align.md:93:1", 6, String.raw`

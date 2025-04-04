@@ -13,7 +13,7 @@ suite("./test/suite/commands/selections-order.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -33,7 +33,7 @@ suite("./test/suite/commands/selections-order.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.changeOrder");
+    await executeCommand("danceflow.selections.changeOrder");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:13:1", 6, String.raw`
@@ -60,7 +60,7 @@ suite("./test/suite/commands/selections-order.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.changeOrder", { direction: 1 });
+    await executeCommand("danceflow.selections.changeOrder", { direction: 1 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:28:1", 6, String.raw`
@@ -87,7 +87,7 @@ suite("./test/suite/commands/selections-order.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.changeOrder", { direction: -1 });
+    await executeCommand("danceflow.selections.changeOrder", { direction: -1 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:43:1", 6, String.raw`
@@ -114,7 +114,7 @@ suite("./test/suite/commands/selections-order.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.changeOrder");
+    await executeCommand("danceflow.selections.changeOrder");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:72:1", 6, String.raw`

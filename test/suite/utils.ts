@@ -53,7 +53,7 @@ namespace Expect {
  * Resolves a path starting at the root of the Git repository.
  */
 export function resolve(subpath: string) {
-  // Current path is dance/out/test/suite/utils
+  // Current path is danceflow/out/test/suite/utils
   return path.join(__dirname, "../../..", subpath);
 }
 
@@ -80,7 +80,7 @@ export function groupTestsByParentName(toplevel: Mocha.Suite) {
  */
 export async function executeCommand(command: string, ...args: readonly any[]) {
   const extension =
-    vscode.extensions.getExtension<{ extension: Extension }>("gregoire.dance")!.exports.extension;
+    vscode.extensions.getExtension<{ extension: Extension }>("reddev.danceflow")!.exports.extension;
 
   extension.runPromiseSafely = async (f) => {
     try {
@@ -108,7 +108,7 @@ export async function executeCommand(command: string, ...args: readonly any[]) {
     delete extension.runPromiseSafely;
   }
 
-  if (command.startsWith("dance") && args.length === 1 && args[0].$expect instanceof RegExp) {
+  if (command.startsWith("danceflow") && args.length === 1 && args[0].$expect instanceof RegExp) {
     assert.notStrictEqual(error, undefined, "an error was expected, but no error was raised");
 
     const pattern = args[0].$expect,

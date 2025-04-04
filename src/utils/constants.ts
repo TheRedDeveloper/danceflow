@@ -1,12 +1,12 @@
 /**
  * Name of the extension, used in commands and settings.
  */
-export const extensionName = "dance";
+export const extensionName = "danceflow";
 
 /**
  * Identifier of the extension, used in the VS Code marketplace.
  */
-export const extensionId = `gregoire.${extensionName}`;
+export const extensionId = `reddev.${extensionName}`;
 
 /**
  * Keys available for binding as the system clipboard register.

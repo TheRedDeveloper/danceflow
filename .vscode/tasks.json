@@ -1,7 +1,7 @@
 {
   "version": "2.0.0",
   "tasks": [
-    // These tasks run automatically when loading Dance in VS Code. Make sure to
+    // These tasks run automatically when loading Danceflow in VS Code. Make sure to
     // enable them (Command palette > Manage automatic tasks in folder > Allow).
     {
       "type": "npm",

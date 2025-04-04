@@ -27,12 +27,12 @@
     ],
   },
 
-  "dance.menus": {
-    "dancedev": {
+  "danceflow.menus": {
+    "danceflowdev": {
       "items": {
         "b": {
           "text": "toggle character selection behavior",
-          "command": "dance.dev.setSelectionBehavior",
+          "command": "danceflow.dev.setSelectionBehavior",
           "args": [{ "mode": "normal" }],
         },
       },

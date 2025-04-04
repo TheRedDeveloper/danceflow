@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 import { Register, Registers, RegisterSet } from "./registers";
 
 /**
- * A {@link vscode.TreeDataProvider} for Dance registers.
+ * A {@link vscode.TreeDataProvider} for Danceflow registers.
  */
 export class RegistersView implements vscode.TreeDataProvider<TreeItem> {
   private readonly _onDidChangeTreeData = new vscode.EventEmitter<TreeItem | undefined>();

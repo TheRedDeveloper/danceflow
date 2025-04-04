@@ -10,7 +10,7 @@ import type { Register } from "../state/registers";
 declare module "./keybindings";
 
 /**
- * Set up Dance keybindings.
+ * Set up Danceflow keybindings.
  */
 export async function setup(_: Context, register: RegisterOr<"dquote", Register.Flags.CanWrite>) {
   await vscode.commands.executeCommand("workbench.action.openGlobalKeybindingsFile");

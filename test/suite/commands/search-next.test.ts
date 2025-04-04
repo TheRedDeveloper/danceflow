@@ -13,7 +13,7 @@ suite("./test/suite/commands/search-next.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -30,7 +30,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search", { re: "apple" });
+    await executeCommand("danceflow.search", { re: "apple" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:10:1", 6, String.raw`
@@ -51,7 +51,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:22:1", 6, String.raw`
@@ -72,7 +72,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next.add");
+    await executeCommand("danceflow.search.next.add");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:34:1", 6, String.raw`
@@ -94,7 +94,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next", { count: 3 });
+    await executeCommand("danceflow.search.next", { count: 3 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:47:1", 6, String.raw`
@@ -115,7 +115,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next.add", { count: 3 });
+    await executeCommand("danceflow.search.next.add", { count: 3 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:61:1", 6, String.raw`
@@ -138,7 +138,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next", { count: 4 });
+    await executeCommand("danceflow.search.next", { count: 4 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:77:1", 6, String.raw`
@@ -159,7 +159,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next.add", { count: 4 });
+    await executeCommand("danceflow.search.next.add", { count: 4 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:91:1", 6, String.raw`
@@ -182,7 +182,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.previous");
+    await executeCommand("danceflow.search.previous");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:108:1", 6, String.raw`
@@ -203,7 +203,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.previous.add");
+    await executeCommand("danceflow.search.previous.add");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:120:1", 6, String.raw`
@@ -224,7 +224,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.previous", { count: 2 });
+    await executeCommand("danceflow.search.previous", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:132:1", 6, String.raw`
@@ -245,7 +245,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.previous.add", { count: 2 });
+    await executeCommand("danceflow.search.previous.add", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:146:1", 6, String.raw`
@@ -271,8 +271,8 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.selection.smart");
-    await executeCommand("dance.search.next.add");
+    await executeCommand("danceflow.search.selection.smart");
+    await executeCommand("danceflow.search.next.add");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:174:1", 6, String.raw`
@@ -303,7 +303,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:192:1", 6, String.raw`
@@ -334,7 +334,7 @@ suite("./test/suite/commands/search-next.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:209:1", 6, String.raw`

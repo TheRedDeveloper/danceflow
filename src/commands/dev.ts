@@ -5,7 +5,7 @@ import { Context, SelectionBehavior } from "../api";
 import type { Extension } from "../state/extension";
 
 /**
- * Developer utilities for Dance.
+ * Developer utilities for Danceflow.
  */
 declare module "./dev";
 

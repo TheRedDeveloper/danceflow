@@ -13,7 +13,7 @@ suite("./test/suite/commands/selections-select.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -30,7 +30,7 @@ suite("./test/suite/commands/selections-select.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.selections.select", { re: "b" });
+    await executeCommand("danceflow.selections.select", { re: "b" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-select.md:10:1", 6, String.raw`

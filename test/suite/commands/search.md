@@ -341,7 +341,7 @@ lazy dog quickly.
 
 - .search { re: "he", shift: "extend", $expect: /^no selections remain$/ }
 
-When extending, Dance should not wrap around document edges to find "T**he**".
+When extending, Danceflow should not wrap around document edges to find "T**he**".
 "t**he**" is not considered at all. No-op due to no selections remaining.
 
 ```
@@ -400,7 +400,7 @@ lazy dog quickly.
 
 - .search { re: "o", direction: -1, shift: "extend", $expect: /^no selections remain$/ }
 
-When extending, Dance should not wrap around document edges to find "d**o**g".
+When extending, Danceflow should not wrap around document edges to find "d**o**g".
 "br**o**wn" is not considered at all. No-op due to no selections remaining.
 
 ```

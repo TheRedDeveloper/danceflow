@@ -8,7 +8,7 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
 /**
  * Miscellaneous commands that don't deserve their own category.
  *
- * By default, Dance also exports the following keybindings for existing
+ * By default, Danceflow also exports the following keybindings for existing
  * commands:
  *
  * | Keybinding           | Command                                      |
@@ -18,7 +18,7 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
 declare module "./misc";
 
 /**
- * Cancel Dance operation.
+ * Cancel Danceflow operation.
  *
  * @keys `escape` (core: normal, !recording, "!markersNavigationVisible"), `escape` (core: input)
  */
@@ -42,12 +42,12 @@ const runHistory: string[] = [];
  *
  * There are two ways to invoke this command. The first one is to provide an
  * `code` string argument. This code must be a valid JavaScript string, and will
- * be executed with full access to the [Dance API](../api/README.md). For
+ * be executed with full access to the [Danceflow API](../api/README.md). For
  * instance,
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "code": "Selections.set(Selections.filter(text => text.includes('foo')))",
  *   },
@@ -60,7 +60,7 @@ const runHistory: string[] = [];
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "code": [
  *       "for (const selection of Selections.current) {",
@@ -77,10 +77,10 @@ const runHistory: string[] = [];
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
- *       "dance.modes.set.normal",
+ *       "danceflow.modes.set.normal",
  *     ],
  *   },
  * },
@@ -90,10 +90,10 @@ const runHistory: string[] = [];
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
- *       ["dance.modes.set", { "mode": "normal" }],
+ *       ["danceflow.modes.set", { "mode": "normal" }],
  *     ],
  *   },
  * },
@@ -103,11 +103,11 @@ const runHistory: string[] = [];
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
  *       {
- *         "command": "dance.modes.set",
+ *         "command": "danceflow.modes.set",
  *         "args": { "mode": "normal" },
  *       },
  *     ],
@@ -119,12 +119,12 @@ const runHistory: string[] = [];
  *
  * ```json
  * {
- *   "command": "dance.run",
+ *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
- *       ["dance.selections.saveText", { "register": "^" }],
+ *       ["danceflow.selections.saveText", { "register": "^" }],
  *       {
- *         "command": "dance.modes.set",
+ *         "command": "danceflow.modes.set",
  *         "args": { "mode": "normal" },
  *       },
  *       "hideSuggestWidget",
@@ -133,7 +133,7 @@ const runHistory: string[] = [];
  * },
  * ```
  *
- * If both `code` and `commands` are given, Dance will use `code` if arbitrary
+ * If both `code` and `commands` are given, Danceflow will use `code` if arbitrary
  * code execution is enabled, or `commands` otherwise.
  */
 export async function run(
@@ -250,7 +250,7 @@ export async function updateRegister(
 }
 
 /**
- * Update Dance count.
+ * Update Danceflow count.
  *
  * Update the current counter used to repeat the next command.
  *
@@ -372,7 +372,7 @@ export async function openMenu(
 /**
  * Change current input.
  *
- * When showing some menus, Dance can navigate their history:
+ * When showing some menus, Danceflow can navigate their history:
  *
  * | Keybinding            | Command                                    |
  * | --------------------- | ------------------------------------------ |

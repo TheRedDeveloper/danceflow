@@ -13,7 +13,7 @@ suite("./test/suite/commands/select.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -31,7 +31,7 @@ suite("./test/suite/commands/select.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lineStart", { count: 1, shift: "jump" });
+    await executeCommand("danceflow.select.lineStart", { count: 1, shift: "jump" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select.md:11:1", 6, String.raw`
@@ -54,7 +54,7 @@ suite("./test/suite/commands/select.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.lastLine", { shift: "jump" });
+    await executeCommand("danceflow.select.lastLine", { shift: "jump" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select.md:24:1", 6, String.raw`

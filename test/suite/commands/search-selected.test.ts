@@ -13,7 +13,7 @@ suite("./test/suite/commands/search-selected.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -28,8 +28,8 @@ suite("./test/suite/commands/search-selected.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.selection.smart");
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.selection.smart");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-selected.md:8:1", 6, String.raw`
@@ -46,8 +46,8 @@ suite("./test/suite/commands/search-selected.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.selection.smart");
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.selection.smart");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-selected.md:26:1", 6, String.raw`
@@ -64,8 +64,8 @@ suite("./test/suite/commands/search-selected.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.search.selection.smart");
-    await executeCommand("dance.search.next");
+    await executeCommand("danceflow.search.selection.smart");
+    await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-selected.md:44:1", 6, String.raw`

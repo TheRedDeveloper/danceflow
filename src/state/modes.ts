@@ -582,7 +582,7 @@ export class Modes implements Iterable<Mode> {
   }
 
   /**
-   * The default mode configured using `dance.defaultMode`.
+   * The default mode configured using `danceflow.defaultMode`.
    */
   public get defaultMode() {
     return this._defaultMode;
@@ -597,7 +597,7 @@ export class Modes implements Iterable<Mode> {
 
   /**
    * The "VS Code" mode, which represents the settings assigned to the editor
-   * without taking Dance settings into account.
+   * without taking Danceflow settings into account.
    */
   public get vscodeMode() {
     return this._vscodeMode;
@@ -701,7 +701,7 @@ export class Modes implements Iterable<Mode> {
       for (const modeName of removeModes) {
         if (modeName === actualDefaultModeName) {
           validator.reportInvalidSetting(
-            "default mode was removed, please update dance.defaultMode",
+            "default mode was removed, please update danceflow.defaultMode",
           );
         } else {
           this._modes.get(modeName)!.dispose();

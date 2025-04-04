@@ -13,7 +13,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -30,7 +30,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.buffer");
+    await executeCommand("danceflow.select.buffer");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:10:1", 6, String.raw`
@@ -53,7 +53,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:24:1", 6, String.raw`
@@ -74,7 +74,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:36:1", 6, String.raw`
@@ -95,7 +95,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:48:1", 6, String.raw`
@@ -116,7 +116,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:60:1", 6, String.raw`
@@ -142,7 +142,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:86:1", 6, String.raw`
@@ -169,7 +169,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:100:1", 6, String.raw`
@@ -198,7 +198,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below", { count: 2 });
+    await executeCommand("danceflow.select.line.below", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:116:1", 6, String.raw`
@@ -225,7 +225,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend", { count: 2 });
+    await executeCommand("danceflow.select.line.below.extend", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:130:1", 6, String.raw`
@@ -253,7 +253,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:158:1", 6, String.raw`
@@ -278,7 +278,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below", { count: 2 });
+    await executeCommand("danceflow.select.line.below", { count: 2 });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:174:1", 6, String.raw`
@@ -303,7 +303,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:190:1", 6, String.raw`
@@ -328,7 +328,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:206:1", 6, String.raw`
@@ -350,7 +350,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:230:1", 6, String.raw`
@@ -370,7 +370,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:252:1", 6, String.raw`
@@ -389,7 +389,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:265:1", 6, String.raw`
@@ -410,7 +410,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:286:1", 6, String.raw`
@@ -433,7 +433,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:299:1", 6, String.raw`
@@ -456,7 +456,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below");
+    await executeCommand("danceflow.select.line.below");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:312:1", 6, String.raw`
@@ -479,7 +479,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:325:1", 6, String.raw`
@@ -503,7 +503,7 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.select.line.below.extend");
+    await executeCommand("danceflow.select.line.below.extend");
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:339:1", 6, String.raw`
@@ -525,9 +525,9 @@ suite("./test/suite/commands/select-lines.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "character" });
-    await executeCommand("dance.select.line.below.extend");
-    await executeCommand("dance.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.select.line.below.extend");
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/select-lines.md:363:1", 6, String.raw`

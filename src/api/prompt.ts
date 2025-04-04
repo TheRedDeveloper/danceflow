@@ -57,7 +57,7 @@ export function prompt(
       });
     }
 
-    const contextKey = "dance.inPrompt";
+    const contextKey = "danceflow.inPrompt";
     const setContextPromise = vscode.commands.executeCommand("setContext", contextKey, true);
 
     const disposables = [

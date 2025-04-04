@@ -535,17 +535,17 @@ export function parseKeys(keys: string) {
         case "insert":
         case "input":
         case "select":
-          whenClauses.push(`dance.mode ${negate ? "!=" : "=="} '${tag}'`);
+          whenClauses.push(`danceflow.mode ${negate ? "!=" : "=="} '${tag}'`);
           break;
 
         case "recording":
-          whenClauses.push(`${negate ? "!" : ""}dance.isRecording`);
+          whenClauses.push(`${negate ? "!" : ""}danceflow.isRecording`);
           break;
 
         case "prompt":
           assert(!negate);
           whenClauses.splice(whenClauses.indexOf("editorTextFocus"), 1);
-          whenClauses.push("inputFocus && dance.inPrompt");
+          whenClauses.push("inputFocus && danceflow.inPrompt");
           break;
 
         default: {
@@ -578,7 +578,7 @@ export function parseKeys(keys: string) {
 function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
   const computeWhen = ({ enablement }: Builder.ParsedFunction | Builder.AdditionalCommand) => {
     // TODO: improve conditions
-    let when = "dance.mode == 'normal'";
+    let when = "danceflow.mode == 'normal'";
 
     if (enablement !== undefined) {
       when += " && " + enablement;
@@ -589,7 +589,7 @@ function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
 
   return [
     ...module.functions.map((f) => ({
-      id: `dance.${f.qualifiedName}`,
+      id: `danceflow.${f.qualifiedName}`,
       title: f.summary,
       when: computeWhen(f),
     })),
@@ -597,7 +597,7 @@ function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
       .concat(...module.functions.flatMap((f) => f.additional))
       .filter((a) => a.identifier !== undefined && a.title !== undefined)
       .map((a) => ({
-        id: `dance.${a.qualifiedIdentifier}`,
+        id: `danceflow.${a.qualifiedIdentifier}`,
         title: a.title!,
         when: computeWhen(a),
       })),
@@ -612,7 +612,7 @@ function getKeybindings(module: Omit<Builder.ParsedModule, "keybindings">): Buil
     ...module.functions.flatMap((f) => parseKeys(f.properties["keys"] ?? "").map((key) => ({
       ...key,
       title: f.summary,
-      command: `dance.${f.qualifiedName}`,
+      command: `danceflow.${f.qualifiedName}`,
     }))),
 
     ...module.additional
@@ -624,7 +624,7 @@ function getKeybindings(module: Omit<Builder.ParsedModule, "keybindings">): Buil
           return parsedKeys.map((key) => ({
             ...key,
             title,
-            command: `dance.${qualifiedIdentifier}`,
+            command: `danceflow.${qualifiedIdentifier}`,
           }));
         }
 
@@ -635,7 +635,7 @@ function getKeybindings(module: Omit<Builder.ParsedModule, "keybindings">): Buil
           let [command]: [string] = parsedCommands[0];
 
           if (command[0] === ".") {
-            command = "dance" + command;
+            command = "danceflow" + command;
           }
 
           return parsedKeys.map((key) => ({
@@ -649,7 +649,7 @@ function getKeybindings(module: Omit<Builder.ParsedModule, "keybindings">): Buil
         return parsedKeys.map((key) => ({
           ...key,
           title,
-          command: "dance.run",
+          command: "danceflow.run",
           args: {
             commands: parsedCommands,
           },
@@ -659,7 +659,7 @@ function getKeybindings(module: Omit<Builder.ParsedModule, "keybindings">): Buil
 }
 
 /**
- * Takes a list of keybindings and generates `dance.ignore` keybindings for
+ * Takes a list of keybindings and generates `danceflow.ignore` keybindings for
  * common keys that are unused. This is used for modes where we don't want the
  * user to be able to type
  */
@@ -685,7 +685,7 @@ export function generateIgnoredKeybinds(
   for (const unassignedKey of unassignedKeys) {
     ignoredKeybindings.push({
       key: unassignedKey,
-      command: "dance.ignore",
+      command: "danceflow.ignore",
       when,
     });
   }

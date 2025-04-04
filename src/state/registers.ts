@@ -421,7 +421,7 @@ export abstract class RegisterSet implements vscode.Disposable {
 
   /*
    * The system clipboard register set with the
-   * `dance.systemClipboardRegister` setting.
+   * `danceflow.systemClipboardRegister` setting.
    */
   private _systemClipboardRegister: string | undefined = undefined;
 
@@ -547,7 +547,7 @@ export abstract class RegisterSet implements vscode.Disposable {
    * The ":" (`colon`) register.
    *
    * In Kakoune it is mapped to the last entered command, but since we don't
-   * have access to that information in Dance, we map it to a prompt.
+   * have access to that information in Danceflow, we map it to a prompt.
    */
   public readonly colon = new SpecialRegister(":", undefined, async () =>
     [await prompt({ prompt: ":" })],

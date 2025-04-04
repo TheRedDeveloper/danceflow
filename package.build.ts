@@ -19,7 +19,7 @@ const commandType = {
 };
 
 const builtinModesAreDeprecatedMessage =
-  "Built-in modes are deprecated. Use `#dance.modes#` instead.";
+  "Built-in modes are deprecated. Use `#danceflow.modes#` instead.";
 
 const modeNamePattern = {
   pattern: /^[a-zA-Z]\w*(\/\w+)?$/.source,
@@ -85,8 +85,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // Common package.json properties.
   // ==========================================================================
 
-  name: "dance",
-  description: "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Dance, inspired by Helix.",
+  name: "danceflow",
+  description: "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Danceflow, inspired by Helix.",
   version,
   license: "ISC",
 
@@ -107,7 +107,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
   repository: {
     type: "git",
-    url: "https://github.com/71/dance.git",
+    url: "https://github.com/71/danceflow.git",
   },
 
   main: "./out/extension.js",
@@ -172,23 +172,23 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
   // VS Code-specific properties.
   // ==========================================================================
 
-  displayName: "Dance",
-  publisher: "gregoire",
+  displayName: "Danceflow",
+  publisher: "reddev",
   categories: ["Keymaps", "Other"],
   readme: "README.md",
-  icon: "assets/dance.png",
+  icon: "assets/danceflow.png",
 
   activationEvents: ["*"],
   extensionKind: ["ui", "workspace"],
 
-  // Dance-specific properties.
+  // Danceflow-specific properties.
   // ==========================================================================
 
-  // The two properties below can be set when distributing Dance to ensure it
-  // cannot execute arbitrary code (with `dance.run`) or system commands (with
-  // `dance.selections.{filter,pipe}`).
-  "dance.disableArbitraryCodeExecution": false,
-  "dance.disableArbitraryCommandExecution": false,
+  // The two properties below can be set when distributing Danceflow to ensure it
+  // cannot execute arbitrary code (with `danceflow.run`) or system commands (with
+  // `danceflow.selections.{filter,pipe}`).
+  "danceflow.disableArbitraryCodeExecution": false,
+  "danceflow.disableArbitraryCommandExecution": false,
 
   // Capabilities.
   // ==========================================================================
@@ -210,16 +210,16 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
     configuration: {
       type: "object",
-      title: "Dance",
+      title: "Danceflow",
       properties: {
-        "dance.defaultMode": {
+        "danceflow.defaultMode": {
           type: "string",
           scope: "language-overridable",
           default: "normal",
           description: "Controls which mode is set by default when an editor is opened.",
           ...modeNamePattern,
         },
-        "dance.modes": {
+        "danceflow.modes": {
           type: "object",
           scope: "language-overridable",
           additionalProperties: {
@@ -254,9 +254,9 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   + "Can be an hex color, a [theme color]("
                   + "https://code.visualstudio.com/api/references/theme-color) or null.",
                 deprecationMessage:
-                  "`lineHighlight` is deprecated. Use `dance.modes.*.backgroundColor` instead.",
+                  "`lineHighlight` is deprecated. Use `danceflow.modes.*.backgroundColor` instead.",
                 markdownDeprecationMessage:
-                  "`lineHighlight` is deprecated. Use `#dance.modes#.*.backgroundColor` instead.",
+                  "`lineHighlight` is deprecated. Use `#danceflow.modes#.*.backgroundColor` instead.",
                 ...colorPattern,
               },
               lineNumbers: {
@@ -362,13 +362,13 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               ],
             },
           },
-          description: "Controls the different modes available in Dance.",
+          description: "Controls the different modes available in Danceflow.",
         },
 
-      "dance.menus": {
+      "danceflow.menus": {
         type: "object",
           scope: "language-overridable",
-          description: "Controls the different menus available in Dance.",
+          description: "Controls the different menus available in Danceflow.",
           additionalProperties: {
             type: "object",
             properties: {
@@ -404,15 +404,15 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               title: "Match",
               items: {
                 // Should be jump in normal mode, extend in select mode, but jump for seek.enclosing is not implemented
-                "m": { command: "dance.seek.enclosing", text: "Goto matching bracket" },
-                "a": { command: "dance.openMenu", args: [{ menu: "object", title: "Match around" }], text: "Select around object" },
-                "i": { command: "dance.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Select inside object" },
+                "m": { command: "danceflow.seek.enclosing", text: "Goto matching bracket" },
+                "a": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match around" }], text: "Select around object" },
+                "i": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Select inside object" },
               },
             },
 
             "object": {
               title: "Select object...",
-              items: ((command = "dance.seek.object") => ({
+              items: ((command = "danceflow.seek.object") => ({
                 "()": {
                   command,
                   args: [{ input: "\\((?#inner)\\)" }],
@@ -480,29 +480,29 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               items: {
                 "g": {
                   text: "to line number else file start",
-                  command: "dance.select.lineStart",
+                  command: "danceflow.select.lineStart",
                   "args": [{ "count": 1 }],
                 },
                 "e": {
                   text: "to last line",
-                  command: "dance.select.lineEnd",
+                  command: "danceflow.select.lineEnd",
                   args: [{ count: 2 ** 31 - 1 }],
                 },
                 "f": {
                   text: "to file/URLs in selections",
-                  command: "dance.selections.open",
+                  command: "danceflow.selections.open",
                 },
                 "h": {
                   text: "to line start",
-                  command: "dance.select.lineStart",
+                  command: "danceflow.select.lineStart",
                 },
                 "l": {
                   text: "to line end",
-                  command: "dance.select.lineEnd",
+                  command: "danceflow.select.lineEnd",
                 },
                 "s": {
                   text: "to first non-blank in line",
-                  command: "dance.select.lineStart",
+                  command: "danceflow.select.lineStart",
                   args: [{ skipBlank: true }]
                 },
                 "d": {
@@ -515,19 +515,19 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "j": {
                   text: "to last line",
-                  command: "dance.select.lastLine",
+                  command: "danceflow.select.lastLine",
                 },
                 "t": {
                   text: "to window top",
-                  command: "dance.select.firstVisibleLine",
+                  command: "danceflow.select.firstVisibleLine",
                 },
                 "c": {
                   text: "to window center",
-                  command: "dance.select.middleVisibleLine",
+                  command: "danceflow.select.middleVisibleLine",
                 },
                 "b": {
                   text: "to window bottom",
-                  command: "dance.select.lastVisibleLine",
+                  command: "danceflow.select.lastVisibleLine",
                 },
                 "a": {
                   text: "to last buffer",
@@ -547,7 +547,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 ".": {
                   text: "to last buffer modification position",
-                  command: "dance.selections.restore",
+                  command: "danceflow.selections.restore",
                   args: [{ register: " insert" }],
                 },
               },
@@ -558,17 +558,17 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               items: {
                 "cz": {
                   text: "Align view center",
-                  command: "dance.view.line",
+                  command: "danceflow.view.line",
                   args: [{ "at": "center" }],
                 },
                 "t": {
                   text: "Align view top",
-                  command: "dance.view.line",
+                  command: "danceflow.view.line",
                   args: [{ "at": "top" }],
                 },
                 "b": {
                   text: "Align view bottom",
-                  command: "dance.view.line",
+                  command: "danceflow.view.line",
                   args: [{ "at": "bottom" }],
                 },
                 "k": {
@@ -583,19 +583,19 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 },
                 "/": {
                   text: "Search for regex pattern",
-                  command: "dance.search",
+                  command: "danceflow.search",
                 },
                 "?": {
                   text: "Reverse search for regex pattern",
-                  command: "dance.search.backward",
+                  command: "danceflow.search.backward",
                 },
                 "n": {
                   text: "Select next search match",
-                  command: "dance.search.next",
+                  command: "danceflow.search.next",
                 },
                 "N": {
                   text: "Select previous search match",
-                  command: "dance.search.previous",
+                  command: "danceflow.search.previous",
                 },
               },
             },
@@ -603,7 +603,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             { items: Record<string, { text: string; command: string; args?: any[] }> }>,
         },
 
-        "dance.systemClipboardRegister": {
+        "danceflow.systemClipboardRegister": {
           enum: ["dquote", null, ...availableClipboardRegisters],
           enumItemLabels: ['"', "None"],
           enumDescriptions: ["The default yank register", "Disables using the system clipboard"],
@@ -612,14 +612,14 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
         },
 
         // Deprecated configuration:
-        "dance.enabled": {
+        "danceflow.enabled": {
           type: "boolean",
           default: true,
-          description: "Controls whether the Dance keybindings are enabled.",
-          deprecationMessage: "dance.enabled is deprecated; disable the Dance extension instead.",
+          description: "Controls whether the Danceflow keybindings are enabled.",
+          deprecationMessage: "danceflow.enabled is deprecated; disable the Danceflow extension instead.",
         },
 
-        "dance.normalMode.lineHighlight": {
+        "danceflow.normalMode.lineHighlight": {
           type: ["string", "null"],
           default: "editor.hoverHighlightBackground",
           markdownDescription:
@@ -628,7 +628,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.insertMode.lineHighlight": {
+        "danceflow.insertMode.lineHighlight": {
           type: ["string", "null"],
           default: null,
           markdownDescription:
@@ -637,7 +637,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.normalMode.lineNumbers": {
+        "danceflow.normalMode.lineNumbers": {
           enum: ["off", "on", "relative", "inherit"],
           default: "relative",
           description: "Controls the display of line numbers in normal mode.",
@@ -649,7 +649,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           ],
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.insertMode.lineNumbers": {
+        "danceflow.insertMode.lineNumbers": {
           enum: ["off", "on", "relative", "inherit"],
           default: "inherit",
           description: "Controls the display of line numbers in insert mode.",
@@ -661,7 +661,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           ],
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.normalMode.cursorStyle": {
+        "danceflow.normalMode.cursorStyle": {
           enum: [
             "line",
             "block",
@@ -675,7 +675,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           description: "Controls the cursor style in normal mode.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.insertMode.cursorStyle": {
+        "danceflow.insertMode.cursorStyle": {
           enum: [
             "line",
             "block",
@@ -689,7 +689,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           description: "Controls the cursor style in insert mode.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.insertMode.selectionStyle": {
+        "danceflow.insertMode.selectionStyle": {
           type: "object",
           default: {
             borderColor: "$editor.selectionBackground",
@@ -709,7 +709,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           ),
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "dance.selectionBehavior": {
+        "danceflow.selectionBehavior": {
           enum: ["caret", "character"],
           default: "caret",
           description: "Controls how selections behave within VS Code.",
@@ -731,15 +731,15 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     viewsContainers: {
       activitybar: [
         {
-          id: "dance",
-          title: "Dance",
-          icon: "assets/dance-white.svg",
+          id: "danceflow",
+          title: "Danceflow",
+          icon: "assets/danceflow-white.svg",
         },
       ],
     },
 
     views: {
-      dance: [
+      danceflow: [
         {
           id: "registers",
           name: "Registers",
@@ -753,7 +753,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     commands: modules.flatMap((module) => module.commands.map((x) => ({
       command: x.id,
       title: x.title,
-      category: "Dance",
+      category: "Danceflow",
       enablement: x.enablement,
     }))),
 
@@ -777,7 +777,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
       return [
         ...keybindings,
-        ...generateIgnoredKeybinds(keybindings, `editorTextFocus && dance.mode == 'normal'`),
+        ...generateIgnoredKeybinds(keybindings, `editorTextFocus && danceflow.mode == 'normal'`),
       ];
     })(),
 

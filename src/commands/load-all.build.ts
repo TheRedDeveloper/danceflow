@@ -4,7 +4,7 @@ import { Builder, unindent } from "../../meta";
 export async function build(builder: Builder) {
   const modules = await builder.getCommandModules(),
         availableCommands = new Set(
-          modules.flatMap((m) => m.functions.map((f) => "dance." + f.qualifiedName))),
+          modules.flatMap((m) => m.functions.map((f) => "danceflow." + f.qualifiedName))),
         additionalCommands = [] as Builder.AdditionalCommand[];
 
   // Build list of additional commands, only adding new commands when all their
@@ -21,7 +21,7 @@ export async function build(builder: Builder) {
       const dependencies = command.commands!.matchAll(/"(\.[\w.-]+)"/g);
 
       for (const match of dependencies) {
-        const dependency = "dance" + match[1];
+        const dependency = "danceflow" + match[1];
 
         if (!availableCommands.has(dependency)) {
           commandsWithMissingDependencies.push(command);
@@ -30,7 +30,7 @@ export async function build(builder: Builder) {
         }
       }
 
-      availableCommands.add(`dance.${command.qualifiedIdentifier}`);
+      availableCommands.add(`danceflow.${command.qualifiedIdentifier}`);
       additionalCommands.push(command);
     }
 
@@ -52,7 +52,7 @@ export async function build(builder: Builder) {
     `.trim()).join("\n\n")}
 
     /**
-     * All defined Dance commands.
+     * All defined Danceflow commands.
      */
     export const commands: Commands = function () {
       // Normal commands.
@@ -60,8 +60,8 @@ export async function build(builder: Builder) {
         modules
           .flatMap((m) => m.functions)
           .map((f) => unindent(8)`
-            "dance.${f.qualifiedName}": new CommandDescriptor(
-              "dance.${f.qualifiedName}",
+            "danceflow.${f.qualifiedName}": new CommandDescriptor(
+              "danceflow.${f.qualifiedName}",
               ${determineFunctionExpression(f)},
               ${determineFunctionFlags(f)},
             ),`)
@@ -74,7 +74,7 @@ export async function build(builder: Builder) {
           .map((x) => unindent(10)`
             describeAdditionalCommand(
               commands,
-              "dance.${x.qualifiedIdentifier}",
+              "danceflow.${x.qualifiedIdentifier}",
               CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
               [${x.commands}],
             );`)

@@ -7,7 +7,7 @@ import { Context, prompt, toMode } from "../api";
 declare module "./modes";
 
 /**
- * Set Dance mode.
+ * Set Danceflow mode.
  *
  * #### Variants
  *
@@ -33,7 +33,7 @@ export async function set(_: Context, modeOr: InputOr<"mode", string>) {
 }
 
 /**
- * Set Dance mode temporarily.
+ * Set Danceflow mode temporarily.
  *
  * #### Variants
  *

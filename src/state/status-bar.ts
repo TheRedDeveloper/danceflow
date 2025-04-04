@@ -42,7 +42,7 @@ export class StatusBarSegment implements vscode.Disposable {
 }
 
 /**
- * Controls the Dance status bar item.
+ * Controls the Danceflow status bar item.
  */
 export class StatusBar implements vscode.Disposable {
   public static readonly Segment = StatusBarSegment;
@@ -56,23 +56,23 @@ export class StatusBar implements vscode.Disposable {
   public readonly errorSegment: StatusBar.Segment;
 
   public constructor() {
-    this.activeModeSegment = this.addSegment("Dance - Set mode", "zap", "dance.modes.set");
+    this.activeModeSegment = this.addSegment("Danceflow - Set mode", "zap", "danceflow.modes.set");
     this.recordingSegment =
-      this.addSegment("Dance - Stop recording", "record", "dance.history.recording.stop");
+      this.addSegment("Danceflow - Stop recording", "record", "danceflow.history.recording.stop");
     this.countSegment = this.addSegment(
-      "Dance - Reset count",
+      "Danceflow - Reset count",
       "symbol-number",
-      { command: "dance.updateCount", arguments: [{ count: "0" }], title: "" },
+      { command: "danceflow.updateCount", arguments: [{ count: "0" }], title: "" },
     );
     this.registerSegment = this.addSegment(
-      "Dance - Unset register",
+      "Danceflow - Unset register",
       "clone",
-      { command: "dance.selectRegister", arguments: [{ register: "" }], title: "" },
+      { command: "danceflow.selectRegister", arguments: [{ register: "" }], title: "" },
     );
     this.errorSegment = this.addSegment(
-      "Dance - Copy and dismiss error",
+      "Danceflow - Copy and dismiss error",
       "error",
-      "dance.dev.copyLastErrorMessage",
+      "danceflow.dev.copyLastErrorMessage",
     );
     this.errorSegment.statusBarItem.backgroundColor =
       new vscode.ThemeColor("statusBarItem.errorBackground");
