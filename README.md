@@ -3,17 +3,17 @@
 > [!NOTE]  
 > None of this is implemented yet.
 
-The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean
-interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
+The ultimate [Neovim](https://github.com/neovim/neovim) alternative for VSCode. Custom modes, key bindings, and a clean
+interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix](https://github.com/helix-editor/helix).
 
 ## Features
-- 🎯 No touching the mouse - Pure keyboard efficiency
-- ✨ Beautiful Zen interface - Distraction-free flow state
-- 🚀 Quick Scripting and Macros - Automate your workflow
-- 🌟 Teleport through your codebase - Lightning-fast navigation
-- 🎓 Easy to learn - Natural key mappings
-- 🎹 Modal editing perfected - Move, modify, select, inspect
-- 🔮 Smart selections - Multi-cursor magic at your fingertips
+- 🎯 **No touching the mouse** • Pure keyboard efficiency
+- ✨ **Beautiful Zen interface** • Distraction-free flow state
+- 🚀 **Quick Scripting and Macros** • Automate your workflow
+- 🌟 **Teleport through your codebase** • Lightning-fast navigation
+- 🎓 **Easy to learn** • Natural key mappings
+- 🎹 **Modal editing perfected** • Move, modify, select, inspect
+- 🔮 **Smart selections** • Multi-cursor magic at your fingertips
 
 ## Modes
 - **Move mode**: Navigate with vim-like motions (`h`, `j`, `k`, `l`, etc.)
@@ -23,9 +23,11 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 ## Key Bindings
 
-### Always
+### Editor
 
 `esc` Return to move mode
+
+#### Tool Panels
 
 `⇧1`/`⎈⇧g` Toggle git
 
@@ -35,98 +37,50 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⇧4`/`⎈⎇⇧c`/`⎈⎇⇧i` Toggle copilot edits
 
-`⇧5`/`⎈⇧d` Toggle debugger
+`⇧5` Toggle search
 
-`⇧6`/`⎈⇧x` Toggle extensions
+`⇧7`/`⎈⇧d` Toggle debugger
 
-`⇧8` Toggle search
+`⇧8`/`⎈⇧x` Toggle extensions
 
-`⎈⇧s` Search codebase
-
-`⎈tab` Switch tab forwards, `⎈⇧tab` backwards
-
-`⎈t` Search codebase for symbol
+#### Windows
 
 `⎈p` Pop this tab out into a new window
 
-`⎈m` Make one more window
-
 `⎈⇧p` Join this tab back
 
-`⎈o` Open a file/folder
+`⎈m` Make one more window
 
-`⎈⇧o` Open a new temporary file
+#### Search
 
-`⎈r` Switch to recent project
+`⎈⇧f` Search codebase
 
-`⎈s` Save file
+`⎈t` Search symbol
 
-`⎈g` Jump to line
+#### Tabs
+
+`⎈tab` Switch tab forwards, `⎈⇧tab` backwards
 
 `⎈w` Close tab
 
+#### Files
+
+`⎈s` Save file 81
+
+`⎈o` Open a file/folder
+
+`⎈r` Switch to recent project
+
+`⎈g` Jump to line
+
 `⎈h` Switch between header and source file
 
-### Change Code
-
-`d`/`⎈x` Cut, `⎈d`/`del`/`backspace` Delete
-
-`⇧d` Cut word, `⎈⇧d`/`⎈del`/`⎈backspace` Delete word
-
-`⎇d` Cut line, `⎈⎇⇧d` Delete line
-
-`p`/`⎈v` Paste
-
-`⇧p`/`⎈⇧v` Paste after selection
-
-`⎇p` Dublicate line to below, `⎇⇧p` above
-
-`u`/`⎈z`/`⎈⇧y` Undo
-
-`⇧u`/`⎈⇧z`/`⎈y` Redo
-
-`i⌨` Insert ⌨ before selection
-
-`a⌨` Append ⌨ after selection
-
-`⇧i⌨` Insert ⌨ at line start
-
-`⇧a⌨` Append ⌨ at line end
-
-`c⌨` Change seletion to ⌨ after Copy, `⎈⇧r` without copying
-
-`⎇j` move line down, `⎇k` up
-
-`r◌` Replace each character with ◌
-
-`⇧r` Replace with clipboard after Copy, `⎈⇧r` without copying
-
-`o⌨` Add ⌨ as newline below, `⇧o⌨` above
-
-`tab` Indent, `⇧tab` Unindent
-
-`⎇space` Add space before selection, `⎇⇧space` after selection
-
-`⇧j` Join lines
-
-`-` Remove empty lines in selection
-
-`⇧c` Comment selected lines
-
-`"` Surround
-
-`=` Format selection
-
-`⎇=` Switch case, `⎈=` Convert to lowercase, `⎈⇧=` uppercase
-
-`⎈up`/`⎈k` increment number, `⎈down`/`⎈j` decrement number
-
-`q` Execute this macro
-
-`.` Repeat change over here
+`⎈⇧o` Open a new temporary file
 
 
-### Move around
+### Movement
+
+#### Basic
 
 `h` Left
 
@@ -135,6 +89,8 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 `k` Up
 
 `l` Right
+
+#### Words
 
 `w` Select ahead until next word
 
@@ -148,64 +104,151 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⇧b` Select back until whitespace
 
+#### Characters
+
 `f◌` Select ahead to ◌, `⇧f◌` back to ◌
 
 `t◌` Select ahead until ◌, `⇧t◌` back until ◌
 
-`x` Select line
+#### Lines & Page
 
-`;` Clear selections
+72 `x` Select line below, `⇧x` above
 
-`⇧;` Switch cursor side
+48 `⎈d`/`⎈⇧u` Halfpage down, `⎈u`/`⎈⇧d` up
+
+45 `z` Toggle fold at cursor
+
+#### Search
 
 `⎈f` Search
 
-`⎈⇧f` Search and Replace
+`⎈⎇f` Search and Replace
 
 `n` Next search result, `⇧n` previous result
 
-`⎈n` Select next ocurrence of selection, `⎈⇧n` previous ocurrence
+#### Selection
+
+`⎈a` Select all
+
+`;` Clear selections
 
 `v⌨` Visually select
 
-`⎇c` Copy selections to below
+`⇧;` Switch cursor side
 
-`⎇⇧c` Copy selections to above
+`⎈n` Select next ocurrence of selection, `⎈⇧n` previous ocurrence
+
+`m￼` Select object
+
+`⇧-` Trim whitespaces from selection
+
+`⎇c` Copy selections to below, `⎇⇧c` above
+
+#### Multiselection
 
 `s` Select all regex matches in selection
 
 `⎇s` Split selection for lines
 
-`⇧s` Split by delimiter regex
+`⇧k` Keep selections matching regex
 
 `⇧m` Merge selections 
 
-`⎇⇧]` Cycle selection content forward, `⎇⇧[` backward
+`⇧s` Split by delimiter regex
+
+#### Jumppoints
 
 `'` Create Jumppoint
 
 `[` To last Jumppoint, `]` next Jumppoint
 
-`m￼` Select object
+### Coding
 
-`⎈d`/`⎈⇧u` Halfpage down
+#### Delete
 
-`⎈u`/`⎈⇧d` Halfpage up
+`d`/`⎈x` Cut, `⎈d`/`del`/`backspace` Delete
 
-`z` Toggle Fold at cursor
+`⇧d` Cut word, `⎈⇧d`/`⎈del`/`⎈backspace` Delete word
 
-`⇧k` Keep selections matching regex
+`⎇d` Cut line, `⎈⎇⇧d` Delete line
 
-`⎈a` Select all
+#### Paste
 
-`⇧-` Trim whitespaces from selection
+`p`/`⎈v` Paste before, `⇧p`/`⎈⇧v` after
 
+`⎇p` Dublicate line to below, `⎇⇧p` above
 
-### Interact
+#### Undo/Redo
+
+`u`/`⎈z`/`⎈⇧y` Undo
+
+`⇧u`/`⎈⇧z`/`⎈y` Redo
+
+#### Insert
+
+`i⌨` Insert ⌨ before selection
+
+`a⌨` Append ⌨ after selection
+
+`⇧i⌨` Insert ⌨ at line start
+
+`⇧a⌨` Append ⌨ at line end
+
+`o⌨` Add ⌨ as newline below, `⇧o⌨` above
+
+#### Replace
+
+`c⌨` Change seletion to ⌨ after Copy, `⎈⇧r` without copying
+
+`r◌` Replace each character with ◌
+
+`⇧r` Replace with clipboard after Copy, `⎈⇧r` without copying
+
+#### Lines
+
+`⎇j` move line down, `⎇k` up
+
+`tab` Indent, `⇧tab` Unindent
+
+`⇧j` Join lines
+
+`-` Remove empty lines from selection
+
+#### Spacing
+
+`enter` Add space before selection, `⇧enter` after selection
+
+`⎇space` Add space before selection, `⎇⇧space` after selection
+
+#### Formatting
+
+`⇧c` Comment selected lines (toggle)
+
+`"〈〉` Surround in 〈〉
+
+`=` Format selection
+
+`⎇=` Switch case, `⎈=` Convert to lowercase, `⎈⇧=` uppercase
+
+#### Macros
+
+`q` Execute this macro
+
+`.` Repeat change over here
+
+#### Other
+
+`⎈up`/`⎈k` increment number, `⎈down`/`⎈j` decrement number
+
+`⎇⇧]` Cycle selection content forward, `⎇⇧[` backward
+
+### Interacting
 
 `y`/`⎈c` Copy
 
-`[0-9]`* `🗲` Run 🗲 this many times
+`space` Inspect
+
+#### Repeat
 
 `⇧q` Record a macro (toggle)
 
@@ -213,10 +256,12 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `⎈⇧q` Save a macro
 
-`space` Inspect
+`[0-9]`* `🗲` Run 🗲 this many times
 
 
-### Inspect
+### Inspecting
+
+#### Go to
 
 `f` Go to definition
 
@@ -226,17 +271,21 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by Helix.
 
 `g` Go to references
 
+#### Refator
+
 `r` Rename
 
 `⇧r` Rename to clipboard
 
-`y`/`⎈c` Copy the symbol
-
-`⇧y`/`⎈⇧c` Copy the symbol info
-
 `space` Quick Fix if available
 
 `e` Inspect next problem, `⇧e` previous problem
+
+#### Copy
+
+`y`/`⎈c` Copy the symbol
+
+`⇧y`/`⎈⇧c` Copy the symbol info
 
 ### Menus
 
@@ -263,7 +312,3 @@ It is the window manager's job to take care of panes. Use `⎈p` and multiple wi
 
 Danceflow is designed to work out of the box with sensible defaults, but you can customize
 key bindings in your VSCode settings.
-
-## License
-
-MIT
