@@ -1,7 +1,13 @@
 {
-  "search.exclude": {
+  "files.exclude": {
     ".direnv": true,
-    "out": true
+    "out": true,
+    "package.json": true,
+    "test/suite/commands/": true,
+    "test/suite/api.test.ts": true,
+    "src/commands/load-all.ts": true,
+    "src/commands/README.md": true,
+    "src/commands/layouts/": true,
   },
 
   // Run tasks (`compile` and `generate`) automatically.
