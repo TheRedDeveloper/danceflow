@@ -1,13 +1,9 @@
 ✔ Fork the newest version of Danceflow @done(25-04-03 16:03)
 ✔ Change Readme, Extension Info @done(25-04-03 22:33)
-☐ rename
+✔ rename @done(25-04-05 15:44)
   ✔ "normal" → "move" @done(25-04-05 13:56)
-  ☐ "insert" → "modify"
-  ☐ "visual" → "select"
-☐ Add select mode
-  ☐ Anchors stay when moving around
-☐ Adapt move mode
-  ☐ Blocky cursor
+  ✔ "insert" → "modify" @done(25-04-05 15:40)
+✔ Select mode with underline cursor @done(25-04-05 15:50)
 ☐ Keys will be grouped as
   Global Keys: `esc` `⎈p` `⎈o` `⎈r` `⇧1` `⇧2` `⇧3` `⇧4` `⇧5` `⇧6` `⇧8` `⎈⇧s` `⎈tab` `⎈⇧tab` `⎈t` `⎈s` `⎈g` `⎈w` `⎈⇧g` `⎈⇧e` `⎈⇧c` `⎈⎇i` `⎈⎇⇧c` `⎈⎇⇧i` `⎈⇧d` `⎈⇧x` `⎈⇧p`
   Modify Keys: `d`/`⎈x` `⇧d` `⎇d` `⎈⇧d`/`⎈del`/`⎈backspace` `⎈d`/`del`/`backspace` `p`/`⎈v` `⇧p`/`⎈⇧v` `u`/`⎈z`/`⎈⇧y` `⇧u`/`⎈⇧z`/`⎈y` `i` `⇧i` `a` `⇧a` `c` `r` `⇧r` `o` `⇧o` `tab` `⇧tab` `⎇space` `⎇⇧space` `⇧j` `-` `⇧c` `"` `=` `⎇=` `⎈=` `⎈⇧=` `⎈up`/`⎈k` `⎈down`/`⎈j` `q` `.`

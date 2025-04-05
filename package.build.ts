@@ -331,7 +331,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               ],
             },
             select: {
-              cursorStyle: "block",
+              cursorStyle: "underline",
               selectionBehavior: "character",
             },
             move: {

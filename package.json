@@ -399,7 +399,7 @@
               ]
             },
             "select": {
-              "cursorStyle": "block",
+              "cursorStyle": "underline",
               "selectionBehavior": "character"
             },
             "move": {
