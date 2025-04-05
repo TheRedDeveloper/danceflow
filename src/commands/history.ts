@@ -15,7 +15,7 @@ declare module "./history";
 /**
  * Undo.
  *
- * @keys `u` (core: normal; helix: select)
+ * @keys `u` (core: move; helix: select)
  */
 export function undo() {
   return vscode.commands.executeCommand("undo");
@@ -24,7 +24,7 @@ export function undo() {
 /**
  * Redo.
  *
- * @keys `s-u` (core: normal; helix: select)
+ * @keys `s-u` (core: move; helix: select)
  */
 export function redo() {
   return vscode.commands.executeCommand("redo");
@@ -33,7 +33,7 @@ export function redo() {
 /**
  * Undo a change of selections.
  *
- * @keys `a-u` (kakoune: normal)
+ * @keys `a-u` (kakoune: move)
  */
 export function undo_selections() {
   return vscode.commands.executeCommand("cursorUndo");
@@ -42,7 +42,7 @@ export function undo_selections() {
 /**
  * Redo a change of selections.
  *
- * @keys `s-a-u` (kakoune: normal)
+ * @keys `s-a-u` (kakoune: move)
  */
 export function redo_selections() {
   return vscode.commands.executeCommand("cursorRedo");
@@ -56,7 +56,7 @@ export function redo_selections() {
  * | Title                        | Identifier         | Keybinding                          | Commands                                                                      |
  * | ---------------------------- | ------------------ | ------------------------------------| ----------------------------------------------------------------------------- |
  * | Repeat last selection change | `repeat.selection` |                                     | `[".history.repeat", { filter: "danceflow\\.(seek|select|selections)", +count }]` |
- * | Repeat last seek             | `repeat.seek`      | `a-.` (core: normal; helix: select) | `[".history.repeat", { filter: "danceflow\\.seek", +count }]`                     |
+ * | Repeat last seek             | `repeat.seek`      | `a-.` (core: move; helix: select) | `[".history.repeat", { filter: "danceflow\\.seek", +count }]`                     |
  */
 export async function repeat(
   _: Context,
@@ -98,7 +98,7 @@ export async function repeat(
 /**
  * Repeat last edit without a command.
  *
- * @keys `.` (core: normal), `NumPad_Decimal` (core: normal)
+ * @keys `.` (core: move), `NumPad_Decimal` (core: move)
  * @noreplay
  */
 export async function repeat_edit(_: Context, repetitions: number) {
@@ -113,7 +113,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
     if (cursor.is(Entry.ChangeTextEditorMode)) {
       const modeName = cursor.entry().mode().name;
 
-      if (modeName === "normal") {
+      if (modeName === "move") {
         cursor.previous();
 
         endCursor = cursor.clone();
@@ -126,7 +126,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
     }
 
     if (!cursor.previous()) {
-      throw new Error("cannot find switch to normal or insert mode");
+      throw new Error("cannot find switch to move or insert mode");
     }
   }
 
@@ -140,7 +140,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
 /**
  * Replay recording.
  *
- * @keys `q` (kakoune: normal)
+ * @keys `q` (kakoune: move)
  * @noreplay
  */
 export async function recording_play(
@@ -167,7 +167,7 @@ const recordingPerRegister = new WeakMap<Register, ActiveRecording>();
 /**
  * Start recording.
  *
- * @keys `s-q` (kakoune: normal, !recording)
+ * @keys `s-q` (kakoune: move, !recording)
  * @noreplay
  */
 export function recording_start(
@@ -188,7 +188,7 @@ export function recording_start(
 /**
  * Stop recording.
  *
- * @keys `escape` (kakoune: normal, recording), `s-q` (kakoune: normal, recording)
+ * @keys `escape` (kakoune: move, recording), `s-q` (kakoune: move, recording)
  * @noreplay
  */
 export function recording_stop(

@@ -9,8 +9,8 @@ function setSelectionBehavior(selectionBehavior: SelectionBehavior) {
   Context.current.mode.update("_selectionBehavior", selectionBehavior);
 }
 
-function resetNormalMode(extension: Extension) {
-  extension.modes.get("normal")?.update("_selectionBehavior", SelectionBehavior.Caret);
+function resetMoveMode(extension: Extension) {
+  extension.modes.get("move")?.update("_selectionBehavior", SelectionBehavior.Caret);
 }
 
 suite("API tests", function () {
@@ -29,7 +29,7 @@ suite("API tests", function () {
     extension = (await vscode.extensions.getExtension("reddev.danceflow")!.activate()).extension;
   });
 
-  this.beforeEach(() => resetNormalMode(extension));
+  this.beforeEach(() => resetMoveMode(extension));
 
   this.afterAll(async () => {
     await vscode.commands.executeCommand("workbench.action.closeActiveEditor");

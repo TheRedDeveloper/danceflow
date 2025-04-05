@@ -30,7 +30,7 @@ export async function build() {
           editor.options.insertSpaces = true;
           editor.options.tabSize = 2;
 
-          await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+          await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
         });
 
         this.afterAll(async () => {
@@ -239,9 +239,9 @@ function stringifyOperations(test: Test) {
 
   if (test.behavior === "character") {
     text += `await executeCommand("danceflow.dev.setSelectionBehavior", `
-          + `{ mode: "normal", value: "character" });\n`;
+          + `{ mode: "move", value: "character" });\n`;
     textEnd += `await executeCommand("danceflow.dev.setSelectionBehavior", `
-             + `{ mode: "normal", value: "caret" });\n`;
+             + `{ mode: "move", value: "caret" });\n`;
   }
 
   for (let i = 0; i < operations.length; i++) {

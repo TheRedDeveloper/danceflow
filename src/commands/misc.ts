@@ -13,14 +13,14 @@ import { ArgumentError, CancellationError, InputError } from "../utils/errors";
  *
  * | Keybinding           | Command                                      |
  * | -------------------- | -------------------------------------------- |
- * | `s-;` (core: normal) | `["workbench.action.showCommands", { ... }]` |
+ * | `s-;` (core: move) | `["workbench.action.showCommands", { ... }]` |
  */
 declare module "./misc";
 
 /**
  * Cancel Danceflow operation.
  *
- * @keys `escape` (core: normal, !recording, "!markersNavigationVisible"), `escape` (core: input)
+ * @keys `escape` (core: move, !recording, "!markersNavigationVisible"), `escape` (core: input)
  */
 export function cancel(extension: Extension) {
   // Calling a new command resets pending operations, so we don't need to do
@@ -80,7 +80,7 @@ const runHistory: string[] = [];
  *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
- *       "danceflow.modes.set.normal",
+ *       "danceflow.modes.set.move",
  *     ],
  *   },
  * },
@@ -93,7 +93,7 @@ const runHistory: string[] = [];
  *   "command": "danceflow.run",
  *   "args": {
  *     "commands": [
- *       ["danceflow.modes.set", { "mode": "normal" }],
+ *       ["danceflow.modes.set", { "mode": "move" }],
  *     ],
  *   },
  * },
@@ -108,7 +108,7 @@ const runHistory: string[] = [];
  *     "commands": [
  *       {
  *         "command": "danceflow.modes.set",
- *         "args": { "mode": "normal" },
+ *         "args": { "mode": "move" },
  *       },
  *     ],
  *   },
@@ -125,7 +125,7 @@ const runHistory: string[] = [];
  *       ["danceflow.selections.saveText", { "register": "^" }],
  *       {
  *         "command": "danceflow.modes.set",
- *         "args": { "mode": "normal" },
+ *         "args": { "mode": "move" },
  *       },
  *       "hideSuggestWidget",
  *     ],
@@ -190,7 +190,7 @@ export async function run(
  * press is awaited again and the returned register will be specific to the
  * current document.
  *
- * @keys `"` (core: normal)
+ * @keys `"` (core: move)
  * @noreplay
  */
 export async function selectRegister(
@@ -258,16 +258,16 @@ export async function updateRegister(
  *
  * | Title                          | Keybinding                                                                 | Command                              |
  * | ------------------------------ | -------------------------------------------------------------------------- | ------------------------------------ |
- * | Add the digit 0 to the counter | `0` (core: normal; helix: select), `NumPad0` (core: normal; helix: select) | `[".updateCount", { addDigits: 0 }]` |
- * | Add the digit 1 to the counter | `1` (core: normal; helix: select), `NumPad1` (core: normal; helix: select) | `[".updateCount", { addDigits: 1 }]` |
- * | Add the digit 2 to the counter | `2` (core: normal; helix: select), `NumPad2` (core: normal; helix: select) | `[".updateCount", { addDigits: 2 }]` |
- * | Add the digit 3 to the counter | `3` (core: normal; helix: select), `NumPad3` (core: normal; helix: select) | `[".updateCount", { addDigits: 3 }]` |
- * | Add the digit 4 to the counter | `4` (core: normal; helix: select), `NumPad4` (core: normal; helix: select) | `[".updateCount", { addDigits: 4 }]` |
- * | Add the digit 5 to the counter | `5` (core: normal; helix: select), `NumPad5` (core: normal; helix: select) | `[".updateCount", { addDigits: 5 }]` |
- * | Add the digit 6 to the counter | `6` (core: normal; helix: select), `NumPad6` (core: normal; helix: select) | `[".updateCount", { addDigits: 6 }]` |
- * | Add the digit 7 to the counter | `7` (core: normal; helix: select), `NumPad7` (core: normal; helix: select) | `[".updateCount", { addDigits: 7 }]` |
- * | Add the digit 8 to the counter | `8` (core: normal; helix: select), `NumPad8` (core: normal; helix: select) | `[".updateCount", { addDigits: 8 }]` |
- * | Add the digit 9 to the counter | `9` (core: normal; helix: select), `NumPad9` (core: normal; helix: select) | `[".updateCount", { addDigits: 9 }]` |
+ * | Add the digit 0 to the counter | `0` (core: move; helix: select), `NumPad0` (core: move; helix: select) | `[".updateCount", { addDigits: 0 }]` |
+ * | Add the digit 1 to the counter | `1` (core: move; helix: select), `NumPad1` (core: move; helix: select) | `[".updateCount", { addDigits: 1 }]` |
+ * | Add the digit 2 to the counter | `2` (core: move; helix: select), `NumPad2` (core: move; helix: select) | `[".updateCount", { addDigits: 2 }]` |
+ * | Add the digit 3 to the counter | `3` (core: move; helix: select), `NumPad3` (core: move; helix: select) | `[".updateCount", { addDigits: 3 }]` |
+ * | Add the digit 4 to the counter | `4` (core: move; helix: select), `NumPad4` (core: move; helix: select) | `[".updateCount", { addDigits: 4 }]` |
+ * | Add the digit 5 to the counter | `5` (core: move; helix: select), `NumPad5` (core: move; helix: select) | `[".updateCount", { addDigits: 5 }]` |
+ * | Add the digit 6 to the counter | `6` (core: move; helix: select), `NumPad6` (core: move; helix: select) | `[".updateCount", { addDigits: 6 }]` |
+ * | Add the digit 7 to the counter | `7` (core: move; helix: select), `NumPad7` (core: move; helix: select) | `[".updateCount", { addDigits: 7 }]` |
+ * | Add the digit 8 to the counter | `8` (core: move; helix: select), `NumPad8` (core: move; helix: select) | `[".updateCount", { addDigits: 8 }]` |
+ * | Add the digit 9 to the counter | `9` (core: move; helix: select), `NumPad9` (core: move; helix: select) | `[".updateCount", { addDigits: 9 }]` |
  *
  * @noreplay
  */

@@ -88,7 +88,7 @@ suite("History tests", function () {
 
     await extension.editors.getState(editor).setMode(extension.modes.get("insert")!);
     await f();
-    await extension.editors.getState(editor).setMode(extension.modes.get("normal")!);
+    await extension.editors.getState(editor).setMode(extension.modes.get("move")!);
     await delay(10);  // For VS Code to update the editor in the extension host.
 
     return recording.complete();
@@ -146,7 +146,7 @@ suite("History tests", function () {
   //    | 0
   // `, async () => {
   //   await type("abc");
-  //   await executeCommand("danceflow.modes.set.normal");
+  //   await executeCommand("danceflow.modes.set.move");
   //   await executeCommand("danceflow.select.left.jump");
   //   await deleteBefore(1);
   // });

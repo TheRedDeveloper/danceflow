@@ -21,10 +21,10 @@ declare module "./selections";
 /**
  * Copy selections text.
  *
- * @keys `y` (core: normal)
+ * @keys `y` (core: move)
  * | Keybindings         | Commands                                          |
  * | -----------         | --------                                          |
- * | `y` (helix: select) | `[".selections.saveText"], [".modes.set.normal"]` |
+ * | `y` (helix: select) | `[".selections.saveText"], [".modes.set.move"]` |
  */
 export function saveText(
   document: vscode.TextDocument,
@@ -37,7 +37,7 @@ export function saveText(
 /**
  * Save selections.
  *
- * @keys `s-z` (kakoune: normal)
+ * @keys `s-z` (kakoune: move)
  */
 export function save(
   _: Context,
@@ -98,7 +98,7 @@ export function save(
 /**
  * Restore selections.
  *
- * @keys `z` (kakoune: normal)
+ * @keys `z` (kakoune: move)
  */
 export async function restore(
   _: Context,
@@ -118,13 +118,13 @@ export async function restore(
 /**
  * Combine register selections with current ones.
  *
- * @keys `a-z` (kakoune: normal)
+ * @keys `a-z` (kakoune: move)
  *
  * The following keybinding is also available:
  *
  * | Keybinding                | Command                                                       |
  * | ------------------------- | ------------------------------------------------------------- |
- * | `s-a-z` (kakoune: normal) | `[".selections.restore.withCurrent", { reverse: true, ... }]` |
+ * | `s-a-z` (kakoune: move) | `[".selections.restore.withCurrent", { reverse: true, ... }]` |
  *
  * See https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#marks
  */
@@ -247,16 +247,16 @@ const pipeHistory: string[] = [];
  * Run the specified command or code with the contents of each selection, and
  * save the result to a register.
  *
- * @keys `a-|` (core: normal; helix: select)
+ * @keys `a-|` (core: move; helix: select)
  * See https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#changes-through-external-programs
  *
  * #### Additional commands
  *
  * | Title               | Identifier     | Keybinding                          | Commands                                                                                                                    |
  * | ------------------- | -------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
- * | Pipe and replace    | `pipe.replace` | `|` (core: normal; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|",                                  ... }]` |
- * | Pipe and append     | `pipe.append`  | `!` (core: normal; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "end"  , shift: "select", ... }]` |
- * | Pipe and prepend    | `pipe.prepend` | `a-!` (core: normal; helix: select) | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "start", shift: "select", ... }]` |
+ * | Pipe and replace    | `pipe.replace` | `|` (core: move; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|",                                  ... }]` |
+ * | Pipe and append     | `pipe.append`  | `!` (core: move; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "end"  , shift: "select", ... }]` |
+ * | Pipe and prepend    | `pipe.prepend` | `a-!` (core: move; helix: select) | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "start", shift: "select", ... }]` |
  */
 export async function pipe(
   _: Context,
@@ -293,15 +293,15 @@ const filterHistory: string[] = [];
 /**
  * Filter selections.
  *
- * @keys `$` (core: normal; helix: select)
+ * @keys `$` (core: move; helix: select)
  * #### Variants
  *
  * | Title                      | Identifier              | Keybinding                            | Commands                                                                 |
  * | -------------------------- | ----------------------- | ------------------------------------- | ------------------------------------------------------------------------ |
- * | Keep matching selections   | `filter.regexp`         | `a-k` (core: normal; helix: select)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
- * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: normal; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
- * | Clear secondary selections | `clear.secondary`       | `,` (core: normal; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
- * | Clear main selections      | `clear.main`            | `a-,` (core: normal; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Keep matching selections   | `filter.regexp`         | `a-k` (core: move; helix: select)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+ * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: move; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
+ * | Clear secondary selections | `clear.secondary`       | `,` (core: move; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
+ * | Clear main selections      | `clear.main`            | `a-,` (core: move; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
  */
 export function filter(
   _: Context,
@@ -351,7 +351,7 @@ export function filter(
  *
  * | Title          | Identifier      | Keybinding                        | Command                                                                                           |
  * | -------------- | --------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
- * | Leap or select | `select.orLeap` | `s` (core: normal; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
+ * | Leap or select | `select.orLeap` | `s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
  */
 export function select(
   _: Context,
@@ -380,7 +380,7 @@ export function select(
 /**
  * Split selections.
  *
- * @keys `s-s` (core: normal; helix: select)
+ * @keys `s-s` (core: move; helix: select)
  */
 export function split(
   _: Context,
@@ -420,7 +420,7 @@ export function split(
  *
  * | Title                   | Identifier                   | Keybinding                          | Command                                                                                                              |
  * | ----------------------- | ---------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
- * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (core: normal; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+ * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
  */
 export function splitLines(
   _: Context,
@@ -477,7 +477,7 @@ export function splitLines(
  *
  * Expand selections to contain full lines (including end-of-line characters).
  *
- * @keys `x` (kakoune: normal), `s-x` (helix: normal; helix: select)
+ * @keys `x` (kakoune: move), `s-x` (helix: move; helix: select)
  */
 export function expandToLines(_: Context) {
   return Selections.updateByIndex((_i, selection, document) => {
@@ -511,7 +511,7 @@ export function expandToLines(_: Context) {
  *
  * Trim selections to only contain full lines (from start to line break).
  *
- * @keys `a-x` (core: normal; helix: select)
+ * @keys `a-x` (core: move; helix: select)
  */
 export function trimLines(_: Context) {
   return Selections.updateByIndex((_, selection) => {
@@ -543,7 +543,7 @@ export function trimLines(_: Context) {
  *
  * Trim whitespace at beginning and end of selections.
  *
- * @keys `_` (core: normal; helix: select)
+ * @keys `_` (core: move; helix: select)
  */
 export function trimWhitespace(_: Context) {
   const blank = getCharacters(CharSet.Blank, _.document),
@@ -570,13 +570,13 @@ export function trimWhitespace(_: Context) {
  * @param where Which edge each selection should be reduced to; defaults to
  *   "active".
  *
- * @keys `;` (core: normal; helix: select)
+ * @keys `;` (core: move; helix: select)
  *
  * #### Variant
  *
  * | Title                           | Identifier     | Keybinding                | Command                                                        |
  * | ------------------------------- | -------------- | ------------------------- | -------------------------------------------------------------- |
- * | Reduce selections to their ends | `reduce.edges` | `s-a-s` (kakoune: normal) | `[".selections.reduce", { where: "both", empty: false, ... }]` |
+ * | Reduce selections to their ends | `reduce.edges` | `s-a-s` (kakoune: move) | `[".selections.reduce", { where: "both", empty: false, ... }]` |
  */
 export function reduce(
   _: Context,
@@ -651,13 +651,13 @@ export function reduce(
  * @param direction If unspecified, flips each direction. Otherwise, ensures
  *   that all selections face the given direction.
  *
- * @keys `a-;` (core: normal; helix: select)
+ * @keys `a-;` (core: move; helix: select)
  *
  * #### Variants
  *
  * | Title               | Identifier     | Keybinding              | Command                                              |
  * | ------------------- | -------------- | ----------------------- | ---------------------------------------------------- |
- * | Forward selections  | `faceForward`  | `a-:` (kakoune: normal) | `[".selections.changeDirection", { direction:  1 }]` |
+ * | Forward selections  | `faceForward`  | `a-:` (kakoune: move) | `[".selections.changeDirection", { direction:  1 }]` |
  * | Backward selections | `faceBackward` |                         | `[".selections.changeDirection", { direction: -1 }]` |
  */
 export function changeDirection(_: Context, direction?: Direction) {
@@ -800,13 +800,13 @@ export async function sort(
 /**
  * Copy selections below.
  *
- * @keys `s-c` (core: normal; helix: select)
+ * @keys `s-c` (core: move; helix: select)
  *
  * #### Variant
  *
  * | Title                 | Identifier   | Keybinding                            | Command                                   |
  * | --------------------- | ------------ | ------------------------------------- | ----------------------------------------- |
- * | Copy selections above | `copy.above` | `s-a-c` (core: normal; helix: select) | `[".selections.copy", { direction: -1 }]` |
+ * | Copy selections above | `copy.above` | `s-a-c` (core: move; helix: select) | `[".selections.copy", { direction: -1 }]` |
  */
 export function copy(
   _: Context,
@@ -852,7 +852,7 @@ export function copy(
 /**
  * Merge contiguous selections.
  *
- * @keys `a-_` (kakoune: normal)
+ * @keys `a-_` (kakoune: move)
  */
 export function merge(_: Context) {
   Selections.set(Selections.mergeConsecutive(Selections.current()));
@@ -877,7 +877,7 @@ const indicesToken = PerEditorState.registerState<AutoDisposable>(/* isDisposabl
 /**
  * Toggle selection indices.
  *
- * @keys `enter` (core: normal; helix: select)
+ * @keys `enter` (core: move; helix: select)
  *
  * #### Variants
  *

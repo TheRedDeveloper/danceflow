@@ -511,7 +511,7 @@ export async function insertByIndexWithFullLines(
   );
 
   // Insert non-full lines.
-  const normalSelections = await mapResults(flags, document, resultsSelections, results);
+  const moveSelections = await mapResults(flags, document, resultsSelections, results);
 
   // Insert full lines.
   const fullLineSelections = savedSelections.restore();
@@ -580,11 +580,11 @@ export async function insertByIndexWithFullLines(
   // Merge back selections.
   const allSelections: vscode.Selection[] = [];
 
-  for (let i = 0, normalIdx = 0, fullLineIdx = 0; i < isFullLines.length; i++) {
+  for (let i = 0, moveIdx = 0, fullLineIdx = 0; i < isFullLines.length; i++) {
     if (isFullLines[i]) {
       allSelections.push(finalFullLineSelections[fullLineIdx++]);
     } else {
-      allSelections.push(normalSelections[normalIdx++]);
+      allSelections.push(moveSelections[moveIdx++]);
     }
   }
 

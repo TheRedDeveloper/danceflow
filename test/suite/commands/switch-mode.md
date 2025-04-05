@@ -20,7 +20,7 @@ abc def
 ### 1 insert-before restore
 [up](#1-insert-before)
 
-- .modes.set.normal
+- .modes.set.move
 
 ```
 abc def

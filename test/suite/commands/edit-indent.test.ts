@@ -13,7 +13,7 @@ suite("./test/suite/commands/edit-indent.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
   });
 
   this.afterAll(async () => {

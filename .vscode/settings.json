@@ -33,7 +33,7 @@
         "b": {
           "text": "toggle character selection behavior",
           "command": "danceflow.dev.setSelectionBehavior",
-          "args": [{ "mode": "normal" }],
+          "args": [{ "mode": "move" }],
         },
       },
     },

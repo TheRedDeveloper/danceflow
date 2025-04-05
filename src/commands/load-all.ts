@@ -274,7 +274,7 @@ import {
  * All defined Danceflow commands.
  */
 export const commands: Commands = function () {
-  // Normal commands.
+  // Move commands.
   const commands = {
     "danceflow.cancel": new CommandDescriptor(
       "danceflow.cancel",
@@ -802,9 +802,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.set.normal",
+    "danceflow.modes.set.move",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set", { mode: "normal" }], ["hideSuggestWidget"]],
+    [[".modes.set", { mode: "move" }], ["hideSuggestWidget"]],
   );
   describeAdditionalCommand(
     commands,
@@ -832,9 +832,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.set.temporarily.normal",
+    "danceflow.modes.set.temporarily.move",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set.temporarily", { mode: "normal" }]],
+    [[".modes.set.temporarily", { mode: "move" }]],
   );
   describeAdditionalCommand(
     commands,

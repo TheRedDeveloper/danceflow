@@ -1,6 +1,9 @@
 ✔ Fork the newest version of Danceflow @done(25-04-03 16:03)
 ✔ Change Readme, Extension Info @done(25-04-03 22:33)
-☐ rename "normal" → "move", "insert" → "modify", "visual" → "select"
+☐ rename
+  ✔ "normal" → "move" @done(25-04-05 13:56)
+  ☐ "insert" → "modify"
+  ☐ "visual" → "select"
 ☐ Add select mode
   ☐ Anchors stay when moving around
 ☐ Adapt move mode

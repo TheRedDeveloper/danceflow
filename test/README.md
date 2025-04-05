@@ -132,7 +132,7 @@ foo bar
 ### Available flags
 
 - `debug`: Inserts a `debugger` statement at the beginning of the test.
-- `behavior <- character`: Sets selection behavior of normal mode to `character`
+- `behavior <- character`: Sets selection behavior of move mode to `character`
   for the duration of the test. The mode will be reset to `caret` at the end of
   the test. Tests that depend on a test with character behavior `character` will
   default to having that same behavior. Use `behavior <- caret` to undo this.

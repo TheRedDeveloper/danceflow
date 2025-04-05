@@ -13,7 +13,7 @@ suite("./test/suite/commands/search.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -321,9 +321,9 @@ suite("./test/suite/commands/search.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.search", { re: "T", direction: -1, shift: "extend" });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search.md:206:1", 6, String.raw`
@@ -365,9 +365,9 @@ suite("./test/suite/commands/search.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.search", { re: "Th", direction: -1, shift: "extend" });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search.md:236:1", 6, String.raw`
@@ -454,9 +454,9 @@ suite("./test/suite/commands/search.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.search", { re: "o", shift: "extend" });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search.md:309:1", 6, String.raw`

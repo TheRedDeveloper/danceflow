@@ -14,13 +14,13 @@ declare module "./search";
 /**
  * Search.
  *
- * @keys `/` (core: normal), `NumPad_Divide` (core: normal)
+ * @keys `/` (core: move), `NumPad_Divide` (core: move)
  *
  * | Title                    | Identifier        | Keybinding                                   | Command                                                |
  * | ------------------------ | ----------------- | -------------------------------------------- | ------------------------------------------------------ |
- * | Search (extend)          | `extend`          | `?` (kakoune: normal), `/` (helix: select)   | `[".search", {                shift: "extend", ... }]` |
- * | Search backward          | `backward`        | `a-/` (kakoune: normal), `?` (helix: normal) | `[".search", { direction: -1                 , ... }]` |
- * | Search backward (extend) | `backward.extend` | `a-?` (kakoune: normal), `?` (helix: select) | `[".search", { direction: -1, shift: "extend", ... }]` |
+ * | Search (extend)          | `extend`          | `?` (kakoune: move), `/` (helix: select)   | `[".search", {                shift: "extend", ... }]` |
+ * | Search backward          | `backward`        | `a-/` (kakoune: move), `?` (helix: move) | `[".search", { direction: -1                 , ... }]` |
+ * | Search backward (extend) | `backward.extend` | `a-?` (kakoune: move), `?` (helix: select) | `[".search", { direction: -1, shift: "extend", ... }]` |
  */
 export async function search(
   _: Context,
@@ -83,11 +83,11 @@ export async function search(
 /**
  * Search current selection.
  *
- * @keys `a-*` (core: normal), `a-NumPad_Multiply` (core: normal)
+ * @keys `a-*` (core: move), `a-NumPad_Multiply` (core: move)
  *
  * | Title                            | Identifier        | Keybinding                                           | Command                                             |
  * | -------------------------------- | ----------------- | ---------------------------------------------------- | --------------------------------------------------- |
- * | Search current selection (smart) | `selection.smart` | `*` (core: normal), `NumPad_Multiply` (core: normal) | `[".search.selection", { smart: true, +register }]` |
+ * | Search current selection (smart) | `selection.smart` | `*` (core: move), `NumPad_Multiply` (core: move) | `[".search.selection", { smart: true, +register }]` |
  */
 export function selection(
   document: vscode.TextDocument,
@@ -151,13 +151,13 @@ export function selection(
 /**
  * Select next match.
  *
- * @keys `n` (core: normal)
+ * @keys `n` (core: move)
  *
  * | Title                 | Identifier     | Keybinding                                       | Command                                               |
  * | --------------------- | -------------- | ------------------------------------------------ | ----------------------------------------------------- |
- * | Add next match        | `next.add`     | `s-n` (kakoune: normal), `n` (helix: select)     | `[".search.next", {                add: true, ... }]` |
- * | Select previous match | `previous`     | `a-n` (kakoune: normal), `s-n` (helix: normal)   | `[".search.next", { direction: -1           , ... }]` |
- * | Add previous match    | `previous.add` | `s-a-n` (kakoune: normal), `s-n` (helix: select) | `[".search.next", { direction: -1, add: true, ... }]` |
+ * | Add next match        | `next.add`     | `s-n` (kakoune: move), `n` (helix: select)     | `[".search.next", {                add: true, ... }]` |
+ * | Select previous match | `previous`     | `a-n` (kakoune: move), `s-n` (helix: move)   | `[".search.next", { direction: -1           , ... }]` |
+ * | Add previous match    | `previous.add` | `s-a-n` (kakoune: move), `s-n` (helix: select) | `[".search.next", { direction: -1, add: true, ... }]` |
  */
 export async function next(
   _: Context,

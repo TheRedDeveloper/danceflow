@@ -215,7 +215,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
         "danceflow.defaultMode": {
           type: "string",
           scope: "language-overridable",
-          default: "normal",
+          default: "move",
           description: "Controls which mode is set by default when an editor is opened.",
           ...modeNamePattern,
         },
@@ -334,7 +334,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               cursorStyle: "block",
               selectionBehavior: "character",
             },
-            normal: {
+            move: {
               cursorStyle: "block",
               selectionBehavior: "character",
               decorations: {
@@ -355,7 +355,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                     borderRadius: "1px",
                   },
                   until: [
-                    ["mode-did-change", { include: "normal" }],
+                    ["mode-did-change", { include: "move" }],
                     ["selections-did-change"],
                   ],
                 }],
@@ -403,7 +403,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "match": {
               title: "Match",
               items: {
-                // Should be jump in normal mode, extend in select mode, but jump for seek.enclosing is not implemented
+                // Should be jump in move mode, extend in select mode, but jump for seek.enclosing is not implemented
                 "m": { command: "danceflow.seek.enclosing", text: "Goto matching bracket" },
                 "a": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match around" }], text: "Select around object" },
                 "i": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Select inside object" },
@@ -619,11 +619,11 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           deprecationMessage: "danceflow.enabled is deprecated; disable the Danceflow extension instead.",
         },
 
-        "danceflow.normalMode.lineHighlight": {
+        "danceflow.moveMode.lineHighlight": {
           type: ["string", "null"],
           default: "editor.hoverHighlightBackground",
           markdownDescription:
-            "Controls the line highlighting applied to active lines in normal mode. "
+            "Controls the line highlighting applied to active lines in move mode. "
             + "Can be an hex color, a [theme color]("
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
@@ -637,10 +637,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.normalMode.lineNumbers": {
+        "danceflow.moveMode.lineNumbers": {
           enum: ["off", "on", "relative", "inherit"],
           default: "relative",
-          description: "Controls the display of line numbers in normal mode.",
+          description: "Controls the display of line numbers in move mode.",
           enumDescriptions: [
             "No line numbers.",
             "Absolute line numbers.",
@@ -661,7 +661,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           ],
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.normalMode.cursorStyle": {
+        "danceflow.moveMode.cursorStyle": {
           enum: [
             "line",
             "block",
@@ -672,7 +672,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "inherit",
           ],
           default: "inherit",
-          description: "Controls the cursor style in normal mode.",
+          description: "Controls the cursor style in move mode.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
         "danceflow.insertMode.cursorStyle": {
@@ -777,7 +777,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
 
       return [
         ...keybindings,
-        ...generateIgnoredKeybinds(keybindings, `editorTextFocus && danceflow.mode == 'normal'`),
+        ...generateIgnoredKeybinds(keybindings, `editorTextFocus && danceflow.mode == 'move'`),
       ];
     })(),
 

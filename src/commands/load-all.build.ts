@@ -55,7 +55,7 @@ export async function build(builder: Builder) {
      * All defined Danceflow commands.
      */
     export const commands: Commands = function () {
-      // Normal commands.
+      // Move commands.
       const commands = {${
         modules
           .flatMap((m) => m.functions)

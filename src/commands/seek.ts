@@ -15,7 +15,7 @@ import { SyntaxNode, Tree, TreeSitter } from "../utils/tree-sitter";
  *
  * | Title                       | Keybinding          | Command                                                         |
  * | --------------------------- | ------------------- | --------------------------------------------------------------- |
- * | Open match menu             | `m` (helix: normal) | `[".openMenu", { menu: "match"                              }]` |
+ * | Open match menu             | `m` (helix: move) | `[".openMenu", { menu: "match"                              }]` |
  * | Open match menu with extend | `m` (helix: select) | `[".openMenu", { menu: "match", pass: [{ shift: "extend" }] }]` |
  */
 declare module "./seek";
@@ -23,19 +23,19 @@ declare module "./seek";
 /**
  * Select to character (excluded).
  *
- * @keys `t` (core: normal)
+ * @keys `t` (core: move)
  *
  * #### Variants
  *
  * | Title                                    | Identifier                 | Keybinding                                       | Command                                                             |
  * | ---------------------------------------- | -------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- |
- * | Extend to character (excluded)           | `extend`                   | `s-t` (kakoune: normal), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
- * | Select to character (excluded, backward) | `backward`                 | `a-t` (kakoune: normal), `s-t` (helix: normal)   | `[".seek", {                                 direction: -1, ... }]` |
- * | Extend to character (excluded, backward) | `extend.backward`          | `s-a-t` (kakoune: normal), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
- * | Select to character (included)           | `included`                 | `f` (core: normal)                               | `[".seek", { include: true                                , ... }]` |
- * | Extend to character (included)           | `included.extend`          | `s-f` (kakoune: normal), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
- * | Select to character (included, backward) | `included.backward`        | `a-f` (kakoune: normal), `s-f` (helix: normal)   | `[".seek", { include: true,                  direction: -1, ... }]` |
- * | Extend to character (included, backward) | `included.extend.backward` | `s-a-f` (kakoune: normal), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+ * | Extend to character (excluded)           | `extend`                   | `s-t` (kakoune: move), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
+ * | Select to character (excluded, backward) | `backward`                 | `a-t` (kakoune: move), `s-t` (helix: move)   | `[".seek", {                                 direction: -1, ... }]` |
+ * | Extend to character (excluded, backward) | `extend.backward`          | `s-a-t` (kakoune: move), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+ * | Select to character (included)           | `included`                 | `f` (core: move)                               | `[".seek", { include: true                                , ... }]` |
+ * | Extend to character (included)           | `included.extend`          | `s-f` (kakoune: move), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+ * | Select to character (included, backward) | `included.backward`        | `a-f` (kakoune: move), `s-f` (helix: move)   | `[".seek", { include: true,                  direction: -1, ... }]` |
+ * | Extend to character (included, backward) | `included.extend.backward` | `s-a-f` (kakoune: move), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
  */
 export async function seek(
   _: Context,
@@ -88,15 +88,15 @@ const defaultEnclosingPatterns = [
 /**
  * Select to next enclosing character.
  *
- * @keys `m` (kakoune: normal)
+ * @keys `m` (kakoune: move)
  *
  * #### Variants
  *
  * | Title                                  | Identifier                  | Keybinding                | Command                                                        |
  * | -------------------------------------- | --------------------------- | ------------------------- | -------------------------------------------------------------- |
- * | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (kakoune: normal)   | `[".seek.enclosing", { shift: "extend"               , ... }]` |
- * | Select to previous enclosing character | `enclosing.backward`        | `a-m` (kakoune: normal)   | `[".seek.enclosing", {                  direction: -1, ... }]` |
- * | Extend to previous enclosing character | `enclosing.extend.backward` | `s-a-m` (kakoune: normal) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
+ * | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (kakoune: move)   | `[".seek.enclosing", { shift: "extend"               , ... }]` |
+ * | Select to previous enclosing character | `enclosing.backward`        | `a-m` (kakoune: move)   | `[".seek.enclosing", {                  direction: -1, ... }]` |
+ * | Extend to previous enclosing character | `enclosing.extend.backward` | `s-a-m` (kakoune: move) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
  */
 export function enclosing(
   _: Context,
@@ -183,23 +183,23 @@ export function enclosing(
  *
  * Select the word and following whitespaces on the right of the end of each selection.
  *
- * @keys `w` (core: normal)
+ * @keys `w` (core: move)
  *
  * #### Variants
  *
  * | Title                                        | Identifier                | Keybinding                                       | Command                                                                               |
  * | -------------------------------------------- | ------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
- * | Extend to next word start                    | `word.extend`             | `s-w` (kakoune: normal), `w` (helix: select)     | `[".seek.word", {                             shift: "extend"               , ... }]` |
- * | Select to previous word start                | `word.backward`           | `b` (core: normal)                               | `[".seek.word", {                                              direction: -1, ... }]` |
- * | Extend to previous word start                | `word.extend.backward`    | `s-b` (kakoune: normal), `b` (helix: select)     | `[".seek.word", {                             shift: "extend", direction: -1, ... }]` |
- * | Select to next non-whitespace word start     | `word.ws`                 | `a-w` (kakoune: normal), `s-w` (helix: normal)   | `[".seek.word", {                   ws: true                                , ... }]` |
- * | Extend to next non-whitespace word start     | `word.ws.extend`          | `s-a-w` (kakoune: normal), `s-w` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend"               , ... }]` |
- * | Select to previous non-whitespace word start | `word.ws.backward`        | `a-b` (kakoune: normal), `s-b` (helix: normal)   | `[".seek.word", {                   ws: true,                  direction: -1, ... }]` |
- * | Extend to previous non-whitespace word start | `word.ws.extend.backward` | `s-a-b` (kakoune: normal), `s-b` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend", direction: -1, ... }]` |
- * | Select to next word end                      | `wordEnd`                 | `e` (core: normal)                               | `[".seek.word", { stopAtEnd: true                                           , ... }]` |
- * | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: normal), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
- * | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: normal), `s-e` (helix: normal)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
- * | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: normal), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
+ * | Extend to next word start                    | `word.extend`             | `s-w` (kakoune: move), `w` (helix: select)     | `[".seek.word", {                             shift: "extend"               , ... }]` |
+ * | Select to previous word start                | `word.backward`           | `b` (core: move)                               | `[".seek.word", {                                              direction: -1, ... }]` |
+ * | Extend to previous word start                | `word.extend.backward`    | `s-b` (kakoune: move), `b` (helix: select)     | `[".seek.word", {                             shift: "extend", direction: -1, ... }]` |
+ * | Select to next non-whitespace word start     | `word.ws`                 | `a-w` (kakoune: move), `s-w` (helix: move)   | `[".seek.word", {                   ws: true                                , ... }]` |
+ * | Extend to next non-whitespace word start     | `word.ws.extend`          | `s-a-w` (kakoune: move), `s-w` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend"               , ... }]` |
+ * | Select to previous non-whitespace word start | `word.ws.backward`        | `a-b` (kakoune: move), `s-b` (helix: move)   | `[".seek.word", {                   ws: true,                  direction: -1, ... }]` |
+ * | Extend to previous non-whitespace word start | `word.ws.extend.backward` | `s-a-b` (kakoune: move), `s-b` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend", direction: -1, ... }]` |
+ * | Select to next word end                      | `wordEnd`                 | `e` (core: move)                               | `[".seek.word", { stopAtEnd: true                                           , ... }]` |
+ * | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: move), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
+ * | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: move), `s-e` (helix: move)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
+ * | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: move), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
  */
 export function word(
   _: Context,
@@ -275,16 +275,16 @@ let lastObjectInput: string | undefined;
  *
  * | Title                        | Identifier                     | Keybinding                                       | Command                                                                                       |
  * | ---------------------------- | ------------------------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
- * | Select whole object          | `askObject`                    | `a-a` (kakoune: normal), `a-a` (kakoune: insert) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
- * | Select inner object          | `askObject.inner`              | `a-i` (kakoune: normal), `a-i` (kakoune: insert) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
- * | Select to whole object start | `askObject.start`              | `[` (kakoune: normal)                            | `[".openMenu", { menu: "object", pass: [{              where: "start"                  }] }]` |
- * | Extend to whole object start | `askObject.start.extend`       | `{` (kakoune: normal)                            | `[".openMenu", { menu: "object", pass: [{              where: "start", shift: "extend" }] }]` |
- * | Select to inner object start | `askObject.inner.start`        | `a-[` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start"                  }] }]` |
- * | Extend to inner object start | `askObject.inner.start.extend` | `a-{` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start", shift: "extend" }] }]` |
- * | Select to whole object end   | `askObject.end`                | `]` (kakoune: normal)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"                    }] }]` |
- * | Extend to whole object end   | `askObject.end.extend`         | `}` (kakoune: normal)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"  , shift: "extend" }] }]` |
- * | Select to inner object end   | `askObject.inner.end`          | `a-]` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"                    }] }]` |
- * | Extend to inner object end   | `askObject.inner.end.extend`   | `a-}` (kakoune: normal)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"  , shift: "extend" }] }]` |
+ * | Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: insert) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
+ * | Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: insert) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
+ * | Select to whole object start | `askObject.start`              | `[` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start"                  }] }]` |
+ * | Extend to whole object start | `askObject.start.extend`       | `{` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start", shift: "extend" }] }]` |
+ * | Select to inner object start | `askObject.inner.start`        | `a-[` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start"                  }] }]` |
+ * | Extend to inner object start | `askObject.inner.start.extend` | `a-{` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start", shift: "extend" }] }]` |
+ * | Select to whole object end   | `askObject.end`                | `]` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"                    }] }]` |
+ * | Extend to whole object end   | `askObject.end.extend`         | `}` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"  , shift: "extend" }] }]` |
+ * | Select to inner object end   | `askObject.inner.end`          | `a-]` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"                    }] }]` |
+ * | Extend to inner object end   | `askObject.inner.end.extend`   | `a-}` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"  , shift: "extend" }] }]` |
  */
 export async function object(
   _: Context,
@@ -828,7 +828,7 @@ export async function leap(
       const index = labels.indexOf(labelChar.toLowerCase());
 
       if (index === -1) {
-        // User did not select a label, resume normally.
+        // User did not select a label, resume movely.
 
         // TODO: this does not properly execute the command bound to
         // `labelChar`, probably because VS Code did not have the time to switch

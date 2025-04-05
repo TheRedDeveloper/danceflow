@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -62,9 +62,9 @@ suite("./test/suite/commands/seek.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek", { input: "c" });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek.md:28:1", 6, String.raw`
@@ -149,9 +149,9 @@ suite("./test/suite/commands/seek.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek", { input: "c", $expect: /^no selections remain$/ });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek.md:80:1", 6, String.raw`
@@ -168,9 +168,9 @@ suite("./test/suite/commands/seek.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek", { input: "b", direction: -1 });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek.md:92:1", 6, String.raw`
@@ -255,9 +255,9 @@ suite("./test/suite/commands/seek.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek", { input: "b", direction: -1, shift: "extend", include: true });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek.md:151:1", 6, String.raw`

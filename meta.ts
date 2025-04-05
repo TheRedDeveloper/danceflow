@@ -531,7 +531,7 @@ export function parseKeys(keys: string) {
           tag = tag.slice(1);
         }
         switch (tag) {
-        case "normal":
+        case "move":
         case "insert":
         case "input":
         case "select":
@@ -578,7 +578,7 @@ export function parseKeys(keys: string) {
 function getCommands(module: Omit<Builder.ParsedModule, "commands">) {
   const computeWhen = ({ enablement }: Builder.ParsedFunction | Builder.AdditionalCommand) => {
     // TODO: improve conditions
-    let when = "danceflow.mode == 'normal'";
+    let when = "danceflow.mode == 'move'";
 
     if (enablement !== undefined) {
       when += " && " + enablement;

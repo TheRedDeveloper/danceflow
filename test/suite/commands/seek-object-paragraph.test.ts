@@ -13,7 +13,7 @@ suite("./test/suite/commands/seek-object-paragraph.md", function () {
     editor.options.insertSpaces = true;
     editor.options.tabSize = 2;
 
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
   });
 
   this.afterAll(async () => {
@@ -129,9 +129,9 @@ suite("./test/suite/commands/seek-object-paragraph.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek.object", { input: "(?#predefined=paragraph)", where: "end", inner: true });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-paragraph.md:78:1", 6, String.raw`
@@ -246,9 +246,9 @@ suite("./test/suite/commands/seek-object-paragraph.md", function () {
     `);
 
     // Perform all operations.
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "character" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
     await executeCommand("danceflow.seek.object", { input: "(?#predefined=paragraph)", where: "end", inner: true });
-    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "normal", value: "caret" });
+    await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/seek-object-paragraph.md:172:1", 6, String.raw`

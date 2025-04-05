@@ -102,7 +102,7 @@
         "danceflow.defaultMode": {
           "type": "string",
           "scope": "language-overridable",
-          "default": "normal",
+          "default": "move",
           "description": "Controls which mode is set by default when an editor is opened.",
           "pattern": "^[a-zA-Z]\\w*(\\/\\w+)?$",
           "patternErrorMessage": ""
@@ -402,7 +402,7 @@
               "cursorStyle": "block",
               "selectionBehavior": "character"
             },
-            "normal": {
+            "move": {
               "cursorStyle": "block",
               "selectionBehavior": "character",
               "decorations": {
@@ -434,7 +434,7 @@
                       [
                         "mode-did-change",
                         {
-                          "include": "normal"
+                          "include": "move"
                         }
                       ],
                       [
@@ -836,13 +836,13 @@
           "description": "Controls whether the Danceflow keybindings are enabled.",
           "deprecationMessage": "danceflow.enabled is deprecated; disable the Danceflow extension instead."
         },
-        "danceflow.normalMode.lineHighlight": {
+        "danceflow.moveMode.lineHighlight": {
           "type": [
             "string",
             "null"
           ],
           "default": "editor.hoverHighlightBackground",
-          "markdownDescription": "Controls the line highlighting applied to active lines in normal mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
+          "markdownDescription": "Controls the line highlighting applied to active lines in move mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
         "danceflow.insertMode.lineHighlight": {
@@ -854,7 +854,7 @@
           "markdownDescription": "Controls the line highlighting applied to active lines in insert mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.normalMode.lineNumbers": {
+        "danceflow.moveMode.lineNumbers": {
           "enum": [
             "off",
             "on",
@@ -862,7 +862,7 @@
             "inherit"
           ],
           "default": "relative",
-          "description": "Controls the display of line numbers in normal mode.",
+          "description": "Controls the display of line numbers in move mode.",
           "enumDescriptions": [
             "No line numbers.",
             "Absolute line numbers.",
@@ -888,7 +888,7 @@
           ],
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.normalMode.cursorStyle": {
+        "danceflow.moveMode.cursorStyle": {
           "enum": [
             "line",
             "block",
@@ -899,7 +899,7 @@
             "inherit"
           ],
           "default": "inherit",
-          "description": "Controls the cursor style in normal mode.",
+          "description": "Controls the cursor style in move mode.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
         "danceflow.insertMode.cursorStyle": {
@@ -1278,8 +1278,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.set.normal",
-        "title": "Set mode to Normal",
+        "command": "danceflow.modes.set.move",
+        "title": "Set mode to Move",
         "category": "Danceflow"
       },
       {
@@ -1298,8 +1298,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.set.temporarily.normal",
-        "title": "Temporary Normal mode",
+        "command": "danceflow.modes.set.temporarily.move",
+        "title": "Temporary Move mode",
         "category": "Danceflow"
       },
       {
@@ -1992,866 +1992,866 @@
       "commandPalette": [
         {
           "command": "danceflow.dev.copyLastErrorMessage",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.dev.setSelectionBehavior",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.align",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.case.swap",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.case.toLower",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.case.toUpper",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.copyIndentation",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.deindent",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.deindent.withIncomplete",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.delete",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.delete-insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.indent",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.indent.withEmpty",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.join",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.join.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.newLine.above",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.newLine.above.insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.newLine.below",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.newLine.below.insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.paste.after",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.paste.after.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.paste.before",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.paste.before.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.pasteAll.after",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.pasteAll.after.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.pasteAll.before",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.pasteAll.before.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.replaceCharacters",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.selectRegister-insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.yank-delete",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.yank-delete-insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.edit.yank-replace",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.recording.play",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.recording.start",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.recording.stop",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.redo",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.redo.selections",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.repeat",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.repeat.edit",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.repeat.seek",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.repeat.selection",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.undo",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.history.undo.selections",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.keybindings.setup",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.cancel",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.changeInput",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.ifEmpty",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.ignore",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.openMenu",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.run",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selectRegister",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.updateCount",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.updateRegister",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.insert.after",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.insert.before",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.insert.lineEnd",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.insert.lineStart",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.set",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.set.insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.set.normal",
-          "when": "danceflow.mode == 'normal'"
+          "command": "danceflow.modes.set.move",
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.set.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.set.temporarily",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.modes.set.temporarily.insert",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.set.temporarily.normal",
-          "when": "danceflow.mode == 'normal'"
+          "command": "danceflow.modes.set.temporarily.move",
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.backward.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.next",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.next.add",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.previous",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.previous.add",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.selection",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.search.selection.smart",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.end",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.end.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.inner",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.inner.end",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.inner.end.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.inner.start",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.inner.start.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.start",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.askObject.start.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.enclosing",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.enclosing.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.enclosing.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.enclosing.extend.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.extend.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.included",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.included.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.included.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.included.extend.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.leap",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.leap.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.object",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.syntax.child.experimental",
-          "when": "danceflow.mode == 'normal' && tree-sitter.activeEditorIsSupported"
+          "when": "danceflow.mode == 'move' && tree-sitter.activeEditorIsSupported"
         },
         {
           "command": "danceflow.seek.syntax.experimental",
-          "when": "danceflow.mode == 'normal' && tree-sitter.activeEditorIsSupported"
+          "when": "danceflow.mode == 'move' && tree-sitter.activeEditorIsSupported"
         },
         {
           "command": "danceflow.seek.syntax.next.experimental",
-          "when": "danceflow.mode == 'normal' && tree-sitter.activeEditorIsSupported"
+          "when": "danceflow.mode == 'move' && tree-sitter.activeEditorIsSupported"
         },
         {
           "command": "danceflow.seek.syntax.parent.experimental",
-          "when": "danceflow.mode == 'normal' && tree-sitter.activeEditorIsSupported"
+          "when": "danceflow.mode == 'move' && tree-sitter.activeEditorIsSupported"
         },
         {
           "command": "danceflow.seek.syntax.previous.experimental",
-          "when": "danceflow.mode == 'normal' && tree-sitter.activeEditorIsSupported"
+          "when": "danceflow.mode == 'move' && tree-sitter.activeEditorIsSupported"
         },
         {
           "command": "danceflow.seek.word",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.extend.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.ws",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.ws.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.ws.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.word.ws.extend.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.wordEnd",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.wordEnd.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.wordEnd.ws",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.seek.wordEnd.ws.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.buffer",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.documentEnd.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.documentEnd.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.down.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.down.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.firstLine.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.firstLine.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.firstVisibleLine",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.firstVisibleLine.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.firstVisibleLine.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.horizontally",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastLine",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastLine.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastLine.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastVisibleLine",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastVisibleLine.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lastVisibleLine.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.left.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.left.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.line.above",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.line.above.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.line.below",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.line.below.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineEnd",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineEnd.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineStart",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineStart.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineStart.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineStart.skipBlank.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.lineStart.skipBlank.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.middleVisibleLine",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.middleVisibleLine.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.middleVisibleLine.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.right.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.right.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.to",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.to.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.to.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.up.extend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.up.jump",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.select.vertically",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.changeDirection",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.changeOrder",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.clear.main",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.clear.secondary",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.copy",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.copy.above",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.expandToLines",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.faceBackward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.faceForward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.filter",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.filter.regexp",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.filter.regexp.inverse",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.hideIndices",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.merge",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.open",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.orderAscending",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.orderDescending",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.pipe",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.pipe.append",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.pipe.prepend",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.pipe.replace",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.reduce",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.reduce.edges",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.restore",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.restore.withCurrent",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.save",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.saveText",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.select",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.select.orLeap",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.showIndices",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.sort",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.split",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.splitLines",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.splitLines.orLeap.backward",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.toggleIndices",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.trimLines",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.trimWhitespace",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.both",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.both.reverse",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.contents",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.contents.reverse",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.selections",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.selections.rotate.selections.reverse",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         },
         {
           "command": "danceflow.view.line",
-          "when": "danceflow.mode == 'normal'"
+          "when": "danceflow.mode == 'move'"
         }
       ]
     },
     "keybindings": [
       {
         "key": "Shift+7",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Align selections",
         "command": "danceflow.edit.align"
       },
       {
         "key": "Shift+`",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Swap case",
         "command": "danceflow.edit.case.swap"
       },
       {
         "key": "`",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Transform to lower case",
         "command": "danceflow.edit.case.toLower"
       },
       {
         "key": "Alt+`",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Transform to upper case",
         "command": "danceflow.edit.case.toUpper"
       },
       {
         "key": "Shift+,",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Deindent selected lines (including incomplete indent)",
         "command": "danceflow.edit.deindent.withIncomplete"
       },
       {
         "key": "Alt+D",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Delete",
         "command": "danceflow.edit.delete"
       },
       {
         "key": "Shift+.",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Indent selected lines",
         "command": "danceflow.edit.indent"
       },
       {
         "key": "Shift+R",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert contents of register",
         "command": "danceflow.edit.insert"
       },
       {
         "key": "Shift+J",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Join lines",
         "command": "danceflow.edit.join"
       },
@@ -2863,7 +2863,7 @@
       },
       {
         "key": "Shift+Alt+J",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Join lines and select inserted separators",
         "command": "danceflow.edit.join.select"
       },
@@ -2875,7 +2875,7 @@
       },
       {
         "key": "Shift+O",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert new line above and switch to insert",
         "command": "danceflow.edit.newLine.above.insert"
       },
@@ -2887,7 +2887,7 @@
       },
       {
         "key": "O",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert new line below and switch to insert",
         "command": "danceflow.edit.newLine.below.insert"
       },
@@ -2899,31 +2899,31 @@
       },
       {
         "key": "P",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Paste after and select",
         "command": "danceflow.edit.paste.after.select"
       },
       {
         "key": "Shift+P",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Paste before and select",
         "command": "danceflow.edit.paste.before.select"
       },
       {
         "key": "R",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Replace characters",
         "command": "danceflow.edit.replaceCharacters"
       },
       {
         "key": "D",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Copy and delete",
         "command": "danceflow.edit.yank-delete"
       },
       {
         "key": "C",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Copy, delete and switch to Insert",
         "command": "danceflow.edit.yank-delete-insert"
       },
@@ -2943,7 +2943,7 @@
               ".edit.insert"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -2958,7 +2958,7 @@
               ".edit.delete"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -2973,7 +2973,7 @@
               ".edit.yank-delete"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -2988,7 +2988,7 @@
               ".edit.paste.before"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3003,7 +3003,7 @@
               ".edit.paste.after"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3018,7 +3018,7 @@
               ".edit.indent"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3033,7 +3033,7 @@
               ".edit.deindent"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3048,7 +3048,7 @@
               ".edit.case.toLower"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3063,7 +3063,7 @@
               ".edit.case.toUpper"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3078,7 +3078,7 @@
               ".edit.case.swap"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
@@ -3093,14 +3093,14 @@
               ".edit.replaceCharacters"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
       },
       {
         "key": "Shift+U",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Redo",
         "command": "danceflow.history.redo"
       },
@@ -3112,19 +3112,19 @@
       },
       {
         "key": ".",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Repeat last edit without a command",
         "command": "danceflow.history.repeat.edit"
       },
       {
         "key": "NumPad_Decimal",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Repeat last edit without a command",
         "command": "danceflow.history.repeat.edit"
       },
       {
         "key": "Alt+.",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Repeat last seek",
         "command": "danceflow.history.repeat.seek"
       },
@@ -3136,7 +3136,7 @@
       },
       {
         "key": "U",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Undo",
         "command": "danceflow.history.undo"
       },
@@ -3148,7 +3148,7 @@
       },
       {
         "key": "Escape",
-        "when": "editorTextFocus && danceflow.mode == 'normal' && !danceflow.isRecording && !markersNavigationVisible",
+        "when": "editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible",
         "title": "Cancel Danceflow operation",
         "command": "danceflow.cancel"
       },
@@ -3176,13 +3176,13 @@
       },
       {
         "key": "Shift+'",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select register for next command",
         "command": "danceflow.selectRegister"
       },
       {
         "key": "0",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 0 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3200,7 +3200,7 @@
       },
       {
         "key": "NumPad0",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 0 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3218,7 +3218,7 @@
       },
       {
         "key": "1",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 1 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3236,7 +3236,7 @@
       },
       {
         "key": "NumPad1",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 1 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3254,7 +3254,7 @@
       },
       {
         "key": "2",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 2 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3272,7 +3272,7 @@
       },
       {
         "key": "NumPad2",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 2 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3290,7 +3290,7 @@
       },
       {
         "key": "3",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 3 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3308,7 +3308,7 @@
       },
       {
         "key": "NumPad3",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 3 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3326,7 +3326,7 @@
       },
       {
         "key": "4",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 4 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3344,7 +3344,7 @@
       },
       {
         "key": "NumPad4",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 4 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3362,7 +3362,7 @@
       },
       {
         "key": "5",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 5 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3380,7 +3380,7 @@
       },
       {
         "key": "NumPad5",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 5 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3398,7 +3398,7 @@
       },
       {
         "key": "6",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 6 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3416,7 +3416,7 @@
       },
       {
         "key": "NumPad6",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 6 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3434,7 +3434,7 @@
       },
       {
         "key": "7",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 7 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3452,7 +3452,7 @@
       },
       {
         "key": "NumPad7",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 7 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3470,7 +3470,7 @@
       },
       {
         "key": "8",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 8 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3488,7 +3488,7 @@
       },
       {
         "key": "NumPad8",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 8 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3506,7 +3506,7 @@
       },
       {
         "key": "9",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 9 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3524,7 +3524,7 @@
       },
       {
         "key": "NumPad9",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Add the digit 9 to the counter",
         "command": "danceflow.updateCount",
         "args": {
@@ -3542,7 +3542,7 @@
       },
       {
         "key": "Shift+;",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "command": "workbench.action.showCommands",
         "args": {
           "$exclude": []
@@ -3550,7 +3550,7 @@
       },
       {
         "key": "A",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert after",
         "command": "danceflow.modes.insert.after"
       },
@@ -3562,7 +3562,7 @@
       },
       {
         "key": "I",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert before",
         "command": "danceflow.modes.insert.before"
       },
@@ -3574,7 +3574,7 @@
       },
       {
         "key": "Shift+A",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert at line end",
         "command": "danceflow.modes.insert.lineEnd"
       },
@@ -3586,7 +3586,7 @@
       },
       {
         "key": "Shift+I",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Insert at line start",
         "command": "danceflow.modes.insert.lineStart"
       },
@@ -3599,42 +3599,42 @@
       {
         "key": "Escape",
         "when": "editorTextFocus && danceflow.mode == 'insert'",
-        "title": "Set mode to Normal",
-        "command": "danceflow.modes.set.normal"
+        "title": "Set mode to Move",
+        "command": "danceflow.modes.set.move"
       },
       {
         "key": "Escape",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Set mode to Normal",
-        "command": "danceflow.modes.set.normal"
+        "title": "Set mode to Move",
+        "command": "danceflow.modes.set.move"
       },
       {
         "key": "V",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Set mode to Normal",
-        "command": "danceflow.modes.set.normal"
+        "title": "Set mode to Move",
+        "command": "danceflow.modes.set.move"
       },
       {
         "key": "V",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Set mode to Select",
         "command": "danceflow.modes.set.select"
       },
       {
         "key": "/",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search",
         "command": "danceflow.search"
       },
       {
         "key": "NumPad_Divide",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search",
         "command": "danceflow.search"
       },
       {
         "key": "Shift+/",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search backward",
         "command": "danceflow.search.backward"
       },
@@ -3652,7 +3652,7 @@
       },
       {
         "key": "N",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select next match",
         "command": "danceflow.search.next"
       },
@@ -3664,7 +3664,7 @@
       },
       {
         "key": "Shift+N",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select previous match",
         "command": "danceflow.search.previous"
       },
@@ -3676,31 +3676,31 @@
       },
       {
         "key": "Shift+Alt+8",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search current selection",
         "command": "danceflow.search.selection"
       },
       {
         "key": "Alt+NumPad_Multiply",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search current selection",
         "command": "danceflow.search.selection"
       },
       {
         "key": "Shift+8",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search current selection (smart)",
         "command": "danceflow.search.selection.smart"
       },
       {
         "key": "NumPad_Multiply",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Search current selection (smart)",
         "command": "danceflow.search.selection.smart"
       },
       {
         "key": "M",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Open match menu",
         "command": "danceflow.openMenu",
         "args": {
@@ -3723,13 +3723,13 @@
       },
       {
         "key": "T",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to character (excluded)",
         "command": "danceflow.seek"
       },
       {
         "key": "Shift+T",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to character (excluded, backward)",
         "command": "danceflow.seek.backward"
       },
@@ -3747,13 +3747,13 @@
       },
       {
         "key": "F",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to character (included)",
         "command": "danceflow.seek.included"
       },
       {
         "key": "Shift+F",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to character (included, backward)",
         "command": "danceflow.seek.included.backward"
       },
@@ -3771,13 +3771,13 @@
       },
       {
         "key": "W",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to next word start",
         "command": "danceflow.seek.word"
       },
       {
         "key": "B",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to previous word start",
         "command": "danceflow.seek.word.backward"
       },
@@ -3795,13 +3795,13 @@
       },
       {
         "key": "Shift+W",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to next non-whitespace word start",
         "command": "danceflow.seek.word.ws"
       },
       {
         "key": "Shift+B",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to previous non-whitespace word start",
         "command": "danceflow.seek.word.ws.backward"
       },
@@ -3819,7 +3819,7 @@
       },
       {
         "key": "E",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to next word end",
         "command": "danceflow.seek.wordEnd"
       },
@@ -3831,7 +3831,7 @@
       },
       {
         "key": "Shift+E",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to next non-whitespace word end",
         "command": "danceflow.seek.wordEnd.ws"
       },
@@ -3843,7 +3843,7 @@
       },
       {
         "key": "Shift+5",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select whole buffer",
         "command": "danceflow.select.buffer"
       },
@@ -3867,13 +3867,13 @@
       },
       {
         "key": "J",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump down",
         "command": "danceflow.select.down.jump"
       },
       {
         "key": "Down",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump down",
         "command": "danceflow.select.down.jump"
       },
@@ -3891,19 +3891,19 @@
       },
       {
         "key": "H",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump left",
         "command": "danceflow.select.left.jump"
       },
       {
         "key": "Left",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump left",
         "command": "danceflow.select.left.jump"
       },
       {
         "key": "X",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Extend to line below",
         "command": "danceflow.select.line.below.extend"
       },
@@ -3915,7 +3915,7 @@
       },
       {
         "key": "End",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to line end",
         "command": "danceflow.select.lineEnd"
       },
@@ -3927,7 +3927,7 @@
       },
       {
         "key": "Home",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Select to line start",
         "command": "danceflow.select.lineStart"
       },
@@ -3951,13 +3951,13 @@
       },
       {
         "key": "L",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump right",
         "command": "danceflow.select.right.jump"
       },
       {
         "key": "Right",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump right",
         "command": "danceflow.select.right.jump"
       },
@@ -3969,7 +3969,7 @@
       },
       {
         "key": "G",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Go to",
         "command": "danceflow.select.to.jump"
       },
@@ -3987,19 +3987,19 @@
       },
       {
         "key": "K",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump up",
         "command": "danceflow.select.up.jump"
       },
       {
         "key": "Up",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Jump up",
         "command": "danceflow.select.up.jump"
       },
       {
         "key": "Ctrl+F",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": 1,
@@ -4019,7 +4019,7 @@
       },
       {
         "key": "Ctrl+D",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": 1,
@@ -4039,7 +4039,7 @@
       },
       {
         "key": "Ctrl+B",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": -1,
@@ -4059,7 +4059,7 @@
       },
       {
         "key": "Ctrl+U",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": -1,
@@ -4127,14 +4127,14 @@
               ".selections.saveText"
             ],
             [
-              ".modes.set.normal"
+              ".modes.set.move"
             ]
           ]
         }
       },
       {
         "key": "Alt+;",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Change direction of selections",
         "command": "danceflow.selections.changeDirection"
       },
@@ -4146,7 +4146,7 @@
       },
       {
         "key": "Alt+,",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Clear main selections",
         "command": "danceflow.selections.clear.main"
       },
@@ -4158,7 +4158,7 @@
       },
       {
         "key": ",",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Clear secondary selections",
         "command": "danceflow.selections.clear.secondary"
       },
@@ -4170,7 +4170,7 @@
       },
       {
         "key": "Shift+C",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Copy selections below",
         "command": "danceflow.selections.copy"
       },
@@ -4182,7 +4182,7 @@
       },
       {
         "key": "Shift+Alt+C",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Copy selections above",
         "command": "danceflow.selections.copy.above"
       },
@@ -4194,7 +4194,7 @@
       },
       {
         "key": "Shift+X",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Expand to lines",
         "command": "danceflow.selections.expandToLines"
       },
@@ -4206,7 +4206,7 @@
       },
       {
         "key": "Shift+4",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Filter selections",
         "command": "danceflow.selections.filter"
       },
@@ -4218,7 +4218,7 @@
       },
       {
         "key": "Alt+K",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Keep matching selections",
         "command": "danceflow.selections.filter.regexp"
       },
@@ -4230,7 +4230,7 @@
       },
       {
         "key": "Shift+Alt+K",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Clear matching selections",
         "command": "danceflow.selections.filter.regexp.inverse"
       },
@@ -4242,7 +4242,7 @@
       },
       {
         "key": "Shift+Alt+\\",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Pipe selections",
         "command": "danceflow.selections.pipe"
       },
@@ -4254,7 +4254,7 @@
       },
       {
         "key": "Shift+1",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Pipe and append",
         "command": "danceflow.selections.pipe.append"
       },
@@ -4266,7 +4266,7 @@
       },
       {
         "key": "Shift+Alt+1",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Pipe and prepend",
         "command": "danceflow.selections.pipe.prepend"
       },
@@ -4278,7 +4278,7 @@
       },
       {
         "key": "Shift+\\",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Pipe and replace",
         "command": "danceflow.selections.pipe.replace"
       },
@@ -4290,7 +4290,7 @@
       },
       {
         "key": ";",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Reduce selections to their cursor",
         "command": "danceflow.selections.reduce"
       },
@@ -4302,13 +4302,13 @@
       },
       {
         "key": "Y",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Copy selections text",
         "command": "danceflow.selections.saveText"
       },
       {
         "key": "S",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Leap or select",
         "command": "danceflow.selections.select.orLeap"
       },
@@ -4320,7 +4320,7 @@
       },
       {
         "key": "Shift+S",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Split selections",
         "command": "danceflow.selections.split"
       },
@@ -4332,7 +4332,7 @@
       },
       {
         "key": "Alt+S",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Leap or select backward",
         "command": "danceflow.selections.splitLines.orLeap.backward"
       },
@@ -4344,7 +4344,7 @@
       },
       {
         "key": "Enter",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Toggle selection indices",
         "command": "danceflow.selections.toggleIndices"
       },
@@ -4356,7 +4356,7 @@
       },
       {
         "key": "Alt+X",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Trim lines",
         "command": "danceflow.selections.trimLines"
       },
@@ -4368,7 +4368,7 @@
       },
       {
         "key": "Shift+-",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Trim whitespace",
         "command": "danceflow.selections.trimWhitespace"
       },
@@ -4380,7 +4380,7 @@
       },
       {
         "key": "Shift+Alt+0",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Rotate selections clockwise (contents only)",
         "command": "danceflow.selections.rotate.contents"
       },
@@ -4392,7 +4392,7 @@
       },
       {
         "key": "Shift+Alt+9",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Rotate selections counter-clockwise (contents only)",
         "command": "danceflow.selections.rotate.contents.reverse"
       },
@@ -4404,7 +4404,7 @@
       },
       {
         "key": "Shift+0",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Rotate selections clockwise (selections only)",
         "command": "danceflow.selections.rotate.selections"
       },
@@ -4416,7 +4416,7 @@
       },
       {
         "key": "Shift+9",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Rotate selections counter-clockwise (selections only)",
         "command": "danceflow.selections.rotate.selections.reverse"
       },
@@ -4428,7 +4428,7 @@
       },
       {
         "key": "Z",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Show view menu",
         "command": "danceflow.openMenu",
         "args": {
@@ -4448,7 +4448,7 @@
       },
       {
         "key": "Shift+Z",
-        "when": "editorTextFocus && danceflow.mode == 'normal'",
+        "when": "editorTextFocus && danceflow.mode == 'move'",
         "title": "Show view menu (locked)",
         "command": "danceflow.openMenu",
         "args": {
@@ -4471,127 +4471,127 @@
       {
         "key": "Q",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+D",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+G",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+H",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+K",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+L",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+M",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+Q",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+V",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+Y",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+2",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+3",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+6",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "'",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "-",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "=",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Tab",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Space",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "NumPad_Add",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "NumPad_Subtract",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+=",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+Tab",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+Space",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+NumPad_Add",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       },
       {
         "key": "Shift+NumPad_Subtract",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.mode == 'normal'"
+        "when": "editorTextFocus && danceflow.mode == 'move'"
       }
     ]
   }
