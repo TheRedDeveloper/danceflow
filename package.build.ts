@@ -764,8 +764,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // Keybindings.
     // ========================================================================
 
-    // TODO: unassign default keybindings, and force the user to explicitly set
-    // them up.
     keybindings: (() => {
       const keybindings = modules
         .flatMap((module) => module.keybindings)

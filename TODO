@@ -4,37 +4,60 @@
   ✔ "normal" → "move" @done(25-04-05 13:56)
   ✔ "insert" → "modify" @done(25-04-05 15:40)
 ✔ Select mode with underline cursor @done(25-04-05 15:50)
-☐ Keys will be grouped as
-  Editor: `esc` `⎈p` `⎈o` `⎈r` ...
-  Change: `d`/`⎈x` `⇧d` `⎇d` ...
-  Move: `h` `j` `k` `l` `w` ...
-  SelectedMove: `h` `j` `k` `l` `w` ...
-  Interact: `y`/`⎈c` `[0-9]` ...
-  Inspect: `f` `t` `z` `g` ...
-  Menu: `h` `j` `k` `l` ...
-  Typing: Any
+☐ Handle keybindings properly
+  ✔ Find out how keybindings are currently handled and made @done(25-04-05 18:21)
+    parseAdditional in meta.ts parses the markdown contained in the comments of files in src/commands/
+    parseKeys parses these and the @keys property in the JSDoc of files in src/commands/
+    getKeybindings uses this info to create the keybindings
+    from which pkg in package.build.json then chooses the correct keybindings
+    This is crazy! This should be refactored immediately!
   
-  ☐ Respond properly based on mode
+  ☐ Key handlers will be grouped as
+    Editor:
+      Global: `esc` `⎈p` `⎈o` `⎈r` ...
+      Inspect → Inspect Mode: `f` `t` `z` `g` ...
+      Interact: `y`/`⎈c` `[0-9]` ...
+      Change → Move Mode: `d`/`⎈x` `⇧d` `⎇d` ...
+      SelectedMove → Select Mode: `h` `j` `k` `l` `w` ...
+      Move → Move Mode: `h` `j` `k` `l` `w` ...
+    
+    Menu: `h` `j` `k` `l` ...
+
+  ☐ Some handlers ensure being in a specific mode before executing.
+    ☐ They error if they can not switch into it.
+  
+  ☐ All handlers are prioritized as such
+    1. Global
+    2. Inspect
+    3. Interact
+    4. Change
+    5. Move
+    6. SelectedMove
+    7. Select
+  
+  ☐ Every mode needs to have a configurable list of active handler groups
     Modify Mode:
-    1. Editor
-    2. Typing
+    - Global
     Move Mode:
-    1. Editor
-    2. Interact
-    3. Change
-    4. Move
+    - Global
+    - Interact
+    - Change
+    - Move
     Select Mode:
-    1. Editor
-    2. Interact
-    3. SelectedMove
-    4. Move
-    5. Change → Move Mode
+    - Global
+    - Interact
+    - SelectedMove
+    - Change → Move Mode
     Inspect Mode:
-    1. Editor
-    2. Interact
-    3. Inspect
-    4. Change → Move Mode
-    5. Move → Move Mode
+    - Global
+    - Inspect
+    - Interact
+    - Change → Move Mode
+    - Move → Move Mode
+
+  ☐ At compile time we should find out which handler is active when, having it deactivate when overwritten
+    ☐ The move.left handler on `h` should be inactive when the higher priority selectedMove is active because it has selectedMove.left on `h`
+
 ☐ The last cursor should always be the primary cursor
 ☐ There should be a simpler editor window
   ☐ Remove the weird orange bar
