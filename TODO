@@ -10,8 +10,12 @@
     parseKeys parses these and the @keys property in the JSDoc of files in src/commands/
     getKeybindings uses this info to create the keybindings
     from which pkg in package.build.json then chooses the correct keybindings
+    src/api/keys.ts only contains "TODO" and was left like this 3 years ago
+    src/api/commands/keybindings.ts is also left todo for 4 years
     This is crazy! This should be refactored immediately!
   
+  All of this needs to be done at build time! NOT RUNTIME!
+
   ☐ Key handlers will be grouped as
     Editor:
       Global: `esc` `⎈p` `⎈o` `⎈r` ...
@@ -23,19 +27,93 @@
     
     Menu: `h` `j` `k` `l` ...
 
-  ☐ Some handlers ensure being in a specific mode before executing.
-    ☐ They error if they can not switch into it.
+    Let's just focus on the editor keybindings for now.
+
+    ☐ All editor keybinds are prioritized as such
+      1. Global
+      2. Inspect
+      3. Interact
+      4. Change
+      5. SelectedMove
+      6. Move
+      7. Select
+    
+    ☐ Default keybindings should be set on the ordered groups in src/keybinds/default.ts 
+      The object I configure should be like this
+      {
+        global: {
+          [`esc`]: "danceflow.exit",
+          [`⇧1`, `⎈⇧g`]: "danceflow.togglePanel.git",
+          [`⇧2`, `⎈⇧e`]: "danceflow.togglePanel.explorer",
+          [`⇧3`, `⎈⇧t`]: "danceflow.togglePanel.testing",
+          ...
+        },
+        inspect: {
+          ...
+        },
+        ...
+        selectedMove: {
+          [`h`]: "danceflow.selectedMove.left",
+          ...
+        },
+        move: {
+          [`h`]: "danceflow.move.left",
+          ...
+        },
+        ...
+      }
+      
+  ☐ At build time we should find out a key bind's condition, having it deactivate when overwritten
+    The move.left handler on `h` should be inactive when the higher priority selectedMove is active because it has selectedMove.left on `h`
+    First we should separate out all the multi-assigned keybinds
+    Then we should find out the condition of each keybind
+    This results in an object like this
+    {
+      global: [
+        {key: `esc`, command: "danceflow.exit"},
+        {key: `⇧1`, command: "danceflow.togglePanel.git"},
+        {key: `⎈⇧g`, command: "danceflow.togglePanel.git"},
+        {key: `⇧2`, command: "danceflow.togglePanel.explorer"},
+        {key: `⎈⇧e`, command: "danceflow.togglePanel.explorer"},
+        {key: `⇧3`, command: "danceflow.togglePanel.testing"},
+        {key: `⎈⇧t`, command: "danceflow.togglePanel.testing"},
+        ...
+      ],
+      inspect: [
+        ...
+      ],
+      ...
+      selectedMove: [
+        {key: `h`, command: "danceflow.selectedMove.left"},
+        ...
+      ],
+      move: [
+        {key: `h`, command: "danceflow.move.left", condition: "!danceflow.selectedMove.active"},
+        ...
+      ]
+    }
   
-  ☐ All handlers are prioritized as such
-    1. Global
-    2. Inspect
-    3. Interact
-    4. Change
-    5. Move
-    6. SelectedMove
-    7. Select
+  ☐ Every keybind should only be active when its corresponding group is active
+    This results in a final object like this
+    {
+      {key: `esc`, command: "danceflow.exit"},
+      {key: `⇧1`, command: "danceflow.togglePanel.git"},
+      {key: `⎈⇧g`, command: "danceflow.togglePanel.git"},
+      {key: `⇧2`, command: "danceflow.togglePanel.explorer"},
+      {key: `⎈⇧e`, command: "danceflow.togglePanel.explorer"},
+      {key: `⇧3`, command: "danceflow.togglePanel.testing"},
+      {key: `⎈⇧t`, command: "danceflow.togglePanel.testing"},
+      ...
+      {key: `h`, command: "danceflow.selectedMove.left", condition: "danceflow.selectedMove.active"},
+      ...
+      {key: `h`, command: "danceflow.move.left", condition: "danceflow.move.active && !danceflow.selectedMove.active"},
+      ...
+    }
   
-  ☐ Every mode needs to have a configurable list of active handler groups
+  ☐ Ensure that this works with unit tests
+    
+  ☐ Every mode needs to have a configurable list of active groups
+    These will have to be made configurable inside package.build.ts inside "danceflow.modes"  
     Modify Mode:
     - Global
     Move Mode:
@@ -54,9 +132,9 @@
     - Interact
     - Change → Move Mode
     - Move → Move Mode
-
-  ☐ At compile time we should find out which handler is active when, having it deactivate when overwritten
-    ☐ The move.left handler on `h` should be inactive when the higher priority selectedMove is active because it has selectedMove.left on `h`
+    
+  ☐ Some commands ensure being in a specific mode before executing.
+    ☐ Error if they can not switch into it.
 
 ☐ The last cursor should always be the primary cursor
 ☐ There should be a simpler editor window

@@ -185,10 +185,6 @@ import {
 } from "./history";
 
 import {
-  setup as keybindings_setup,
-} from "./keybindings";
-
-import {
   cancel as cancel,
   changeInput as changeInput,
   ifEmpty as ifEmpty,
@@ -425,11 +421,6 @@ export const commands: Commands = function () {
       "danceflow.ignore",
       (_) => _.runAsync(async (_) => await ignore()),
       CommandDescriptor.Flags.None,
-    ),
-    "danceflow.keybindings.setup": new CommandDescriptor(
-      "danceflow.keybindings.setup",
-      (_, argument) => _.runAsync(async (_) => await keybindings_setup(_, getRegister(_, argument, "dquote", Register.Flags.CanWrite))),
-      CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "danceflow.modes.set": new CommandDescriptor(
       "danceflow.modes.set",

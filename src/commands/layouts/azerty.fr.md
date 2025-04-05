@@ -53,7 +53,6 @@
 <tr><td><a href="#history.repeat.edit"><code>history.repeat.edit</code></a></td><td>Repeat last edit without a command</td><td><code>.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>NumPad_Decimal</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#history.undo"><code>history.undo</code></a></td><td>Undo</td><td><code>U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>U</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td rowspan=1><a href="#keybindings"><code>keybindings</code></a></td><td><a href="#keybindings.setup"><code>keybindings.setup</code></a></td><td>Set up Danceflow keybindings</td><td></td></tr>
 <tr><td rowspan=9><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
 <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
 <tr><td><a href="#ifEmpty"><code>ifEmpty</code></a></td><td>Executes one of the specified commands depending on whether the current
@@ -629,19 +628,6 @@ This command:
 
 Default keybinding: `escape` (kakoune: move, recording)
 `s-q` (kakoune: move, recording)
-
-## [`keybindings`](../keybindings.ts)
-
-Utilities for setting up keybindings.
-
-<a name="keybindings.setup" />
-
-### [`keybindings.setup`](../keybindings.ts#L12-L15)
-
-Set up Danceflow keybindings.
-
-This command:
-- accepts a register (by default, it uses `dquote`).
 
 ## [`misc`](../misc.ts)
 

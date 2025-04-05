@@ -35,13 +35,11 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 `⇧3`/`⎈⇧c` Toggle copilot chat
 
-`⇧4`/`⎈⇧i` Toggle copilot edits
+`⇧4`/`⎈⇧s` Toggle search
 
-`⇧5`/`⎈⇧s` Toggle search
+`⇧5`/`⎈⇧t` Toggle testing
 
-`⇧7`/`⎈⇧d` Toggle debugger
-
-`⇧8`/`⎈⇧x` Toggle extensions
+`⇧6`/`⎈⇧x` Toggle extensions
 
 #### Windows
 
@@ -168,7 +166,7 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 `d`/`⎈x` Cut, `⎈d`/`del`/`backspace` Delete
 
-`⇧d` Cut word, `⎈⇧d`/`⎈del`/`⎈backspace` Delete word
+`⇧d` Cut word, `⎈del`/`⎈backspace` Delete word
 
 `⎇d` Cut line, `⎈⎇⇧d` Delete line
 

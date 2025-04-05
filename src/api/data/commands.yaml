@@ -621,14 +621,6 @@ ignore:
     en: |
       Ignore key.
 
-keybindings.setup:
-  title:
-    en: Set up Danceflow keybindings
-
-  doc:
-    en: |
-      Set up Danceflow keybindings.
-
 modes.modify.after:
   title:
     en: Modify after

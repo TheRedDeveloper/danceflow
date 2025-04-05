@@ -7,7 +7,6 @@ export * from "./edit/linewise";
 export * from "./errors";
 export * from "./functional";
 export * from "./history";
-export * from "./keys";
 export * from "./menu";
 export * from "./modes";
 export * from "./prompt";
