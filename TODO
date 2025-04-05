@@ -5,22 +5,36 @@
   ✔ "insert" → "modify" @done(25-04-05 15:40)
 ✔ Select mode with underline cursor @done(25-04-05 15:50)
 ☐ Keys will be grouped as
-  Global Keys: `esc` `⎈p` `⎈o` `⎈r` `⇧1` `⇧2` `⇧3` `⇧4` `⇧5` `⇧6` `⇧8` `⎈⇧s` `⎈tab` `⎈⇧tab` `⎈t` `⎈s` `⎈g` `⎈w` `⎈⇧g` `⎈⇧e` `⎈⇧c` `⎈⎇i` `⎈⎇⇧c` `⎈⎇⇧i` `⎈⇧d` `⎈⇧x` `⎈⇧p`
-  Modify Keys: `d`/`⎈x` `⇧d` `⎇d` `⎈⇧d`/`⎈del`/`⎈backspace` `⎈d`/`del`/`backspace` `p`/`⎈v` `⇧p`/`⎈⇧v` `u`/`⎈z`/`⎈⇧y` `⇧u`/`⎈⇧z`/`⎈y` `i` `⇧i` `a` `⇧a` `c` `r` `⇧r` `o` `⇧o` `tab` `⇧tab` `⎇space` `⎇⇧space` `⇧j` `-` `⇧c` `"` `=` `⎇=` `⎈=` `⎈⇧=` `⎈up`/`⎈k` `⎈down`/`⎈j` `q` `.`
-  Move Keys: `h` `j` `k` `l` `w` `⇧w` `e` `⇧e` `b` `⇧b` `x` `v` `;` `⇧;` `⎈f` `n` `⇧n` `⎈n` `⎈⇧n` `s` `⎇s` `⇧s` `⇧m` `⎇⇧]` `⎇⇧[` `'` `[` `]` `m` `⎈d` `⎈u` `⎈⇧d` `⎈⇧u` `⇧k` `⎈a` `⇧-`
-  Static Keys: `y`/`⎈c` `[0-9]` `⇧q` `⎈q` `⎈⇧q` `space`
+  Editor: `esc` `⎈p` `⎈o` `⎈r` ...
+  Change: `d`/`⎈x` `⇧d` `⎇d` ...
+  Move: `h` `j` `k` `l` `w` ...
+  SelectedMove: `h` `j` `k` `l` `w` ...
+  Interact: `y`/`⎈c` `[0-9]` ...
+  Inspect: `f` `t` `z` `g` ...
+  Menu: `h` `j` `k` `l` ...
+  Typing: Any
+  
   ☐ Respond properly based on mode
     Modify Mode:
-    Active: Global, Typing(*)~self
-    Inactive: Modify, Move, Static
+    1. Editor
+    2. Typing
     Move Mode:
-    Active: Global, Static, Modify, Move~self
+    1. Editor
+    2. Interact
+    3. Change
+    4. Move
     Select Mode:
-    Active: Global, Static, Move~self
-    Breakout → Move: Modify
+    1. Editor
+    2. Interact
+    3. SelectedMove
+    4. Move
+    5. Change → Move Mode
     Inspect Mode:
-    Active: Global, Static, Inspect(`f` `t` `z` `g` `r` `y` `space`)~self
-    Breakout → Move: Modify, Move
+    1. Editor
+    2. Interact
+    3. Inspect
+    4. Change → Move Mode
+    5. Move → Move Mode
 ☐ The last cursor should always be the primary cursor
 ☐ There should be a simpler editor window
   ☐ Remove the weird orange bar
