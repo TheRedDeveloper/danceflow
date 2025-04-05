@@ -766,9 +766,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.edit.delete-insert",
+    "danceflow.edit.delete-modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set", { mode: "insert", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["mode"] }]],
+    [[".modes.set", { mode: "modify", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -778,9 +778,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.edit.yank-delete-insert",
+    "danceflow.edit.yank-delete-modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.saveText", { $include: ["register"] }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["register","mode"] }]],
+    [[".selections.saveText", { $include: ["register"] }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["register","mode"] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -808,9 +808,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.set.insert",
+    "danceflow.modes.set.modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set", { mode: "insert" }]],
+    [[".modes.set", { mode: "modify" }]],
   );
   describeAdditionalCommand(
     commands,
@@ -820,15 +820,15 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.insert.lineStart",
+    "danceflow.modes.modify.lineStart",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
+    [[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.insert.lineEnd",
+    "danceflow.modes.modify.lineEnd",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".select.lineEnd" , { shift: "jump" }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
+    [[".select.lineEnd" , { shift: "jump" }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
@@ -838,9 +838,9 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.set.temporarily.insert",
+    "danceflow.modes.set.temporarily.modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".modes.set.temporarily", { mode: "insert" }]],
+    [[".modes.set.temporarily", { mode: "modify" }]],
   );
   describeAdditionalCommand(
     commands,
@@ -1384,27 +1384,27 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.insert.before",
+    "danceflow.modes.modify.before",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
+    [[".selections.faceBackward", { record: false }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".selections.reduce", { where: "start", record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.modes.insert.after",
+    "danceflow.modes.modify.after",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.faceForward" , { record: false }], [".modes.set", { mode: "insert", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
+    [[".selections.faceForward" , { record: false }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".selections.reduce", { where: "end" , record: false, empty: true, $exclude: ["mode"] }]],
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.edit.newLine.above.insert",
+    "danceflow.edit.newLine.above.modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { $exclude: [] }]],
+    [[".edit.newLine.above", { shift: "select" }], [".modes.modify.before", { $exclude: [] }]],
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.edit.newLine.below.insert",
+    "danceflow.edit.newLine.below.modify",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { $exclude: [] }]],
+    [[".edit.newLine.below", { shift: "select" }], [".modes.modify.before", { $exclude: [] }]],
   );
 
   // Finalize `commands`.

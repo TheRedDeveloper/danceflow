@@ -20,7 +20,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     await executeCommand("workbench.action.closeActiveEditor");
   });
 
-  test("1 > insert-before", async function () {
+  test("1 > modify-before", async function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       abc def
@@ -29,7 +29,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
 
     // Perform all operations.
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
-    await executeCommand("danceflow.modes.insert.before");
+    await executeCommand("danceflow.modes.modify.before");
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
@@ -39,7 +39,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
   });
 
-  test("1 > insert-before > restore", async function () {
+  test("1 > modify-before > restore", async function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       abc def
@@ -58,7 +58,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
   });
 
-  test("1 > insert-after", async function () {
+  test("1 > modify-after", async function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       abc def
@@ -67,7 +67,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
 
     // Perform all operations.
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
-    await executeCommand("danceflow.modes.insert.after");
+    await executeCommand("danceflow.modes.modify.after");
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
@@ -77,7 +77,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
   });
 
-  test("2 > insert-next-line-below", async function () {
+  test("2 > modify-next-line-below", async function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       abc
@@ -88,7 +88,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
 
     // Perform all operations.
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
-    await executeCommand("danceflow.edit.newLine.below.insert");
+    await executeCommand("danceflow.edit.newLine.below.modify");
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.
@@ -101,7 +101,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
     `);
   });
 
-  test("2 > insert-next-line-above", async function () {
+  test("2 > modify-next-line-above", async function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       abc
@@ -112,7 +112,7 @@ suite("./test/suite/commands/switch-mode.md", function () {
 
     // Perform all operations.
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "character" });
-    await executeCommand("danceflow.edit.newLine.above.insert");
+    await executeCommand("danceflow.edit.newLine.above.modify");
     await executeCommand("danceflow.dev.setSelectionBehavior", { mode: "move", value: "caret" });
 
     // Ensure document is as expected.

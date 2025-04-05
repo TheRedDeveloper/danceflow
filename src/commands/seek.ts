@@ -275,8 +275,8 @@ let lastObjectInput: string | undefined;
  *
  * | Title                        | Identifier                     | Keybinding                                       | Command                                                                                       |
  * | ---------------------------- | ------------------------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
- * | Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: insert) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
- * | Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: insert) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
+ * | Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: modify) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
+ * | Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: modify) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
  * | Select to whole object start | `askObject.start`              | `[` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start"                  }] }]` |
  * | Extend to whole object start | `askObject.start.extend`       | `{` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start", shift: "extend" }] }]` |
  * | Select to inner object start | `askObject.inner.start`        | `a-[` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start"                  }] }]` |

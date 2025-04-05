@@ -72,7 +72,7 @@ suite("History tests", function () {
     await new Promise<void>((resolve) => {
       const disposable = extension.editors.onModeDidChange(async () => {
         disposable.dispose();
-        await extension.editors.getState(editor).setMode(extension.modes.get("insert")!);
+        await extension.editors.getState(editor).setMode(extension.modes.get("modify")!);
         resolve();
       });
     });
@@ -86,7 +86,7 @@ suite("History tests", function () {
     const recorder = extension.recorder,
           recording = recorder.startRecording();
 
-    await extension.editors.getState(editor).setMode(extension.modes.get("insert")!);
+    await extension.editors.getState(editor).setMode(extension.modes.get("modify")!);
     await f();
     await extension.editors.getState(editor).setMode(extension.modes.get("move")!);
     await delay(10);  // For VS Code to update the editor in the extension host.

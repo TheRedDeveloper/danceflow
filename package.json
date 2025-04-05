@@ -388,12 +388,12 @@
                 "isWholeLine": true
               }
             },
-            "insert": {
+            "modify": {
               "onLeaveMode": [
                 [
                   ".selections.save",
                   {
-                    "register": " insert"
+                    "register": " modify"
                   }
                 ]
               ]
@@ -714,7 +714,7 @@
                   "command": "danceflow.selections.restore",
                   "args": [
                     {
-                      "register": " insert"
+                      "register": " modify"
                     }
                   ]
                 }
@@ -845,13 +845,13 @@
           "markdownDescription": "Controls the line highlighting applied to active lines in move mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.insertMode.lineHighlight": {
+        "danceflow.modifyMode.lineHighlight": {
           "type": [
             "string",
             "null"
           ],
           "default": null,
-          "markdownDescription": "Controls the line highlighting applied to active lines in insert mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
+          "markdownDescription": "Controls the line highlighting applied to active lines in modify mode. Can be an hex color, a [theme color](https://code.visualstudio.com/api/references/theme-color) or null.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
         "danceflow.moveMode.lineNumbers": {
@@ -871,7 +871,7 @@
           ],
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.insertMode.lineNumbers": {
+        "danceflow.modifyMode.lineNumbers": {
           "enum": [
             "off",
             "on",
@@ -879,7 +879,7 @@
             "inherit"
           ],
           "default": "inherit",
-          "description": "Controls the display of line numbers in insert mode.",
+          "description": "Controls the display of line numbers in modify mode.",
           "enumDescriptions": [
             "No line numbers.",
             "Absolute line numbers.",
@@ -902,7 +902,7 @@
           "description": "Controls the cursor style in move mode.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.insertMode.cursorStyle": {
+        "danceflow.modifyMode.cursorStyle": {
           "enum": [
             "line",
             "block",
@@ -913,10 +913,10 @@
             "inherit"
           ],
           "default": "inherit",
-          "description": "Controls the cursor style in insert mode.",
+          "description": "Controls the cursor style in modify mode.",
           "markdownDeprecationMessage": "Built-in modes are deprecated. Use `#danceflow.modes#` instead."
         },
-        "danceflow.insertMode.selectionStyle": {
+        "danceflow.modifyMode.selectionStyle": {
           "type": "object",
           "default": {
             "borderColor": "$editor.selectionBackground",
@@ -924,7 +924,7 @@
             "borderWidth": "2px",
             "borderRadius": "1px"
           },
-          "description": "The style to apply to selections in insert mode.",
+          "description": "The style to apply to selections in modify mode.",
           "properties": {
             "backgroundColor": {
               "type": "string"
@@ -1028,8 +1028,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.edit.delete-insert",
-        "title": "Delete and switch to Insert",
+        "command": "danceflow.edit.delete-modify",
+        "title": "Delete and switch to Modify",
         "category": "Danceflow"
       },
       {
@@ -1063,8 +1063,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.edit.newLine.above.insert",
-        "title": "Insert new line above and switch to insert",
+        "command": "danceflow.edit.newLine.above.modify",
+        "title": "Insert new line above and switch to modify",
         "category": "Danceflow"
       },
       {
@@ -1073,8 +1073,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.edit.newLine.below.insert",
-        "title": "Insert new line below and switch to insert",
+        "command": "danceflow.edit.newLine.below.modify",
+        "title": "Insert new line below and switch to modify",
         "category": "Danceflow"
       },
       {
@@ -1133,8 +1133,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.edit.yank-delete-insert",
-        "title": "Copy, delete and switch to Insert",
+        "command": "danceflow.edit.yank-delete-modify",
+        "title": "Copy, delete and switch to Modify",
         "category": "Danceflow"
       },
       {
@@ -1248,23 +1248,23 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.insert.after",
-        "title": "Insert after",
+        "command": "danceflow.modes.modify.after",
+        "title": "Modify after",
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.insert.before",
-        "title": "Insert before",
+        "command": "danceflow.modes.modify.before",
+        "title": "Modify before",
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.insert.lineEnd",
-        "title": "Insert at line end",
+        "command": "danceflow.modes.modify.lineEnd",
+        "title": "Modify at line end",
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.insert.lineStart",
-        "title": "Insert at line start",
+        "command": "danceflow.modes.modify.lineStart",
+        "title": "Modify at line start",
         "category": "Danceflow"
       },
       {
@@ -1273,8 +1273,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.set.insert",
-        "title": "Set mode to Insert",
+        "command": "danceflow.modes.set.modify",
+        "title": "Set mode to Modify",
         "category": "Danceflow"
       },
       {
@@ -1293,8 +1293,8 @@
         "category": "Danceflow"
       },
       {
-        "command": "danceflow.modes.set.temporarily.insert",
-        "title": "Temporary Insert mode",
+        "command": "danceflow.modes.set.temporarily.modify",
+        "title": "Temporary Modify mode",
         "category": "Danceflow"
       },
       {
@@ -2031,7 +2031,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.edit.delete-insert",
+          "command": "danceflow.edit.delete-modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2059,7 +2059,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.edit.newLine.above.insert",
+          "command": "danceflow.edit.newLine.above.modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2067,7 +2067,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.edit.newLine.below.insert",
+          "command": "danceflow.edit.newLine.below.modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2115,7 +2115,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.edit.yank-delete-insert",
+          "command": "danceflow.edit.yank-delete-modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2207,19 +2207,19 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.insert.after",
+          "command": "danceflow.modes.modify.after",
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.insert.before",
+          "command": "danceflow.modes.modify.before",
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.insert.lineEnd",
+          "command": "danceflow.modes.modify.lineEnd",
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.insert.lineStart",
+          "command": "danceflow.modes.modify.lineStart",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2227,7 +2227,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.set.insert",
+          "command": "danceflow.modes.set.modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2243,7 +2243,7 @@
           "when": "danceflow.mode == 'move'"
         },
         {
-          "command": "danceflow.modes.set.temporarily.insert",
+          "command": "danceflow.modes.set.temporarily.modify",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -2876,26 +2876,26 @@
       {
         "key": "Shift+O",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert new line above and switch to insert",
-        "command": "danceflow.edit.newLine.above.insert"
+        "title": "Insert new line above and switch to modify",
+        "command": "danceflow.edit.newLine.above.modify"
       },
       {
         "key": "Shift+O",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert new line above and switch to insert",
-        "command": "danceflow.edit.newLine.above.insert"
+        "title": "Insert new line above and switch to modify",
+        "command": "danceflow.edit.newLine.above.modify"
       },
       {
         "key": "O",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert new line below and switch to insert",
-        "command": "danceflow.edit.newLine.below.insert"
+        "title": "Insert new line below and switch to modify",
+        "command": "danceflow.edit.newLine.below.modify"
       },
       {
         "key": "O",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert new line below and switch to insert",
-        "command": "danceflow.edit.newLine.below.insert"
+        "title": "Insert new line below and switch to modify",
+        "command": "danceflow.edit.newLine.below.modify"
       },
       {
         "key": "P",
@@ -2924,14 +2924,14 @@
       {
         "key": "C",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Copy, delete and switch to Insert",
-        "command": "danceflow.edit.yank-delete-insert"
+        "title": "Copy, delete and switch to Modify",
+        "command": "danceflow.edit.yank-delete-modify"
       },
       {
         "key": "C",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Copy, delete and switch to Insert",
-        "command": "danceflow.edit.yank-delete-insert"
+        "title": "Copy, delete and switch to Modify",
+        "command": "danceflow.edit.yank-delete-modify"
       },
       {
         "key": "Shift+R",
@@ -3551,54 +3551,54 @@
       {
         "key": "A",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert after",
-        "command": "danceflow.modes.insert.after"
+        "title": "Modify after",
+        "command": "danceflow.modes.modify.after"
       },
       {
         "key": "A",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert after",
-        "command": "danceflow.modes.insert.after"
+        "title": "Modify after",
+        "command": "danceflow.modes.modify.after"
       },
       {
         "key": "I",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert before",
-        "command": "danceflow.modes.insert.before"
+        "title": "Modify before",
+        "command": "danceflow.modes.modify.before"
       },
       {
         "key": "I",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert before",
-        "command": "danceflow.modes.insert.before"
+        "title": "Modify before",
+        "command": "danceflow.modes.modify.before"
       },
       {
         "key": "Shift+A",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert at line end",
-        "command": "danceflow.modes.insert.lineEnd"
+        "title": "Modify at line end",
+        "command": "danceflow.modes.modify.lineEnd"
       },
       {
         "key": "Shift+A",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert at line end",
-        "command": "danceflow.modes.insert.lineEnd"
+        "title": "Modify at line end",
+        "command": "danceflow.modes.modify.lineEnd"
       },
       {
         "key": "Shift+I",
         "when": "editorTextFocus && danceflow.mode == 'move'",
-        "title": "Insert at line start",
-        "command": "danceflow.modes.insert.lineStart"
+        "title": "Modify at line start",
+        "command": "danceflow.modes.modify.lineStart"
       },
       {
         "key": "Shift+I",
         "when": "editorTextFocus && danceflow.mode == 'select'",
-        "title": "Insert at line start",
-        "command": "danceflow.modes.insert.lineStart"
+        "title": "Modify at line start",
+        "command": "danceflow.modes.modify.lineStart"
       },
       {
         "key": "Escape",
-        "when": "editorTextFocus && danceflow.mode == 'insert'",
+        "when": "editorTextFocus && danceflow.mode == 'modify'",
         "title": "Set mode to Move",
         "command": "danceflow.modes.set.move"
       },
@@ -4009,7 +4009,7 @@
       },
       {
         "key": "Ctrl+F",
-        "when": "editorTextFocus && danceflow.mode == 'insert'",
+        "when": "editorTextFocus && danceflow.mode == 'modify'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": 1,
@@ -4029,7 +4029,7 @@
       },
       {
         "key": "Ctrl+D",
-        "when": "editorTextFocus && danceflow.mode == 'insert'",
+        "when": "editorTextFocus && danceflow.mode == 'modify'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": 1,
@@ -4049,7 +4049,7 @@
       },
       {
         "key": "Ctrl+B",
-        "when": "editorTextFocus && danceflow.mode == 'insert'",
+        "when": "editorTextFocus && danceflow.mode == 'modify'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": -1,
@@ -4069,7 +4069,7 @@
       },
       {
         "key": "Ctrl+U",
-        "when": "editorTextFocus && danceflow.mode == 'insert'",
+        "when": "editorTextFocus && danceflow.mode == 'modify'",
         "command": "danceflow.select.vertically",
         "args": {
           "direction": -1,

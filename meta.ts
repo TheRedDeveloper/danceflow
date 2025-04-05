@@ -532,7 +532,7 @@ export function parseKeys(keys: string) {
         }
         switch (tag) {
         case "move":
-        case "insert":
+        case "modify":
         case "input":
         case "select":
           whenClauses.push(`danceflow.mode ${negate ? "!=" : "=="} '${tag}'`);

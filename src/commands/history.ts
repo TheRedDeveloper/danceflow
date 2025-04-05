@@ -117,7 +117,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
         cursor.previous();
 
         endCursor = cursor.clone();
-      } else if (modeName === "insert" && endCursor !== undefined) {
+      } else if (modeName === "modify" && endCursor !== undefined) {
         cursor.next();
 
         startCursor = cursor.clone();
@@ -126,7 +126,7 @@ export async function repeat_edit(_: Context, repetitions: number) {
     }
 
     if (!cursor.previous()) {
-      throw new Error("cannot find switch to move or insert mode");
+      throw new Error("cannot find switch to move or modify mode");
     }
   }
 

@@ -323,10 +323,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 isWholeLine: true,
               },
             },
-            insert: {
+            modify: {
               onLeaveMode: [
                 [".selections.save", {
-                  register: " insert",
+                  register: " modify",
                 }],
               ],
             },
@@ -548,7 +548,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 ".": {
                   text: "to last buffer modification position",
                   command: "danceflow.selections.restore",
-                  args: [{ register: " insert" }],
+                  args: [{ register: " modify" }],
                 },
               },
             },
@@ -628,11 +628,11 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.insertMode.lineHighlight": {
+        "danceflow.modifyMode.lineHighlight": {
           type: ["string", "null"],
           default: null,
           markdownDescription:
-            "Controls the line highlighting applied to active lines in insert mode. "
+            "Controls the line highlighting applied to active lines in modify mode. "
             + "Can be an hex color, a [theme color]("
             + "https://code.visualstudio.com/api/references/theme-color) or null.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
@@ -649,10 +649,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           ],
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.insertMode.lineNumbers": {
+        "danceflow.modifyMode.lineNumbers": {
           enum: ["off", "on", "relative", "inherit"],
           default: "inherit",
-          description: "Controls the display of line numbers in insert mode.",
+          description: "Controls the display of line numbers in modify mode.",
           enumDescriptions: [
             "No line numbers.",
             "Absolute line numbers.",
@@ -675,7 +675,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
           description: "Controls the cursor style in move mode.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.insertMode.cursorStyle": {
+        "danceflow.modifyMode.cursorStyle": {
           enum: [
             "line",
             "block",
@@ -686,10 +686,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "inherit",
           ],
           default: "inherit",
-          description: "Controls the cursor style in insert mode.",
+          description: "Controls the cursor style in modify mode.",
           markdownDeprecationMessage: builtinModesAreDeprecatedMessage,
         },
-        "danceflow.insertMode.selectionStyle": {
+        "danceflow.modifyMode.selectionStyle": {
           type: "object",
           default: {
             borderColor: "$editor.selectionBackground",
@@ -697,7 +697,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             borderWidth: "2px",
             borderRadius: "1px",
           },
-          description: "The style to apply to selections in insert mode.",
+          description: "The style to apply to selections in modify mode.",
           properties: (Object as any).fromEntries(
             [
               "backgroundColor",

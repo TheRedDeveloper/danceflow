@@ -47,10 +47,10 @@ const preferredColumnsToken =
  *
  * | Keybinding                         | Command                                                                      |
  * | -----------------------------------| ---------------------------------------------------------------------------- |
- * | `c-f` (core: move; core: insert) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
- * | `c-d` (core: move; core: insert) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
- * | `c-b` (core: move; core: insert) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
- * | `c-u` (core: move; core: insert) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
+ * | `c-f` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
+ * | `c-d` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
+ * | `c-b` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
+ * | `c-u` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
  * | `c-f` (helix: select)              | `[".select.vertically", { direction:  1, by: "page"    , shift: "extend" }]` |
  * | `c-d` (helix: select)              | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
  * | `c-b` (helix: select)              | `[".select.vertically", { direction: -1, by: "page"    , shift: "extend" }]` |

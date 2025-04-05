@@ -7,18 +7,18 @@ abc def
   ^ 0
 ```
 
-## 1 insert-before
+## 1 modify-before
 [up](#1)
 
-- .modes.insert.before
+- .modes.modify.before
 
 ```
 abc def
   | 0
 ```
 
-### 1 insert-before restore
-[up](#1-insert-before)
+### 1 modify-before restore
+[up](#1-modify-before)
 
 - .modes.set.move
 
@@ -27,10 +27,10 @@ abc def
   ^ 0
 ```
 
-## 1 insert-after
+## 1 modify-after
 [up](#1)
 
-- .modes.insert.after
+- .modes.modify.after
 
 ```
 abc def
@@ -51,10 +51,10 @@ def
 ghi
 ```
 
-## 2 insert-next-line-below
+## 2 modify-next-line-below
 [up](#2)
 
-- .edit.newLine.below.insert
+- .edit.newLine.below.modify
 
 ```
 abc
@@ -67,10 +67,10 @@ ghi
 It would be nice to test the `restore` version too, but right now this does not
 work in tests because tests don't work too well with saved selections.
 
-## 2 insert-next-line-above
+## 2 modify-next-line-above
 [up](#2)
 
-- .edit.newLine.above.insert
+- .edit.newLine.above.modify
 
 ```
 abc

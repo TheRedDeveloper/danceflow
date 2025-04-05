@@ -31,7 +31,7 @@ declare module "./edit";
  *
  * | Title                              | Identifier               | Keybinding                                       | Commands                                                                                                                       |
  * | ---------------------------------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
- * | Pick register and replace          | `selectRegister-insert`  | `c-r` (kakoune: move), `c-r` (kakoune: insert) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
+ * | Pick register and replace          | `selectRegister-insert`  | `c-r` (kakoune: move), `c-r` (kakoune: modify) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
  * | Paste before                       | `paste.before`           |                                                  | `[".edit.insert", { handleNewLine: true, where: "start", ... }]`                                                               |
  * | Paste after                        | `paste.after`            |                                                  | `[".edit.insert", { handleNewLine: true, where: "end"  , ... }]`                                                               |
  * | Paste before and select            | `paste.before.select`    | `s-p` (core: move)                             | `[".edit.insert", { handleNewLine: true, where: "start", shift: "select", ... }]`                                              |
@@ -41,9 +41,9 @@ declare module "./edit";
  * | Paste all before and select        | `pasteAll.before.select` | `s-a-p` (kakoune: move)                        | `[".edit.insert", { handleNewLine: true, where: "start", all: true, shift: "select", ... }]`                                   |
  * | Paste all after and select         | `pasteAll.after.select`  | `a-p` (kakoune: move)                          | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, shift: "select", ... }]`                                   |
  * | Delete                             | `delete`                 | `a-d` (core: move)                             | `[".edit.insert", { register: "_", ... }]`                                                                                     |
- * | Delete and switch to Insert        | `delete-insert`          | `a-c` (kakoune: move)                          | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
+ * | Delete and switch to Modify        | `delete-modify`          | `a-c` (kakoune: move)                          | `[".modes.set", { mode: "modify", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
  * | Copy and delete                    | `yank-delete`            | `d` (core: move)                               | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
- * | Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (core: move; helix: select)                | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
+ * | Copy, delete and switch to Modify  | `yank-delete-modify`     | `c` (core: move; helix: select)                | `[".selections.saveText", { +register }], [".modes.set", { mode: "modify", +mode }], [".edit.insert", { register: "_", ... }]` |
  * | Copy and replace                   | `yank-replace`           | `s-r` (kakoune: move)                          | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
  * |                                    |                          | `s-r` (helix: select)                            | `[".edit.insert"], [".modes.set.move"]`                                                                                        |
  * |                                    |                          | `a-d` (helix: select)                            | `[".edit.delete"], [".modes.set.move"]`                                                                                        |
@@ -409,7 +409,7 @@ export function copyIndentation(
  *
  * | Title                                      | Identifier             | Keybinding                          | Commands                                                                          |
  * | ------------------------------------------ | ---------------------- | ------------------------------------| --------------------------------------------------------------------------------- |
- * | Insert new line above and switch to insert | `newLine.above.insert` | `s-o` (core: move; helix: select) | `[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { ... }]` |
+ * | Insert new line above and switch to modify | `newLine.above.modify` | `s-o` (core: move; helix: select) | `[".edit.newLine.above", { shift: "select" }], [".modes.modify.before", { ... }]` |
  */
 export function newLine_above(
   _: Context,
@@ -447,7 +447,7 @@ export function newLine_above(
  *
  * | Title                                      | Identifier             | Keybinding                        | Commands                                                                          |
  * | ------------------------------------------ | ---------------------- | --------------------------------- | --------------------------------------------------------------------------------- |
- * | Insert new line below and switch to insert | `newLine.below.insert` | `o` (core: move; helix: select) | `[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { ... }]` |
+ * | Insert new line below and switch to modify | `newLine.below.modify` | `o` (core: move; helix: select) | `[".edit.newLine.below", { shift: "select" }], [".modes.modify.before", { ... }]` |
  */
 export function newLine_below(
   _: Context,

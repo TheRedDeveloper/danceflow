@@ -19,9 +19,9 @@
 <tr><td><a href="#edit.deindent"><code>edit.deindent</code></a></td><td>Deindent selected lines</td><td><code>Shift+Alt+,</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.deindent.withIncomplete"><code>edit.deindent.withIncomplete</code></a></td><td>Deindent selected lines (including incomplete indent)</td><td><code>Shift+,</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L43"><code>edit.delete</code></a></td><td>Delete</td><td><code>Alt+D</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../edit.ts#L44"><code>edit.delete-insert</code></a></td><td>Delete and switch to Insert</td><td><code>Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../edit.ts#L412"><code>edit.newLine.above.insert</code></a></td><td>Insert new line above and switch to insert</td><td><code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../edit.ts#L450"><code>edit.newLine.below.insert</code></a></td><td>Insert new line below and switch to insert</td><td><code>O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../edit.ts#L44"><code>edit.delete-modify</code></a></td><td>Delete and switch to Modify</td><td><code>Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="../edit.ts#L412"><code>edit.newLine.above.modify</code></a></td><td>Insert new line above and switch to modify</td><td><code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../edit.ts#L450"><code>edit.newLine.below.modify</code></a></td><td>Insert new line below and switch to modify</td><td><code>O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L36"><code>edit.paste.after</code></a></td><td>Paste after</td><td></td></tr>
 <tr><td><a href="../edit.ts#L38"><code>edit.paste.after.select</code></a></td><td>Paste after and select</td><td><code>P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L35"><code>edit.paste.before</code></a></td><td>Paste before</td><td></td></tr>
@@ -30,9 +30,9 @@
 <tr><td><a href="../edit.ts#L42"><code>edit.pasteAll.after.select</code></a></td><td>Paste all after and select</td><td><code>Alt+P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L39"><code>edit.pasteAll.before</code></a></td><td>Paste all before</td><td></td></tr>
 <tr><td><a href="../edit.ts#L41"><code>edit.pasteAll.before.select</code></a></td><td>Paste all before and select</td><td><code>Shift+Alt+P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../edit.ts#L34"><code>edit.selectRegister-insert</code></a></td><td>Pick register and replace</td><td><code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'insert'</code>)</td></tr>
+<tr><td><a href="../edit.ts#L34"><code>edit.selectRegister-insert</code></a></td><td>Pick register and replace</td><td><code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L45"><code>edit.yank-delete</code></a></td><td>Copy and delete</td><td><code>D</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../edit.ts#L46"><code>edit.yank-delete-insert</code></a></td><td>Copy, delete and switch to Insert</td><td><code>C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>C</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../edit.ts#L46"><code>edit.yank-delete-modify</code></a></td><td>Copy, delete and switch to Modify</td><td><code>C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>C</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../edit.ts#L47"><code>edit.yank-replace</code></a></td><td>Copy and replace</td><td><code>Shift+R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.indent"><code>edit.indent</code></a></td><td>Indent selected lines</td><td><code>Shift+.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.indent.withEmpty"><code>edit.indent.withEmpty</code></a></td><td>Indent selected lines (including empty lines)</td><td><code>Shift+Alt+.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -64,15 +64,15 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#selectRegister"><code>selectRegister</code></a></td><td>Select register for next command</td><td><code>Shift+'</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Danceflow count</td><td></td></tr>
 <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
-<tr><td rowspan=11><a href="#modes"><code>modes</code></a></td><td><a href="../modes.ts#L25"><code>modes.insert.after</code></a></td><td>Insert after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L24"><code>modes.insert.before</code></a></td><td>Insert before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L27"><code>modes.insert.lineEnd</code></a></td><td>Insert at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L26"><code>modes.insert.lineStart</code></a></td><td>Insert at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L17"><code>modes.set.insert</code></a></td><td>Set mode to Insert</td><td></td></tr>
-<tr><td><a href="../modes.ts#L16"><code>modes.set.move</code></a></td><td>Set mode to Move</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'insert'</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>V</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td rowspan=11><a href="#modes"><code>modes</code></a></td><td><a href="../modes.ts#L25"><code>modes.modify.after</code></a></td><td>Modify after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L24"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L27"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L26"><code>modes.modify.lineStart</code></a></td><td>Modify at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L17"><code>modes.set.modify</code></a></td><td>Set mode to Modify</td><td></td></tr>
+<tr><td><a href="../modes.ts#L16"><code>modes.set.move</code></a></td><td>Set mode to Move</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>V</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L18"><code>modes.set.select</code></a></td><td>Set mode to Select</td><td><code>V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L43"><code>modes.set.temporarily.insert</code></a></td><td>Temporary Insert mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L42"><code>modes.set.temporarily.move</code></a></td><td>Temporary Move mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'insert'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L43"><code>modes.set.temporarily.modify</code></a></td><td>Temporary Modify mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="../modes.ts#L42"><code>modes.set.temporarily.move</code></a></td><td>Temporary Move mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="#modes.set"><code>modes.set</code></a></td><td>Set Danceflow mode</td><td></td></tr>
 <tr><td><a href="#modes.set.temporarily"><code>modes.set.temporarily</code></a></td><td>Set Danceflow mode temporarily</td><td></td></tr>
 <tr><td rowspan=10><a href="#search"><code>search</code></a></td><td><a href="#search.next"><code>search.next</code></a></td><td>Select next match</td><td><code>N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -89,10 +89,10 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#seek.leap"><code>seek.leap</code></a></td><td>Leap forward</td><td></td></tr>
 <tr><td><a href="#seek.object"><code>seek.object</code></a></td><td>Select object</td><td></td></tr>
 <tr><td><a href="#seek.seek"><code>seek.seek</code></a></td><td>Select to character (excluded)</td><td><code>T</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../seek.ts#L278"><code>seek.askObject</code></a></td><td>Select whole object</td><td><code>Alt+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+A</code> (<code>editorTextFocus && danceflow.mode == 'insert'</code>)</td></tr>
+<tr><td><a href="../seek.ts#L278"><code>seek.askObject</code></a></td><td>Select whole object</td><td><code>Alt+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+A</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="../seek.ts#L284"><code>seek.askObject.end</code></a></td><td>Select to whole object end</td><td><code>]</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../seek.ts#L285"><code>seek.askObject.end.extend</code></a></td><td>Extend to whole object end</td><td><code>Shift+]</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="../seek.ts#L279"><code>seek.askObject.inner</code></a></td><td>Select inner object</td><td><code>Alt+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+I</code> (<code>editorTextFocus && danceflow.mode == 'insert'</code>)</td></tr>
+<tr><td><a href="../seek.ts#L279"><code>seek.askObject.inner</code></a></td><td>Select inner object</td><td><code>Alt+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+I</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="../seek.ts#L286"><code>seek.askObject.inner.end</code></a></td><td>Select to inner object end</td><td><code>Alt+]</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../seek.ts#L287"><code>seek.askObject.inner.end.extend</code></a></td><td>Extend to inner object end</td><td><code>Shift+Alt+]</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="../seek.ts#L282"><code>seek.askObject.inner.start</code></a></td><td>Select to inner object start</td><td><code>Alt+[</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -267,7 +267,7 @@ Specify `all` to paste all contents next to each selection.
 
 | Title                              | Identifier               | Keybinding                                       | Commands                                                                                                                       |
 | ---------------------------------- | ------------------------ | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
-| Pick register and replace          | `selectRegister-insert`  | `c-r` (kakoune: move), `c-r` (kakoune: insert) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
+| Pick register and replace          | `selectRegister-insert`  | `c-r` (kakoune: move), `c-r` (kakoune: modify) | `[".selectRegister", { +register }], [".edit.insert", { ... }]`                                                                |
 | Paste before                       | `paste.before`           |                                                  | `[".edit.insert", { handleNewLine: true, where: "start", ... }]`                                                               |
 | Paste after                        | `paste.after`            |                                                  | `[".edit.insert", { handleNewLine: true, where: "end"  , ... }]`                                                               |
 | Paste before and select            | `paste.before.select`    | `s-p` (core: move)                             | `[".edit.insert", { handleNewLine: true, where: "start", shift: "select", ... }]`                                              |
@@ -277,9 +277,9 @@ Specify `all` to paste all contents next to each selection.
 | Paste all before and select        | `pasteAll.before.select` | `s-a-p` (kakoune: move)                        | `[".edit.insert", { handleNewLine: true, where: "start", all: true, shift: "select", ... }]`                                   |
 | Paste all after and select         | `pasteAll.after.select`  | `a-p` (kakoune: move)                          | `[".edit.insert", { handleNewLine: true, where: "end"  , all: true, shift: "select", ... }]`                                   |
 | Delete                             | `delete`                 | `a-d` (core: move)                             | `[".edit.insert", { register: "_", ... }]`                                                                                     |
-| Delete and switch to Insert        | `delete-insert`          | `a-c` (kakoune: move)                          | `[".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
+| Delete and switch to Modify        | `delete-modify`          | `a-c` (kakoune: move)                          | `[".modes.set", { mode: "modify", +mode }], [".edit.insert", { register: "_", ... }]`                                          |
 | Copy and delete                    | `yank-delete`            | `d` (core: move)                               | `[".selections.saveText", { +register }],                                            [".edit.insert", { register: "_", ... }]` |
-| Copy, delete and switch to Insert  | `yank-delete-insert`     | `c` (core: move; helix: select)                | `[".selections.saveText", { +register }], [".modes.set", { mode: "insert", +mode }], [".edit.insert", { register: "_", ... }]` |
+| Copy, delete and switch to Modify  | `yank-delete-modify`     | `c` (core: move; helix: select)                | `[".selections.saveText", { +register }], [".modes.set", { mode: "modify", +mode }], [".edit.insert", { register: "_", ... }]` |
 | Copy and replace                   | `yank-replace`           | `s-r` (kakoune: move)                          | `[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", ... }]`               |
 |                                    |                          | `s-r` (helix: select)                            | `[".edit.insert"], [".modes.set.move"]`                                                                                        |
 |                                    |                          | `a-d` (helix: select)                            | `[".edit.delete"], [".modes.set.move"]`                                                                                        |
@@ -480,7 +480,7 @@ keep the current selections.
 
 | Title                                      | Identifier             | Keybinding                          | Commands                                                                          |
 | ------------------------------------------ | ---------------------- | ------------------------------------| --------------------------------------------------------------------------------- |
-| Insert new line above and switch to insert | `newLine.above.insert` | `s-o` (core: move; helix: select) | `[".edit.newLine.above", { shift: "select" }], [".modes.insert.before", { ... }]` |
+| Insert new line above and switch to modify | `newLine.above.modify` | `s-o` (core: move; helix: select) | `[".edit.newLine.above", { shift: "select" }], [".modes.modify.before", { ... }]` |
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -502,7 +502,7 @@ keep the current selections.
 
 | Title                                      | Identifier             | Keybinding                        | Commands                                                                          |
 | ------------------------------------------ | ---------------------- | --------------------------------- | --------------------------------------------------------------------------------- |
-| Insert new line below and switch to insert | `newLine.below.insert` | `o` (core: move; helix: select) | `[".edit.newLine.below", { shift: "select" }], [".modes.insert.before", { ... }]` |
+| Insert new line below and switch to modify | `newLine.below.modify` | `o` (core: move; helix: select) | `[".edit.newLine.below", { shift: "select" }], [".modes.modify.before", { ... }]` |
 
 This command:
 - may be repeated with a given number of repetitions.
@@ -910,18 +910,18 @@ Set Danceflow mode.
 
 | Title              | Identifier   | Keybinding                                                  | Command                                                     |
 | ------------------ | ------------ | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| Set mode to Move | `set.move` | `escape` (core: insert; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
-| Set mode to Insert | `set.insert` |                                                             | `[".modes.set", { mode: "insert" }]`                        |
+| Set mode to Move | `set.move` | `escape` (core: modify; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
+| Set mode to Modify | `set.modify` |                                                             | `[".modes.set", { mode: "modify" }]`                        |
 | Set mode to Select | `set.select` | `v` (helix: move)                                         | `[".modes.set", { mode: "select" }]`                        |
 
-Other variants are provided to switch to insert mode:
+Other variants are provided to switch to modify mode:
 
 | Title                | Identifier         | Keybinding                          | Commands                                                                                                                                                                            |
 | -------------------- | ------------------ | ----------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Insert before        | `insert.before`    | `i` (core: move; helix: select)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
-| Insert after         | `insert.after`     | `a` (core: move; helix: select)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
-| Insert at line start | `insert.lineStart` | `s-i` (core: move; helix: select) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
-| Insert at line end   | `insert.lineEnd`   | `s-a` (core: move; helix: select) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "insert", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+| Modify before        | `modify.before`    | `i` (core: move; helix: select)   | `[".selections.faceBackward", { record: false }],           [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Modify after         | `modify.after`     | `a` (core: move; helix: select)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+| Modify at line start | `modify.lineStart` | `s-i` (core: move; helix: select) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
+| Modify at line end   | `modify.lineEnd`   | `s-a` (core: move; helix: select) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
 
 
 This command:
@@ -937,8 +937,8 @@ Set Danceflow mode temporarily.
 
 | Title                 | Identifier               | Keybindings             | Commands                                         |
 | --------------------- | ------------------------ | ----------------------- | ------------------------------------------------ |
-| Temporary Move mode | `set.temporarily.move` | `c-v` (kakoune: insert) | `[".modes.set.temporarily", { mode: "move" }]` |
-| Temporary Insert mode | `set.temporarily.insert` | `c-v` (kakoune: move) | `[".modes.set.temporarily", { mode: "insert" }]` |
+| Temporary Move mode | `set.temporarily.move` | `c-v` (kakoune: modify) | `[".modes.set.temporarily", { mode: "move" }]` |
+| Temporary Modify mode | `set.temporarily.modify` | `c-v` (kakoune: move) | `[".modes.set.temporarily", { mode: "modify" }]` |
 
 
 This command:
@@ -1124,8 +1124,8 @@ Select object.
 
 | Title                        | Identifier                     | Keybinding                                       | Command                                                                                       |
 | ---------------------------- | ------------------------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
-| Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: insert) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
-| Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: insert) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
+| Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: modify) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
+| Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: modify) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
 | Select to whole object start | `askObject.start`              | `[` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start"                  }] }]` |
 | Extend to whole object start | `askObject.start.extend`       | `{` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start", shift: "extend" }] }]` |
 | Select to inner object start | `askObject.inner.start`        | `a-[` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start"                  }] }]` |
@@ -1209,10 +1209,10 @@ The following keybindings are also defined:
 
 | Keybinding                         | Command                                                                      |
 | -----------------------------------| ---------------------------------------------------------------------------- |
-| `c-f` (core: move; core: insert) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
-| `c-d` (core: move; core: insert) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
-| `c-b` (core: move; core: insert) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
-| `c-u` (core: move; core: insert) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
+| `c-f` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
+| `c-d` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
+| `c-b` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
+| `c-u` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
 | `c-f` (helix: select)              | `[".select.vertically", { direction:  1, by: "page"    , shift: "extend" }]` |
 | `c-d` (helix: select)              | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
 | `c-b` (helix: select)              | `[".select.vertically", { direction: -1, by: "page"    , shift: "extend" }]` |
