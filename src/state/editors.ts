@@ -202,7 +202,7 @@ export class PerEditorState implements vscode.Disposable {
     );
 
     if (this.isActive) {
-      await this.notifyDidBecomeActive();
+      this.notifyDidBecomeActive();
     }
 
     this._isChangingMode = false;
@@ -239,7 +239,7 @@ export class PerEditorState implements vscode.Disposable {
 
     editor.options.lineNumbers = mode.lineNumbers;
     editor.options.cursorStyle = mode.cursorStyle;
-    
+
     // Set the mode context
     await vscode.commands.executeCommand("setContext", extensionName + ".mode", mode.name);
     
