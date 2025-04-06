@@ -420,7 +420,7 @@ export function split(
  *
  * | Title                   | Identifier                   | Keybinding                          | Command                                                                                                              |
  * | ----------------------- | ---------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
- * | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+ * | Split selections at line boundaries or leap backwards | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
  */
 export function splitLines(
   _: Context,

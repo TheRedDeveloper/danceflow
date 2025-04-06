@@ -1652,6 +1652,50 @@ select.firstVisibleLine.jump:
   commands: |-
     [".select.firstVisibleLine", { shift: "jump" }]
 
+select.halfPageDown.extend:
+  title:
+    en: Half page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "halfPage", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-d` (helix: select)
+
+select.halfPageDown.jump:
+  title:
+    en: Half page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "halfPage", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-d` (core: move; core: modify)
+
+select.halfPageUp.extend:
+  title:
+    en: Half page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-u` (helix: select)
+
+select.halfPageUp.jump:
+  title:
+    en: Half page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-u` (core: move; core: modify)
+
 select.horizontally:
   title:
     en: Select horizontally
@@ -1913,6 +1957,50 @@ select.middleVisibleLine.jump:
   commands: |-
     [".select.middleVisibleLine", { shift: "jump" }]
 
+select.pageDown.extend:
+  title:
+    en: Page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "page", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-f` (helix: select)
+
+select.pageDown.jump:
+  title:
+    en: Page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "page", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-f` (core: move; core: modify)
+
+select.pageUp.extend:
+  title:
+    en: Page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "page", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-b` (helix: select)
+
+select.pageUp.jump:
+  title:
+    en: Page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "page", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-b` (core: move; core: modify)
+
 select.right.extend:
   title:
     en: Extend right
@@ -2020,19 +2108,14 @@ select.vertically:
       | Extend down | `down.extend` | `s-j` (kakoune: move), `s-down` (kakoune: move), `j` (helix: select), `down` (helix: select)  | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
       | Jump up     | `up.jump`     | `k` (core: move)  , `up` (core: move)                                                         | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
       | Extend up   | `up.extend`   | `s-k` (kakoune: move), `s-up` (kakoune: move)  , `k` (helix: select), `up` (helix: select)    | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
-
-      The following keybindings are also defined:
-
-      | Keybinding                         | Command                                                                      |
-      | -----------------------------------| ---------------------------------------------------------------------------- |
-      | `c-f` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "page"    , shift: "jump" }]`   |
-      | `c-d` (core: move; core: modify) | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
-      | `c-b` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "page"    , shift: "jump" }]`   |
-      | `c-u` (core: move; core: modify) | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
-      | `c-f` (helix: select)              | `[".select.vertically", { direction:  1, by: "page"    , shift: "extend" }]` |
-      | `c-d` (helix: select)              | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
-      | `c-b` (helix: select)              | `[".select.vertically", { direction: -1, by: "page"    , shift: "extend" }]` |
-      | `c-u` (helix: select)              | `[".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]` |
+      | Half page down   | `halfPageDown.jump`   | `c-d` (core: move; core: modify)                                                | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
+      | Half page down   | `halfPageDown.extend` | `c-d` (helix: select)                                                           | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
+      | Half page up     | `halfPageUp.jump`     | `c-u` (core: move; core: modify)                                                | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
+      | Half page up     | `halfPageUp.extend`   | `c-u` (helix: select)                                                           | `[".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]` |
+      | Page down        | `pageDown.jump`       | `c-f` (core: move; core: modify)                                                | `[".select.vertically", { direction:  1, by: "page", shift: "jump" }]`      |
+      | Page down        | `pageDown.extend`     | `c-f` (helix: select)                                                           | `[".select.vertically", { direction:  1, by: "page", shift: "extend" }]`    |
+      | Page up          | `pageUp.jump`         | `c-b` (core: move; core: modify)                                                | `[".select.vertically", { direction: -1, by: "page", shift: "jump" }]`      |
+      | Page up          | `pageUp.extend`       | `c-b` (helix: select)                                                           | `[".select.vertically", { direction: -1, by: "page", shift: "extend" }]`    |
 
 selections.changeDirection:
   title:
@@ -2545,11 +2628,11 @@ selections.splitLines:
 
       | Title                   | Identifier                   | Keybinding                          | Command                                                                                                              |
       | ----------------------- | ---------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-      | Leap or select backward | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+      | Split selections at line boundaries or leap backwards | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
 
 selections.splitLines.orLeap.backward:
   title:
-    en: Leap or select backward
+    en: Split selections at line boundaries or leap backwards
 
   commands: |-
     [".ifEmpty", { then: [[".seek.leap", { direction: -1, $exclude: [] }]], otherwise: [[".selections.splitLines", { $exclude: [] }]] }]
@@ -2798,62 +2881,6 @@ anonymous:
       qwerty: |-
         `s-v` (kakoune: move)
         `s-z` (helix: move; helix: select)
-
-  - commands: |-
-      [".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]
-
-    keys:
-      qwerty: |-
-        `c-u` (helix: select)
-
-  - commands: |-
-      [".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]
-
-    keys:
-      qwerty: |-
-        `c-u` (core: move; core: modify)
-
-  - commands: |-
-      [".select.vertically", { direction: -1, by: "page" , shift: "extend" }]
-
-    keys:
-      qwerty: |-
-        `c-b` (helix: select)
-
-  - commands: |-
-      [".select.vertically", { direction: -1, by: "page" , shift: "jump" }]
-
-    keys:
-      qwerty: |-
-        `c-b` (core: move; core: modify)
-
-  - commands: |-
-      [".select.vertically", { direction: 1, by: "halfPage", shift: "extend" }]
-
-    keys:
-      qwerty: |-
-        `c-d` (helix: select)
-
-  - commands: |-
-      [".select.vertically", { direction: 1, by: "halfPage", shift: "jump" }]
-
-    keys:
-      qwerty: |-
-        `c-d` (core: move; core: modify)
-
-  - commands: |-
-      [".select.vertically", { direction: 1, by: "page" , shift: "extend" }]
-
-    keys:
-      qwerty: |-
-        `c-f` (helix: select)
-
-  - commands: |-
-      [".select.vertically", { direction: 1, by: "page" , shift: "jump" }]
-
-    keys:
-      qwerty: |-
-        `c-f` (core: move; core: modify)
 
   - commands: |-
       [".selections.restore.withCurrent", { reverse: true, $exclude: [] }]

@@ -275,7 +275,7 @@ export class PerEditorState implements vscode.Disposable {
    * @deprecated Do not call -- internal implementation detail.
    */
   public notifyDidChangeTextEditorVisibleRanges() {
-    this._updateOffscreenSelectionsIndicators(this._mode);
+    // this._updateOffscreenSelectionsIndicators(this._mode);
   }
 
   /**
@@ -385,7 +385,7 @@ export class PerEditorState implements vscode.Disposable {
     editor.options.cursorStyle = mode.cursorStyle;
     editor.options.lineNumbers = mode.lineNumbers;
 
-    this._updateOffscreenSelectionsIndicators(mode);
+    // this._updateOffscreenSelectionsIndicators(mode);
   }
 
   private _updateSelectionsAfterBehaviorChange(mode: Mode) {
@@ -398,93 +398,93 @@ export class PerEditorState implements vscode.Disposable {
       : Selections.fromCharacterMode(selections, document);
   }
 
-  private _updateOffscreenSelectionsIndicators(mode: Mode) {
-    const decorationType = mode.hiddenSelectionsIndicatorsDecorationType;
+  // private _updateOffscreenSelectionsIndicators(mode: Mode) {
+  //   const decorationType = mode.hiddenSelectionsIndicatorsDecorationType;
 
-    if (decorationType === undefined) {
-      return;
-    }
+  //   if (decorationType === undefined) {
+  //     return;
+  //   }
 
-    const editor = this._editor,
-          selections = editor.selections,
-          visibleRanges = editor.visibleRanges;
+  //   const editor = this._editor,
+  //         selections = editor.selections,
+  //         visibleRanges = editor.visibleRanges;
 
-    // Find which selections are offscreen.
-    const offscreenSelections = [] as vscode.Selection[];
+  //   // Find which selections are offscreen.
+  //   const offscreenSelections = [] as vscode.Selection[];
 
-    for (const selection of selections) {
-      let isOffscreen = true;
+  //   for (const selection of selections) {
+  //     let isOffscreen = true;
 
-      for (const visibleRange of visibleRanges) {
-        if (Selections.overlap(visibleRange, selection)) {
-          isOffscreen = false;
-          break;
-        }
-      }
+  //     for (const visibleRange of visibleRanges) {
+  //       if (Selections.overlap(visibleRange, selection)) {
+  //         isOffscreen = false;
+  //         break;
+  //       }
+  //     }
 
-      if (isOffscreen) {
-        offscreenSelections.push(selection);
-      }
-    }
+  //     if (isOffscreen) {
+  //       offscreenSelections.push(selection);
+  //     }
+  //   }
 
-    // If there are no selections offscreen, clear decorations.
-    if (offscreenSelections.length === 0) {
-      editor.setDecorations(decorationType, []);
-      return;
-    }
+  //   // If there are no selections offscreen, clear decorations.
+  //   if (offscreenSelections.length === 0) {
+  //     editor.setDecorations(decorationType, []);
+  //     return;
+  //   }
 
-    // Otherwise, add decorations for offscreen selections.
-    const sortedVisibleRanges = visibleRanges.slice(),
-          decorations = [] as vscode.DecorationOptions[];
+  //   // Otherwise, add decorations for offscreen selections.
+  //   const sortedVisibleRanges = visibleRanges.slice(),
+  //         decorations = [] as vscode.DecorationOptions[];
 
-    sortedVisibleRanges.sort((a, b) => a.start.compareTo(b.start));
-    offscreenSelections.sort((a, b) => a.start.compareTo(b.start));
+  //   sortedVisibleRanges.sort((a, b) => a.start.compareTo(b.start));
+  //   offscreenSelections.sort((a, b) => a.start.compareTo(b.start));
 
-    function pushDecoration(
-      decorations: vscode.DecorationOptions[],
-      count: number,
-      position: vscode.Position,
-      relatively: "above" | "below",
-    ) {
-      decorations.push({
-        range: new vscode.Range(position, position),
-        renderOptions: {
-          after: {
-            contentText: `  ${count} hidden selection${count === 1 ? "" : "s"} ${relatively}`,
-          },
-        },
-      });
-    }
+  //   function pushDecoration(
+  //     decorations: vscode.DecorationOptions[],
+  //     count: number,
+  //     position: vscode.Position,
+  //     relatively: "above" | "below",
+  //   ) {
+  //     decorations.push({
+  //       range: new vscode.Range(position, position),
+  //       renderOptions: {
+  //         after: {
+  //           contentText: `  ${count} hidden selection${count === 1 ? "" : "s"} ${relatively}`,
+  //         },
+  //       },
+  //     });
+  //   }
 
-    // Hidden selections above each visible range.
-    let offscreenSelectionIdx = 0;
+  //   // Hidden selections above each visible range.
+  //   let offscreenSelectionIdx = 0;
 
-    for (let i = 0; i < sortedVisibleRanges.length; i++) {
-      const visibleRange = sortedVisibleRanges[i],
-            visibleRangeStartLine = visibleRange.start.line;
-      let count = 0;
+  //   for (let i = 0; i < sortedVisibleRanges.length; i++) {
+  //     const visibleRange = sortedVisibleRanges[i],
+  //           visibleRangeStartLine = visibleRange.start.line;
+  //     let count = 0;
 
-      while (offscreenSelections.length > offscreenSelectionIdx
-          && offscreenSelections[offscreenSelectionIdx].end.line < visibleRangeStartLine) {
-        offscreenSelectionIdx++;
-        count++;
-      }
+  //     while (offscreenSelections.length > offscreenSelectionIdx
+  //         && offscreenSelections[offscreenSelectionIdx].end.line < visibleRangeStartLine) {
+  //       offscreenSelectionIdx++;
+  //       count++;
+  //     }
 
-      if (count > 0) {
-        pushDecoration(decorations, count, visibleRange.start, "above");
-      }
-    }
+  //     if (count > 0) {
+  //       pushDecoration(decorations, count, visibleRange.start, "above");
+  //     }
+  //   }
 
-    // Hidden selections below the last visible range.
-    const visibleRange = sortedVisibleRanges[sortedVisibleRanges.length - 1],
-          count = offscreenSelections.length - offscreenSelectionIdx;
+  //   // Hidden selections below the last visible range.
+  //   const visibleRange = sortedVisibleRanges[sortedVisibleRanges.length - 1],
+  //         count = offscreenSelections.length - offscreenSelectionIdx;
 
-    if (count > 0) {
-      pushDecoration(decorations, count, visibleRange.end, "below");
-    }
+  //   if (count > 0) {
+  //     pushDecoration(decorations, count, visibleRange.end, "below");
+  //   }
 
-    editor.setDecorations(decorationType, decorations);
-  }
+  //   editor.setDecorations(decorationType, decorations);
+  // }
 }
 
 export declare namespace PerEditorState {

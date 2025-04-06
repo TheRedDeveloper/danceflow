@@ -45,7 +45,7 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 `⎈p` Pop this tab out into a new window
 
-`⎈⇧p` Join this tab back
+`⎈⎇p` Join this tab back
 
 `⎈m` Make one more window
 
@@ -144,9 +144,9 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 #### Multiselection
 
-`s` Select all regex matches in selection
+`s` Select all regex matches in selection or leap ahead if nothing selected
 
-`⎇s` Split selection for lines
+`⎇s` Split selection for lines or leap back if nothing selected
 
 `⇧k` Keep selections matching regex
 

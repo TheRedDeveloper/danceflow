@@ -13,10 +13,12 @@
     src/api/keys.ts only contains "TODO" and was left like this 3 years ago
     src/api/commands/keybindings.ts is also left todo for 4 years
     This is crazy! This should be refactored immediately!
+    
+  ✔ Remove src/api/keys.ts and src/api/commands/keybindings.ts @done(25-04-05 22:08)
   
   All of this needs to be done at build time! NOT RUNTIME!
 
-  ☐ Key handlers will be grouped as
+  Key handlers will be grouped as
     Editor:
       Global: `esc` `⎈p` `⎈o` `⎈r` ...
       Inspect → Inspect Mode: `f` `t` `z` `g` ...
@@ -27,44 +29,51 @@
     
     Menu: `h` `j` `k` `l` ...
 
-    Let's just focus on the editor keybindings for now.
+  Let's just focus on the editor keybindings for now.
 
-    ☐ All editor keybinds are prioritized as such
-      1. Global
-      2. Inspect
-      3. Interact
-      4. Change
-      5. SelectedMove
-      6. Move
-      7. Select
-    
-    ☐ Default keybindings should be set on the ordered groups in src/keybinds/default.ts 
-      The object I configure should be like this
-      {
-        global: {
-          [`esc`]: "danceflow.exit",
-          [`⇧1`, `⎈⇧g`]: "danceflow.togglePanel.git",
-          [`⇧2`, `⎈⇧e`]: "danceflow.togglePanel.explorer",
-          [`⇧3`, `⎈⇧t`]: "danceflow.togglePanel.testing",
-          ...
-        },
-        inspect: {
-          ...
-        },
+  All editor keybinds are prioritized as such
+    1. Global
+    2. Inspect
+    3. Interact
+    4. Change
+    5. SelectedMove
+    6. Move
+  
+  ☐ Default keybindings should be set on the ordered groups in src/keybinds/default.ts 
+    The object I configure should be like this
+    {
+      global: {
+        "danceflow.exit": ["esc"],
+        "danceflow.togglePanel.git": ["⇧1", "⎈⇧g"],
+        "danceflow.togglePanel.explorer": ["⇧2", "⎈⇧e"],
+        "danceflow.togglePanel.testing": ["⇧3", "⎈⇧t"],
         ...
-        selectedMove: {
-          [`h`]: "danceflow.selectedMove.left",
-          ...
-        },
-        move: {
-          [`h`]: "danceflow.move.left",
-          ...
-        },
+      },
+      inspect: {
+        ...
+      },
+      selectedMove: {
+        "danceflow.selectedMove.left": ["h"],
+        ...
+        "danceflow.move.lineDown": [`x`],
+        ...
+      },
+      move: {
+        "danceflow.move.left": ["h"],
+        ...
+        "danceflow.move.lineDown": [`x`],
         ...
       }
+    }
       
   ☐ At build time we should find out a key bind's condition, having it deactivate when overwritten
-    The move.left handler on `h` should be inactive when the higher priority selectedMove is active because it has selectedMove.left on `h`
+    Example:
+    The move.left handler on `h` should be inactive when selectedMove is active,
+    because selectedMove contains the same keybind and is higher priority (above in the list).
+
+    Note that a condition is not added if a key is multi-assigned in the same group
+    only when another group has the same keybind.
+
     First we should separate out all the multi-assigned keybinds
     Then we should find out the condition of each keybind
     This results in an object like this
@@ -109,8 +118,9 @@
       {key: `h`, command: "danceflow.move.left", condition: "danceflow.move.active && !danceflow.selectedMove.active"},
       ...
     }
-  
-  ☐ Ensure that this works with unit tests
+
+  ☐ Ensure that this works with unit tests in test/keybinds.test.ts
+    Use suite("...", function () {
     
   ☐ Every mode needs to have a configurable list of active groups
     These will have to be made configurable inside package.build.ts inside "danceflow.modes"  
@@ -138,7 +148,9 @@
 
 ☐ The last cursor should always be the primary cursor
 ☐ There should be a simpler editor window
-  ☐ Remove the weird orange bar
+  ✔ Remove the weird orange bar @done(25-04-05 23:42)
+  ✔ Remove that the current line is bright in move mode @done(25-04-06 01:14)
+  ☐ Fix that there is a 2 wide highlight at the cursor
   ☐ We completely disallow splitting it's distracting and ugly and just open another window with `⎈p`
   ☐ Hide tabs
   ☐ Hide the menu bar
@@ -153,6 +165,9 @@
   ☐ `[` To previous jump location
   ☐ `]` To next jump location
 ☐ Update object select `m￼`
+  ☐ Arround is the default, inside needs another keypress
+  ☐ Add treesitter support out of the box
+☐ Add surround `'￼` functionality
 ☐ Make select mode work with VSCode find
 ☐ Add Inspect mode:
   ☐ `space` enter inspect mode or if a url/file is under the main cursor then follow it

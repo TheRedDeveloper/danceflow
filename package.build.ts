@@ -317,7 +317,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 borderColor: "$inputValidation.warningBorder",
                 borderStyle: "solid",
                 borderWidth: "1px",
-                isWholeLine: true,
               },
             },
             modify: {
@@ -337,7 +336,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               decorations: {
                 applyTo: "main",
                 backgroundColor: "$editor.hoverHighlightBackground",
-                isWholeLine: true,
               },
               onEnterMode: [
                 [".selections.restore", { register: " ^", try: true }],

@@ -1117,6 +1117,54 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
+    "danceflow.select.halfPageDown.jump",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: 1, by: "halfPage", shift: "jump" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.halfPageDown.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: 1, by: "halfPage", shift: "extend" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.halfPageUp.jump",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.halfPageUp.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.pageDown.jump",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: 1, by: "page", shift: "jump" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.pageDown.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: 1, by: "page", shift: "extend" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.pageUp.jump",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: -1, by: "page", shift: "jump" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.select.pageUp.extend",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".select.vertically", { direction: -1, by: "page", shift: "extend" }]],
+  );
+  describeAdditionalCommand(
+    commands,
     "danceflow.select.right.jump",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".select.horizontally", { direction: 1, shift: "jump" , $exclude: [] }]],
