@@ -15,7 +15,7 @@ const moduleCommentRe =
 const docCommentRe =
   new RegExp(String.raw`^( *)`                                  // #1: indentation
            + String.raw`\/\*\*\n`                               //     start of doc comment
-           + String.raw`((?:\1 \*(?:\n| .+\n))+?)`              // #2: doc comment
+           + String.raw`((?:\1 \*(?:\n| .*\n))+?)`             // #2: doc comment - FIXED
            + String.raw`\1 \*\/\n`                              //     end of doc comment
            + String.raw`\1export (?:async )?function (\w+)`     // #3: function name
            + String.raw`(?:<[^>)\n]+>)?`                        //     generic arguments

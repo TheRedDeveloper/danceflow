@@ -3,6 +3,7 @@ import * as vscode from "vscode";
 
 import { expect, ExpectedDocument } from "./utils";
 import { Context, deindentLines, edit, EmptySelectionsError, indentLines, insert, insertByIndex, isPosition, isRange, isSelection, joinLines, mapActive, mapBoth, mapEnd, mapStart, moveWhileBackward, moveWhileForward, moveWithBackward, moveWithForward, NotASelectionError, pipe, Positions, replace, replaceByIndex, rotate, rotateContents, rotateSelections, searchBackward, searchForward, Select, SelectionBehavior, Selections, text } from "../../src/api";
+import { parseCommandArgs, generateCondition, expandKeybindingGroup, resolveKeybindings, flattenKeybindings, processKeybindings } from '../../src/api/keybinds/resolve';
 import { Extension } from "../../src/state/extension";
 
 function setSelectionBehavior(selectionBehavior: SelectionBehavior) {
@@ -1135,6 +1136,298 @@ suite("API tests", function () {
       await context.runAsync(async () => {
         expect(Positions.toString(Selections.nth(0)!.active), "to be", "1:1");
         expect(Positions.toString(Selections.nth(1)!.active), "to be", "2:3");
+      });
+
+      // No expected end document.
+    });
+
+  });
+
+  suite("./src/api/keybinds/resolve.ts", function () {
+
+    test("function parseCommandArgs", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        expect(
+          parseCommandArgs('danceflow.openMenu{"menu": "match"}'),
+          "to equal",
+          { command: 'danceflow.openMenu', args: { menu: 'match' } }
+        );
+
+        expect(
+          parseCommandArgs('danceflow.simple'),
+          "to equal",
+          { command: 'danceflow.simple' }
+        );
+
+        expect(
+          parseCommandArgs('danceflow.complex{"num": 42, "text": "hello"}'),
+          "to equal",
+          { command: 'danceflow.complex', args: { num: 42, text: "hello" } }
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function generateCondition", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockKeybindings = {
+          global: [
+            { key: 'h', command: 'global.h' },
+            { key: 'j', command: 'global.j' }
+          ],
+          inspect: [
+            { key: 'h', command: 'inspect.h' },
+            { key: 'k', command: 'inspect.k' }
+          ],
+          interact: [],
+          change: [
+            { key: 'm', command: 'change.m' }
+          ],
+          selectedMove: [
+            { key: 'h', command: 'selectedMove.h' }
+          ],
+          move: [
+            { key: 'h', command: 'move.h' },
+            { key: 'k', command: 'move.k' }
+          ]
+        };
+
+        // Global has no condition
+        expect(
+          generateCondition('global', 'h', mockKeybindings),
+          "to be undefined"
+        );
+
+        // Inspect is overridden by global for key 'h'
+        expect(
+          generateCondition('inspect', 'h', mockKeybindings),
+          "to equal",
+          "danceflow.inspect.active && !danceflow.global.active"
+        );
+
+        // SelectedMove is overridden by global and inspect for key 'h'
+        expect(
+          generateCondition('selectedMove', 'h', mockKeybindings),
+          "to equal",
+          "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
+        );
+
+        // Move 'k' is overridden by inspect
+        expect(
+          generateCondition('move', 'k', mockKeybindings),
+          "to equal",
+          "danceflow.move.active && !danceflow.inspect.active"
+        );
+
+        // Change 'm' has no overrides
+        expect(
+          generateCondition('change', 'm', mockKeybindings),
+          "to equal",
+          "danceflow.change.active"
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function expandKeybindingGroup", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockBindings = {
+          "danceflow.command1": ["h", "j"],
+          "danceflow.command2": ["k"],
+          'danceflow.openMenu{"menu": "match"}': ["m"]
+        };
+
+        expect(
+          expandKeybindingGroup('move', mockBindings),
+          "to equal",
+          [
+            { key: "h", command: "danceflow.command1" },
+            { key: "j", command: "danceflow.command1" },
+            { key: "k", command: "danceflow.command2" },
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" } }
+          ]
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function resolveKeybindings", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockKeybindings = {
+          global: {
+            "danceflow.cancel": ["esc"],
+            "danceflow.global.h": ["h"]
+          },
+          inspect: {
+            "danceflow.inspect.f": ["f"],
+            "danceflow.inspect.h": ["h"]
+          },
+          interact: {
+            "danceflow.interact.y": ["y"]
+          },
+          change: {},
+          selectedMove: {
+            "danceflow.selectedMove.h": ["h"]
+          },
+          move: {
+            "danceflow.move.h": ["h"],
+            'danceflow.openMenu{"menu": "match"}': ["m"]
+          }
+        };
+
+        const resolved = resolveKeybindings(mockKeybindings);
+
+        // Global keys have no conditions
+        expect(
+          resolved.global.find(b => b.key === "esc"),
+          "to equal",
+          { key: "esc", command: "danceflow.cancel" }
+        );
+
+        // Inspect 'h' is overridden by global
+        expect(
+          resolved.inspect.find(b => b.key === "h"),
+          "to equal",
+          { 
+            key: "h", 
+            command: "danceflow.inspect.h", 
+            condition: "danceflow.inspect.active && !danceflow.global.active" 
+          }
+        );
+
+        // SelectedMove 'h' is overridden by global and inspect
+        expect(
+          resolved.selectedMove.find(b => b.key === "h"),
+          "to equal",
+          { 
+            key: "h", 
+            command: "danceflow.selectedMove.h", 
+            condition: "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
+          }
+        );
+
+        // Move command with args
+        expect(
+          resolved.move.find(b => b.key === "m"),
+          "to equal",
+          { 
+            key: "m", 
+            command: "danceflow.openMenu", 
+            args: { menu: "match" },
+            condition: "danceflow.move.active"
+          }
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function flattenKeybindings", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockGroups = {
+          global: [
+            { key: "esc", command: "danceflow.cancel" },
+            { key: "h", command: "danceflow.global.h" }
+          ],
+          inspect: [
+            { key: "f", command: "danceflow.inspect.f" },
+            { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" }
+          ],
+          interact: [
+            { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" }
+          ],
+          change: [],
+          selectedMove: [],
+          move: [
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+          ]
+        };
+
+        expect(
+          flattenKeybindings(mockGroups),
+          "to equal",
+          [
+            { key: "esc", command: "danceflow.cancel" },
+            { key: "h", command: "danceflow.global.h" },
+            { key: "f", command: "danceflow.inspect.f" },
+            { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" },
+            { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" },
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+          ]
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function processKeybindings", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockKeybindings = {
+          global: {
+            "danceflow.cancel": ["esc"]
+          },
+          inspect: {
+            "danceflow.inspect.f": ["f"]
+          },
+          interact: {},
+          change: {},
+          selectedMove: {},
+          move: {
+            'danceflow.openMenu{"menu": "match"}': ["m"]
+          }
+        };
+
+        const result = processKeybindings(mockKeybindings);
+
+        // Verify the global esc key binding
+        expect(
+          result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.condition),
+          "to be true"
+        );
+
+        // Verify the move menu binding
+        expect(
+          result.some(kb => 
+            kb.key === "m" && 
+            kb.command === "danceflow.openMenu" && 
+            kb.args && kb.args["menu"] === "match" &&
+            kb.condition === "danceflow.move.active"
+          ),
+          "to be true"
+        );
       });
 
       // No expected end document.

@@ -1,4 +1,10 @@
-import { KeybindingGroups, KeyBinding } from './default';
+import { 
+  UnresolvedKeybindingGroups, 
+  UnresolvedKeyBinding,
+  keybindingGroupNames,
+  KeybindingGroupName,
+  KeybindingGroups
+} from './default';
 
 /**
  * Single resolved keybinding
@@ -13,14 +19,7 @@ export interface ResolvedKeybinding {
 /**
  * Keybindings grouped by priority
  */
-export interface ResolvedKeybindingGroups {
-  global: ResolvedKeybinding[];
-  inspect: ResolvedKeybinding[];
-  interact: ResolvedKeybinding[];
-  change: ResolvedKeybinding[];
-  selectedMove: ResolvedKeybinding[];
-  move: ResolvedKeybinding[];
-}
+export type ResolvedKeybindingGroups = KeybindingGroups<ResolvedKeybinding[]>;
 
 /**
  * All keybindings flattened into a single array with conditions
@@ -31,14 +30,7 @@ export type FlattenedKeybindings = ResolvedKeybinding[];
  * Order of priority for keybinding groups
  * Earlier groups override later ones
  */
-const priorityOrder = [
-  'global',
-  'inspect',
-  'interact',
-  'change',
-  'selectedMove',
-  'move'
-] as const;
+const priorityOrder = keybindingGroupNames;
 
 /**
  * Extract arguments from command string if present
@@ -66,7 +58,7 @@ const priorityOrder = [
  * );
  * ```
  */
-function parseCommandArgs(commandString: string): { command: string; args?: Record<string, any> } {
+export function parseCommandArgs(commandString: string): { command: string; args?: Record<string, any> } {
   const regex = /^([^{]+)(\{.*\})?$/;
   const match = regex.exec(commandString);
   if (!match) {
@@ -151,8 +143,8 @@ function parseCommandArgs(commandString: string): { command: string; args?: Reco
  * );
  * ```
  */
-function generateCondition(
-  group: string, 
+export function generateCondition(
+  group: KeybindingGroupName, 
   key: string, 
   allKeybindings: ResolvedKeybindingGroups
 ): string | undefined {
@@ -165,7 +157,7 @@ function generateCondition(
   const overridingGroups = priorityOrder.filter(g => {
     // Only consider groups with higher priority than current group
     const groupIndex = priorityOrder.indexOf(g);
-    const currentIndex = priorityOrder.indexOf(group as typeof priorityOrder[number]);
+    const currentIndex = priorityOrder.indexOf(group);
     
     if (groupIndex >= currentIndex) {
       return false;
@@ -212,24 +204,26 @@ function generateCondition(
  * );
  * ```
  */
-function expandKeybindingGroup(
-  group: string, 
-  bindings: Record<string, KeyBinding>
+export function expandKeybindingGroup(
+  group: KeybindingGroupName, 
+  bindings: UnresolvedKeyBinding
 ): ResolvedKeybinding[] {
   const result: ResolvedKeybinding[] = [];
 
-  Object.entries(bindings).forEach(([commandString, keys]) => {
+  for (const [commandString, keys] of Object.entries(bindings)) {
     const { command, args } = parseCommandArgs(commandString);
     
     // Create a separate binding for each key assigned to this command
-    keys.forEach(key => {
-      result.push({
-        key,
-        command,
-        ...(args && { args }),
-      });
-    });
-  });
+    if (Array.isArray(keys)) {
+      for (const key of keys) {
+        result.push({
+          key,
+          command,
+          ...(args && { args }),
+        });
+      }
+    }
+  }
 
   return result;
 }
@@ -306,29 +300,23 @@ function expandKeybindingGroup(
  * );
  * ```
  */
-export function resolveKeybindings(keybindings: KeybindingGroups): ResolvedKeybindingGroups {
+export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): ResolvedKeybindingGroups {
   // First pass: expand multi-keys without conditions
-  const expandedGroups: ResolvedKeybindingGroups = {
-    global: expandKeybindingGroup('global', keybindings.global),
-    inspect: expandKeybindingGroup('inspect', keybindings.inspect),
-    interact: expandKeybindingGroup('interact', keybindings.interact),
-    change: expandKeybindingGroup('change', keybindings.change),
-    selectedMove: expandKeybindingGroup('selectedMove', keybindings.selectedMove),
-    move: expandKeybindingGroup('move', keybindings.move),
-  };
+  const expandedGroups = {} as ResolvedKeybindingGroups;
+  
+  // Process each keybinding group
+  for (const group of priorityOrder) {
+    expandedGroups[group] = expandKeybindingGroup(group, keybindings[group]);
+  }
 
   // Second pass: add conditions based on priority overrides
-  const resultGroups: ResolvedKeybindingGroups = {
-    global: expandedGroups.global,
-    inspect: [],
-    interact: [],
-    change: [],
-    selectedMove: [],
-    move: [],
-  };
-
+  const resultGroups = {} as ResolvedKeybindingGroups;
+  
+  // Global group doesn't need conditions
+  resultGroups.global = expandedGroups.global;
+  
   // For each non-global group, add appropriate conditions
-  priorityOrder.slice(1).forEach(group => {
+  for (const group of priorityOrder.slice(1)) {
     resultGroups[group] = expandedGroups[group].map(binding => {
       const condition = generateCondition(group, binding.key, expandedGroups);
       
@@ -338,7 +326,7 @@ export function resolveKeybindings(keybindings: KeybindingGroups): ResolvedKeybi
       
       return binding;
     });
-  });
+  }
 
   return resultGroups;
 }
@@ -383,14 +371,7 @@ export function resolveKeybindings(keybindings: KeybindingGroups): ResolvedKeybi
  * ```
  */
 export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedKeybindings {
-  return [
-    ...groups.global,
-    ...groups.inspect,
-    ...groups.interact,
-    ...groups.change,
-    ...groups.selectedMove,
-    ...groups.move
-  ];
+  return keybindingGroupNames.flatMap(group => groups[group]);
 }
 
 /**
@@ -414,25 +395,27 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *   }
  * };
  * 
+ * const result = processKeybindings(mockKeybindings);
+ * 
+ * // Verify the global esc key binding
  * expect(
- *   processKeybindings(mockKeybindings),
- *   "to include",
- *   { key: "esc", command: "danceflow.cancel" }
+ *   result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.condition),
+ *   "to be true"
  * );
  * 
+ * // Verify the move menu binding
  * expect(
- *   processKeybindings(mockKeybindings),
- *   "to include",
- *   { 
- *     key: "m", 
- *     command: "danceflow.openMenu", 
- *     args: { menu: "match" },
- *     condition: "danceflow.move.active"
- *   }
+ *   result.some(kb => 
+ *     kb.key === "m" && 
+ *     kb.command === "danceflow.openMenu" && 
+ *     kb.args && kb.args["menu"] === "match" &&
+ *     kb.condition === "danceflow.move.active"
+ *   ),
+ *   "to be true"
  * );
  * ```
  */
-export function processKeybindings(keybindings: KeybindingGroups): FlattenedKeybindings {
+export function processKeybindings(keybindings: UnresolvedKeybindingGroups): FlattenedKeybindings {
   const resolvedGroups = resolveKeybindings(keybindings);
   return flattenKeybindings(resolvedGroups);
 }
@@ -440,6 +423,6 @@ export function processKeybindings(keybindings: KeybindingGroups): FlattenedKeyb
 /**
  * Process and return the final keybinding structure
  */
-export function getResolvedKeybindingGroups(keybindings: KeybindingGroups): ResolvedKeybindingGroups {
+export function getResolvedKeybindingGroups(keybindings: UnresolvedKeybindingGroups): ResolvedKeybindingGroups {
   return resolveKeybindings(keybindings);
 }

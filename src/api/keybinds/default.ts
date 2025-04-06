@@ -1,26 +1,32 @@
 /**
- * Default keybindings for Danceflow extension.
- * Organized by priority groups:
- * 1. Global
- * 2. Inspect
- * 3. Interact
- * 4. Change
- * 5. SelectedMove
- * 6. Move
+ * Default keybindings
  */
 
-export type KeyBinding = string[];
+// Basic type for mapping commands to key combinations
+export type UnresolvedKeyBinding = Record<string, string[]>;
 
-export type KeybindingGroups = {
-  global: Record<string, KeyBinding>
-  inspect: Record<string, KeyBinding>
-  interact: Record<string, KeyBinding>
-  change: Record<string, KeyBinding>
-  selectedMove: Record<string, KeyBinding>
-  move: Record<string, KeyBinding>
-}
+// Define the group names in order of priority (single source of truth)
+export const keybindingGroupNames = [
+  'global',
+  'inspect',
+  'interact', 
+  'change',
+  'selectedMove',
+  'move'
+] as const;
 
-export const editorDefaultKeybindings: KeybindingGroups = {
+// Create a type from the array of group names
+export type KeybindingGroupName = typeof keybindingGroupNames[number];
+
+// Generic type for any keybinding group structure
+export type KeybindingGroups<T> = {
+  [K in KeybindingGroupName]: T;
+};
+
+// Specific type for unresolved keybindings
+export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBinding>;
+
+export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     // Mode switching
     "danceflow.cancel": [`esc`],

@@ -128,7 +128,7 @@
   
   This system will greatly reduce the amount of pain needed to add a new mode.
 
-  ☐ Ensure that this works with inline tests unsing the ### Example syntax described in test/README.md
+  ✔ Ensure that this works with inline tests unsing the ### Example syntax described in test/README.md @done(25-04-06 18:59)
     
   ☐ Every mode needs to have a configurable list of active groups
     These will have to be made configurable inside package.build.ts inside "danceflow.modes"  
