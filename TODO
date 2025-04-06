@@ -39,43 +39,46 @@
     5. SelectedMove
     6. Move
   
-  ☐ Default keybindings should be set on the ordered groups in src/keybinds/default.ts 
+  ✔ Default keybindings should be set on the ordered groups in src/keybinds/default.ts @done(25-04-06 15:11)
     The object I configure should be like this
     {
       global: {
-        "danceflow.exit": ["esc"],
-        "danceflow.togglePanel.git": ["⇧1", "⎈⇧g"],
-        "danceflow.togglePanel.explorer": ["⇧2", "⎈⇧e"],
-        "danceflow.togglePanel.testing": ["⇧3", "⎈⇧t"],
+        "danceflow.exit": [`esc`],
+        "danceflow.togglePanel.git": [`⇧1`, `⎈⇧g`],
+        "danceflow.togglePanel.explorer": [`⇧2`, `⎈⇧e`],
+        "danceflow.togglePanel.testing": [`⇧3`, `⎈⇧t`],
         ...
       },
       inspect: {
         ...
       },
       selectedMove: {
-        "danceflow.selectedMove.left": ["h"],
+        "danceflow.selectedMove.left": [`h`],
         ...
         "danceflow.move.lineDown": [`x`],
         ...
       },
       move: {
-        "danceflow.move.left": ["h"],
+        "danceflow.move.left": [`h`],
         ...
         "danceflow.move.lineDown": [`x`],
+        ...
+        'danceflow.openMenu{"menu": "match"}': [`m`],
         ...
       }
     }
       
-  ☐ At build time we should find out a key bind's condition, having it deactivate when overwritten
+  ✔ At build time in src/api/keybinds/resolve.ts we should find out a key bind's condition, having it deactivate when overwritten @done(25-04-06 16:51)
     Example:
-    The move.left handler on `h` should be inactive when selectedMove is active,
+    The move.left command on `h` should be inactive when selectedMove is active,
     because selectedMove contains the same keybind and is higher priority (above in the list).
 
     Note that a condition is not added if a key is multi-assigned in the same group
     only when another group has the same keybind.
 
     First we should separate out all the multi-assigned keybinds
-    Then we should find out the condition of each keybind
+    Then we should separate out the args if any and parse them
+    Then we should find the condition of each keybind, by what others should be overwriting it
     This results in an object like this
     {
       global: [
@@ -99,10 +102,12 @@
       move: [
         {key: `h`, command: "danceflow.move.left", condition: "!danceflow.selectedMove.active"},
         ...
+        {key: `m`, command: "danceflow.openMenu", args: {"menu": "match"}},
+        ...
       ]
     }
   
-  ☐ Every keybind should only be active when its corresponding group is active
+  ✔ Every keybind should only be active when its corresponding group is active unless its global @done(25-04-06 16:51)
     This results in a final object like this
     {
       {key: `esc`, command: "danceflow.exit"},
@@ -117,10 +122,13 @@
       ...
       {key: `h`, command: "danceflow.move.left", condition: "danceflow.move.active && !danceflow.selectedMove.active"},
       ...
+      {key: `m`, command: "danceflow.openMenu", args: {"menu": "match"}, condition: "danceflow.move.active"},
+      ...
     }
+  
+  This system will greatly reduce the amount of pain needed to add a new mode.
 
-  ☐ Ensure that this works with unit tests in test/keybinds.test.ts
-    Use suite("...", function () {
+  ☐ Ensure that this works with inline tests unsing the ### Example syntax described in test/README.md
     
   ☐ Every mode needs to have a configurable list of active groups
     These will have to be made configurable inside package.build.ts inside "danceflow.modes"  
