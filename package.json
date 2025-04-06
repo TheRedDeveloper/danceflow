@@ -369,6 +369,29 @@
                   }
                 },
                 "description": "The decorations to apply to the hidden selections indicator, shown when some selections are below or above the lines currently shown in the editor. Specify an empty object {} to disable this indicator."
+              },
+              "activeGroups": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "description": "Controls which keybinding groups should be active in this mode. The 'global' group is always active regardless of this setting.",
+                "items": {
+                  "enum": [
+                    "inspect",
+                    "interact",
+                    "change",
+                    "selectedMove",
+                    "move"
+                  ],
+                  "enumDescriptions": [
+                    "Keys for inspecting code elements like definitions, references, etc.",
+                    "Keys for interacting with the editor without changing content (copy, etc.)",
+                    "Keys for changing content (delete, paste, etc.)",
+                    "Keys for selection movement operations",
+                    "Keys for cursor movement operations"
+                  ]
+                }
               }
             },
             "additionalProperties": false
@@ -393,11 +416,17 @@
                     "register": " modify"
                   }
                 ]
-              ]
+              ],
+              "activeGroups": []
             },
             "select": {
               "cursorStyle": "underline",
-              "selectionBehavior": "character"
+              "selectionBehavior": "character",
+              "activeGroups": [
+                "interact",
+                "selectedMove",
+                "change"
+              ]
             },
             "move": {
               "cursorStyle": "block",
@@ -439,6 +468,19 @@
                     ]
                   }
                 ]
+              ],
+              "activeGroups": [
+                "interact",
+                "change",
+                "move"
+              ]
+            },
+            "inspect": {
+              "activeGroups": [
+                "inspect",
+                "interact",
+                "change",
+                "move"
               ]
             }
           },

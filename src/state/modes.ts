@@ -4,6 +4,7 @@ import type { Extension } from "./extension";
 import { command, SelectionBehavior } from "../api";
 import { extensionName } from "../utils/constants";
 import { SettingsValidator } from "../utils/settings-validator";
+import { KeybindingGroupName } from "../api/keybinds/default";
 
 /**
  * An editing mode.
@@ -24,6 +25,7 @@ export class Mode {
   private _onEnterMode: readonly command.Any[] = [];
   private _onLeaveMode: readonly command.Any[] = [];
   private _decorations: readonly Mode.Decoration[] = [];
+  private _activeGroups: readonly KeybindingGroupName[] = ['global'];
 
   public get onChanged() {
     return this._onChanged.event;
@@ -71,6 +73,10 @@ export class Mode {
 
   public get decorations() {
     return this._decorations;
+  }
+
+  public get activeGroups() {
+    return this._activeGroups;
   }
 
   /**
@@ -278,6 +284,25 @@ export class Mode {
           vscode.window.createTextEditorDecorationType(hiddenSelectionsIndicatorsDecoration);
         changedProperties.push("hiddenSelectionsIndicatorsDecorationType");
       }
+    }
+
+    // Active groups
+    let newActiveGroups: readonly KeybindingGroupName[];
+    
+    if (raw.activeGroups === undefined) {
+      newActiveGroups = up.activeGroups;
+    } else if (raw.activeGroups === null) {
+      newActiveGroups = ['global'];
+    } else {
+      // Filter out any 'global' entries as we'll add it manually
+      const filteredGroups = raw.activeGroups.filter(group => group !== 'global') as KeybindingGroupName[];
+      newActiveGroups = ['global', ...filteredGroups];
+    }
+
+    if (!this._activeGroups.every(g => newActiveGroups.includes(g)) || 
+        !newActiveGroups.every(g => this._activeGroups.includes(g))) {
+      this._activeGroups = newActiveGroups;
+      changedProperties.push('activeGroups');
     }
 
     // Events (subscribers don't care about changes to these properties, so we
@@ -498,6 +523,7 @@ export declare namespace Mode {
     onEnterMode?: readonly command.Any[];
     onLeaveMode?: readonly command.Any[];
     selectionBehavior?: Configuration.SelectionBehavior | null;
+    activeGroups?: KeybindingGroupName[] | null;
   }
 
   /**

@@ -5,6 +5,7 @@ import type { Mode } from "./modes";
 import { command, commands, Context, Positions, SelectionBehavior, Selections } from "../api";
 import { extensionName } from "../utils/constants";
 import { assert } from "../utils/errors";
+import { keybindingGroupNames } from "../api/keybinds/default";
 
 /**
  * Danceflow-specific state related to a single `vscode.TextEditor`.
@@ -231,15 +232,31 @@ export class PerEditorState implements vscode.Disposable {
    *
    * @deprecated Do not call -- internal implementation detail.
    */
-  public notifyDidBecomeActive() {
+  public async notifyDidBecomeActive() {
     const { editor, mode } = this;
 
     this.extension.statusBar.activeModeSegment.setContent(mode.name);
 
     editor.options.lineNumbers = mode.lineNumbers;
     editor.options.cursorStyle = mode.cursorStyle;
-
-    return vscode.commands.executeCommand("setContext", extensionName + ".mode", mode.name);
+    
+    // Set the mode context
+    await vscode.commands.executeCommand("setContext", extensionName + ".mode", mode.name);
+    
+    // Set contexts for each keybinding group
+    const activeGroups = new Set(mode.activeGroups);
+    
+    // Create an array of promises for all the setContext calls
+    const contextPromises = keybindingGroupNames.map(groupName => 
+      vscode.commands.executeCommand(
+        "setContext", 
+        `${extensionName}.${groupName}.active`, 
+        activeGroups.has(groupName)
+      )
+    );
+    
+    // Wait for all contexts to be set
+    return Promise.all(contextPromises).then(() => {});
   }
 
   /**
@@ -248,11 +265,23 @@ export class PerEditorState implements vscode.Disposable {
    *
    * @deprecated Do not call -- internal implementation detail.
    */
-  public notifyDidBecomeInactive(newEditorIsActive: boolean) {
+  public async notifyDidBecomeInactive(newEditorIsActive: boolean) {
     if (!newEditorIsActive) {
       this.extension.statusBar.activeModeSegment.setContent("<no active mode>");
 
-      return vscode.commands.executeCommand("setContext", extensionName + ".mode", undefined);
+      // Clear the mode context
+      await vscode.commands.executeCommand("setContext", extensionName + ".mode", undefined);
+      
+      // Clear all group contexts when no editor is active
+      const contextPromises = keybindingGroupNames.map(groupName => 
+        vscode.commands.executeCommand(
+          "setContext", 
+          `${extensionName}.${groupName}.active`, 
+          false
+        )
+      );
+      
+      return Promise.all(contextPromises).then(() => {});
     }
 
     return Promise.resolve();
@@ -384,8 +413,6 @@ export class PerEditorState implements vscode.Disposable {
 
     editor.options.cursorStyle = mode.cursorStyle;
     editor.options.lineNumbers = mode.lineNumbers;
-
-    // this._updateOffscreenSelectionsIndicators(mode);
   }
 
   private _updateSelectionsAfterBehaviorChange(mode: Mode) {
@@ -397,94 +424,6 @@ export class PerEditorState implements vscode.Disposable {
       ? Selections.toCharacterMode(selections, document)
       : Selections.fromCharacterMode(selections, document);
   }
-
-  // private _updateOffscreenSelectionsIndicators(mode: Mode) {
-  //   const decorationType = mode.hiddenSelectionsIndicatorsDecorationType;
-
-  //   if (decorationType === undefined) {
-  //     return;
-  //   }
-
-  //   const editor = this._editor,
-  //         selections = editor.selections,
-  //         visibleRanges = editor.visibleRanges;
-
-  //   // Find which selections are offscreen.
-  //   const offscreenSelections = [] as vscode.Selection[];
-
-  //   for (const selection of selections) {
-  //     let isOffscreen = true;
-
-  //     for (const visibleRange of visibleRanges) {
-  //       if (Selections.overlap(visibleRange, selection)) {
-  //         isOffscreen = false;
-  //         break;
-  //       }
-  //     }
-
-  //     if (isOffscreen) {
-  //       offscreenSelections.push(selection);
-  //     }
-  //   }
-
-  //   // If there are no selections offscreen, clear decorations.
-  //   if (offscreenSelections.length === 0) {
-  //     editor.setDecorations(decorationType, []);
-  //     return;
-  //   }
-
-  //   // Otherwise, add decorations for offscreen selections.
-  //   const sortedVisibleRanges = visibleRanges.slice(),
-  //         decorations = [] as vscode.DecorationOptions[];
-
-  //   sortedVisibleRanges.sort((a, b) => a.start.compareTo(b.start));
-  //   offscreenSelections.sort((a, b) => a.start.compareTo(b.start));
-
-  //   function pushDecoration(
-  //     decorations: vscode.DecorationOptions[],
-  //     count: number,
-  //     position: vscode.Position,
-  //     relatively: "above" | "below",
-  //   ) {
-  //     decorations.push({
-  //       range: new vscode.Range(position, position),
-  //       renderOptions: {
-  //         after: {
-  //           contentText: `  ${count} hidden selection${count === 1 ? "" : "s"} ${relatively}`,
-  //         },
-  //       },
-  //     });
-  //   }
-
-  //   // Hidden selections above each visible range.
-  //   let offscreenSelectionIdx = 0;
-
-  //   for (let i = 0; i < sortedVisibleRanges.length; i++) {
-  //     const visibleRange = sortedVisibleRanges[i],
-  //           visibleRangeStartLine = visibleRange.start.line;
-  //     let count = 0;
-
-  //     while (offscreenSelections.length > offscreenSelectionIdx
-  //         && offscreenSelections[offscreenSelectionIdx].end.line < visibleRangeStartLine) {
-  //       offscreenSelectionIdx++;
-  //       count++;
-  //     }
-
-  //     if (count > 0) {
-  //       pushDecoration(decorations, count, visibleRange.start, "above");
-  //     }
-  //   }
-
-  //   // Hidden selections below the last visible range.
-  //   const visibleRange = sortedVisibleRanges[sortedVisibleRanges.length - 1],
-  //         count = offscreenSelections.length - offscreenSelectionIdx;
-
-  //   if (count > 0) {
-  //     pushDecoration(decorations, count, visibleRange.end, "below");
-  //   }
-
-  //   editor.setDecorations(decorationType, decorations);
-  // }
 }
 
 export declare namespace PerEditorState {

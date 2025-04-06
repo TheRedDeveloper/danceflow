@@ -304,6 +304,22 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   + "some selections are below or above the lines currently shown in the editor. "
                   + "Specify an empty object {} to disable this indicator.",
               },
+              activeGroups: {
+                type: ["array", "null"],
+                description: 
+                  "Controls which keybinding groups should be active in this mode. "
+                  + "The 'global' group is always active regardless of this setting.",
+                items: {
+                  enum: ["inspect", "interact", "change", "selectedMove", "move"],
+                  enumDescriptions: [
+                    "Keys for inspecting code elements like definitions, references, etc.",
+                    "Keys for interacting with the editor without changing content (copy, etc.)",
+                    "Keys for changing content (delete, paste, etc.)",
+                    "Keys for selection movement operations",
+                    "Keys for cursor movement operations"
+                  ]
+                }
+              }
             },
             additionalProperties: false,
           },
@@ -325,10 +341,12 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   register: " modify",
                 }],
               ],
+              activeGroups: []
             },
             select: {
               cursorStyle: "underline",
               selectionBehavior: "character",
+              activeGroups: ["interact", "selectedMove", "change"]
             },
             move: {
               cursorStyle: "block",
@@ -355,12 +373,16 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   ],
                 }],
               ],
+              activeGroups: ["interact", "change", "move"]
             },
+            inspect: {
+              activeGroups: ["inspect", "interact", "change", "move"]
+            }
           },
           description: "Controls the different modes available in Danceflow.",
         },
 
-      "danceflow.menus": {
+        "danceflow.menus": {
         type: "object",
           scope: "language-overridable",
           description: "Controls the different menus available in Danceflow.",
