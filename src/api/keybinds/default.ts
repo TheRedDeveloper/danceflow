@@ -37,8 +37,10 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.togglePanel.explorer": [`⇧2`, `⎈⇧e`],
     "danceflow.togglePanel.chat": [`⇧3`, `⎈⇧c`],
     "danceflow.togglePanel.search": [`⇧4`, `⎈⇧s`],
-    "danceflow.togglePanel.testing": [`⇧5`, `⎈⇧t`],
-    "danceflow.togglePanel.extensions": [`⇧6`, `⎈⇧x`],
+    "danceflow.togglePanel.timeline": [`⇧5`, `⎈⇧t`],
+    "danceflow.togglePanel.outline": [`⇧6`, `⎈⇧l`],
+    "danceflow.togglePanel.debug": [`⇧7`, `⎈⇧b`],
+    "danceflow.togglePanel.extensions": [`⇧8`, `⎈⇧x`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -264,5 +266,13 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
 // danceflow.edit.yank-delete.line
 // danceflow.edit.delete.line
 // danceflow.openMenu{"menu": "enclose"}
+// danceflow.togglePanel.git
+// danceflow.togglePanel.explorer
+// danceflow.togglePanel.chat
+// danceflow.togglePanel.search
+// danceflow.togglePanel.timeline
+// danceflow.togglePanel.outline
+// danceflow.togglePanel.debug
+// danceflow.togglePanel.extensions
 
 export default editorDefaultKeybindings;

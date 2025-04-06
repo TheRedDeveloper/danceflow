@@ -37,9 +37,13 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 `⇧4`/`⎈⇧s` Toggle search
 
-`⇧5`/`⎈⇧t` Toggle testing
+`⇧5`/`⎈⇧t` Toggle timeline
 
-`⇧6`/`⎈⇧x` Toggle extensions
+`⇧6`/`⎈⇧l` Toggle outline
+
+`⇧7`/`⎈⇧b` Toggle debug
+
+`⇧8`/`⎈⇧x` Toggle extensions
 
 #### Windows
 
