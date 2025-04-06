@@ -16,6 +16,7 @@ declare module "./modes";
  * | Set mode to Move | `set.move` | `escape` (core: modify; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
  * | Set mode to Modify | `set.modify` |                                                             | `[".modes.set", { mode: "modify" }]`                        |
  * | Set mode to Select | `set.select` | `v` (helix: move)                                         | `[".modes.set", { mode: "select" }]`                        |
+ * | Set mode to Select | `set.inspect` |                                                           | `[".modes.set", { mode: "inspect" }]`                        |
  *
  * Other variants are provided to switch to modify mode:
  *

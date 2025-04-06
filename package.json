@@ -1114,6 +1114,11 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.edit.replace",
+        "title": "Replace",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.edit.replaceCharacters",
         "title": "Replace characters",
         "category": "Danceflow"
@@ -1261,6 +1266,11 @@
       {
         "command": "danceflow.modes.set",
         "title": "Set Danceflow mode",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.modes.set.inspect",
+        "title": "Set mode to Select",
         "category": "Danceflow"
       },
       {
@@ -2134,6 +2144,10 @@
           "when": "danceflow.mode == 'move'"
         },
         {
+          "command": "danceflow.edit.replace",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
           "command": "danceflow.edit.replaceCharacters",
           "when": "danceflow.mode == 'move'"
         },
@@ -2251,6 +2265,10 @@
         },
         {
           "command": "danceflow.modes.set",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
+          "command": "danceflow.modes.set.inspect",
           "when": "danceflow.mode == 'move'"
         },
         {

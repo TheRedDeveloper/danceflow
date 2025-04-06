@@ -26,7 +26,7 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tbody>
 <tr><td rowspan=2><a href="#dev"><code>dev</code></a></td><td><a href="#dev.copyLastErrorMessage"><code>dev.copyLastErrorMessage</code></a></td><td>Copies the last encountered error message</td><td></td></tr>
 <tr><td><a href="#dev.setSelectionBehavior"><code>dev.setSelectionBehavior</code></a></td><td>Set the selection behavior of the specified mode</td><td></td></tr>
-<tr><td rowspan=31><a href="#edit"><code>edit</code></a></td><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td rowspan=32><a href="#edit"><code>edit</code></a></td><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.swap"><code>edit.case.swap</code></a></td><td>Swap case</td><td><code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.toLower"><code>edit.case.toLower</code></a></td><td>Transform to lower case</td><td><code>`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.toUpper"><code>edit.case.toUpper</code></a></td><td>Transform to upper case</td><td><code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -35,8 +35,8 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tr><td><a href="#edit.deindent.withIncomplete"><code>edit.deindent.withIncomplete</code></a></td><td>Deindent selected lines (including incomplete indent)</td><td><code>Shift+,</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L43"><code>edit.delete</code></a></td><td>Delete</td><td><code>Alt+D</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L44"><code>edit.delete-modify</code></a></td><td>Delete and switch to Modify</td><td><code>Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./edit.ts#L412"><code>edit.newLine.above.modify</code></a></td><td>Insert new line above and switch to modify</td><td><code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./edit.ts#L450"><code>edit.newLine.below.modify</code></a></td><td>Insert new line below and switch to modify</td><td><code>O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./edit.ts#L413"><code>edit.newLine.above.modify</code></a></td><td>Insert new line above and switch to modify</td><td><code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./edit.ts#L451"><code>edit.newLine.below.modify</code></a></td><td>Insert new line below and switch to modify</td><td><code>O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>O</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L36"><code>edit.paste.after</code></a></td><td>Paste after</td><td></td></tr>
 <tr><td><a href="./edit.ts#L38"><code>edit.paste.after.select</code></a></td><td>Paste after and select</td><td><code>P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L35"><code>edit.paste.before</code></a></td><td>Paste before</td><td></td></tr>
@@ -45,6 +45,7 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tr><td><a href="./edit.ts#L42"><code>edit.pasteAll.after.select</code></a></td><td>Paste all after and select</td><td><code>Alt+P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L39"><code>edit.pasteAll.before</code></a></td><td>Paste all before</td><td></td></tr>
 <tr><td><a href="./edit.ts#L41"><code>edit.pasteAll.before.select</code></a></td><td>Paste all before and select</td><td><code>Shift+Alt+P</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./edit.ts#L53"><code>edit.replace</code></a></td><td>Replace</td><td></td></tr>
 <tr><td><a href="./edit.ts#L34"><code>edit.selectRegister-insert</code></a></td><td>Pick register and replace</td><td><code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+R</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L45"><code>edit.yank-delete</code></a></td><td>Copy and delete</td><td><code>D</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./edit.ts#L46"><code>edit.yank-delete-modify</code></a></td><td>Copy, delete and switch to Modify</td><td><code>C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>C</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
@@ -78,15 +79,16 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#selectRegister"><code>selectRegister</code></a></td><td>Select register for next command</td><td><code>Shift+'</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Danceflow count</td><td></td></tr>
 <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
-<tr><td rowspan=11><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L25"><code>modes.modify.after</code></a></td><td>Modify after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./modes.ts#L24"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./modes.ts#L27"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./modes.ts#L26"><code>modes.modify.lineStart</code></a></td><td>Modify at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td rowspan=12><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L26"><code>modes.modify.after</code></a></td><td>Modify after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L25"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L28"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L27"><code>modes.modify.lineStart</code></a></td><td>Modify at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L19"><code>modes.set.inspect</code></a></td><td>Set mode to Select</td><td></td></tr>
 <tr><td><a href="./modes.ts#L17"><code>modes.set.modify</code></a></td><td>Set mode to Modify</td><td></td></tr>
 <tr><td><a href="./modes.ts#L16"><code>modes.set.move</code></a></td><td>Set mode to Move</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>V</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./modes.ts#L18"><code>modes.set.select</code></a></td><td>Set mode to Select</td><td><code>V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./modes.ts#L43"><code>modes.set.temporarily.modify</code></a></td><td>Temporary Modify mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./modes.ts#L42"><code>modes.set.temporarily.move</code></a></td><td>Temporary Move mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L44"><code>modes.set.temporarily.modify</code></a></td><td>Temporary Modify mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./modes.ts#L43"><code>modes.set.temporarily.move</code></a></td><td>Temporary Move mode</td><td><code>Ctrl+V</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="#modes.set"><code>modes.set</code></a></td><td>Set Danceflow mode</td><td></td></tr>
 <tr><td><a href="#modes.set.temporarily"><code>modes.set.temporarily</code></a></td><td>Set Danceflow mode temporarily</td><td></td></tr>
 <tr><td rowspan=10><a href="#search"><code>search</code></a></td><td><a href="#search.next"><code>search.next</code></a></td><td>Select next match</td><td><code>N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -270,7 +272,7 @@ See https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#changes
 
 <a name="edit.insert" />
 
-### [`edit.insert`](./edit.ts#L15-L66)
+### [`edit.insert`](./edit.ts#L15-L67)
 
 Insert contents of register.
 
@@ -308,6 +310,7 @@ Specify `all` to paste all contents next to each selection.
 |                                    |                          | `d` (helix: select)                              | `[".edit.yank-delete"], [".modes.set.move"]`                                                                                  |
 |                                    |                          | `s-p` (helix: select)                            | `[".edit.paste.before"], [".modes.set.move"]`                                                                                 |
 |                                    |                          | `p` (helix: select)                              | `[".edit.paste.after"], [".modes.set.move"]`                                                                                  |
+| Replace                            | `replace`                |                                                  | `[".edit.insert"]`                                                                                                          |
 
 This command:
 - accepts a register (by default, it uses `dquote`).
@@ -324,7 +327,7 @@ Default keybinding: `s-a-r` (kakoune: move)
 
 <a name="edit.join" />
 
-### [`edit.join`](./edit.ts#L138-L143)
+### [`edit.join`](./edit.ts#L139-L144)
 
 Join lines.
 
@@ -337,7 +340,7 @@ Default keybinding: `a-j` (kakoune: move)
 
 <a name="edit.join.select" />
 
-### [`edit.join.select`](./edit.ts#L147-L152)
+### [`edit.join.select`](./edit.ts#L148-L153)
 
 Join lines and select inserted separators.
 
@@ -349,7 +352,7 @@ Default keybinding: `s-a-j` (core: move; helix: select)
 
 <a name="edit.indent" />
 
-### [`edit.indent`](./edit.ts#L156-L164)
+### [`edit.indent`](./edit.ts#L157-L165)
 
 Indent selected lines.
 
@@ -364,7 +367,7 @@ Default keybinding: `>` (core: move)
 
 <a name="edit.indent.withEmpty" />
 
-### [`edit.indent.withEmpty`](./edit.ts#L168-L173)
+### [`edit.indent.withEmpty`](./edit.ts#L169-L174)
 
 Indent selected lines (including empty lines).
 
@@ -376,7 +379,7 @@ Default keybinding: `a->` (kakoune: move)
 
 <a name="edit.deindent" />
 
-### [`edit.deindent`](./edit.ts#L177-L182)
+### [`edit.deindent`](./edit.ts#L178-L183)
 
 Deindent selected lines.
 
@@ -388,7 +391,7 @@ Default keybinding: `a-<` (kakoune: move)
 
 <a name="edit.deindent.withIncomplete" />
 
-### [`edit.deindent.withIncomplete`](./edit.ts#L186-L194)
+### [`edit.deindent.withIncomplete`](./edit.ts#L187-L195)
 
 Deindent selected lines (including incomplete indent).
 
@@ -403,7 +406,7 @@ Default keybinding: `<` (core: move)
 
 <a name="edit.case.toLower" />
 
-### [`edit.case.toLower`](./edit.ts#L198-L206)
+### [`edit.case.toLower`](./edit.ts#L199-L207)
 
 Transform to lower case.
 
@@ -416,7 +419,7 @@ Default keybinding: `` ` `` (core: move)
 
 <a name="edit.case.toUpper" />
 
-### [`edit.case.toUpper`](./edit.ts#L210-L218)
+### [`edit.case.toUpper`](./edit.ts#L211-L219)
 
 Transform to upper case.
 
@@ -430,7 +433,7 @@ Default keybinding: `` s-` `` (kakoune: move)
 
 <a name="edit.case.swap" />
 
-### [`edit.case.swap`](./edit.ts#L222-L230)
+### [`edit.case.swap`](./edit.ts#L223-L231)
 
 Swap case.
 
@@ -444,7 +447,7 @@ Default keybinding: `` a-` `` (kakoune: move)
 
 <a name="edit.replaceCharacters" />
 
-### [`edit.replaceCharacters`](./edit.ts#L245-L257)
+### [`edit.replaceCharacters`](./edit.ts#L246-L258)
 
 Replace characters.
 
@@ -460,7 +463,7 @@ Default keybinding: `r` (core: move)
 
 <a name="edit.align" />
 
-### [`edit.align`](./edit.ts#L300-L308)
+### [`edit.align`](./edit.ts#L301-L309)
 
 Align selections.
 
@@ -475,7 +478,7 @@ Default keybinding: `&` (core: move)
 
 <a name="edit.copyIndentation" />
 
-### [`edit.copyIndentation`](./edit.ts#L358-L371)
+### [`edit.copyIndentation`](./edit.ts#L359-L372)
 
 Copy indentation.
 
@@ -490,7 +493,7 @@ Default keybinding: `a-&` (kakoune: move)
 
 <a name="edit.newLine.above" />
 
-### [`edit.newLine.above`](./edit.ts#L400-L418)
+### [`edit.newLine.above`](./edit.ts#L401-L419)
 
 Insert new line above each selection.
 
@@ -512,7 +515,7 @@ Default keybinding: `s-a-o` (kakoune: move)
 
 <a name="edit.newLine.below" />
 
-### [`edit.newLine.below`](./edit.ts#L438-L456)
+### [`edit.newLine.below`](./edit.ts#L439-L457)
 
 Insert new line below each selection.
 
@@ -911,7 +914,7 @@ Set modes.
 
 <a name="modes.set" />
 
-### [`modes.set`](./modes.ts#L9-L31)
+### [`modes.set`](./modes.ts#L9-L32)
 
 Set Danceflow mode.
 
@@ -922,6 +925,7 @@ Set Danceflow mode.
 | Set mode to Move | `set.move` | `escape` (core: modify; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
 | Set mode to Modify | `set.modify` |                                                             | `[".modes.set", { mode: "modify" }]`                        |
 | Set mode to Select | `set.select` | `v` (helix: move)                                         | `[".modes.set", { mode: "select" }]`                        |
+| Set mode to Select | `set.inspect` |                                                           | `[".modes.set", { mode: "inspect" }]`                        |
 
 Other variants are provided to switch to modify mode:
 
@@ -938,7 +942,7 @@ This command:
 
 <a name="modes.set.temporarily" />
 
-### [`modes.set.temporarily`](./modes.ts#L35-L47)
+### [`modes.set.temporarily`](./modes.ts#L36-L48)
 
 Set Danceflow mode temporarily.
 

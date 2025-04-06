@@ -147,6 +147,13 @@
     ☐ Error if they can not switch into it.
 
 ☐ The last cursor should always be the primary cursor
+☐ Remove multiple registers and buffers
+  ✔ Learn how paste works @done(25-04-06 14:21)
+    Overwritten register. Total chaos!
+☐ Simplify macros
+  ☐ Add toggle functionality
+    ☐ Remove that there can be multiple recordings at the same time
+  ☐ Add recording save/load functionality
 ☐ There should be a simpler editor window
   ✔ Remove the weird orange bar @done(25-04-05 23:42)
   ✔ Remove that the current line is bright in move mode @done(25-04-06 01:14)
@@ -156,8 +163,9 @@
   ☐ Hide the menu bar
   ☐ Hide the activity bar
   ☐ You should be able to move in the explorer with move keys
-      ☐ `a` is new file, `⇧a` is new folder
-      ☐ `r`/`F2` is rename
+    ☐ `a` is new file, `⇧a` is new folder
+    ☐ `r`/`F2` is rename
+  ☐ Remove state sidepanel
   ☐ You should be able to move in Code Lens and Code Actions with them too
 ☐ splitlines exclude Eol true
 ☐ Add to jump history, when changing more than one line
@@ -167,7 +175,7 @@
 ☐ Update object select `m￼`
   ☐ Arround is the default, inside needs another keypress
   ☐ Add treesitter support out of the box
-☐ Add surround `'￼` functionality
+☐ Add enclose `'￼` functionality
 ☐ Make select mode work with VSCode find
 ☐ Add Inspect mode:
   ☐ `space` enter inspect mode or if a url/file is under the main cursor then follow it

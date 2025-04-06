@@ -50,6 +50,7 @@ declare module "./edit";
  * |                                    |                          | `d` (helix: select)                              | `[".edit.yank-delete"], [".modes.set.move"]`                                                                                  |
  * |                                    |                          | `s-p` (helix: select)                            | `[".edit.paste.before"], [".modes.set.move"]`                                                                                 |
  * |                                    |                          | `p` (helix: select)                              | `[".edit.paste.after"], [".modes.set.move"]`                                                                                  |
+ * | Replace                            | `replace`                |                                                  | `[".edit.insert"]`                                                                                                          |
  */
 export async function insert(
   _: Context,

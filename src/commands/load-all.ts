@@ -781,6 +781,12 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
+    "danceflow.edit.replace",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".edit.insert"]],
+  );
+  describeAdditionalCommand(
+    commands,
     "danceflow.history.repeat.selection",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".history.repeat", { filter: "danceflow\\.(seek|select|selections)", $include: ["count"] }]],
@@ -808,6 +814,12 @@ export const commands: Commands = function () {
     "danceflow.modes.set.select",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".modes.set", { mode: "select" }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.modes.set.inspect",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".modes.set", { mode: "inspect" }]],
   );
   describeAdditionalCommand(
     commands,

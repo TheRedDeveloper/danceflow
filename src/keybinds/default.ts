@@ -20,7 +20,7 @@ export type KeybindingGroups = {
   move: Record<string, KeyBinding>
 }
 
-export const defaultKeybindings: KeybindingGroups = {
+export const editorDefaultKeybindings: KeybindingGroups = {
   global: {
     // Mode switching
     "danceflow.cancel": [`esc`],
@@ -61,8 +61,8 @@ export const defaultKeybindings: KeybindingGroups = {
     "workbench.action.files.newUntitledFile": [`⎈⇧o`],
     
     // Undo/Redo
-    "undo": [`u`, `⎈z`, `⎈⇧y`],
-    "redo": [`⇧u`, `⎈⇧z`, `⎈y`],
+    "danceflow.history.undo": [`u`, `⎈z`, `⎈⇧y`],
+    "danceflow.history.redo": [`⇧u`, `⎈⇧z`, `⎈y`],
     
     // Other
     "editor.action.selectAll": [`⎈a`],
@@ -78,7 +78,7 @@ export const defaultKeybindings: KeybindingGroups = {
     "editor.action.rename": [`r`],
     "danceflow.inspect.renameToClipboard": [`⇧r`],
     "danceflow.inspect.copySymbol": [`y`, `⎈c`],
-    "danceflow.inspect.copySymbolInfo": [`⇧y`],
+    "danceflow.inspect.copyInfo": [`⇧y`],
     "editor.action.quickFix": [`space`],
     "editor.action.marker.next": [`e`],
     "editor.action.marker.prev": [`⇧e`],
@@ -86,42 +86,45 @@ export const defaultKeybindings: KeybindingGroups = {
   
   interact: {
     "editor.action.clipboardCopyAction": [`y`, `⎈c`],
-    "danceflow.interact.inspect": [`space`],
-    "danceflow.interact.recordMacro": [`⇧q`],
-    "danceflow.interact.loadMacro": [`⎈q`],
-    "danceflow.interact.saveMacro": [`⎈⇧q`],
-    "danceflow.interact.appendMultiplier": [`1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `0`],
+    "danceflow.modes.set.inspect": [`space`],
+    "danceflow.history.recording.toggle": [`⇧q`],
+    "danceflow.history.recording.load": [`⎈q`],
+    "danceflow.history.recording.save": [`⎈⇧q`],
+    ...(()=> Array(10).fill(0).reduce((acc, _, i) => ({
+      ...acc,
+      [`danceflow.updateCount{"addDigits": ${i}}`]: [`${i}`]
+    }), {})),
   },
   
   change: {
     // Delete operations
-    "danceflow.change.cut": [`d`, `⎈x`],
-    "danceflow.change.delete": [`⎈d`, `del`, `backspace`],
-    "danceflow.change.cutWord": [`⇧d`],
-    "danceflow.change.deleteWord": [`⎈del`, `⎈backspace`],
-    "danceflow.change.cutLine": [`⎇d`],
-    "danceflow.change.deleteLine": [`⎈⎇⇧d`],
+    "danceflow.edit.yank-delete": [`d`, `⎈x`],
+    "danceflow.edit.delete": [`⎈d`, `del`, `backspace`],
+    "danceflow.edit.yank-delete.word": [`⇧d`],
+    "danceflow.edit.delete.word": [`⎈del`, `⎈backspace`],
+    "danceflow.edit.yank-delete.line": [`⎇d`],
+    "danceflow.edit.delete.line": [`⎈⎇⇧d`],
     
     // Paste operations
-    "danceflow.change.pasteBefore": [`p`, `⎈v`],
-    "danceflow.change.pasteAfter": [`⇧p`, `⎈⇧v`],
+    "danceflow.edit.paste.before.select": [`p`, `⎈v`],
+    "danceflow.edit.paste.after.select": [`⇧p`, `⎈⇧v`],
     "editor.action.copyLinesDownAction": [`⎇p`],
     "editor.action.copyLinesUpAction": [`⎇⇧p`],
     
     // Insert operations
-    "danceflow.change.insertBefore": [`i`],
-    "danceflow.change.appendAfter": [`a`],
-    "danceflow.change.insertLineStart": [`⇧i`],
-    "danceflow.change.appendLineEnd": [`⇧a`],
-    "danceflow.change.appendLineBelow": [`o`],
-    "danceflow.change.insertLineAbove": [`⇧o`],
+    "danceflow.modes.modify.before": [`i`],
+    "danceflow.modes.modify.after": [`a`],
+    "danceflow.modes.modify.lineStart": [`⇧i`],
+    "danceflow.modes.modify.lineEnd": [`⇧a`],
+    "danceflow.edit.newLine.below.modify": [`o`],
+    "danceflow.edit.newLine.above.modify": [`⇧o`],
     
     // Replace operations
-    "danceflow.change.changeAfterCopy": [`c`],
-    "danceflow.change.changeWithoutCopy": [`⎈⎇c`],
-    "danceflow.change.replaceChar": [`r`],
-    "danceflow.change.replaceWithClipboardAfterCopy": [`⇧r`],
-    "danceflow.change.replaceWithClipboardWithoutCopy": [`⎈⇧r`],
+    "danceflow.edit.yank-delete-modify": [`c`],
+    "danceflow.edit.delete-modify": [`⎈⎇c`],
+    "danceflow.edit.replaceCharacters": [`r`],
+    "danceflow.edit.yank-replace": [`⇧r`],
+    "danceflow.edit.replace": [`⎈⇧r`],
     
     // Line operations
     "editor.action.moveLinesDownAction": [`⎇j`, `⎇down`],
@@ -132,26 +135,26 @@ export const defaultKeybindings: KeybindingGroups = {
     "danceflow.change.removeEmptyLines": [`-`],
     
     // Spacing operations
-    "danceflow.change.addSpaceBefore": [`⎇space`],
-    "danceflow.change.addSpaceAfter": [`⎇⇧space`],
-    "danceflow.change.addLineBelow": [`enter`],
-    "danceflow.change.addLineAbove": [`⇧enter`],
+    "danceflow.add.space.before": [`⎇space`],
+    "danceflow.add.space.after": [`⎇⇧space`],
+    "danceflow.add.line.below": [`enter`],
+    "danceflow.add.line.above": [`⇧enter`],
     
     // Formatting operations
     "editor.action.commentLine": [`⇧c`],
-    "danceflow.change.enclose": [`"`],
+    'danceflow.openMenu{"menu": "enclose"}': [`"`],
     "editor.action.formatSelection": [`=`],
-    "danceflow.change.switchCase": [`⎇=`],
-    "danceflow.change.lowercase": [`⎈=`],
-    "danceflow.change.uppercase": [`⎈⇧=`],
+    "danceflow.edit.case.swap": [`⎇=`],
+    "danceflow.edit.case.toLower": [`⎈=`],
+    "danceflow.edit.case.toUpper": [`⎈⇧=`],
     
     // Repeat operations
-    "danceflow.change.executeMacro": [`q`],
-    "danceflow.change.repeatChange": [`.`],
+    "danceflow.history.recording.play": [`q`],
+    "danceflow.history.repeat.edit": [`.`],
     
     // Other
-    "danceflow.change.cycleSelectionForward": [`⎇⇧]`],
-    "danceflow.change.cycleSelectionBackward": [`⎇⇧[`],
+    "danceflow.selections.rotate.contents": [`⎇⇧]`],
+    "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
   },
   
   selectedMove: {
@@ -211,8 +214,8 @@ export const defaultKeybindings: KeybindingGroups = {
     // Line & Page navigation
     "danceflow.select.line.below.extend": [`x`], // Should not require move mode
     "danceflow.select.line.above.extend": [`⇧x`], // Should not require move mode
-    "danceflow.move.halfPageDown.jump": [`⎈d`, `⎈⇧u`],
-    "danceflow.move.halfPageUp.jump": [`⎈u`, `⎈⇧d`],
+    "danceflow.select.halfPageDown.jump": [`⎈d`, `⎈⇧u`],
+    "danceflow.select.halfPageUp.jump": [`⎈u`, `⎈⇧d`],
     "editor.toggleFold": [`z`],
 
     // Visual mode
@@ -238,12 +241,22 @@ export const defaultKeybindings: KeybindingGroups = {
   },
 }
 
-// The to be implemented list:
+// TODO The to be implemented list:
 // danceflow.selections.keepMatching
 // danceflow.selections.keepNotMatching
-// danceflow.selections.merge
 // danceflow.jumppoint.create
 // danceflow.jumppoint.previous
 // danceflow.jumppoint.next
+// something{options}
+// danceflow.number.increment
+// danceflow.number.decrement
+// danceflow.history.recording.toggle
+// danceflow.history.recording.load
+// danceflow.history.recording.save
+// danceflow.edit.yank-delete.word
+// danceflow.edit.delete.word
+// danceflow.edit.yank-delete.line
+// danceflow.edit.delete.line
+// danceflow.openMenu{"menu": "enclose"}
 
-export default defaultKeybindings;
+export default editorDefaultKeybindings;

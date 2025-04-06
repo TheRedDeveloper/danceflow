@@ -247,6 +247,7 @@ edit.insert:
       |                                    |                          | `d` (helix: select)                              | `[".edit.yank-delete"], [".modes.set.move"]`                                                                                  |
       |                                    |                          | `s-p` (helix: select)                            | `[".edit.paste.before"], [".modes.set.move"]`                                                                                 |
       |                                    |                          | `p` (helix: select)                              | `[".edit.paste.after"], [".modes.set.move"]`                                                                                  |
+      | Replace                            | `replace`                |                                                  | `[".edit.insert"]`                                                                                                          |
 
 edit.join:
   title:
@@ -410,6 +411,13 @@ edit.pasteAll.before.select:
   keys:
     qwerty: |-
       `s-a-p` (kakoune: move)
+
+edit.replace:
+  title:
+    en: Replace
+
+  commands: |-
+    [".edit.insert"]
 
 edit.replaceCharacters:
   title:
@@ -680,6 +688,7 @@ modes.set:
       | Set mode to Move | `set.move` | `escape` (core: modify; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
       | Set mode to Modify | `set.modify` |                                                             | `[".modes.set", { mode: "modify" }]`                        |
       | Set mode to Select | `set.select` | `v` (helix: move)                                         | `[".modes.set", { mode: "select" }]`                        |
+      | Set mode to Select | `set.inspect` |                                                           | `[".modes.set", { mode: "inspect" }]`                        |
 
       Other variants are provided to switch to modify mode:
 
@@ -689,6 +698,13 @@ modes.set:
       | Modify after         | `modify.after`     | `a` (core: move; helix: select)   | `[".selections.faceForward" , { record: false }],           [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
       | Modify at line start | `modify.lineStart` | `s-i` (core: move; helix: select) | `[".select.lineStart", { shift: "jump", skipBlank: true }], [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "start", record: false, empty: true, ... }]` |
       | Modify at line end   | `modify.lineEnd`   | `s-a` (core: move; helix: select) | `[".select.lineEnd"  , { shift: "jump"                  }], [".modes.set", { mode: "modify", +mode }], [".selections.reduce", { where: "end"  , record: false, empty: true, ... }]` |
+
+modes.set.inspect:
+  title:
+    en: Set mode to Select
+
+  commands: |-
+    [".modes.set", { mode: "inspect" }]
 
 modes.set.modify:
   title:
