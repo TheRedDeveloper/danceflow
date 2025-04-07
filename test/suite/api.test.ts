@@ -1236,14 +1236,14 @@ suite("API tests", function () {
         expect(
           generateCondition('inspect', 'h', mockKeybindings, 'inspect.h'),
           "to equal",
-          "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
+          "editorTextFocus && danceflow.inspect.active"
         );
 
         // SelectedMove is overridden by global and inspect for key 'h'
         expect(
           generateCondition('selectedMove', 'h', mockKeybindings, 'selectedMove.h'),
           "to equal",
-          "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
+          "editorTextFocus && danceflow.selectedMove.active && !danceflow.inspect.active"
         );
 
         // Move 'k' is overridden by inspect
@@ -1324,7 +1324,8 @@ suite("API tests", function () {
             "danceflow.move.h": ["h"],
             'danceflow.openMenu{"menu": "match"}': ["m"],
             'danceflow.say[isCow && isAlive]': ["c"]
-          }
+          },
+          ignore: {}
         };
 
         const resolved = resolveKeybindings(mockKeybindings);
@@ -1350,7 +1351,7 @@ suite("API tests", function () {
           { 
             key: "h", 
             command: "danceflow.inspect.h", 
-            when: "editorTextFocus && danceflow.inspect.active && !danceflow.global.active" 
+            when: "editorTextFocus && danceflow.inspect.active" 
           }
         );
 
@@ -1393,7 +1394,8 @@ suite("API tests", function () {
           selectedMove: [],
           move: [
             { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
-          ]
+          ],
+          ignore: []
         };
 
         expect(
@@ -1440,7 +1442,8 @@ suite("API tests", function () {
             'danceflow.openMenu{"menu": "match"}': ["m"],
             'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"],
             "danceflow.kill[isAlive]": ["k"]
-          }
+          },
+          ignore: {}
         };
 
         const result = processKeybindings(mockKeybindings);

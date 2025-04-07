@@ -375,21 +375,23 @@
                   "array",
                   "null"
                 ],
-                "description": "Controls which keybinding groups should be active in this mode. The 'global' and 'editor' groups are purely conceptual.",
+                "description": "Controls which keybinding groups should be active in this mode. The 'global' and 'editor' groups are purely conceptual.The ignore group is used to ignore typable keys, making us not type.",
                 "items": {
                   "enum": [
                     "inspect",
                     "interact",
                     "change",
                     "selectedMove",
-                    "move"
+                    "move",
+                    "ignore"
                   ],
                   "enumDescriptions": [
                     "Keys for inspecting code elements like definitions, references, etc.",
                     "Keys for interacting with the editor without changing content (copy, etc.)",
                     "Keys for changing content (delete, paste, etc.)",
                     "Keys for selection movement operations",
-                    "Keys for cursor movement operations"
+                    "Keys for cursor movement operations",
+                    "Keys that should be ignored when not typing"
                   ]
                 }
               }
@@ -425,7 +427,8 @@
               "activeGroups": [
                 "interact",
                 "selectedMove",
-                "change"
+                "change",
+                "ignore"
               ]
             },
             "move": {
@@ -472,7 +475,8 @@
               "activeGroups": [
                 "interact",
                 "change",
-                "move"
+                "move",
+                "ignore"
               ]
             },
             "inspect": {
@@ -480,7 +484,8 @@
                 "inspect",
                 "interact",
                 "change",
-                "move"
+                "move",
+                "ignore"
               ]
             }
           },
@@ -3240,7 +3245,7 @@
       {
         "key": "r",
         "command": "editor.action.rename",
-        "when": "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "shift+r",
@@ -3395,7 +3400,7 @@
       {
         "key": "a",
         "command": "danceflow.modes.modify.after",
-        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.change.active"
       },
       {
         "key": "shift+i",
@@ -3405,7 +3410,7 @@
       {
         "key": "shift+a",
         "command": "danceflow.modes.modify.lineEnd",
-        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.change.active"
       },
       {
         "key": "o",
@@ -3430,7 +3435,7 @@
       {
         "key": "r",
         "command": "danceflow.edit.replaceCharacters",
-        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active && !danceflow.inspect.active"
+        "when": "editorTextFocus && danceflow.change.active && !danceflow.inspect.active"
       },
       {
         "key": "shift+r",
@@ -3465,7 +3470,7 @@
       {
         "key": "tab",
         "command": "tab",
-        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.change.active"
       },
       {
         "key": "shift+tab",
@@ -3588,22 +3593,22 @@
       {
         "key": "h",
         "command": "danceflow.select.left.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
         "key": "j",
         "command": "danceflow.select.down.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
         "key": "k",
         "command": "danceflow.select.up.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
         "key": "l",
         "command": "danceflow.select.right.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
         "key": "w",
@@ -3693,22 +3698,22 @@
       {
         "key": "h",
         "command": "danceflow.select.left.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "j",
         "command": "danceflow.select.down.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "k",
         "command": "danceflow.select.up.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "l",
         "command": "danceflow.select.right.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "w",
@@ -3877,6 +3882,486 @@
         "key": "]",
         "command": "danceflow.jumppoint.next",
         "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "a",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+a",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "b",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+b",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "c",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+c",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "d",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+d",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "e",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+e",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "f",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+f",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "g",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+g",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "h",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+h",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "i",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+i",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "j",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+j",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "k",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+k",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "l",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+l",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "m",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+m",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "n",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.editor.active"
+      },
+      {
+        "key": "shift+n",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.editor.active"
+      },
+      {
+        "key": "o",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+o",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "p",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+p",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "q",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+q",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
+      },
+      {
+        "key": "r",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+r",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.change.active"
+      },
+      {
+        "key": "s",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+s",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "t",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+t",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "u",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+u",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "v",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+v",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "w",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+w",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
+      },
+      {
+        "key": "x",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+x",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "y",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.interact.active"
+      },
+      {
+        "key": "shift+y",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active"
+      },
+      {
+        "key": "z",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.inspect.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+z",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "0",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+0",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "1",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+1",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "2",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+2",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "3",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+3",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "4",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+4",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "5",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+5",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "6",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+6",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "7",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+7",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "8",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+8",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "9",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+9",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "`",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+`",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "-",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+-",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "=",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+=",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "[",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+[",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "]",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+]",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "\\",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+\\",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": ";",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+;",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "'",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+'",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": ",",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+,",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": ".",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+      },
+      {
+        "key": "shift+.",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "/",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+/",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": " ",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
+      },
+      {
+        "key": "shift+ ",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active"
       }
     ]
   }

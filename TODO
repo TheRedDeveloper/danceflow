@@ -156,7 +156,7 @@
   
   ✔ The keybindings need to be built inside package.build.ts and put in insetad of the current ones @done(25-04-07 01:33)
     By using processKeybindings from src/api/keybinds/resolve.ts on the default export of src/keybinds/default.ts
-    ☐ Bring back the ignore keys
+    ✔ Bring back the ignore keys @done(25-04-07 23:07)
     ✔ Fix that escape is not working for some reason @done(25-04-07 18:17)
     ✔ Fix that tab is autocomplete and indent @done(25-04-07 21:30)
       Indent needs a key that is not used and has an available shift and is memorable
@@ -220,6 +220,7 @@
         "command": "-workbench.action.lastEditorInGroup"
       },
     ✔ Fix that menu keys are missing @done(25-04-07 21:25)
+    ☐ Fix that I can't type the n key in modify mode
     
   ☐ Some commands ensure being in a specific mode before executing.
     ☐ Error if they can not switch into it.

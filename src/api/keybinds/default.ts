@@ -2,8 +2,10 @@
  * Default keybindings
  */
 
+import exp from "constants";
+
 // Basic type for mapping commands to key combinations
-export type UnresolvedKeyBinding = Record<string, string[]>;
+export type UnresolvedKeyBindings = Record<string, string[]>;
 
 // Define the group names in order of priority (single source of truth)
 export const keybindingGroupNames = [
@@ -13,7 +15,8 @@ export const keybindingGroupNames = [
   'interact', 
   'change',
   'selectedMove',
-  'move'
+  'move',
+  'ignore'
 ] as const;
 
 // Create a type from the array of group names
@@ -25,7 +28,10 @@ export type KeybindingGroups<T> = {
 };
 
 // Specific type for unresolved keybindings
-export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBinding>;
+export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBindings>;
+
+export const charTypingKeys = "abcdefghijklmnopqrstuvwxyz0123456789`-=[]\\;',./ ".split("")
+                              .flatMap(k => [k, `⇧${k}`]);
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
@@ -293,6 +299,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.jumppoint.previous": [`[`],
     "danceflow.jumppoint.next": [`]`],
   },
+  ignore: {
+    "danceflow.ignore": charTypingKeys,
+  }
 }
 
 // TODO The to be implemented list:

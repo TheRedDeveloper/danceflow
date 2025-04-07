@@ -310,7 +310,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 type: ["array", "null"],
                 description: 
                   "Controls which keybinding groups should be active in this mode. "
-                  + "The 'global' and 'editor' groups are purely conceptual.",
+                  + "The 'global' and 'editor' groups are purely conceptual."
+                  + "The ignore group is used to ignore typable keys, making us not type.",
                 items: {
                   enum: keybindingGroupNames.slice(2),
                   enumDescriptions: [
@@ -318,7 +319,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                     "Keys for interacting with the editor without changing content (copy, etc.)",
                     "Keys for changing content (delete, paste, etc.)",
                     "Keys for selection movement operations",
-                    "Keys for cursor movement operations"
+                    "Keys for cursor movement operations",
+                    "Keys that should be ignored when not typing",
                   ]
                 }
               }
@@ -348,7 +350,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             select: {
               cursorStyle: "underline",
               selectionBehavior: "character",
-              activeGroups: ["interact", "selectedMove", "change"]
+              activeGroups: ["interact", "selectedMove", "change", "ignore"],
             },
             move: {
               cursorStyle: "block",
@@ -375,10 +377,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   ],
                 }],
               ],
-              activeGroups: ["interact", "change", "move"]
+              activeGroups: ["interact", "change", "move", "ignore"]
             },
             inspect: {
-              activeGroups: ["inspect", "interact", "change", "move"]
+              activeGroups: ["inspect", "interact", "change", "move", "ignore"]
             }
           },
           description: "Controls the different modes available in Danceflow.",
@@ -786,16 +788,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // Keybindings.
     // ========================================================================
 
-    keybindings: (() => {
-      // Process the default keybindings using the resolve function
-      const processedKeybindings = processKeybindings(defaultKeybindings);
-      
-      // Generate ignored keybindings for move mode
-      return [
-        ...processedKeybindings,
-        // ...generateIgnoredKeybinds(processedKeybindings, `editorTextFocus && danceflow.mode == 'move'`),
-      ];
-    })(),
+    keybindings: processKeybindings(defaultKeybindings)
 
   },
 });

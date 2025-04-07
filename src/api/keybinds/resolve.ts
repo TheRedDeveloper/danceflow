@@ -1,6 +1,6 @@
 import { 
   UnresolvedKeybindingGroups, 
-  UnresolvedKeyBinding,
+  UnresolvedKeyBindings,
   keybindingGroupNames,
   KeybindingGroupName,
   KeybindingGroups
@@ -157,14 +157,14 @@ export function parseCommandArgs(commandString: string): { command: string; when
  * expect(
  *   generateCondition('inspect', 'h', mockKeybindings, 'inspect.h'),
  *   "to equal",
- *   "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
+ *   "editorTextFocus && danceflow.inspect.active"
  * );
  * 
  * // SelectedMove is overridden by global and inspect for key 'h'
  * expect(
  *   generateCondition('selectedMove', 'h', mockKeybindings, 'selectedMove.h'),
  *   "to equal",
- *   "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
+ *   "editorTextFocus && danceflow.selectedMove.active && !danceflow.inspect.active"
  * );
  * 
  * // Move 'k' is overridden by inspect
@@ -199,7 +199,13 @@ export function generateCondition(
   }
 
   // Find all higher priority groups that use the same key
+  // IMPORTANT: Exclude 'global' group as it should never override other groups
   const overridingGroups = priorityOrder.filter(g => {
+    // Skip the global group as it should never override
+    if (g === 'global') {
+      return false;
+    }
+    
     // Only consider groups with higher priority than current group
     const groupIndex = priorityOrder.indexOf(g);
     const currentIndex = priorityOrder.indexOf(group);
@@ -221,6 +227,7 @@ export function generateCondition(
   }
 
   // Build condition that checks current mode is active AND no higher priority modes are active
+  // Note: 'global' is never included in overridingGroups now
   const negatedOverrides = overridingGroups
     .map(g => `!danceflow.${g}.active`)
     .join(' && ');
@@ -256,7 +263,7 @@ export function generateCondition(
  */
 export function expandKeybindingGroup(
   group: KeybindingGroupName, 
-  bindings: UnresolvedKeyBinding
+  bindings: UnresolvedKeyBindings
 ): ResolvedKeybinding[] {
   const result: ResolvedKeybinding[] = [];
 
@@ -308,7 +315,8 @@ export function expandKeybindingGroup(
  *     "danceflow.move.h": ["h"],
  *     'danceflow.openMenu{"menu": "match"}': ["m"],
  *     'danceflow.say[isCow && isAlive]': ["c"]
- *   }
+ *   },
+ *   ignore: {}
  * };
  * 
  * const resolved = resolveKeybindings(mockKeybindings);
@@ -334,7 +342,7 @@ export function expandKeybindingGroup(
  *   { 
  *     key: "h", 
  *     command: "danceflow.inspect.h", 
- *     when: "editorTextFocus && danceflow.inspect.active && !danceflow.global.active" 
+ *     when: "editorTextFocus && danceflow.inspect.active" 
  *   }
  * );
  * 
@@ -415,7 +423,8 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
  *   selectedMove: [],
  *   move: [
  *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
- *   ]
+ *   ],
+ *   ignore: []
  * };
  * 
  * expect(
@@ -463,7 +472,8 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *     'danceflow.openMenu{"menu": "match"}': ["m"],
  *     'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"],
  *     "danceflow.kill[isAlive]": ["k"]
- *   }
+ *   },
+ *   ignore: {}
  * };
  * 
  * const result = processKeybindings(mockKeybindings);
