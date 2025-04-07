@@ -461,7 +461,7 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *   selectedMove: {},
  *   move: {
  *     'danceflow.openMenu{"menu": "match"}': ["m"],
- *     'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
+ *     'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"],
  *     "danceflow.kill[isAlive]": ["k"]
  *   }
  * };

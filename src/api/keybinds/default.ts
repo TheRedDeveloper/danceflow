@@ -29,18 +29,17 @@ export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBinding>;
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
-    // Mode switching
     "danceflow.cancel": [`escape`],
-    
+
     // Tool panels
-    "danceflow.togglePanel.git": [`⎈⇧g`],
-    "danceflow.togglePanel.explorer": [`⎈⇧e`],
-    "danceflow.togglePanel.chat": [`⎈⇧c`],
-    "danceflow.togglePanel.search": [`⎈⇧s`],
-    "danceflow.togglePanel.timeline": [`⎈⇧t`],
-    "danceflow.togglePanel.outline": [`⎈⇧l`],
-    "danceflow.togglePanel.debug": [`⎈⇧b`],
-    "danceflow.togglePanel.extensions": [`⎈⇧x`],
+    "danceflow.togglePanel.git": [`⎈1`, `⎈⇧g`],
+    "danceflow.togglePanel.explorer": [`⎈2`, `⎈⇧e`],
+    "danceflow.togglePanel.chat": [`⎈3`, `⎈⇧c`],
+    "danceflow.togglePanel.search": [`⎈4`, `⎈⇧s`],
+    "danceflow.togglePanel.timeline": [`⎈5`, `⎈⇧t`],
+    "danceflow.togglePanel.outline": [`⎈6`, `⎈⇧l`],
+    "danceflow.togglePanel.debug": [`⎈7`, `⎈⇧b`],
+    "danceflow.togglePanel.extensions": [`⎈8`, `⎈⇧x`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -61,20 +60,46 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.openRecent": [`⎈r`],
     "workbench.action.gotoLine": [`⎈g`],
     "workbench.action.files.newUntitledFile": [`⎈⇧o`],
+
+    // Menus
+    "list.focusDown[listFocus && !inputFocus]": [`j`],
+    "list.focusUp[listFocus && !inputFocus]": [`k`],
+    "list.expand[listFocus && !inputFocus]": [`l`],
+    "list.collapse[listFocus && !inputFocus]": [`h`],
+    "quickInput.previous[inQuickInput && quickInputType == 'quickPick']": [`k`],
+    "quickInput.next[inQuickInput && quickInputType == 'quickPick']": [`j`],
+    "explorer.newFile[filesExplorerFocus && !inputFocus]": [`a`],
+    "explorer.newFolder[filesExplorerFocus && !inputFocus]": [`⇧a`],
+    "renameFile[filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus]": [`r`],
+
+    // Remove vscode default keybindings
+    "-editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
+    "-editor.action.inlineSuggest.commit[inInlineEditsPreviewEditor]": [`tab`],
+    "-editor.action.inlineSuggest.jump[inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
+    "-workbench.action.focusFirstEditorGroup": [`⎈1`],
+    "-workbench.action.focusSecondEditorGroup": [`⎈2`],
+    "-workbench.action.focusThirdEditorGroup": [`⎈3`],
+    "-workbench.action.focusFourthEditorGroup": [`⎈4`],
+    "-workbench.action.focusFifthEditorGroup": [`⎈5`],
+    "-workbench.action.focusSixthEditorGroup": [`⎈6`],
+    "-workbench.action.focusSeventhEditorGroup": [`⎈7`],
+    "-workbench.action.focusEighthEditorGroup": [`⎈8`],
+    "-workbench.action.focusLastEditorGroup": [`⎈9`],
   },
 
   editor: {
     "danceflow.modes.set.move": [`escape`],
 
-    // Tool panels
-    "danceflow.togglePanel.git": [`⇧1`],
-    "danceflow.togglePanel.explorer": [`⇧2`],
-    "danceflow.togglePanel.chat": [`⇧3`],
-    "danceflow.togglePanel.search": [`⇧4`],
-    "danceflow.togglePanel.timeline": [`⇧5`],
-    "danceflow.togglePanel.outline": [`⇧6`],
-    "danceflow.togglePanel.debug": [`⇧7`],
-    "danceflow.togglePanel.extensions": [`⇧8`],
+    // Intellisense with ⎈space
+    "editor.action.triggerSuggest[editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible]": [`⎈space`],
+
+    // Copilot completions with ⇧space
+    "editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor]" : [`⇧space`],
+    "editor.action.inlineSuggest.jump[inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`⇧space`],
+    "danceflow.ignore[!(inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor || inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible)]": [`⇧space`],
+    
+    // Intellisense with ⎈⇧space/⎈i
+    "inlineChat.start[inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput]": [`⎈⇧space`, `⎈i`],
 
     // Find/Replace
     "actions.find": [`⎈f`],
@@ -276,7 +301,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 // danceflow.jumppoint.create
 // danceflow.jumppoint.previous
 // danceflow.jumppoint.next
-// DONE something{options}
 // danceflow.number.increment
 // danceflow.number.decrement
 // danceflow.history.recording.toggle

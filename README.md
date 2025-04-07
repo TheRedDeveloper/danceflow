@@ -27,23 +27,31 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 `esc` Return to move mode
 
+### Smart Coding
+
+`⎈space` Intelisense
+
+`⇧space` Completion
+
+`⎈⇧space`/`⎈i` Inline Chat
+
 #### Tool Panels
 
-`⇧1`/`⎈⇧g` Toggle git
+`⎈1`/`⎈⇧g` Toggle git
 
-`⇧2`/`⎈⇧e` Toggle explorer
+`⎈2`/`⎈⇧e` Toggle explorer
 
-`⇧3`/`⎈⇧c` Toggle copilot chat
+`⎈3`/`⎈⇧c` Toggle copilot chat
 
-`⇧4`/`⎈⇧s` Toggle search
+`⎈4`/`⎈⇧s` Toggle search
 
-`⇧5`/`⎈⇧t` Toggle timeline
+`⎈5`/`⎈⇧t` Toggle timeline
 
-`⇧6`/`⎈⇧l` Toggle outline
+`⎈6`/`⎈⇧l` Toggle outline
 
-`⇧7`/`⎈⇧b` Toggle debug
+`⎈7`/`⎈⇧b` Toggle debug
 
-`⇧8`/`⎈⇧x` Toggle extensions
+`⎈8`/`⎈⇧x` Toggle extensions
 
 #### Windows
 

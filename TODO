@@ -156,15 +156,15 @@
   
   ✔ The keybindings need to be built inside package.build.ts and put in insetad of the current ones @done(25-04-07 01:33)
     By using processKeybindings from src/api/keybinds/resolve.ts on the default export of src/keybinds/default.ts
-    ☐ Bring back the ignore keys?
+    ☐ Bring back the ignore keys
     ✔ Fix that escape is not working for some reason @done(25-04-07 18:17)
-    ☐ Fix that tab is autocomplete and indent
+    ✔ Fix that tab is autocomplete and indent @done(25-04-07 21:30)
       Indent needs a key that is not used and has an available shift and is memorable
       Autocomplete needs to be a key that is not used and is not a typable key
         Tab is the only non-toggle typable key
       After careful evaluation I decided to use ⇧space for autocomplete instead of tab
       and add ⎈space to the keybinds to toggle intelisense
-      ☐ Add ⇧space for autocomplete
+      ✔ Add ⇧space for autocomplete @done(25-04-07 21:30)
         We need to add these:
         {
             "key": "ctrl+space",
@@ -178,10 +178,48 @@
         }
         This requires complex when clauses,
         ✔ Support command[whenclause] @done(25-04-07 19:04)
-      ☐ Remove tab for autocomplete using -
-      ☐ Add ⎈space for intellisense toggle
+      ✔ Remove tab for autocomplete using - @done(25-04-07 20:44)
+      ✔ Add ⎈space for intellisense toggle @done(25-04-07 20:47)
+      ✔ `⎈⇧space` Inline Chat @done(25-04-07 20:54)
     ✔ Fix that editor keys are ignored everywhere: introducing editor key group @done(25-04-07 18:18)
-    ☐ Fix that menu keys are missing
+    ✔ Fix that some vscode keys need to be removed for toggleing panels: @done(25-04-07 20:44)
+      {
+        "key": "ctrl+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+      },
+      {
+          "key": "ctrl+2",
+          "command": "-workbench.action.focusSecondEditorGroup"
+      },
+      {
+          "key": "ctrl+3",
+          "command": "-workbench.action.focusThirdEditorGroup"
+      },
+      {
+          "key": "ctrl+4",
+          "command": "-workbench.action.focusFourthEditorGroup"
+      },
+      {
+          "key": "ctrl+5",
+          "command": "-workbench.action.focusFifthEditorGroup"
+      },
+      {
+          "key": "ctrl+6",
+          "command": "-workbench.action.focusSixthEditorGroup"
+      },
+      {
+          "key": "ctrl+7",
+          "command": "-workbench.action.focusSeventhEditorGroup"
+      },
+      {
+          "key": "ctrl+8",
+          "command": "-workbench.action.focusEighthEditorGroup"
+      },
+      {
+        "key": "ctrl+9",
+        "command": "-workbench.action.lastEditorInGroup"
+      },
+    ✔ Fix that menu keys are missing @done(25-04-07 21:25)
     
   ☐ Some commands ensure being in a specific mode before executing.
     ☐ Error if they can not switch into it.

@@ -1438,7 +1438,7 @@ suite("API tests", function () {
           selectedMove: {},
           move: {
             'danceflow.openMenu{"menu": "match"}': ["m"],
-            'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
+            'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"],
             "danceflow.kill[isAlive]": ["k"]
           }
         };

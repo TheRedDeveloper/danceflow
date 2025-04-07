@@ -68,7 +68,7 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="../modes.ts#L25"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L28"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L27"><code>modes.modify.lineStart</code></a></td><td>Modify at line start</td><td><code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="../modes.ts#L19"><code>modes.set.inspect</code></a></td><td>Set mode to Select</td><td></td></tr>
+<tr><td><a href="../modes.ts#L19"><code>modes.set.inspect</code></a></td><td>Set mode to Inspect</td><td></td></tr>
 <tr><td><a href="../modes.ts#L17"><code>modes.set.modify</code></a></td><td>Set mode to Modify</td><td></td></tr>
 <tr><td><a href="../modes.ts#L16"><code>modes.set.move</code></a></td><td>Set mode to Move</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>V</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L18"><code>modes.set.select</code></a></td><td>Set mode to Select</td><td><code>V</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -910,7 +910,7 @@ Set Danceflow mode.
 | Set mode to Move | `set.move` | `escape` (core: modify; helix: select), `v` (helix: select) | `[".modes.set", { mode: "move" }], ["hideSuggestWidget"]` |
 | Set mode to Modify | `set.modify` |                                                             | `[".modes.set", { mode: "modify" }]`                        |
 | Set mode to Select | `set.select` | `v` (helix: move)                                         | `[".modes.set", { mode: "select" }]`                        |
-| Set mode to Select | `set.inspect` |                                                           | `[".modes.set", { mode: "inspect" }]`                        |
+| Set mode to Inspect | `set.inspect` |                                                           | `[".modes.set", { mode: "inspect" }]`                        |
 
 Other variants are provided to switch to modify mode:
 

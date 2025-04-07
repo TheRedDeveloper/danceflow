@@ -1312,7 +1312,7 @@
       },
       {
         "command": "danceflow.modes.set.inspect",
-        "title": "Set mode to Select",
+        "title": "Set mode to Inspect",
         "category": "Danceflow"
       },
       {
@@ -2925,32 +2925,64 @@
         "command": "danceflow.cancel"
       },
       {
+        "key": "ctrl+1",
+        "command": "danceflow.togglePanel.git"
+      },
+      {
         "key": "ctrl+shift+g",
         "command": "danceflow.togglePanel.git"
+      },
+      {
+        "key": "ctrl+2",
+        "command": "danceflow.togglePanel.explorer"
       },
       {
         "key": "ctrl+shift+e",
         "command": "danceflow.togglePanel.explorer"
       },
       {
+        "key": "ctrl+3",
+        "command": "danceflow.togglePanel.chat"
+      },
+      {
         "key": "ctrl+shift+c",
         "command": "danceflow.togglePanel.chat"
+      },
+      {
+        "key": "ctrl+4",
+        "command": "danceflow.togglePanel.search"
       },
       {
         "key": "ctrl+shift+s",
         "command": "danceflow.togglePanel.search"
       },
       {
+        "key": "ctrl+5",
+        "command": "danceflow.togglePanel.timeline"
+      },
+      {
         "key": "ctrl+shift+t",
         "command": "danceflow.togglePanel.timeline"
+      },
+      {
+        "key": "ctrl+6",
+        "command": "danceflow.togglePanel.outline"
       },
       {
         "key": "ctrl+shift+l",
         "command": "danceflow.togglePanel.outline"
       },
       {
+        "key": "ctrl+7",
+        "command": "danceflow.togglePanel.debug"
+      },
+      {
         "key": "ctrl+shift+b",
         "command": "danceflow.togglePanel.debug"
+      },
+      {
+        "key": "ctrl+8",
+        "command": "danceflow.togglePanel.extensions"
       },
       {
         "key": "ctrl+shift+x",
@@ -3005,49 +3037,135 @@
         "command": "workbench.action.files.newUntitledFile"
       },
       {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+      },
+      {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+      },
+      {
+        "key": "l",
+        "command": "list.expand",
+        "when": "listFocus && !inputFocus"
+      },
+      {
+        "key": "h",
+        "command": "list.collapse",
+        "when": "listFocus && !inputFocus"
+      },
+      {
+        "key": "k",
+        "command": "quickInput.previous",
+        "when": "inQuickInput && quickInputType == 'quickPick'"
+      },
+      {
+        "key": "j",
+        "command": "quickInput.next",
+        "when": "inQuickInput && quickInputType == 'quickPick'"
+      },
+      {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "r",
+        "command": "renameFile",
+        "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+      },
+      {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.commit",
+        "when": "inInlineEditsPreviewEditor"
+      },
+      {
+        "key": "tab",
+        "command": "-editor.action.inlineSuggest.jump",
+        "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+1",
+        "command": "-workbench.action.focusFirstEditorGroup"
+      },
+      {
+        "key": "ctrl+2",
+        "command": "-workbench.action.focusSecondEditorGroup"
+      },
+      {
+        "key": "ctrl+3",
+        "command": "-workbench.action.focusThirdEditorGroup"
+      },
+      {
+        "key": "ctrl+4",
+        "command": "-workbench.action.focusFourthEditorGroup"
+      },
+      {
+        "key": "ctrl+5",
+        "command": "-workbench.action.focusFifthEditorGroup"
+      },
+      {
+        "key": "ctrl+6",
+        "command": "-workbench.action.focusSixthEditorGroup"
+      },
+      {
+        "key": "ctrl+7",
+        "command": "-workbench.action.focusSeventhEditorGroup"
+      },
+      {
+        "key": "ctrl+8",
+        "command": "-workbench.action.focusEighthEditorGroup"
+      },
+      {
+        "key": "ctrl+9",
+        "command": "-workbench.action.focusLastEditorGroup"
+      },
+      {
         "key": "escape",
         "command": "danceflow.modes.set.move",
         "when": "editorTextFocus"
       },
       {
-        "key": "shift+1",
-        "command": "danceflow.togglePanel.git",
-        "when": "editorTextFocus"
+        "key": "ctrl+space",
+        "command": "editor.action.triggerSuggest",
+        "when": "(editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible) && editorTextFocus"
       },
       {
-        "key": "shift+2",
-        "command": "danceflow.togglePanel.explorer",
-        "when": "editorTextFocus"
+        "key": "shift+space",
+        "command": "editor.action.inlineSuggest.commit",
+        "when": "(inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor) && editorTextFocus"
       },
       {
-        "key": "shift+3",
-        "command": "danceflow.togglePanel.chat",
-        "when": "editorTextFocus"
+        "key": "shift+space",
+        "command": "editor.action.inlineSuggest.jump",
+        "when": "(inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible) && editorTextFocus"
       },
       {
-        "key": "shift+4",
-        "command": "danceflow.togglePanel.search",
-        "when": "editorTextFocus"
+        "key": "shift+space",
+        "command": "danceflow.ignore",
+        "when": "(!(inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor || inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible)) && editorTextFocus"
       },
       {
-        "key": "shift+5",
-        "command": "danceflow.togglePanel.timeline",
-        "when": "editorTextFocus"
+        "key": "ctrl+shift+space",
+        "command": "inlineChat.start",
+        "when": "(inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput) && editorTextFocus"
       },
       {
-        "key": "shift+6",
-        "command": "danceflow.togglePanel.outline",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "shift+7",
-        "command": "danceflow.togglePanel.debug",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "shift+8",
-        "command": "danceflow.togglePanel.extensions",
-        "when": "editorTextFocus"
+        "key": "ctrl+i",
+        "command": "inlineChat.start",
+        "when": "(inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput) && editorTextFocus"
       },
       {
         "key": "ctrl+f",
@@ -3122,7 +3240,7 @@
       {
         "key": "r",
         "command": "editor.action.rename",
-        "when": "editorTextFocus && danceflow.inspect.active"
+        "when": "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
       },
       {
         "key": "shift+r",
@@ -3277,7 +3395,7 @@
       {
         "key": "a",
         "command": "danceflow.modes.modify.after",
-        "when": "editorTextFocus && danceflow.change.active"
+        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
       },
       {
         "key": "shift+i",
@@ -3287,7 +3405,7 @@
       {
         "key": "shift+a",
         "command": "danceflow.modes.modify.lineEnd",
-        "when": "editorTextFocus && danceflow.change.active"
+        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
       },
       {
         "key": "o",
@@ -3312,7 +3430,7 @@
       {
         "key": "r",
         "command": "danceflow.edit.replaceCharacters",
-        "when": "editorTextFocus && danceflow.change.active && !danceflow.inspect.active"
+        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active && !danceflow.inspect.active"
       },
       {
         "key": "shift+r",
@@ -3347,7 +3465,7 @@
       {
         "key": "tab",
         "command": "tab",
-        "when": "editorTextFocus && danceflow.change.active"
+        "when": "editorTextFocus && danceflow.change.active && !danceflow.global.active"
       },
       {
         "key": "shift+tab",
@@ -3470,22 +3588,22 @@
       {
         "key": "h",
         "command": "danceflow.select.left.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
       },
       {
         "key": "j",
         "command": "danceflow.select.down.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
       },
       {
         "key": "k",
         "command": "danceflow.select.up.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
       },
       {
         "key": "l",
         "command": "danceflow.select.right.extend",
-        "when": "editorTextFocus && danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active"
       },
       {
         "key": "w",
@@ -3575,22 +3693,22 @@
       {
         "key": "h",
         "command": "danceflow.select.left.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
       },
       {
         "key": "j",
         "command": "danceflow.select.down.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
       },
       {
         "key": "k",
         "command": "danceflow.select.up.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
       },
       {
         "key": "l",
         "command": "danceflow.select.right.jump",
-        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.global.active && !danceflow.selectedMove.active"
       },
       {
         "key": "w",
