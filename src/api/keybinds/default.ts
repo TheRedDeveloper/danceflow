@@ -26,6 +26,17 @@ export type KeybindingGroups<T> = {
 // Specific type for unresolved keybindings
 export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBinding>;
 
+export const globalEditorFocusCommands = [
+  "actions.find",
+  "editor.action.startFindReplaceAction",
+  "editor.action.nextMatchFindAction",
+  "editor.action.previousMatchFindAction",
+  "workbench.action.files.save",
+  "C_Cpp.SwitchHeaderSource",
+  "danceflow.history.undo",
+  "danceflow.history.redo",
+];
+
 export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     // Mode switching
@@ -71,11 +82,6 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     // Undo/Redo
     "danceflow.history.undo": [`u`, `⎈z`, `⎈⇧y`],
     "danceflow.history.redo": [`⇧u`, `⎈⇧z`, `⎈y`],
-    
-    // Other
-    "editor.action.selectAll": [`⎈a`],
-    "danceflow.number.increment": [`⎈k`, `⎈up`],
-    "danceflow.number.decrement": [`⎈j`, `⎈down`],
   },
   
   inspect: {
@@ -163,6 +169,8 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     // Other
     "danceflow.selections.rotate.contents": [`⎇⇧]`],
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
+    "danceflow.number.increment": [`⎈k`, `⎈up`],
+    "danceflow.number.decrement": [`⎈j`, `⎈down`],
   },
   
   selectedMove: {
@@ -224,8 +232,9 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.select.line.above.extend": [`⇧x`], // Should not require move mode
     "danceflow.select.halfPageDown.jump": [`⎈d`, `⎈⇧u`],
     "danceflow.select.halfPageUp.jump": [`⎈u`, `⎈⇧d`],
+    "editor.action.selectAll": [`⎈a`],
     "editor.toggleFold": [`z`],
-
+    
     // Visual mode
     "danceflow.modes.set.select": [`v`],
     

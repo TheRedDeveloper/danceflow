@@ -152,10 +152,12 @@
     - Move → Move Mode
     
   ✔ The context needs to be provided to vscode whether the group is active or not. @done(25-04-06 20:44)
-    ☐ Fix tests failing probably because changing mode now takes longer
+    ✔ Fix tests failing probably because changing mode now takes longer @done(25-04-07 00:22)
   
-  ☐ The keybindings need to be built inside package.build.ts and put in (that's what she said)
+  ✔ The keybindings need to be built inside package.build.ts and put in insetad of the current ones @done(25-04-07 01:33)
     By using processKeybindings from src/api/keybinds/resolve.ts on the default export of src/keybinds/default.ts
+    ☐ Bring back the ignore keys?
+    ☐ Fix that escape is not working for some reason
 
   ☐ Some commands ensure being in a specific mode before executing.
     ☐ Error if they can not switch into it.

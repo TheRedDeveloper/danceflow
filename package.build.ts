@@ -1,5 +1,7 @@
 import { type Builder, generateIgnoredKeybinds } from "./meta";
 import { availableClipboardRegisters } from "./src/utils/constants";
+import { processKeybindings } from "./src/api/keybinds/resolve";
+import defaultKeybindings from "./src/api/keybinds/default";
 
 // Shared values
 // ============================================================================
@@ -785,14 +787,13 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // ========================================================================
 
     keybindings: (() => {
-      const keybindings = modules
-        .flatMap((module) => module.keybindings)
-        .filter((keybinding) => ["core", "helix", undefined].includes(keybinding.category))
-        .map(({ category, ...kb }) => kb);
-
+      // Process the default keybindings using the resolve function
+      const processedKeybindings = processKeybindings(defaultKeybindings);
+      
+      // Generate ignored keybindings for move mode
       return [
-        ...keybindings,
-        ...generateIgnoredKeybinds(keybindings, `editorTextFocus && danceflow.mode == 'move'`),
+        ...processedKeybindings,
+        // ...generateIgnoredKeybinds(processedKeybindings, `editorTextFocus && danceflow.mode == 'move'`),
       ];
     })(),
 

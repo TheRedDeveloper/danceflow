@@ -1184,7 +1184,8 @@ suite("API tests", function () {
         const mockKeybindings = {
           global: [
             { key: 'h', command: 'global.h' },
-            { key: 'j', command: 'global.j' }
+            { key: 'j', command: 'global.j' },
+            { key: 'f', command: 'actions.find' } // In globalEditorFocusCommands
           ],
           inspect: [
             { key: 'h', command: 'inspect.h' },
@@ -1203,38 +1204,45 @@ suite("API tests", function () {
           ]
         };
 
-        // Global has no condition
+        // Global command that's not in globalEditorFocusCommands has no condition
         expect(
-          generateCondition('global', 'h', mockKeybindings),
+          generateCondition('global', 'h', mockKeybindings, 'global.h'),
           "to be undefined"
+        );
+
+        // Global command that IS in globalEditorFocusCommands gets editorTextFocus
+        expect(
+          generateCondition('global', 'f', mockKeybindings, 'actions.find'),
+          "to equal",
+          "editorTextFocus"
         );
 
         // Inspect is overridden by global for key 'h'
         expect(
-          generateCondition('inspect', 'h', mockKeybindings),
+          generateCondition('inspect', 'h', mockKeybindings, 'inspect.h'),
           "to equal",
-          "danceflow.inspect.active && !danceflow.global.active"
+          "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
         );
 
         // SelectedMove is overridden by global and inspect for key 'h'
         expect(
-          generateCondition('selectedMove', 'h', mockKeybindings),
+          generateCondition('selectedMove', 'h', mockKeybindings, 'selectedMove.h'),
           "to equal",
-          "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
+          "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
         );
 
         // Move 'k' is overridden by inspect
         expect(
-          generateCondition('move', 'k', mockKeybindings),
+          generateCondition('move', 'k', mockKeybindings, 'move.k'),
           "to equal",
-          "danceflow.move.active && !danceflow.inspect.active"
+          "editorTextFocus && danceflow.move.active && !danceflow.inspect.active"
         );
 
         // Change 'm' has no overrides
         expect(
-          generateCondition('change', 'm', mockKeybindings),
+          generateCondition('change', 'm', mockKeybindings, 'change.m'),
           "to equal",
-          "danceflow.change.active"
+          "editorTextFocus && danceflow.change.active"
         );
       });
 
@@ -1279,7 +1287,8 @@ suite("API tests", function () {
         const mockKeybindings = {
           global: {
             "danceflow.cancel": ["esc"],
-            "danceflow.global.h": ["h"]
+            "danceflow.global.h": ["h"],
+            "actions.find": ["⎈f"] // In globalEditorFocusCommands
           },
           inspect: {
             "danceflow.inspect.f": ["f"],
@@ -1300,11 +1309,18 @@ suite("API tests", function () {
 
         const resolved = resolveKeybindings(mockKeybindings);
 
-        // Global keys have no conditions
+        // Global keys that aren't in globalEditorFocusCommands have no conditions
         expect(
           resolved.global.find(b => b.key === "esc"),
           "to equal",
           { key: "esc", command: "danceflow.cancel" }
+        );
+
+        // Global keys that ARE in globalEditorFocusCommands have editorTextFocus condition
+        expect(
+          resolved.global.find(b => b.key === "⎈f"),
+          "to equal",
+          { key: "⎈f", command: "actions.find", when: "editorTextFocus" }
         );
 
         // Inspect 'h' is overridden by global
@@ -1314,7 +1330,7 @@ suite("API tests", function () {
           { 
             key: "h", 
             command: "danceflow.inspect.h", 
-            condition: "danceflow.inspect.active && !danceflow.global.active" 
+            when: "editorTextFocus && danceflow.inspect.active && !danceflow.global.active" 
           }
         );
 
@@ -1325,7 +1341,7 @@ suite("API tests", function () {
           { 
             key: "h", 
             command: "danceflow.selectedMove.h", 
-            condition: "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
+            when: "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
           }
         );
 
@@ -1337,7 +1353,7 @@ suite("API tests", function () {
             key: "m", 
             command: "danceflow.openMenu", 
             args: { menu: "match" },
-            condition: "danceflow.move.active"
+            when: "editorTextFocus && danceflow.move.active"
           }
         );
       });
@@ -1359,15 +1375,15 @@ suite("API tests", function () {
           ],
           inspect: [
             { key: "f", command: "danceflow.inspect.f" },
-            { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" }
+            { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" }
           ],
           interact: [
-            { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" }
+            { key: "y", command: "danceflow.interact.y", when: "danceflow.interact.active" }
           ],
           change: [],
           selectedMove: [],
           move: [
-            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
           ]
         };
 
@@ -1378,9 +1394,9 @@ suite("API tests", function () {
             { key: "esc", command: "danceflow.cancel" },
             { key: "h", command: "danceflow.global.h" },
             { key: "f", command: "danceflow.inspect.f" },
-            { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" },
-            { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" },
-            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+            { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" },
+            { key: "y", command: "danceflow.interact.y", when: "danceflow.interact.active" },
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
           ]
         );
       });
@@ -1397,13 +1413,16 @@ suite("API tests", function () {
       await context.runAsync(async () => {
         const mockKeybindings = {
           global: {
-            "danceflow.cancel": ["esc"]
+            "danceflow.cancel": ["esc"],
+            "danceflow.format": ["⎈⇧f"] // ctrl+shift+f
           },
           inspect: {
             "danceflow.inspect.f": ["f"]
           },
           interact: {},
-          change: {},
+          change: {
+            "danceflow.change.option": ["⎇o"] // alt+o
+          },
           selectedMove: {},
           move: {
             'danceflow.openMenu{"menu": "match"}': ["m"]
@@ -1414,7 +1433,23 @@ suite("API tests", function () {
 
         // Verify the global esc key binding
         expect(
-          result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.condition),
+          result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.when),
+          "to be true"
+        );
+
+        // Verify Unicode conversion for ctrl+shift+f
+        expect(
+          result.some(kb => kb.key === "ctrl+shift+f" && kb.command === "danceflow.format" && !kb.when),
+          "to be true"
+        );
+
+        // Verify Unicode conversion for alt+o with editorTextFocus
+        expect(
+          result.some(kb => 
+            kb.key === "alt+o" && 
+            kb.command === "danceflow.change.option" && 
+            kb.when === "editorTextFocus && danceflow.change.active"
+          ),
           "to be true"
         );
 
@@ -1424,7 +1459,7 @@ suite("API tests", function () {
             kb.key === "m" && 
             kb.command === "danceflow.openMenu" && 
             kb.args && kb.args["menu"] === "match" &&
-            kb.condition === "danceflow.move.active"
+            kb.when === "editorTextFocus && danceflow.move.active"
           ),
           "to be true"
         );

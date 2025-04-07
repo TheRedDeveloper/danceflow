@@ -3,16 +3,24 @@ import {
   UnresolvedKeyBinding,
   keybindingGroupNames,
   KeybindingGroupName,
-  KeybindingGroups
+  KeybindingGroups,
+  globalEditorFocusCommands
 } from './default';
+
+import {
+  Builder
+} from '../../../meta';
 
 /**
  * Single resolved keybinding
+ * 
+ * Note: This uses Unicode key symbols (⎈, ⇧, ⎇) and doesn't include a title,
+ * unlike Builder.Keybinding which uses VS Code's key format (ctrl+, shift+, alt+)
  */
 export interface ResolvedKeybinding {
   key: string;
   command: string;
-  condition?: string;
+  when?: string;
   args?: Record<string, any>;
 }
 
@@ -89,7 +97,8 @@ export function parseCommandArgs(commandString: string): { command: string; args
  * const mockKeybindings = {
  *   global: [
  *     { key: 'h', command: 'global.h' },
- *     { key: 'j', command: 'global.j' }
+ *     { key: 'j', command: 'global.j' },
+ *     { key: 'f', command: 'actions.find' } // In globalEditorFocusCommands
  *   ],
  *   inspect: [
  *     { key: 'h', command: 'inspect.h' },
@@ -108,48 +117,59 @@ export function parseCommandArgs(commandString: string): { command: string; args
  *   ]
  * };
  * 
- * // Global has no condition
+ * // Global command that's not in globalEditorFocusCommands has no condition
  * expect(
- *   generateCondition('global', 'h', mockKeybindings),
+ *   generateCondition('global', 'h', mockKeybindings, 'global.h'),
  *   "to be undefined"
+ * );
+ * 
+ * // Global command that IS in globalEditorFocusCommands gets editorTextFocus
+ * expect(
+ *   generateCondition('global', 'f', mockKeybindings, 'actions.find'),
+ *   "to equal",
+ *   "editorTextFocus"
  * );
  * 
  * // Inspect is overridden by global for key 'h'
  * expect(
- *   generateCondition('inspect', 'h', mockKeybindings),
+ *   generateCondition('inspect', 'h', mockKeybindings, 'inspect.h'),
  *   "to equal",
- *   "danceflow.inspect.active && !danceflow.global.active"
+ *   "editorTextFocus && danceflow.inspect.active && !danceflow.global.active"
  * );
  * 
  * // SelectedMove is overridden by global and inspect for key 'h'
  * expect(
- *   generateCondition('selectedMove', 'h', mockKeybindings),
+ *   generateCondition('selectedMove', 'h', mockKeybindings, 'selectedMove.h'),
  *   "to equal",
- *   "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
+ *   "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active"
  * );
  * 
  * // Move 'k' is overridden by inspect
  * expect(
- *   generateCondition('move', 'k', mockKeybindings),
+ *   generateCondition('move', 'k', mockKeybindings, 'move.k'),
  *   "to equal",
- *   "danceflow.move.active && !danceflow.inspect.active"
+ *   "editorTextFocus && danceflow.move.active && !danceflow.inspect.active"
  * );
  * 
  * // Change 'm' has no overrides
  * expect(
- *   generateCondition('change', 'm', mockKeybindings),
+ *   generateCondition('change', 'm', mockKeybindings, 'change.m'),
  *   "to equal",
- *   "danceflow.change.active"
+ *   "editorTextFocus && danceflow.change.active"
  * );
  * ```
  */
 export function generateCondition(
   group: KeybindingGroupName, 
   key: string, 
-  allKeybindings: ResolvedKeybindingGroups
+  allKeybindings: ResolvedKeybindingGroups,
+  command?: string
 ): string | undefined {
   if (group === 'global') {
-    // Global keybindings don't need conditions
+    // Global keybindings only need editorTextFocus if they're in the globalEditorFocusCommands list
+    if (command && globalEditorFocusCommands.includes(command)) {
+      return "editorTextFocus";
+    }
     return undefined;
   }
 
@@ -167,9 +187,12 @@ export function generateCondition(
     return allKeybindings[g].some(binding => binding.key === key);
   });
 
+  // Start with editorTextFocus for non-global bindings
+  let condition = "editorTextFocus && ";
+
   if (overridingGroups.length === 0) {
     // Only add the mode condition if no higher priority groups override this key
-    return `danceflow.${group}.active`;
+    return `${condition}danceflow.${group}.active`;
   }
 
   // Build condition that checks current mode is active AND no higher priority modes are active
@@ -177,7 +200,7 @@ export function generateCondition(
     .map(g => `!danceflow.${g}.active`)
     .join(' && ');
 
-  return `danceflow.${group}.active && ${negatedOverrides}`;
+  return `${condition}danceflow.${group}.active && ${negatedOverrides}`;
 }
 
 /**
@@ -237,7 +260,8 @@ export function expandKeybindingGroup(
  * const mockKeybindings = {
  *   global: {
  *     "danceflow.cancel": ["esc"],
- *     "danceflow.global.h": ["h"]
+ *     "danceflow.global.h": ["h"],
+ *     "actions.find": ["⎈f"] // In globalEditorFocusCommands
  *   },
  *   inspect: {
  *     "danceflow.inspect.f": ["f"],
@@ -258,11 +282,18 @@ export function expandKeybindingGroup(
  * 
  * const resolved = resolveKeybindings(mockKeybindings);
  * 
- * // Global keys have no conditions
+ * // Global keys that aren't in globalEditorFocusCommands have no conditions
  * expect(
  *   resolved.global.find(b => b.key === "esc"),
  *   "to equal",
  *   { key: "esc", command: "danceflow.cancel" }
+ * );
+ * 
+ * // Global keys that ARE in globalEditorFocusCommands have editorTextFocus condition
+ * expect(
+ *   resolved.global.find(b => b.key === "⎈f"),
+ *   "to equal",
+ *   { key: "⎈f", command: "actions.find", when: "editorTextFocus" }
  * );
  * 
  * // Inspect 'h' is overridden by global
@@ -272,7 +303,7 @@ export function expandKeybindingGroup(
  *   { 
  *     key: "h", 
  *     command: "danceflow.inspect.h", 
- *     condition: "danceflow.inspect.active && !danceflow.global.active" 
+ *     when: "editorTextFocus && danceflow.inspect.active && !danceflow.global.active" 
  *   }
  * );
  * 
@@ -283,7 +314,7 @@ export function expandKeybindingGroup(
  *   { 
  *     key: "h", 
  *     command: "danceflow.selectedMove.h", 
- *     condition: "danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
+ *     when: "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
  *   }
  * );
  * 
@@ -295,7 +326,7 @@ export function expandKeybindingGroup(
  *     key: "m", 
  *     command: "danceflow.openMenu", 
  *     args: { menu: "match" },
- *     condition: "danceflow.move.active"
+ *     when: "editorTextFocus && danceflow.move.active"
  *   }
  * );
  * ```
@@ -312,16 +343,34 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
   // Second pass: add conditions based on priority overrides
   const resultGroups = {} as ResolvedKeybindingGroups;
   
-  // Global group doesn't need conditions
-  resultGroups.global = expandedGroups.global;
+  // Global group might need conditions for commands in globalEditorFocusCommands
+  resultGroups.global = expandedGroups.global.map(binding => {
+    const condition = generateCondition(
+      'global', 
+      binding.key, 
+      expandedGroups, 
+      binding.command
+    );
+    
+    if (condition) {
+      return { ...binding, when: condition };
+    }
+    
+    return binding;
+  });
   
   // For each non-global group, add appropriate conditions
   for (const group of priorityOrder.slice(1)) {
     resultGroups[group] = expandedGroups[group].map(binding => {
-      const condition = generateCondition(group, binding.key, expandedGroups);
+      const condition = generateCondition(
+        group, 
+        binding.key, 
+        expandedGroups,
+        binding.command
+      );
       
       if (condition) {
-        return { ...binding, condition };
+        return { ...binding, when: condition };
       }
       
       return binding;
@@ -344,15 +393,15 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
  *   ],
  *   inspect: [
  *     { key: "f", command: "danceflow.inspect.f" },
- *     { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" }
+ *     { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" }
  *   ],
  *   interact: [
- *     { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" }
+ *     { key: "y", command: "danceflow.interact.y", when: "danceflow.interact.active" }
  *   ],
  *   change: [],
  *   selectedMove: [],
  *   move: [
- *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+ *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
  *   ]
  * };
  * 
@@ -363,9 +412,9 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
  *     { key: "esc", command: "danceflow.cancel" },
  *     { key: "h", command: "danceflow.global.h" },
  *     { key: "f", command: "danceflow.inspect.f" },
- *     { key: "h", command: "danceflow.inspect.h", condition: "danceflow.inspect.active && !danceflow.global.active" },
- *     { key: "y", command: "danceflow.interact.y", condition: "danceflow.interact.active" },
- *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, condition: "danceflow.move.active" }
+ *     { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" },
+ *     { key: "y", command: "danceflow.interact.y", when: "danceflow.interact.active" },
+ *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" }, when: "danceflow.move.active" }
  *   ]
  * );
  * ```
@@ -376,19 +425,23 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
 
 /**
  * Main function to process keybindings from default config to the final format
+ * Converts Unicode key symbols to VS Code format and adds necessary conditions
  * 
  * ### Example
  * 
  * ```js
  * const mockKeybindings = {
  *   global: {
- *     "danceflow.cancel": ["esc"]
+ *     "danceflow.cancel": ["esc"],
+ *     "danceflow.format": ["⎈⇧f"] // ctrl+shift+f
  *   },
  *   inspect: {
  *     "danceflow.inspect.f": ["f"]
  *   },
  *   interact: {},
- *   change: {},
+ *   change: {
+ *     "danceflow.change.option": ["⎇o"] // alt+o
+ *   },
  *   selectedMove: {},
  *   move: {
  *     'danceflow.openMenu{"menu": "match"}': ["m"]
@@ -399,7 +452,23 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  * 
  * // Verify the global esc key binding
  * expect(
- *   result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.condition),
+ *   result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.when),
+ *   "to be true"
+ * );
+ * 
+ * // Verify Unicode conversion for ctrl+shift+f
+ * expect(
+ *   result.some(kb => kb.key === "ctrl+shift+f" && kb.command === "danceflow.format" && !kb.when),
+ *   "to be true"
+ * );
+ * 
+ * // Verify Unicode conversion for alt+o with editorTextFocus
+ * expect(
+ *   result.some(kb => 
+ *     kb.key === "alt+o" && 
+ *     kb.command === "danceflow.change.option" && 
+ *     kb.when === "editorTextFocus && danceflow.change.active"
+ *   ),
  *   "to be true"
  * );
  * 
@@ -409,20 +478,28 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *     kb.key === "m" && 
  *     kb.command === "danceflow.openMenu" && 
  *     kb.args && kb.args["menu"] === "match" &&
- *     kb.condition === "danceflow.move.active"
+ *     kb.when === "editorTextFocus && danceflow.move.active"
  *   ),
  *   "to be true"
  * );
  * ```
  */
-export function processKeybindings(keybindings: UnresolvedKeybindingGroups): FlattenedKeybindings {
+export function processKeybindings(keybindings: UnresolvedKeybindingGroups): Builder.Keybinding[] {
   const resolvedGroups = resolveKeybindings(keybindings);
-  return flattenKeybindings(resolvedGroups);
-}
-
-/**
- * Process and return the final keybinding structure
- */
-export function getResolvedKeybindingGroups(keybindings: UnresolvedKeybindingGroups): ResolvedKeybindingGroups {
-  return resolveKeybindings(keybindings);
+  const flattenedBindings = flattenKeybindings(resolvedGroups);
+  
+  // Convert Unicode key symbols to VS Code format
+  return flattenedBindings.map(binding => {
+    let key = binding.key;
+    
+    // Replace Unicode symbols with VS Code key syntax
+    key = key.replace(/⇧/g, 'shift+')
+             .replace(/⎈/g, 'ctrl+')
+             .replace(/⎇/g, 'alt+');
+    
+    return {
+      ...binding,
+      key
+    };
+  }) as Builder.Keybinding[];
 }
