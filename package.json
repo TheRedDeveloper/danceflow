@@ -3183,16 +3183,6 @@
         "when": "editorTextFocus"
       },
       {
-        "key": "n",
-        "command": "editor.action.nextMatchFindAction",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "shift+n",
-        "command": "editor.action.previousMatchFindAction",
-        "when": "editorTextFocus"
-      },
-      {
         "key": "ctrl+s",
         "command": "workbench.action.files.save",
         "when": "editorTextFocus"
@@ -3869,6 +3859,16 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
+        "key": "n",
+        "command": "editor.action.nextMatchFindAction",
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "shift+n",
+        "command": "editor.action.previousMatchFindAction",
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
         "key": "'",
         "command": "danceflow.jumppoint.create",
         "when": "editorTextFocus && danceflow.move.active"
@@ -4016,12 +4016,12 @@
       {
         "key": "n",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.editor.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
         "key": "shift+n",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.editor.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
         "key": "o",

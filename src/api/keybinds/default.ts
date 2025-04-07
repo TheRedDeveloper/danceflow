@@ -110,8 +110,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Find/Replace
     "actions.find": [`⎈f`],
     "editor.action.startFindReplaceAction": [`⎈⎇f`],
-    "editor.action.nextMatchFindAction": [`n`],
-    "editor.action.previousMatchFindAction": [`⇧n`],
 
     // File
     "workbench.action.files.save": [`⎈s`],
@@ -241,8 +239,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.select.halfPageDown.extend": [`⎈d`, `⎈⇧u`],
     "danceflow.select.halfPageUp.extend": [`⎈u`, `⎈⇧d`],
     
-    // Selection manipulation
+    // Mode
     "danceflow.modes.set.move": [`v`],
+
+    // Search
     "editor.action.addSelectionToNextFindMatch": [`⎈n`],
     "editor.action.addSelectionToPreviousFindMatch": [`⎈⇧n`],
   },
@@ -278,10 +278,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.action.selectAll": [`⎈a`],
     "editor.toggleFold": [`z`],
     
-    // Visual mode
+    // Mode
     "danceflow.modes.set.select": [`v`],
     
-    // Object selection
+    // Objects
     'danceflow.openMenu{"menu": "match"}': [`m`],
     
     // Multiselection operations
@@ -294,6 +294,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.reduce": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
     
+    // Search
+    "editor.action.nextMatchFindAction": [`n`],
+    "editor.action.previousMatchFindAction": [`⇧n`],
+
     // Jumppoints
     "danceflow.jumppoint.create": [`'`],
     "danceflow.jumppoint.previous": [`[`],

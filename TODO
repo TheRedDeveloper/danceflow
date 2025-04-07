@@ -220,7 +220,7 @@
         "command": "-workbench.action.lastEditorInGroup"
       },
     ✔ Fix that menu keys are missing @done(25-04-07 21:25)
-    ☐ Fix that I can't type the n key in modify mode
+    ✔ Fix that I can't type the n key in modify mode @done(25-04-08 01:21)
     
   ☐ Some commands ensure being in a specific mode before executing.
     ☐ Error if they can not switch into it.
