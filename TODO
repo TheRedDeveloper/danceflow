@@ -157,8 +157,32 @@
   ✔ The keybindings need to be built inside package.build.ts and put in insetad of the current ones @done(25-04-07 01:33)
     By using processKeybindings from src/api/keybinds/resolve.ts on the default export of src/keybinds/default.ts
     ☐ Bring back the ignore keys?
-    ☐ Fix that escape is not working for some reason
-
+    ✔ Fix that escape is not working for some reason @done(25-04-07 18:17)
+    ☐ Fix that tab is autocomplete and indent
+      Indent needs a key that is not used and has an available shift and is memorable
+      Autocomplete needs to be a key that is not used and is not a typable key
+        Tab is the only non-toggle typable key
+      After careful evaluation I decided to use ⇧space for autocomplete instead of tab
+      and add ⎈space to the keybinds to toggle intelisense
+      ☐ Add ⇧space for autocomplete
+        We need to add these:
+        {
+            "key": "ctrl+space",
+            "command": "editor.action.inlineSuggest.commit",
+            "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+        },
+        {
+            "key": "ctrl+space",
+            "command": "editor.action.inlineSuggest.jump",
+            "when": "inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
+        }
+        This requires complex when clauses,
+        ✔ Support command[whenclause] @done(25-04-07 19:04)
+      ☐ Remove tab for autocomplete using -
+      ☐ Add ⎈space for intellisense toggle
+    ✔ Fix that editor keys are ignored everywhere: introducing editor key group @done(25-04-07 18:18)
+    ☐ Fix that menu keys are missing
+    
   ☐ Some commands ensure being in a specific mode before executing.
     ☐ Error if they can not switch into it.
 

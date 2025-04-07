@@ -3,8 +3,7 @@ import {
   UnresolvedKeyBinding,
   keybindingGroupNames,
   KeybindingGroupName,
-  KeybindingGroups,
-  globalEditorFocusCommands
+  KeybindingGroups
 } from './default';
 
 import {
@@ -44,6 +43,10 @@ const priorityOrder = keybindingGroupNames;
  * Extract arguments from command string if present
  * E.g. 'danceflow.openMenu{"menu": "match"}' -> { command: 'danceflow.openMenu', args: { menu: 'match' } }
  * 
+ * Also extracts when conditions in square brackets:
+ * E.g. 'danceflow.say[isCow && isAlive]{"text": "mooo"}' -> 
+ *      { command: 'danceflow.say', when: 'isCow && isAlive', args: { text: 'mooo' } }
+ * 
  * ### Example
  * 
  * ```js
@@ -64,28 +67,45 @@ const priorityOrder = keybindingGroupNames;
  *   "to equal",
  *   { command: 'danceflow.complex', args: { num: 42, text: "hello" } }
  * );
+ * 
+ * expect(
+ *   parseCommandArgs('danceflow.say[isCow && isAlive]{"text": "mooo"}'),
+ *   "to equal",
+ *   { command: 'danceflow.say', when: 'isCow && isAlive', args: { text: 'mooo' } }
+ * );
+ * 
+ * expect(
+ *   parseCommandArgs('danceflow.kill[isAlive]'),
+ *   "to equal",
+ *   { command: 'danceflow.kill', when: 'isAlive' }
+ * );
  * ```
  */
-export function parseCommandArgs(commandString: string): { command: string; args?: Record<string, any> } {
-  const regex = /^([^{]+)(\{.*\})?$/;
+export function parseCommandArgs(commandString: string): { command: string; when?: string; args?: Record<string, any> } {
+  // Regular expression to capture command, when condition (optional), and args (optional)
+  const regex = /^([^\[\{]+)(?:\[([^\]]+)\])?(\{.*\})?$/;
   const match = regex.exec(commandString);
   if (!match) {
     return { command: commandString };
   }
 
-  const [, command, argsString] = match;
+  const [, command, when, argsString] = match;
   
-  if (!argsString) {
-    return { command };
+  const result: { command: string; when?: string; args?: Record<string, any> } = { command: command.trim() };
+  
+  if (when) {
+    result.when = when;
   }
-
-  try {
-    const args = JSON.parse(argsString);
-    return { command, args };
-  } catch (e) {
-    console.error(`Failed to parse arguments for command: ${commandString}`, e);
-    return { command };
+  
+  if (argsString) {
+    try {
+      result.args = JSON.parse(argsString);
+    } catch (e) {
+      console.error(`Failed to parse arguments for command: ${commandString}`, e);
+    }
   }
+  
+  return result;
 }
 
 /**
@@ -98,7 +118,10 @@ export function parseCommandArgs(commandString: string): { command: string; args
  *   global: [
  *     { key: 'h', command: 'global.h' },
  *     { key: 'j', command: 'global.j' },
- *     { key: 'f', command: 'actions.find' } // In globalEditorFocusCommands
+ *     { key: 'f', command: 'actions.find' }
+ *   ],
+ *   editor: [
+ *     { key: 'f', command: 'actions.find' },
  *   ],
  *   inspect: [
  *     { key: 'h', command: 'inspect.h' },
@@ -117,15 +140,15 @@ export function parseCommandArgs(commandString: string): { command: string; args
  *   ]
  * };
  * 
- * // Global command that's not in globalEditorFocusCommands has no condition
+ * // Global command has no condition
  * expect(
  *   generateCondition('global', 'h', mockKeybindings, 'global.h'),
  *   "to be undefined"
  * );
  * 
- * // Global command that IS in globalEditorFocusCommands gets editorTextFocus
+ * // Editor command gets editorTextFocus
  * expect(
- *   generateCondition('global', 'f', mockKeybindings, 'actions.find'),
+ *   generateCondition('editor', 'f', mockKeybindings, 'actions.find'),
  *   "to equal",
  *   "editorTextFocus"
  * );
@@ -167,10 +190,12 @@ export function generateCondition(
 ): string | undefined {
   if (group === 'global') {
     // Global keybindings only need editorTextFocus if they're in the globalEditorFocusCommands list
-    if (command && globalEditorFocusCommands.includes(command)) {
-      return "editorTextFocus";
-    }
     return undefined;
+  }
+
+  if (group === 'editor') {
+    // Editor keybindings are always editorTextFocus
+    return "editorTextFocus";
   }
 
   // Find all higher priority groups that use the same key
@@ -212,7 +237,8 @@ export function generateCondition(
  * const mockBindings = {
  *   "danceflow.command1": ["h", "j"],
  *   "danceflow.command2": ["k"],
- *   'danceflow.openMenu{"menu": "match"}': ["m"]
+ *   'danceflow.openMenu{"menu": "match"}': ["m"],
+ *   'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
  * };
  * 
  * expect(
@@ -222,7 +248,8 @@ export function generateCondition(
  *     { key: "h", command: "danceflow.command1" },
  *     { key: "j", command: "danceflow.command1" },
  *     { key: "k", command: "danceflow.command2" },
- *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" } }
+ *     { key: "m", command: "danceflow.openMenu", args: { menu: "match" } },
+ *     { key: "c", command: "danceflow.say", when: "isCow && isAlive", args: { text: "mooo" } }
  *   ]
  * );
  * ```
@@ -234,7 +261,7 @@ export function expandKeybindingGroup(
   const result: ResolvedKeybinding[] = [];
 
   for (const [commandString, keys] of Object.entries(bindings)) {
-    const { command, args } = parseCommandArgs(commandString);
+    const { command, when, args } = parseCommandArgs(commandString);
     
     // Create a separate binding for each key assigned to this command
     if (Array.isArray(keys)) {
@@ -242,6 +269,7 @@ export function expandKeybindingGroup(
         result.push({
           key,
           command,
+          ...(when && { when }),
           ...(args && { args }),
         });
       }
@@ -261,7 +289,9 @@ export function expandKeybindingGroup(
  *   global: {
  *     "danceflow.cancel": ["esc"],
  *     "danceflow.global.h": ["h"],
- *     "actions.find": ["⎈f"] // In globalEditorFocusCommands
+ *   },
+ *   editor: {
+ *     "actions.find": ["⎈f"]
  *   },
  *   inspect: {
  *     "danceflow.inspect.f": ["f"],
@@ -276,22 +306,23 @@ export function expandKeybindingGroup(
  *   },
  *   move: {
  *     "danceflow.move.h": ["h"],
- *     'danceflow.openMenu{"menu": "match"}': ["m"]
+ *     'danceflow.openMenu{"menu": "match"}': ["m"],
+ *     'danceflow.say[isCow && isAlive]': ["c"]
  *   }
  * };
  * 
  * const resolved = resolveKeybindings(mockKeybindings);
  * 
- * // Global keys that aren't in globalEditorFocusCommands have no conditions
+ * // Global keys have no conditions
  * expect(
  *   resolved.global.find(b => b.key === "esc"),
  *   "to equal",
  *   { key: "esc", command: "danceflow.cancel" }
  * );
  * 
- * // Global keys that ARE in globalEditorFocusCommands have editorTextFocus condition
+ * // Editor keys have editorTextFocus condition
  * expect(
- *   resolved.global.find(b => b.key === "⎈f"),
+ *   resolved.editor.find(b => b.key === "⎈f"),
  *   "to equal",
  *   { key: "⎈f", command: "actions.find", when: "editorTextFocus" }
  * );
@@ -307,26 +338,14 @@ export function expandKeybindingGroup(
  *   }
  * );
  * 
- * // SelectedMove 'h' is overridden by global and inspect
+ * // Custom when condition is preserved and combined with generated condition
  * expect(
- *   resolved.selectedMove.find(b => b.key === "h"),
+ *   resolved.move.find(b => b.key === "c"),
  *   "to equal",
  *   { 
- *     key: "h", 
- *     command: "danceflow.selectedMove.h", 
- *     when: "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
- *   }
- * );
- * 
- * // Move command with args
- * expect(
- *   resolved.move.find(b => b.key === "m"),
- *   "to equal",
- *   { 
- *     key: "m", 
- *     command: "danceflow.openMenu", 
- *     args: { menu: "match" },
- *     when: "editorTextFocus && danceflow.move.active"
+ *     key: "c", 
+ *     command: "danceflow.say", 
+ *     when: "(isCow && isAlive) && editorTextFocus && danceflow.move.active" 
  *   }
  * );
  * ```
@@ -343,34 +362,27 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
   // Second pass: add conditions based on priority overrides
   const resultGroups = {} as ResolvedKeybindingGroups;
   
-  // Global group might need conditions for commands in globalEditorFocusCommands
-  resultGroups.global = expandedGroups.global.map(binding => {
-    const condition = generateCondition(
-      'global', 
-      binding.key, 
-      expandedGroups, 
-      binding.command
-    );
-    
-    if (condition) {
-      return { ...binding, when: condition };
-    }
-    
-    return binding;
-  });
-  
-  // For each non-global group, add appropriate conditions
-  for (const group of priorityOrder.slice(1)) {
+  // For each group, add appropriate conditions
+  for (const group of priorityOrder) {
     resultGroups[group] = expandedGroups[group].map(binding => {
-      const condition = generateCondition(
+      const generatedCondition = generateCondition(
         group, 
         binding.key, 
-        expandedGroups,
-        binding.command
+        expandedGroups
       );
       
-      if (condition) {
-        return { ...binding, when: condition };
+      // If there's a user-defined when condition, combine it with the generated condition
+      if (binding.when && generatedCondition) {
+        return { 
+          ...binding, 
+          when: `(${binding.when}) && ${generatedCondition}` 
+        };
+      } 
+      else if (binding.when) {
+        return binding; // Keep the user-defined when condition as is
+      }
+      else if (generatedCondition) {
+        return { ...binding, when: generatedCondition };
       }
       
       return binding;
@@ -391,6 +403,7 @@ export function resolveKeybindings(keybindings: UnresolvedKeybindingGroups): Res
  *     { key: "esc", command: "danceflow.cancel" },
  *     { key: "h", command: "danceflow.global.h" }
  *   ],
+ *   editor: [],
  *   inspect: [
  *     { key: "f", command: "danceflow.inspect.f" },
  *     { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" }
@@ -435,6 +448,9 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *     "danceflow.cancel": ["esc"],
  *     "danceflow.format": ["⎈⇧f"] // ctrl+shift+f
  *   },
+ *   editor: {
+ *     "danceflow.editor.action": ["e"] // example editor action
+ *   },
  *   inspect: {
  *     "danceflow.inspect.f": ["f"]
  *   },
@@ -444,7 +460,9 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *   },
  *   selectedMove: {},
  *   move: {
- *     'danceflow.openMenu{"menu": "match"}': ["m"]
+ *     'danceflow.openMenu{"menu": "match"}': ["m"],
+ *     'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
+ *     "danceflow.kill[isAlive]": ["k"]
  *   }
  * };
  * 
@@ -460,6 +478,12 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  * expect(
  *   result.some(kb => kb.key === "ctrl+shift+f" && kb.command === "danceflow.format" && !kb.when),
  *   "to be true"
+ * );
+ * 
+ * // Verify the editor action binding
+ * expect(
+ *  result.some(kb => kb.key === "e" && kb.command === "danceflow.editor.action" && kb.when === "editorTextFocus"),
+ *  "to be true"
  * );
  * 
  * // Verify Unicode conversion for alt+o with editorTextFocus
@@ -479,6 +503,26 @@ export function flattenKeybindings(groups: ResolvedKeybindingGroups): FlattenedK
  *     kb.command === "danceflow.openMenu" && 
  *     kb.args && kb.args["menu"] === "match" &&
  *     kb.when === "editorTextFocus && danceflow.move.active"
+ *   ),
+ *   "to be true"
+ * );
+ * 
+ *  // Verify the say command 
+ * expect(
+ *   result.some(kb => 
+ *     kb.key === "c" && 
+ *     kb.command === "danceflow.say" && 
+ *     kb.when === "(isCow && isAlive) && editorTextFocus && danceflow.move.active"
+ *   ),
+ *   "to be true"
+ * );
+ * 
+ * // Verify the kill command
+ * expect(
+ *   result.some(kb =>
+ *     kb.key === "k" &&
+ *     kb.command === "danceflow.kill" &&
+ *     kb.when === "(isAlive) && editorTextFocus && danceflow.move.active"
  *   ),
  *   "to be true"
  * );

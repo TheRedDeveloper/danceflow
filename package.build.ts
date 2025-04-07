@@ -1,7 +1,7 @@
 import { type Builder, generateIgnoredKeybinds } from "./meta";
 import { availableClipboardRegisters } from "./src/utils/constants";
 import { processKeybindings } from "./src/api/keybinds/resolve";
-import defaultKeybindings from "./src/api/keybinds/default";
+import { defaultKeybindings, keybindingGroupNames } from "./src/api/keybinds/default";
 
 // Shared values
 // ============================================================================
@@ -310,9 +310,9 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 type: ["array", "null"],
                 description: 
                   "Controls which keybinding groups should be active in this mode. "
-                  + "The 'global' group is always active regardless of this setting.",
+                  + "The 'global' and 'editor' groups are purely conceptual.",
                 items: {
-                  enum: ["inspect", "interact", "change", "selectedMove", "move"],
+                  enum: keybindingGroupNames.slice(2),
                   enumDescriptions: [
                     "Keys for inspecting code elements like definitions, references, etc.",
                     "Keys for interacting with the editor without changing content (copy, etc.)",

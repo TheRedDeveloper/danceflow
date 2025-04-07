@@ -8,6 +8,7 @@ export type UnresolvedKeyBinding = Record<string, string[]>;
 // Define the group names in order of priority (single source of truth)
 export const keybindingGroupNames = [
   'global',
+  'editor',
   'inspect',
   'interact', 
   'change',
@@ -26,32 +27,20 @@ export type KeybindingGroups<T> = {
 // Specific type for unresolved keybindings
 export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBinding>;
 
-export const globalEditorFocusCommands = [
-  "actions.find",
-  "editor.action.startFindReplaceAction",
-  "editor.action.nextMatchFindAction",
-  "editor.action.previousMatchFindAction",
-  "workbench.action.files.save",
-  "C_Cpp.SwitchHeaderSource",
-  "danceflow.history.undo",
-  "danceflow.history.redo",
-];
-
-export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
+export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     // Mode switching
-    "danceflow.cancel": [`esc`],
-    "danceflow.modes.set.move": [`esc`],
+    "danceflow.cancel": [`escape`],
     
     // Tool panels
-    "danceflow.togglePanel.git": [`⇧1`, `⎈⇧g`],
-    "danceflow.togglePanel.explorer": [`⇧2`, `⎈⇧e`],
-    "danceflow.togglePanel.chat": [`⇧3`, `⎈⇧c`],
-    "danceflow.togglePanel.search": [`⇧4`, `⎈⇧s`],
-    "danceflow.togglePanel.timeline": [`⇧5`, `⎈⇧t`],
-    "danceflow.togglePanel.outline": [`⇧6`, `⎈⇧l`],
-    "danceflow.togglePanel.debug": [`⇧7`, `⎈⇧b`],
-    "danceflow.togglePanel.extensions": [`⇧8`, `⎈⇧x`],
+    "danceflow.togglePanel.git": [`⎈⇧g`],
+    "danceflow.togglePanel.explorer": [`⎈⇧e`],
+    "danceflow.togglePanel.chat": [`⎈⇧c`],
+    "danceflow.togglePanel.search": [`⎈⇧s`],
+    "danceflow.togglePanel.timeline": [`⎈⇧t`],
+    "danceflow.togglePanel.outline": [`⎈⇧l`],
+    "danceflow.togglePanel.debug": [`⎈⇧b`],
+    "danceflow.togglePanel.extensions": [`⎈⇧x`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -61,10 +50,6 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     // Search
     "workbench.action.quickTextSearch": [`⎈⇧f`],
     "workbench.action.showAllSymbols": [`⎈t`],
-    "actions.find": [`⎈f`],
-    "editor.action.startFindReplaceAction": [`⎈⎇f`],
-    "editor.action.nextMatchFindAction": [`n`],
-    "editor.action.previousMatchFindAction": [`⇧n`],
     
     // Tabs
     "workbench.action.quickOpenNavigateNextInEditorPicker": [`⎈tab`],
@@ -72,17 +57,40 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.closeActiveEditor": [`⎈w`],
     
     // Files
-    "workbench.action.files.save": [`⎈s`],
     "workbench.action.files.openFile": [`⎈o`],
     "workbench.action.openRecent": [`⎈r`],
     "workbench.action.gotoLine": [`⎈g`],
-    "C_Cpp.SwitchHeaderSource": [`⎈h`],
     "workbench.action.files.newUntitledFile": [`⎈⇧o`],
-    
-    // Undo/Redo
-    "danceflow.history.undo": [`u`, `⎈z`, `⎈⇧y`],
-    "danceflow.history.redo": [`⇧u`, `⎈⇧z`, `⎈y`],
   },
+
+  editor: {
+    "danceflow.modes.set.move": [`escape`],
+
+    // Tool panels
+    "danceflow.togglePanel.git": [`⇧1`],
+    "danceflow.togglePanel.explorer": [`⇧2`],
+    "danceflow.togglePanel.chat": [`⇧3`],
+    "danceflow.togglePanel.search": [`⇧4`],
+    "danceflow.togglePanel.timeline": [`⇧5`],
+    "danceflow.togglePanel.outline": [`⇧6`],
+    "danceflow.togglePanel.debug": [`⇧7`],
+    "danceflow.togglePanel.extensions": [`⇧8`],
+
+    // Find/Replace
+    "actions.find": [`⎈f`],
+    "editor.action.startFindReplaceAction": [`⎈⎇f`],
+    "editor.action.nextMatchFindAction": [`n`],
+    "editor.action.previousMatchFindAction": [`⇧n`],
+
+    // File
+    "workbench.action.files.save": [`⎈s`],
+    "C_Cpp.SwitchHeaderSource": [`⎈h`],
+
+    // Undo/Redo
+    "danceflow.history.undo": [`⎈z`, `⎈⇧y`],
+    "danceflow.history.redo": [`⎈⇧z`, `⎈y`],
+  },
+
   
   inspect: {
     "editor.action.revealDefinition": [`f`],
@@ -165,6 +173,10 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
     // Repeat operations
     "danceflow.history.recording.play": [`q`],
     "danceflow.history.repeat.edit": [`.`],
+
+    // Undo/Redo
+    "danceflow.history.undo": [`u`],
+    "danceflow.history.redo": [`⇧u`],
     
     // Other
     "danceflow.selections.rotate.contents": [`⎇⇧]`],
@@ -264,7 +276,7 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
 // danceflow.jumppoint.create
 // danceflow.jumppoint.previous
 // danceflow.jumppoint.next
-// something{options}
+// DONE something{options}
 // danceflow.number.increment
 // danceflow.number.decrement
 // danceflow.history.recording.toggle
@@ -284,4 +296,4 @@ export const editorDefaultKeybindings: UnresolvedKeybindingGroups = {
 // danceflow.togglePanel.debug
 // danceflow.togglePanel.extensions
 
-export default editorDefaultKeybindings;
+export default defaultKeybindings;

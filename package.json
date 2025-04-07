@@ -375,7 +375,7 @@
                   "array",
                   "null"
                 ],
-                "description": "Controls which keybinding groups should be active in this mode. The 'global' group is always active regardless of this setting.",
+                "description": "Controls which keybinding groups should be active in this mode. The 'global' and 'editor' groups are purely conceptual.",
                 "items": {
                   "enum": [
                     "inspect",
@@ -2921,72 +2921,36 @@
     },
     "keybindings": [
       {
-        "key": "esc",
+        "key": "escape",
         "command": "danceflow.cancel"
-      },
-      {
-        "key": "esc",
-        "command": "danceflow.modes.set.move"
-      },
-      {
-        "key": "shift+1",
-        "command": "danceflow.togglePanel.git"
       },
       {
         "key": "ctrl+shift+g",
         "command": "danceflow.togglePanel.git"
       },
       {
-        "key": "shift+2",
-        "command": "danceflow.togglePanel.explorer"
-      },
-      {
         "key": "ctrl+shift+e",
         "command": "danceflow.togglePanel.explorer"
-      },
-      {
-        "key": "shift+3",
-        "command": "danceflow.togglePanel.chat"
       },
       {
         "key": "ctrl+shift+c",
         "command": "danceflow.togglePanel.chat"
       },
       {
-        "key": "shift+4",
-        "command": "danceflow.togglePanel.search"
-      },
-      {
         "key": "ctrl+shift+s",
         "command": "danceflow.togglePanel.search"
-      },
-      {
-        "key": "shift+5",
-        "command": "danceflow.togglePanel.timeline"
       },
       {
         "key": "ctrl+shift+t",
         "command": "danceflow.togglePanel.timeline"
       },
       {
-        "key": "shift+6",
-        "command": "danceflow.togglePanel.outline"
-      },
-      {
         "key": "ctrl+shift+l",
         "command": "danceflow.togglePanel.outline"
       },
       {
-        "key": "shift+7",
-        "command": "danceflow.togglePanel.debug"
-      },
-      {
         "key": "ctrl+shift+b",
         "command": "danceflow.togglePanel.debug"
-      },
-      {
-        "key": "shift+8",
-        "command": "danceflow.togglePanel.extensions"
       },
       {
         "key": "ctrl+shift+x",
@@ -3013,6 +2977,79 @@
         "command": "workbench.action.showAllSymbols"
       },
       {
+        "key": "ctrl+tab",
+        "command": "workbench.action.quickOpenNavigateNextInEditorPicker"
+      },
+      {
+        "key": "ctrl+shift+tab",
+        "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
+      },
+      {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor"
+      },
+      {
+        "key": "ctrl+o",
+        "command": "workbench.action.files.openFile"
+      },
+      {
+        "key": "ctrl+r",
+        "command": "workbench.action.openRecent"
+      },
+      {
+        "key": "ctrl+g",
+        "command": "workbench.action.gotoLine"
+      },
+      {
+        "key": "ctrl+shift+o",
+        "command": "workbench.action.files.newUntitledFile"
+      },
+      {
+        "key": "escape",
+        "command": "danceflow.modes.set.move",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+1",
+        "command": "danceflow.togglePanel.git",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+2",
+        "command": "danceflow.togglePanel.explorer",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+3",
+        "command": "danceflow.togglePanel.chat",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+4",
+        "command": "danceflow.togglePanel.search",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+5",
+        "command": "danceflow.togglePanel.timeline",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+6",
+        "command": "danceflow.togglePanel.outline",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+7",
+        "command": "danceflow.togglePanel.debug",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "shift+8",
+        "command": "danceflow.togglePanel.extensions",
+        "when": "editorTextFocus"
+      },
+      {
         "key": "ctrl+f",
         "command": "actions.find",
         "when": "editorTextFocus"
@@ -3033,46 +3070,13 @@
         "when": "editorTextFocus"
       },
       {
-        "key": "ctrl+tab",
-        "command": "workbench.action.quickOpenNavigateNextInEditorPicker"
-      },
-      {
-        "key": "ctrl+shift+tab",
-        "command": "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup"
-      },
-      {
-        "key": "ctrl+w",
-        "command": "workbench.action.closeActiveEditor"
-      },
-      {
         "key": "ctrl+s",
         "command": "workbench.action.files.save",
         "when": "editorTextFocus"
       },
       {
-        "key": "ctrl+o",
-        "command": "workbench.action.files.openFile"
-      },
-      {
-        "key": "ctrl+r",
-        "command": "workbench.action.openRecent"
-      },
-      {
-        "key": "ctrl+g",
-        "command": "workbench.action.gotoLine"
-      },
-      {
         "key": "ctrl+h",
         "command": "C_Cpp.SwitchHeaderSource",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "ctrl+shift+o",
-        "command": "workbench.action.files.newUntitledFile"
-      },
-      {
-        "key": "u",
-        "command": "danceflow.history.undo",
         "when": "editorTextFocus"
       },
       {
@@ -3083,11 +3087,6 @@
       {
         "key": "ctrl+shift+y",
         "command": "danceflow.history.undo",
-        "when": "editorTextFocus"
-      },
-      {
-        "key": "shift+u",
-        "command": "danceflow.history.redo",
         "when": "editorTextFocus"
       },
       {
@@ -3426,6 +3425,16 @@
       {
         "key": ".",
         "command": "danceflow.history.repeat.edit",
+        "when": "editorTextFocus && danceflow.change.active"
+      },
+      {
+        "key": "u",
+        "command": "danceflow.history.undo",
+        "when": "editorTextFocus && danceflow.change.active"
+      },
+      {
+        "key": "shift+u",
+        "command": "danceflow.history.redo",
         "when": "editorTextFocus && danceflow.change.active"
       },
       {

@@ -1169,6 +1169,18 @@ suite("API tests", function () {
           "to equal",
           { command: 'danceflow.complex', args: { num: 42, text: "hello" } }
         );
+
+        expect(
+          parseCommandArgs('danceflow.say[isCow && isAlive]{"text": "mooo"}'),
+          "to equal",
+          { command: 'danceflow.say', when: 'isCow && isAlive', args: { text: 'mooo' } }
+        );
+
+        expect(
+          parseCommandArgs('danceflow.kill[isAlive]'),
+          "to equal",
+          { command: 'danceflow.kill', when: 'isAlive' }
+        );
       });
 
       // No expected end document.
@@ -1185,7 +1197,10 @@ suite("API tests", function () {
           global: [
             { key: 'h', command: 'global.h' },
             { key: 'j', command: 'global.j' },
-            { key: 'f', command: 'actions.find' } // In globalEditorFocusCommands
+            { key: 'f', command: 'actions.find' }
+          ],
+          editor: [
+            { key: 'f', command: 'actions.find' },
           ],
           inspect: [
             { key: 'h', command: 'inspect.h' },
@@ -1204,15 +1219,15 @@ suite("API tests", function () {
           ]
         };
 
-        // Global command that's not in globalEditorFocusCommands has no condition
+        // Global command has no condition
         expect(
           generateCondition('global', 'h', mockKeybindings, 'global.h'),
           "to be undefined"
         );
 
-        // Global command that IS in globalEditorFocusCommands gets editorTextFocus
+        // Editor command gets editorTextFocus
         expect(
-          generateCondition('global', 'f', mockKeybindings, 'actions.find'),
+          generateCondition('editor', 'f', mockKeybindings, 'actions.find'),
           "to equal",
           "editorTextFocus"
         );
@@ -1259,7 +1274,8 @@ suite("API tests", function () {
         const mockBindings = {
           "danceflow.command1": ["h", "j"],
           "danceflow.command2": ["k"],
-          'danceflow.openMenu{"menu": "match"}': ["m"]
+          'danceflow.openMenu{"menu": "match"}': ["m"],
+          'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
         };
 
         expect(
@@ -1269,7 +1285,8 @@ suite("API tests", function () {
             { key: "h", command: "danceflow.command1" },
             { key: "j", command: "danceflow.command1" },
             { key: "k", command: "danceflow.command2" },
-            { key: "m", command: "danceflow.openMenu", args: { menu: "match" } }
+            { key: "m", command: "danceflow.openMenu", args: { menu: "match" } },
+            { key: "c", command: "danceflow.say", when: "isCow && isAlive", args: { text: "mooo" } }
           ]
         );
       });
@@ -1288,7 +1305,9 @@ suite("API tests", function () {
           global: {
             "danceflow.cancel": ["esc"],
             "danceflow.global.h": ["h"],
-            "actions.find": ["⎈f"] // In globalEditorFocusCommands
+          },
+          editor: {
+            "actions.find": ["⎈f"]
           },
           inspect: {
             "danceflow.inspect.f": ["f"],
@@ -1303,22 +1322,23 @@ suite("API tests", function () {
           },
           move: {
             "danceflow.move.h": ["h"],
-            'danceflow.openMenu{"menu": "match"}': ["m"]
+            'danceflow.openMenu{"menu": "match"}': ["m"],
+            'danceflow.say[isCow && isAlive]': ["c"]
           }
         };
 
         const resolved = resolveKeybindings(mockKeybindings);
 
-        // Global keys that aren't in globalEditorFocusCommands have no conditions
+        // Global keys have no conditions
         expect(
           resolved.global.find(b => b.key === "esc"),
           "to equal",
           { key: "esc", command: "danceflow.cancel" }
         );
 
-        // Global keys that ARE in globalEditorFocusCommands have editorTextFocus condition
+        // Editor keys have editorTextFocus condition
         expect(
-          resolved.global.find(b => b.key === "⎈f"),
+          resolved.editor.find(b => b.key === "⎈f"),
           "to equal",
           { key: "⎈f", command: "actions.find", when: "editorTextFocus" }
         );
@@ -1334,26 +1354,14 @@ suite("API tests", function () {
           }
         );
 
-        // SelectedMove 'h' is overridden by global and inspect
+        // Custom when condition is preserved and combined with generated condition
         expect(
-          resolved.selectedMove.find(b => b.key === "h"),
+          resolved.move.find(b => b.key === "c"),
           "to equal",
           { 
-            key: "h", 
-            command: "danceflow.selectedMove.h", 
-            when: "editorTextFocus && danceflow.selectedMove.active && !danceflow.global.active && !danceflow.inspect.active" 
-          }
-        );
-
-        // Move command with args
-        expect(
-          resolved.move.find(b => b.key === "m"),
-          "to equal",
-          { 
-            key: "m", 
-            command: "danceflow.openMenu", 
-            args: { menu: "match" },
-            when: "editorTextFocus && danceflow.move.active"
+            key: "c", 
+            command: "danceflow.say", 
+            when: "(isCow && isAlive) && editorTextFocus && danceflow.move.active" 
           }
         );
       });
@@ -1373,6 +1381,7 @@ suite("API tests", function () {
             { key: "esc", command: "danceflow.cancel" },
             { key: "h", command: "danceflow.global.h" }
           ],
+          editor: [],
           inspect: [
             { key: "f", command: "danceflow.inspect.f" },
             { key: "h", command: "danceflow.inspect.h", when: "danceflow.inspect.active && !danceflow.global.active" }
@@ -1416,6 +1425,9 @@ suite("API tests", function () {
             "danceflow.cancel": ["esc"],
             "danceflow.format": ["⎈⇧f"] // ctrl+shift+f
           },
+          editor: {
+            "danceflow.editor.action": ["e"] // example editor action
+          },
           inspect: {
             "danceflow.inspect.f": ["f"]
           },
@@ -1425,7 +1437,9 @@ suite("API tests", function () {
           },
           selectedMove: {},
           move: {
-            'danceflow.openMenu{"menu": "match"}': ["m"]
+            'danceflow.openMenu{"menu": "match"}': ["m"],
+            'danceflow.say[isCow && isAlive]{"text": "mooo"}': ["c"]
+            "danceflow.kill[isAlive]": ["k"]
           }
         };
 
@@ -1441,6 +1455,12 @@ suite("API tests", function () {
         expect(
           result.some(kb => kb.key === "ctrl+shift+f" && kb.command === "danceflow.format" && !kb.when),
           "to be true"
+        );
+
+        // Verify the editor action binding
+        expect(
+         result.some(kb => kb.key === "e" && kb.command === "danceflow.editor.action" && kb.when === "editorTextFocus"),
+         "to be true"
         );
 
         // Verify Unicode conversion for alt+o with editorTextFocus
@@ -1460,6 +1480,26 @@ suite("API tests", function () {
             kb.command === "danceflow.openMenu" && 
             kb.args && kb.args["menu"] === "match" &&
             kb.when === "editorTextFocus && danceflow.move.active"
+          ),
+          "to be true"
+        );
+
+         // Verify the say command 
+        expect(
+          result.some(kb => 
+            kb.key === "c" && 
+            kb.command === "danceflow.say" && 
+            kb.when === "(isCow && isAlive) && editorTextFocus && danceflow.move.active"
+          ),
+          "to be true"
+        );
+
+        // Verify the kill command
+        expect(
+          result.some(kb =>
+            kb.key === "k" &&
+            kb.command === "danceflow.kill" &&
+            kb.when === "(isAlive) && editorTextFocus && danceflow.move.active"
           ),
           "to be true"
         );
