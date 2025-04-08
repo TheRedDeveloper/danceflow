@@ -212,6 +212,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
     "danceflow.number.increment": [`⎈k`, `⎈up`],
     "danceflow.number.decrement": [`⎈j`, `⎈down`],
+
+    "danceflow.modes.set.move": [`d`, `⎈x`, `⎈d`, `del`, `backspace`, `⇧d`, `⎈del`, `⎈backspace`, `⎇d`, `⎈⎇⇧d`, `p`, `⎈v`, `⇧p`, `⎈⇧v`, `⎇p`, `⎇⇧p`, `i`, `a`, `⇧i`, `⇧a`, `o`, `⇧o`, `c`, `⎈⎇c`, `r`, `⇧r`, `⎈⇧r`, `⎇j`, `⎇down`, `⎇k`, `⎇up`, `tab`, `⇧tab`, `⇧j`, `-`, `⎇space`, `⎇⇧space`, `enter`, `⇧enter`, `⇧c`, `"`, `=`, `⎇=`, `⎈=`, `⎈⇧=`, `q`, `.`, `u`, `⇧u`, `⎇⇧]`, `⎇⇧[`, `⎈k`, `⎈up`, `⎈j`, `⎈down`],
   },
   
   selectedMove: {
@@ -302,6 +304,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.jumppoint.create": [`'`],
     "danceflow.jumppoint.previous": [`[`],
     "danceflow.jumppoint.next": [`]`],
+    "danceflow.modes.set.move": [`h`, `j`, `k`, `l`, `w`, `e`, `b`, `g`, `⇧g`, `⇧w`, `⇧e`, `⇧b`, `f`, `⇧f`, `t`, `⇧t`, `⎈d`, `⎈⇧u`, `⎈u`, `⎈⇧d`, `⎈a`, `z`, `v`, `m`, `s`, `⎇s`, `⇧k`, `⇧⎇k`, `⇧m`, `⇧s`, `;`, `n`, `⇧n`, `'`, `[`, `]`],
   },
   ignore: {
     "danceflow.ignore": charTypingKeys,
