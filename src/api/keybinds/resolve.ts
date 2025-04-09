@@ -651,6 +651,7 @@ export function weaveModeChange(bindings: ResolvedKeybindingGroups): ResolvedKey
  *   ),
  *   "to be true"
  * );
+ * ```
  */
 export function processKeybindings(keybindings: UnresolvedKeybindingGroups): Builder.Keybinding[] {
   const resolvedGroups = resolveKeybindings(keybindings);

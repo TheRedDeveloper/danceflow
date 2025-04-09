@@ -1415,6 +1415,86 @@ suite("API tests", function () {
       // No expected end document.
     });
 
+    test("function makeMultiBinding", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockBinding = {
+          key: "ctrl+shift+f",
+          command: "danceflow.format",
+          when: "editorTextFocus"
+        };
+
+        const additionalCommand = "danceflow.additionalCommand";
+
+        expect(
+          makeMultiBinding(mockBinding, additionalCommand),
+          "to equal",
+          {
+            key: "ctrl+shift+f",
+            command: "runCommands",
+            args: {
+              commands: [
+                { command: "danceflow.format" },
+                "danceflow.additionalCommand"
+              ]
+            },
+            when: "editorTextFocus"
+          }
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function weaveModeChange", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken);
+
+      // No setup needed.
+
+      await context.runAsync(async () => {
+        const mockBindings = {
+          global: [
+            { key: "h", command: "danceflow.global.h" }
+          ],
+          editor: [],
+          inspect: [],
+          interact: [],
+          change: [],
+          selectedMove: [],
+          move: [
+            { key: "m", command: "danceflow.openMenu" }
+          ],
+          ignore: []
+        };
+
+        expect(
+          weaveModeChange(mockBindings),
+          "to equal",
+          {
+            global: [
+              { key: "h", command: "danceflow.global.h" }
+            ],
+            editor: [],
+            inspect: [],
+            interact: [],
+            change: [],
+            selectedMove: [],
+            move: [
+              { key: "m", command: "runCommands", args: { commands: [{ command: "danceflow.openMenu" }, "danceflow.modes.set.move"] } }
+            ],
+            ignore: []
+          }
+        );
+      });
+
+      // No expected end document.
+    });
+
     test("function processKeybindings", async function () {
       const editorState = extension.editors.getState(editor)!,
             context = new Context(editorState, cancellationToken);
@@ -1448,60 +1528,69 @@ suite("API tests", function () {
 
         const result = processKeybindings(mockKeybindings);
 
-        // Verify the global esc key binding
+        // Verify the global esc key binding (not woven since it's global)
         expect(
           result.some(kb => kb.key === "esc" && kb.command === "danceflow.cancel" && !kb.when),
           "to be true"
         );
 
-        // Verify Unicode conversion for ctrl+shift+f
+        // Verify Unicode conversion for ctrl+shift+f (not woven since it's global)
         expect(
           result.some(kb => kb.key === "ctrl+shift+f" && kb.command === "danceflow.format" && !kb.when),
           "to be true"
         );
 
-        // Verify the editor action binding
+        // Verify the editor action binding (not woven since it's editor)
         expect(
-         result.some(kb => kb.key === "e" && kb.command === "danceflow.editor.action" && kb.when === "editorTextFocus"),
-         "to be true"
+          result.some(kb => kb.key === "e" && kb.command === "danceflow.editor.action" && kb.when === "editorTextFocus"),
+          "to be true"
         );
 
-        // Verify Unicode conversion for alt+o with editorTextFocus
+        // Verify Unicode conversion for alt+o with editorTextFocus and woven commands (change has weaving)
         expect(
           result.some(kb => 
             kb.key === "alt+o" && 
-            kb.command === "danceflow.change.option" && 
+            kb.command === "runCommands" &&
+            kb.args?.commands[0].command === "danceflow.change.option" &&
+            kb.args?.commands[1] === "danceflow.modes.set.move" &&
             kb.when === "editorTextFocus && danceflow.change.active"
           ),
           "to be true"
         );
 
-        // Verify the move menu binding
+        // Verify the move menu binding with woven commands
         expect(
           result.some(kb => 
             kb.key === "m" && 
-            kb.command === "danceflow.openMenu" && 
-            kb.args && kb.args["menu"] === "match" &&
+            kb.command === "runCommands" &&
+            kb.args?.commands[0].command === "danceflow.openMenu" &&
+            kb.args?.commands[0].args?.menu === "match" &&
+            kb.args?.commands[1] === "danceflow.modes.set.move" &&
             kb.when === "editorTextFocus && danceflow.move.active"
           ),
           "to be true"
         );
 
-         // Verify the say command 
+        // Verify the say command with woven commands and preserved when condition
         expect(
           result.some(kb => 
             kb.key === "c" && 
-            kb.command === "danceflow.say" && 
+            kb.command === "runCommands" &&
+            kb.args?.commands[0].command === "danceflow.say" &&
+            kb.args?.commands[0].args?.text === "mooo" &&
+            kb.args?.commands[1] === "danceflow.modes.set.move" &&
             kb.when === "(isCow && isAlive) && editorTextFocus && danceflow.move.active"
           ),
           "to be true"
         );
 
-        // Verify the kill command
+        // Verify the kill command with woven commands and preserved when condition
         expect(
           result.some(kb =>
             kb.key === "k" &&
-            kb.command === "danceflow.kill" &&
+            kb.command === "runCommands" &&
+            kb.args?.commands[0].command === "danceflow.kill" &&
+            kb.args?.commands[1] === "danceflow.modes.set.move" &&
             kb.when === "(isAlive) && editorTextFocus && danceflow.move.active"
           ),
           "to be true"

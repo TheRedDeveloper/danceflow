@@ -10,7 +10,7 @@ export async function build(builder: Builder) {
     const examples = module.functions.flatMap((f) => f.examples.map((example) => {
       const match = exampleRe.exec(example);
 
-      assert(match !== null, "Example does not have valid format");
+      assert(match !== null, "Example does not have valid format (" + exampleRe + "): " + example);
 
       const [_, flags, code, before, after] = match;
 
