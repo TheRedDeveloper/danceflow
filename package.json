@@ -3303,6 +3303,86 @@
         "when": "editorTextFocus && danceflow.interact.active"
       },
       {
+        "key": "0",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 0
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "1",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 1
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "2",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 2
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "3",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 3
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "4",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 4
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "5",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 5
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "6",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 6
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "7",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 7
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "8",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 8
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
+        "key": "9",
+        "command": "danceflow.updateCount",
+        "args": {
+          "addDigits": 9
+        },
+        "when": "editorTextFocus && danceflow.interact.active"
+      },
+      {
         "key": "d",
         "command": "runCommands",
         "args": {
@@ -5007,7 +5087,7 @@
       {
         "key": "0",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+0",
@@ -5017,7 +5097,7 @@
       {
         "key": "1",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+1",
@@ -5027,7 +5107,7 @@
       {
         "key": "2",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+2",
@@ -5037,7 +5117,7 @@
       {
         "key": "3",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+3",
@@ -5047,7 +5127,7 @@
       {
         "key": "4",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+4",
@@ -5057,7 +5137,7 @@
       {
         "key": "5",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+5",
@@ -5067,7 +5147,7 @@
       {
         "key": "6",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+6",
@@ -5077,7 +5157,7 @@
       {
         "key": "7",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+7",
@@ -5087,7 +5167,7 @@
       {
         "key": "8",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+8",
@@ -5097,7 +5177,7 @@
       {
         "key": "9",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.interact.active"
       },
       {
         "key": "shift+9",

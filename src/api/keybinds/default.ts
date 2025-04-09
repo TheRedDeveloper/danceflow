@@ -2,8 +2,6 @@
  * Default keybindings
  */
 
-import exp from "constants";
-
 // Basic type for mapping commands to key combinations
 export type UnresolvedKeyBindings = Record<string, string[]>;
 
@@ -159,10 +157,16 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.history.recording.toggle": [`⇧q`],
     "danceflow.history.recording.load": [`⎈q`],
     "danceflow.history.recording.save": [`⎈⇧q`],
-    ...(()=> Array(10).fill(0).reduce((acc, _, i) => ({
-      ...acc,
-      [`danceflow.updateCount{"addDigits": ${i}}`]: [`${i}`]
-    }), {})),
+    'danceflow.updateCount{"addDigits": 0}': [`0`],
+    'danceflow.updateCount{"addDigits": 1}': [`1`],
+    'danceflow.updateCount{"addDigits": 2}': [`2`],
+    'danceflow.updateCount{"addDigits": 3}': [`3`],
+    'danceflow.updateCount{"addDigits": 4}': [`4`],
+    'danceflow.updateCount{"addDigits": 5}': [`5`],
+    'danceflow.updateCount{"addDigits": 6}': [`6`],
+    'danceflow.updateCount{"addDigits": 7}': [`7`],
+    'danceflow.updateCount{"addDigits": 8}': [`8`],
+    'danceflow.updateCount{"addDigits": 9}': [`9`],
   },
   
   change: {
