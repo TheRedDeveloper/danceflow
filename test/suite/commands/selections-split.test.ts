@@ -38,11 +38,11 @@ suite("./test/suite/commands/selections-split.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-split.md:13:1", 6, String.raw`
       first line
-      ^^^^^^^^^^^ 2
+      ^^^^^^^^^^^ 0
       second line
       ^^^^^^^^^^^^ 1
       third line
-      ^^^^^^^^^^^ 0
+      ^^^^^^^^^^^ 2
 
     `);
   });
@@ -65,11 +65,11 @@ suite("./test/suite/commands/selections-split.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-split.md:40:1", 6, String.raw`
       first line
-      ^^^^^^^^^^^ 3
+      ^^^^^^^^^^^ 0
       second line
-      ^^^^^ 2 ^^^^ 1
+      ^^^^^ 1 ^^^^ 2
       third line
-      ^^^^^ 0
+      ^^^^^ 3
 
     `);
   });

@@ -24,8 +24,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -34,8 +34,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:9:1", 6, String.raw`
       2 0 3 1
-      ^ 2 ^ 3
-        ^ 0 ^ 1
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 
@@ -43,8 +43,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -53,8 +53,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:20:1", 6, String.raw`
       2 0 3 1
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 
@@ -62,8 +62,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -72,8 +72,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:31:1", 6, String.raw`
       0 3 1 2
-      ^ 2 ^ 3
-        ^ 0 ^ 1
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 
@@ -81,8 +81,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -91,8 +91,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:42:1", 6, String.raw`
       3 1 2 0
-      ^ 3 ^ 2
-        ^ 1 ^ 0
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 
@@ -100,8 +100,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -110,8 +110,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:53:1", 6, String.raw`
       3 1 2 0
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 
@@ -119,8 +119,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       0 3 1 2
-      ^ 0 ^ 1
-        ^ 3 ^ 2
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
 
     // Perform all operations.
@@ -129,8 +129,8 @@ suite("./test/suite/commands/selections-rotate.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-rotate.md:64:1", 6, String.raw`
       0 3 1 2
-      ^ 3 ^ 2
-        ^ 1 ^ 0
+      ^ 0 ^ 2
+        ^ 1 ^ 3
     `);
   });
 

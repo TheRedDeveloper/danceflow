@@ -3,7 +3,7 @@ import * as vscode from "vscode";
 
 import { expect, ExpectedDocument } from "./utils";
 import { Context, deindentLines, edit, EmptySelectionsError, indentLines, insert, insertByIndex, isPosition, isRange, isSelection, joinLines, mapActive, mapBoth, mapEnd, mapStart, moveWhileBackward, moveWhileForward, moveWithBackward, moveWithForward, NotASelectionError, pipe, Positions, replace, replaceByIndex, rotate, rotateContents, rotateSelections, searchBackward, searchForward, Select, SelectionBehavior, Selections, text } from "../../src/api";
-import { parseCommandArgs, generateCondition, expandKeybindingGroup, resolveKeybindings, flattenKeybindings, processKeybindings } from '../../src/api/keybinds/resolve';
+import { parseCommandArgs, generateCondition, expandKeybindingGroup, resolveKeybindings, flattenKeybindings, processKeybindings, makeMultiBinding, weaveModeChange } from '../../src/api/keybinds/resolve';
 import { Extension } from "../../src/state/extension";
 
 function setSelectionBehavior(selectionBehavior: SelectionBehavior) {
@@ -663,9 +663,9 @@ suite("API tests", function () {
             `),
             after = ExpectedDocument.parseIndented(14, String.raw`
               c a b
-              ^ 2
-                ^ 0
-                  ^ 1
+              ^ 0
+                ^ 1
+                  ^ 2
             `);
 
       await before.apply(editor);
@@ -713,9 +713,9 @@ suite("API tests", function () {
             `),
             after = ExpectedDocument.parseIndented(14, String.raw`
               a b c
-              ^ 2
-                ^ 0
-                  ^ 1
+              ^ 0
+                ^ 1
+                  ^ 2
             `);
 
       await before.apply(editor);
@@ -1834,8 +1834,8 @@ suite("API tests", function () {
             `),
             after = ExpectedDocument.parseIndented(14, String.raw`
               foo bar baz
-              ^^^ 2   ^^^ 1
-                  ^^^ 0
+              ^^^ 0   ^^^ 2
+                  ^^^ 1
             `);
 
       await before.apply(editor);

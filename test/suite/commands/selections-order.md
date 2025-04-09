@@ -17,12 +17,12 @@ quux
 
 ```
 foo
- ^ 3
+ ^ 0
 bar
- ^ 2
-quux
  ^ 1
-   ^ 0
+quux
+ ^ 2
+   ^ 3
 ```
 
 ## 1 order-desc
@@ -47,12 +47,12 @@ quux
 
 ```
 foo
- ^ 3
+ ^ 0
 bar
- ^ 2
-quux
  ^ 1
-   ^ 0
+quux
+ ^ 2
+   ^ 3
 ```
 
 # 2
@@ -76,10 +76,10 @@ quux
 
 ```
 foo
- ^ 3
+ ^ 0
 bar
  ^ 1
 quux
  ^ 2
-   ^ 0
+   ^ 3
 ```

@@ -35,9 +35,9 @@ suite("./test/suite/commands/selections-select.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-select.md:10:1", 6, String.raw`
       foo bar
-          ^ 1
+          ^ 0
       baz
-      ^ 0
+      ^ 1
     `);
   });
 

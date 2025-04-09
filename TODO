@@ -225,7 +225,7 @@
   ✔ Some commands ensure being in a specific mode before executing. @done(25-04-09 11:07)
   ✔ Number keys not in keybinds @done(25-04-09 11:22)
 
-☐ The last cursor should always be the primary cursor
+✔ The first cursor should always be the primary cursor @done(25-04-09 15:19)
 ☐ Remove multiple registers and buffers
   ✔ Learn how paste works @done(25-04-06 14:21)
     Overwritten register. Total chaos!

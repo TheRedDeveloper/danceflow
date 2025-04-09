@@ -26,9 +26,9 @@ suite("./test/suite/commands/selections-sort.md", function () {
       z
       ^ 0
        y
-       ^ 2
+       ^ 1
         x
-        ^ 1
+        ^ 2
     `);
 
     // Perform all operations.
@@ -37,11 +37,11 @@ suite("./test/suite/commands/selections-sort.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-sort.md:12:1", 6, String.raw`
       z
-      ^ 2
+      ^ 0
        y
        ^ 1
         x
-        ^ 0
+        ^ 2
     `);
   });
 
@@ -51,9 +51,9 @@ suite("./test/suite/commands/selections-sort.md", function () {
       z
       ^ 0
        y
-       ^ 2
+       ^ 1
         x
-        ^ 1
+        ^ 2
     `);
 
     // Perform all operations.
@@ -76,9 +76,9 @@ suite("./test/suite/commands/selections-sort.md", function () {
       z
       ^ 0
        y
-       ^ 2
+       ^ 1
         x
-        ^ 1
+        ^ 2
     `);
 
     // Perform all operations.
@@ -87,9 +87,9 @@ suite("./test/suite/commands/selections-sort.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-sort.md:40:1", 6, String.raw`
       z
-      ^ 1
+      ^ 0
        y
-       ^ 0
+       ^ 1
         x
         ^ 2
     `);

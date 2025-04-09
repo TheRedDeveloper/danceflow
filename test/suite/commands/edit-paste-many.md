@@ -2,7 +2,7 @@
 
 ```
 foo bar quux
-^^^ 2   ^^^^ 0
+^^^ 0   ^^^^ 2
     ^^^ 1
 ```
 
@@ -14,7 +14,7 @@ foo bar quux
 
 ```
 foofoo barbar quuxquux
-   ^^^ 2          ^^^^ 0
+   ^^^ 0          ^^^^ 2
           ^^^ 1
 ```
 
@@ -26,7 +26,7 @@ foofoo barbar quuxquux
 
 ```
 foofoo barbar quuxquux
-^^^ 2         ^^^^ 0
+^^^ 0         ^^^^ 2
        ^^^ 1
 ```
 
@@ -37,9 +37,9 @@ foofoo barbar quuxquux
 - .edit.pasteAll.after.select
 
 ```
-foofoobarquux barfoobarquux quuxfoobarquux
-   ^^^ 8 ^^^^ 6  ^^^ 5 ^^^^ 3   ^^^ 2 ^^^^ 0
-      ^^^ 7         ^^^ 4          ^^^ 1
+fooquuxbarfoo barquuxbarfoo quuxquuxbarfoo
+   ^^^^ 0 ^^^ 2  ^^^^ 3 ^^^ 5   ^^^^ 6 ^^^ 8
+       ^^^ 1         ^^^ 4          ^^^ 7
 ```
 
 ## 1 paste-all-before-select
@@ -49,7 +49,7 @@ foofoobarquux barfoobarquux quuxfoobarquux
 - .edit.pasteAll.before.select
 
 ```
-foobarquuxfoo foobarquuxbar foobarquuxquux
-^^^ 8 ^^^^ 6  ^^^ 5 ^^^^ 3  ^^^ 2 ^^^^ 0
-   ^^^ 7         ^^^ 4         ^^^ 1
+quuxbarfoofoo quuxbarfoobar quuxbarfooquux
+^^^^ 0 ^^^ 2  ^^^^ 3 ^^^ 5  ^^^^ 6 ^^^ 8
+    ^^^ 1         ^^^ 4         ^^^ 7
 ```

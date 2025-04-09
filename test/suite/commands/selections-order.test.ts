@@ -38,12 +38,12 @@ suite("./test/suite/commands/selections-order.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:13:1", 6, String.raw`
       foo
-       ^ 3
+       ^ 0
       bar
-       ^ 2
-      quux
        ^ 1
-         ^ 0
+      quux
+       ^ 2
+         ^ 3
     `);
   });
 
@@ -92,12 +92,12 @@ suite("./test/suite/commands/selections-order.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:43:1", 6, String.raw`
       foo
-       ^ 3
+       ^ 0
       bar
-       ^ 2
-      quux
        ^ 1
-         ^ 0
+      quux
+       ^ 2
+         ^ 3
     `);
   });
 
@@ -119,12 +119,12 @@ suite("./test/suite/commands/selections-order.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/selections-order.md:72:1", 6, String.raw`
       foo
-       ^ 3
+       ^ 0
       bar
        ^ 1
       quux
        ^ 2
-         ^ 0
+         ^ 3
     `);
   });
 

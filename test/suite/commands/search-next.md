@@ -38,9 +38,9 @@ kiwi orange kiwi
 
 ```
 apple pineapple pear
-          ^^^^^ 1
+          ^^^^^ 0
 pear pineapple apple
-         ^^^^^ 0
+         ^^^^^ 1
 kiwi orange kiwi
 ```
 
@@ -67,10 +67,10 @@ Main selection search will wrap around:
 
 ```
 apple pineapple pear
-^^^^^ 0   ^^^^^ 3
+^^^^^ 0   ^^^^^ 1
 pear pineapple apple
          ^^^^^ 2
-               ^^^^^ 1
+               ^^^^^ 3
 kiwi orange kiwi
 ```
 
@@ -98,10 +98,10 @@ Code will then merge the selections 0 and 4 automatically:
 
 ```
 apple pineapple pear
-^^^^^ 1   ^^^^^ 0
+^^^^^ 0   ^^^^^ 1
 pear pineapple apple
-         ^^^^^ 3
-               ^^^^^ 2
+         ^^^^^ 2
+               ^^^^^ 3
 kiwi orange kiwi
 ```
 
@@ -152,9 +152,9 @@ Main selection search will wrap around:
 
 ```
 apple pineapple pear
-^^^^^ 1   ^^^^^ 2
+^^^^^ 0   ^^^^^ 1
 pear pineapple apple
-               ^^^^^ 0
+               ^^^^^ 2
 kiwi orange kiwi
 ```
 
@@ -180,9 +180,9 @@ foo
 ```
 foo
 foo
-^^^ 1
-foo
 ^^^ 0
+foo
+^^^ 1
 foo
 foo
 foo
@@ -197,10 +197,9 @@ foo
 ```
 foo
 foo
-^^^ 1
-foo
 foo
 ^^^ 0
+foo
 foo
 foo
 foo
@@ -214,11 +213,10 @@ foo
 ```
 foo
 foo
-^^^ 1
-foo
 foo
 foo
 ^^^ 0
+foo
 foo
 foo
 ```

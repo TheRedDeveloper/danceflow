@@ -24,7 +24,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo bar quux
-      ^^^ 2   ^^^^ 0
+      ^^^ 0   ^^^^ 2
           ^^^ 1
     `);
 
@@ -35,7 +35,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:9:1", 6, String.raw`
       foofoo barbar quuxquux
-         ^^^ 2          ^^^^ 0
+         ^^^ 0          ^^^^ 2
                 ^^^ 1
     `);
   });
@@ -44,7 +44,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo bar quux
-      ^^^ 2   ^^^^ 0
+      ^^^ 0   ^^^^ 2
           ^^^ 1
     `);
 
@@ -55,7 +55,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:21:1", 6, String.raw`
       foofoo barbar quuxquux
-      ^^^ 2         ^^^^ 0
+      ^^^ 0         ^^^^ 2
              ^^^ 1
     `);
   });
@@ -64,7 +64,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo bar quux
-      ^^^ 2   ^^^^ 0
+      ^^^ 0   ^^^^ 2
           ^^^ 1
     `);
 
@@ -74,9 +74,9 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:33:1", 6, String.raw`
-      foofoobarquux barfoobarquux quuxfoobarquux
-         ^^^ 8 ^^^^ 6  ^^^ 5 ^^^^ 3   ^^^ 2 ^^^^ 0
-            ^^^ 7         ^^^ 4          ^^^ 1
+      fooquuxbarfoo barquuxbarfoo quuxquuxbarfoo
+         ^^^^ 0 ^^^ 2  ^^^^ 3 ^^^ 5   ^^^^ 6 ^^^ 8
+             ^^^ 1         ^^^ 4          ^^^ 7
     `);
   });
 
@@ -84,7 +84,7 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
     // Set-up document to be in expected initial state.
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo bar quux
-      ^^^ 2   ^^^^ 0
+      ^^^ 0   ^^^^ 2
           ^^^ 1
     `);
 
@@ -94,9 +94,9 @@ suite("./test/suite/commands/edit-paste-many.md", function () {
 
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/edit-paste-many.md:45:1", 6, String.raw`
-      foobarquuxfoo foobarquuxbar foobarquuxquux
-      ^^^ 8 ^^^^ 6  ^^^ 5 ^^^^ 3  ^^^ 2 ^^^^ 0
-         ^^^ 7         ^^^ 4         ^^^ 1
+      quuxbarfoofoo quuxbarfoobar quuxbarfooquux
+      ^^^^ 0 ^^^ 2  ^^^^ 3 ^^^ 5  ^^^^ 6 ^^^ 8
+          ^^^ 1         ^^^ 4         ^^^ 7
     `);
   });
 

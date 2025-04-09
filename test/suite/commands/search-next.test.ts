@@ -77,9 +77,9 @@ suite("./test/suite/commands/search-next.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:34:1", 6, String.raw`
       apple pineapple pear
-                ^^^^^ 1
+                ^^^^^ 0
       pear pineapple apple
-               ^^^^^ 0
+               ^^^^^ 1
       kiwi orange kiwi
     `);
   });
@@ -120,10 +120,10 @@ suite("./test/suite/commands/search-next.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:61:1", 6, String.raw`
       apple pineapple pear
-      ^^^^^ 0   ^^^^^ 3
+      ^^^^^ 0   ^^^^^ 1
       pear pineapple apple
                ^^^^^ 2
-                     ^^^^^ 1
+                     ^^^^^ 3
       kiwi orange kiwi
     `);
   });
@@ -164,10 +164,10 @@ suite("./test/suite/commands/search-next.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:91:1", 6, String.raw`
       apple pineapple pear
-      ^^^^^ 1   ^^^^^ 0
+      ^^^^^ 0   ^^^^^ 1
       pear pineapple apple
-               ^^^^^ 3
-                     ^^^^^ 2
+               ^^^^^ 2
+                     ^^^^^ 3
       kiwi orange kiwi
     `);
   });
@@ -250,9 +250,9 @@ suite("./test/suite/commands/search-next.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:146:1", 6, String.raw`
       apple pineapple pear
-      ^^^^^ 1   ^^^^^ 2
+      ^^^^^ 0   ^^^^^ 1
       pear pineapple apple
-                     ^^^^^ 0
+                     ^^^^^ 2
       kiwi orange kiwi
     `);
   });
@@ -278,9 +278,9 @@ suite("./test/suite/commands/search-next.md", function () {
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:174:1", 6, String.raw`
       foo
       foo
-      ^^^ 1
-      foo
       ^^^ 0
+      foo
+      ^^^ 1
       foo
       foo
       foo
@@ -293,9 +293,9 @@ suite("./test/suite/commands/search-next.md", function () {
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo
       foo
-      ^^^ 1
-      foo
       ^^^ 0
+      foo
+      ^^^ 1
       foo
       foo
       foo
@@ -309,10 +309,9 @@ suite("./test/suite/commands/search-next.md", function () {
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:192:1", 6, String.raw`
       foo
       foo
-      ^^^ 1
-      foo
       foo
       ^^^ 0
+      foo
       foo
       foo
       foo
@@ -324,10 +323,9 @@ suite("./test/suite/commands/search-next.md", function () {
     await ExpectedDocument.apply(editor, 6, String.raw`
       foo
       foo
-      ^^^ 1
-      foo
       foo
       ^^^ 0
+      foo
       foo
       foo
       foo
@@ -337,14 +335,13 @@ suite("./test/suite/commands/search-next.md", function () {
     await executeCommand("danceflow.search.next");
 
     // Ensure document is as expected.
-    ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:209:1", 6, String.raw`
+    ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:208:1", 6, String.raw`
       foo
-      foo
-      ^^^ 1
       foo
       foo
       foo
       ^^^ 0
+      foo
       foo
       foo
     `);

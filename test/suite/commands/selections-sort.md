@@ -4,9 +4,9 @@
 z
 ^ 0
  y
- ^ 2
+ ^ 1
   x
-  ^ 1
+  ^ 2
 ```
 
 ## 1 sort-by-content
@@ -16,11 +16,11 @@ z
 
 ```
 z
-^ 2
+^ 0
  y
  ^ 1
   x
-  ^ 0
+  ^ 2
 ```
 
 ## 1 sort-by-content-desc
@@ -48,9 +48,9 @@ to sort positions with multiple digits; for sorting purposes,
 
 ```
 z
-^ 1
+^ 0
  y
- ^ 0
+ ^ 1
   x
   ^ 2
 ```

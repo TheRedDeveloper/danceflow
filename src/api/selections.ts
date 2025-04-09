@@ -42,11 +42,11 @@ export { fromCharacterMode, toCharacterMode };
 export function set(selections: readonly vscode.Selection[], context = Context.current) {
   NotASelectionError.throwIfNotASelectionArray(selections);
 
-  context.selections = selections;
+  context.selections = topToBottom(selections);
   reveal(selections[0], context);
   vscode.commands.executeCommand("editor.action.wordHighlight.trigger");
 
-  return selections;
+  return context.selections;
 }
 
 /**
@@ -638,8 +638,8 @@ export function updateWithFallbackByIndex<
  * After:
  * ```
  * foo bar baz
- * ^^^ 2   ^^^ 1
- *     ^^^ 0
+ * ^^^ 0   ^^^ 2
+ *     ^^^ 1
  * ```
  */
 export function rotate(

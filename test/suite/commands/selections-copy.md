@@ -15,9 +15,9 @@ qux
 
 ```
 foo
-^ 1
-bar
 ^ 0
+bar
+^ 1
 baz
 qux
 ```
@@ -29,11 +29,11 @@ qux
 
 ```
 foo
-^ 2
+^ 0
 bar
 ^ 1
 baz
-^ 0
+^ 2
 qux
 ```
 
@@ -60,9 +60,9 @@ Basic copy with multiple selections.
 ```
 aaa aaa aaa
   bb bb bb bb
-   ^ 2     ^^ 3
-    cc cc cc cc
    ^ 0     ^^ 1
+    cc cc cc cc
+   ^ 2     ^^ 3
       ddd
      ee
     f
@@ -79,15 +79,15 @@ Skip a line because it's too short.
 ```
 aaa aaa aaa
   bb bb bb bb
-   ^ 4     ^^ 5
+   ^ 0     ^^ 1
     cc cc cc cc
    ^ 2     ^^ 3
       ddd
-   ^ 0
+   ^ 4
      ee
     f
   gg gg gg gg gg
-           ^^ 1
+           ^^ 5
 ```
 
 #### 2 copy x x
@@ -100,16 +100,16 @@ Do not add selections after the end of the document.
 ```
 aaa aaa aaa
   bb bb bb bb
-   ^ 5     ^^ 6
+   ^ 0     ^^ 1
     cc cc cc cc
-   ^ 3     ^^ 4
+   ^ 2     ^^ 3
       ddd
-   ^ 1
+   ^ 4
      ee
-   ^ 0
+   ^ 5
     f
   gg gg gg gg gg
-           ^^ 2
+           ^^ 6
 ```
 
 # 3
@@ -129,9 +129,9 @@ hi
 
 ```
 ab
-  ^ 1
-cd
   ^ 0
+cd
+  ^ 1
 efg
 hi
 ```
@@ -143,10 +143,10 @@ hi
 
 ```
 ab
-  ^ 2
+  ^ 0
 cd
   ^ 1
 efg
-  ^ 0
+  ^ 2
 hi
 ```

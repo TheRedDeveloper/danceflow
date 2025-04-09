@@ -724,9 +724,9 @@ export declare namespace replaceByIndex {
  * After:
  * ```
  * c a b
- * ^ 2
- *   ^ 0
- *     ^ 1
+ * ^ 0
+ *   ^ 1
+ *     ^ 2
  * ```
  */
 export function rotate(by: number, selections?: readonly vscode.Selection[]) {
@@ -810,9 +810,9 @@ export async function rotateContents(
  * After:
  * ```
  * a b c
- * ^ 2
- *   ^ 0
- *     ^ 1
+ * ^ 0
+ *   ^ 1
+ *     ^ 2
  * ```
  */
 export function rotateSelections(by: number, selections?: readonly vscode.Selection[]) {
