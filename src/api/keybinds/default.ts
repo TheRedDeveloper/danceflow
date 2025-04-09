@@ -33,6 +33,24 @@ export type UnresolvedKeybindingGroups = KeybindingGroups<UnresolvedKeyBindings>
 export const charTypingKeys = "abcdefghijklmnopqrstuvwxyz0123456789`-=[]\\;',./ ".split("")
                               .flatMap(k => [k, `⇧${k}`]);
 
+export const groupModes: Partial<Record<KeybindingGroupName, string>> = {
+  selectedMove: "select",
+  move: "move",
+  change: "move",
+}
+
+export const groupModeExceptions: string[] = [
+  "danceflow.modes.modify.before",
+  "danceflow.modes.modify.after",
+  "danceflow.modes.modify.lineStart",
+  "danceflow.modes.modify.lineEnd",
+  "danceflow.edit.newLine.below.modify",
+  "danceflow.edit.newLine.above.modify",
+  "danceflow.select.line.below.extend",
+  "danceflow.select.line.above.extend",
+  "danceflow.modes.set.select",
+]
+
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     "danceflow.cancel": [`escape`],
@@ -163,12 +181,12 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.action.copyLinesUpAction": [`⎇⇧p`],
     
     // Insert operations
-    "danceflow.modes.modify.before": [`i`],
-    "danceflow.modes.modify.after": [`a`],
-    "danceflow.modes.modify.lineStart": [`⇧i`],
-    "danceflow.modes.modify.lineEnd": [`⇧a`],
-    "danceflow.edit.newLine.below.modify": [`o`],
-    "danceflow.edit.newLine.above.modify": [`⇧o`],
+    "danceflow.modes.modify.before": [`i`], // Should not require move mode
+    "danceflow.modes.modify.after": [`a`], // Should not require move mode
+    "danceflow.modes.modify.lineStart": [`⇧i`], // Should not require move mode
+    "danceflow.modes.modify.lineEnd": [`⇧a`], // Should not require move mode
+    "danceflow.edit.newLine.below.modify": [`o`], // Should not require move mode
+    "danceflow.edit.newLine.above.modify": [`⇧o`], // Should not require move mode
     
     // Replace operations
     "danceflow.edit.yank-delete-modify": [`c`],
@@ -183,7 +201,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "tab": [`tab`],
     "outdent": [`⇧tab`],
     "editor.action.joinLines": [`⇧j`],
-    "danceflow.change.removeEmptyLines": [`-`],
+    "REMOVEEMPTYLINES": [`-`],
     
     // Spacing operations
     "danceflow.add.space.before": [`⎇space`],
@@ -212,8 +230,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
     "danceflow.number.increment": [`⎈k`, `⎈up`],
     "danceflow.number.decrement": [`⎈j`, `⎈down`],
-
-    "danceflow.modes.set.move": [`d`, `⎈x`, `⎈d`, `del`, `backspace`, `⇧d`, `⎈del`, `⎈backspace`, `⎇d`, `⎈⎇⇧d`, `p`, `⎈v`, `⇧p`, `⎈⇧v`, `⎇p`, `⎇⇧p`, `i`, `a`, `⇧i`, `⇧a`, `o`, `⇧o`, `c`, `⎈⎇c`, `r`, `⇧r`, `⎈⇧r`, `⎇j`, `⎇down`, `⎇k`, `⎇up`, `tab`, `⇧tab`, `⇧j`, `-`, `⎇space`, `⎇⇧space`, `enter`, `⇧enter`, `⇧c`, `"`, `=`, `⎇=`, `⎈=`, `⎈⇧=`, `q`, `.`, `u`, `⇧u`, `⎇⇧]`, `⎇⇧[`, `⎈k`, `⎈up`, `⎈j`, `⎈down`],
   },
   
   selectedMove: {
@@ -281,7 +297,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.toggleFold": [`z`],
     
     // Mode
-    "danceflow.modes.set.select": [`v`],
+    "danceflow.modes.set.select": [`v`], // Should not require move mode
     
     // Objects
     'danceflow.openMenu{"menu": "match"}': [`m`],
@@ -295,6 +311,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.splitLines.orLeap.backward": [`⇧s`],
     "danceflow.selections.reduce": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
+    "TRIM": [`⇧-`], // Should not require move mode
     
     // Search
     "editor.action.nextMatchFindAction": [`n`],
@@ -304,7 +321,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.jumppoint.create": [`'`],
     "danceflow.jumppoint.previous": [`[`],
     "danceflow.jumppoint.next": [`]`],
-    "danceflow.modes.set.move": [`h`, `j`, `k`, `l`, `w`, `e`, `b`, `g`, `⇧g`, `⇧w`, `⇧e`, `⇧b`, `f`, `⇧f`, `t`, `⇧t`, `⎈d`, `⎈⇧u`, `⎈u`, `⎈⇧d`, `⎈a`, `z`, `v`, `m`, `s`, `⎇s`, `⇧k`, `⇧⎇k`, `⇧m`, `⇧s`, `;`, `n`, `⇧n`, `'`, `[`, `]`],
   },
   ignore: {
     "danceflow.ignore": charTypingKeys,
