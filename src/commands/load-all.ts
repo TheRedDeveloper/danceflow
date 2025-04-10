@@ -793,12 +793,6 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
-    "danceflow.edit.yank-delete-modify",
-    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.saveText", { $include: ["register"] }], [".modes.set", { mode: "modify", $include: ["mode"] }], [".edit.insert", { register: "_", $exclude: ["register","mode"] }]],
-  );
-  describeAdditionalCommand(
-    commands,
     "danceflow.edit.yank-replace",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.saveText", { register: "tmp" }], [".edit.insert"], [".updateRegister", { copyFrom: "tmp", $exclude: [] }]],
@@ -1456,6 +1450,12 @@ export const commands: Commands = function () {
     "danceflow.selections.rotate.selections.reverse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".selections.rotate.selections", { reverse: true }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.edit.yank-delete-modify",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".selections.saveText", { $include: ["register"] }], [".modes.set.modify"], [".edit.insert", { register: "_", $exclude: ["register"] }]],
   );
   describeAdditionalCommand(
     commands,

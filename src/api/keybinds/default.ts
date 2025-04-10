@@ -67,9 +67,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.view.search": [`⎈4`, `⎈⇧s`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.search']": [`⎈4`, `⎈⇧s`],
     "timeline.focus": [`⎈5`, `⎈⇧t`],
-    "workbench.action.toggleSidebarVisibility[timeline.active && activeViewlet != 'workbench.view.explorer']": [`⎈5`, `⎈⇧t`],
+    "workbench.action.toggleSidebarVisibility[view.outline.visible && activeViewlet != 'workbench.view.explorer']": [`⎈5`, `⎈⇧t`], // TODO FIX TIMELINE AND OUTLINE NOT TOGGELING
     "outline.focus": [`⎈6`, `⎈⇧l`],
-    "workbench.action.toggleSidebarVisibility[outline.active && activeViewlet != 'workbench.view.explorer']": [`⎈6`, `⎈⇧l`],
+    "workbench.action.toggleSidebarVisibility[view.timeline.visible && activeViewlet != 'workbench.view.explorer']": [`⎈6`, `⎈⇧l`],
     "workbench.view.debug": [`⎈7`, `⎈⇧b`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug']": [`⎈7`, `⎈⇧b`],
     "workbench.view.extensions": [`⎈8`, `⎈⇧x`],

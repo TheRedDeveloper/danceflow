@@ -766,10 +766,6 @@
                   "text": "custom object desc"
                 }
               }
-            },
-            "enclose": {
-              "title": "NOT IMPLEMENTED",
-              "items": {}
             }
           }
         },
@@ -2970,12 +2966,12 @@
       {
         "key": "ctrl+5",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "timeline.active && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer'"
       },
       {
         "key": "ctrl+shift+t",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "timeline.active && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer'"
       },
       {
         "key": "ctrl+6",
@@ -2988,12 +2984,12 @@
       {
         "key": "ctrl+6",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "outline.active && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer'"
       },
       {
         "key": "ctrl+shift+l",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "outline.active && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer'"
       },
       {
         "key": "ctrl+7",
@@ -3938,7 +3934,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "-",
+        "key": "[Minus]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4032,7 +4028,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "=",
+        "key": "[Equal]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4045,7 +4041,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+=",
+        "key": "alt+[Equal]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4058,7 +4054,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+=",
+        "key": "ctrl+[Equal]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4071,7 +4067,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+shift+=",
+        "key": "ctrl+shift+[Equal]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4136,7 +4132,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+]",
+        "key": "alt+shift+[BracketRight]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4149,7 +4145,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+[",
+        "key": "alt+shift+[BracketLeft[BracketRight]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4978,7 +4974,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": ";",
+        "key": "[Semicolon]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4991,7 +4987,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "shift+;",
+        "key": "shift+[Semicolon]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5004,7 +5000,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "shift+-",
+        "key": "shift+[Minus]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5043,7 +5039,7 @@
         "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
-        "key": "'",
+        "key": "[Backslash]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5056,7 +5052,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "[",
+        "key": "[BracketLeft[BracketRight]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5069,7 +5065,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "]",
+        "key": "[BracketRight]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5452,72 +5448,72 @@
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "-",
+        "key": "[Minus]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
       },
       {
-        "key": "shift+-",
+        "key": "shift+[Minus]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "=",
+        "key": "[Equal]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
       },
       {
-        "key": "shift+=",
+        "key": "shift+[Equal]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[",
+        "key": "[BracketLeft[BracketRight]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+[",
+        "key": "shift+[BracketLeft[BracketRight]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "]",
+        "key": "[BracketRight]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+]",
+        "key": "shift+[BracketRight]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "\\",
+        "key": "[Backslash]",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+[Backslash]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "shift+\\",
+        "key": "[Semicolon]",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "shift+[Semicolon]",
+        "command": "danceflow.ignore",
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+      },
+      {
+        "key": "[Quote]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": ";",
-        "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
-      },
-      {
-        "key": "shift+;",
-        "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
-      },
-      {
-        "key": "'",
-        "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
-      },
-      {
-        "key": "shift+'",
+        "key": "shift+[Quote]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
@@ -5542,12 +5538,12 @@
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "/",
+        "key": "-",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "shift+/",
+        "key": "shift+-",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },

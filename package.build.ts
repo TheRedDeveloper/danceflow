@@ -1,7 +1,10 @@
 import { type Builder, generateIgnoredKeybinds } from "./meta";
 import { availableClipboardRegisters } from "./src/utils/constants";
 import { processKeybindings } from "./src/api/keybinds/resolve";
-import { defaultKeybindings, keybindingGroupNames } from "./src/api/keybinds/default";
+import { keybindingGroupNames, defaultKeybindings } from "./src/api/keybinds/default";
+import { germanKeybindings } from "./src/api/keybinds/german";
+
+console.log(JSON.stringify(germanKeybindings, undefined, 2));
 
 // Shared values
 // ============================================================================
@@ -501,10 +504,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               title: "Object",
               items: objectSelectors,
             },
-            "enclose": {
-              title: "NOT IMPLEMENTED", // TODO Implement enclose
-              items: {},
-            }
+            // TODO Implement "enclose"
           } as Record<string,
             { items: Record<string, { text: string; command: string; args?: any[] }> }>,
         },
@@ -673,7 +673,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // Keybindings.
     // ========================================================================
 
-    keybindings: processKeybindings(defaultKeybindings)
+    keybindings: processKeybindings(germanKeybindings)
 
   },
 });

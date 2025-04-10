@@ -4,7 +4,7 @@
 > None of this is implemented yet.
 
 The ultimate [Neovim](https://github.com/neovim/neovim) alternative for VSCode. Custom modes, key bindings, and a clean
-interface—forked from [Danceflow](https://github.com/71/danceflow), inspired by [Helix](https://github.com/helix-editor/helix).
+interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix](https://github.com/helix-editor/helix).
 
 ## Features
 - ⌨️ **No touching the mouse** • Pure keyboard efficiency
