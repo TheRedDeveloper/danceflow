@@ -355,10 +355,10 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             move: {
               cursorStyle: "block",
               selectionBehavior: "character",
-              decorations: {
-                applyTo: "main",
-                backgroundColor: "$editor.hoverHighlightBackground",
-              },
+              // decorations: {
+              //   applyTo: "main",
+              //   backgroundColor: "$editor.hoverHighlightBackground",
+              // },
               onEnterMode: [
                 [".selections.restore", { register: " ^", try: true }],
               ],
@@ -752,20 +752,20 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     viewsContainers: {
       activitybar: [
         {
-          id: "danceflow",
-          title: "Danceflow",
-          icon: "assets/danceflow-white.svg",
+          id: "timeline",
+          title: "Timeline",
+          icon: "assets/timeline-white.svg",
         },
+        {
+          id: "outline",
+          title: "Outline",
+          icon: "assets/outline-white.svg",
+        }
       ],
     },
 
     views: {
-      danceflow: [
-        {
-          id: "registers",
-          name: "Registers",
-        },
-      ],
+      
     },
 
     // Commands.

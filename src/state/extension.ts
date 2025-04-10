@@ -4,7 +4,6 @@ import { Editors } from "./editors";
 import { Modes } from "./modes";
 import { Recorder } from "./recorder";
 import { Register, Registers } from "./registers";
-import { RegistersView } from "./registers-view";
 import { StatusBar } from "./status-bar";
 import { Menu, validateMenu } from "../api";
 import type { Commands } from "../commands";
@@ -183,9 +182,6 @@ export class Extension implements vscode.Disposable {
     for (const descriptor of Object.values(commands)) {
       this._subscriptions.push(descriptor.register(this));
     }
-
-    // Render views.
-    this._subscriptions.push(new RegistersView(this.registers).register());
 
     // Tree Sitter support.
     this._subscriptions.push(onDidLoadTreeSitter((treeSitter) => this._treeSitter = treeSitter));

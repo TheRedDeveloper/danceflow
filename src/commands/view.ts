@@ -2,6 +2,7 @@ import * as vscode from "vscode";
 
 import type { Argument } from ".";
 import { Context, Selections } from "../api";
+import { makeZen } from "../api/ui";
 
 /**
  * Moving the editor view.
@@ -26,4 +27,11 @@ export function line(
     "revealLine",
     { at, lineNumber: Selections.activeLine(_.mainSelection) },
   );
+}
+
+/**
+ * Zenmax the editor.
+ */
+export function zen() {
+  makeZen();
 }

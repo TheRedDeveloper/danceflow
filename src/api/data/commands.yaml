@@ -2763,6 +2763,14 @@ view.line:
     en: |
       Reveals a position based on the main cursor.
 
+view.zen:
+  title:
+    en: Zenmax the editor
+
+  doc:
+    en: |
+      Zenmax the editor.
+
 anonymous:
 
   - commands: |-

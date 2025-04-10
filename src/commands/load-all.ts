@@ -264,6 +264,7 @@ import {
 
 import {
   line as view_line,
+  zen as view_zen,
 } from "./view";
 
 /**
@@ -691,6 +692,11 @@ export const commands: Commands = function () {
       "danceflow.view.line",
       (_, argument) => _.runAsync(async (_) => await view_line(_, argument["at"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.view.zen": new CommandDescriptor(
+      "danceflow.view.zen",
+      (_) => _.runAsync(async (_) => await view_zen()),
+      CommandDescriptor.Flags.None,
     ),
   };
 

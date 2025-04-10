@@ -3,6 +3,7 @@ import * as vscode from "vscode";
 import * as api from "./api";
 import { Extension } from "./state/extension";
 import { extensionId, extensionName } from "./utils/constants";
+import { guideForZenViewSetup, makeNormal } from "./api/ui";
 
 /**
  * Global state of the extension.
@@ -30,13 +31,28 @@ export async function activate() {
     api.disableExecuteFunction();
   }
 
+  // Apply zen mode when extension activates
+  guideForZenViewSetup();
+
   const { commands } = await import("./commands/load-all");
 
   if (!isActivated) {
     return;
   }
 
-  return { api, extension: (extensionState = new Extension(commands)) };
+  // Create extension instance
+  const extension = new Extension(commands);
+  extensionState = extension;
+
+  // Use the createAutoDisposable method to ensure UI restoration on deactivation
+  const disposable = extension.createAutoDisposable();
+  disposable.addDisposable({
+    dispose: () => {
+      makeNormal();
+    }
+  });
+
+  return { api, extension };
 }
 
 /**

@@ -4,7 +4,7 @@
   ✔ "normal" → "move" @done(25-04-05 13:56)
   ✔ "insert" → "modify" @done(25-04-05 15:40)
 ✔ Select mode with underline cursor @done(25-04-05 15:50)
-☐ Handle keybindings properly
+✔ Handle keybindings properly @done(25-04-10 18:54)
   ✔ Find out how keybindings are currently handled and made @done(25-04-05 18:21)
     parseAdditional in meta.ts parses the markdown contained in the comments of files in src/commands/
     parseKeys parses these and the @keys property in the JSDoc of files in src/commands/
@@ -233,20 +233,20 @@
   ☐ Add toggle functionality
     ☐ Remove that there can be multiple recordings at the same time
   ☐ Add recording save/load functionality
-☐ There should be a simpler editor window
+✔ There should be a simpler editor window @done(25-04-10 18:54)
   ✔ Remove the weird orange bar @done(25-04-05 23:42)
   ✔ Remove that the current line is bright in move mode @done(25-04-06 01:14)
-  ☐ Fix that there is a 2 wide highlight at the cursor
-  ☐ We completely disallow splitting it's distracting and ugly and just open another window with `⎈p`
-  ☐ Hide tabs
-  ☐ Hide the menu bar
-  ☐ Hide the activity bar
-  ☐ You should be able to move in the explorer with move keys
-    ☐ `a` is new file, `⇧a` is new folder
-    ☐ `r`/`F2` is rename
-  ☐ Remove state sidepanel
-  ☐ You should be able to move in Code Lens and Code Actions with them too
-☐ splitlines exclude Eol true
+  ✔ Fix that there is a 2 wide highlight at the cursor @done(25-04-10 10:44)
+  ✔ We completely disallow splitting it's distracting and ugly and just open another window with `⎈p` @done(25-04-10 18:38)
+  ✔ Hide tabs @done(25-04-10 18:22)
+  ✔ Hide the menu bar @done(25-04-10 18:22)
+  ✔ Hide the activity bar @done(25-04-10 18:22)
+  ✔ You should be able to move in the explorer with move keys @done(25-04-10 10:36)
+    ✔ `a` is new file, `⇧a` is new folder @done(25-04-10 10:36)
+    ✔ `r`/`F2` is rename @done(25-04-10 10:36)
+  ✔ Remove state sidepanel @done(25-04-10 18:35)
+  ✔ You should be able to move in Code Lens and Code Actions with them too @done(25-04-10 18:35)
+✔ splitlines exclude Eol true @done(25-04-10 19:06)
 ☐ Add to jump history, when changing more than one line
   ☐ `'` Create jumppoint
   ☐ `[` To previous jump location

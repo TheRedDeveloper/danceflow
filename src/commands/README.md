@@ -235,7 +235,8 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./selections.rotate.ts#L18"><code>selections.rotate.both.reverse</code></a></td><td>Rotate selections counter-clockwise</td><td><code>Shift+Alt+9</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./selections.rotate.ts#L37"><code>selections.rotate.contents.reverse</code></a></td><td>Rotate selections counter-clockwise (contents only)</td><td><code>Shift+Alt+9</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+9</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.rotate.ts#L56"><code>selections.rotate.selections.reverse</code></a></td><td>Rotate selections counter-clockwise (selections only)</td><td><code>Shift+9</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+9</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td rowspan=1><a href="#view"><code>view</code></a></td><td><a href="#view.line"><code>view.line</code></a></td><td>Reveals a position based on the main cursor</td><td></td></tr>
+<tr><td rowspan=2><a href="#view"><code>view</code></a></td><td><a href="#view.line"><code>view.line</code></a></td><td>Reveals a position based on the main cursor</td><td></td></tr>
+<tr><td><a href="#view.zen"><code>view.zen</code></a></td><td>Zenmax the editor</td><td></td></tr>
 </tbody>
 </table>
 
@@ -1801,10 +1802,19 @@ Moving the editor view.
 
 <a name="view.line" />
 
-### [`view.line`](./view.ts#L18-L24)
+### [`view.line`](./view.ts#L19-L25)
 
 Reveals a position based on the main cursor.
 
 This command:
 - takes an argument `at` of type `"top" | "center" | "bottom"`.
+
+<a name="view.zen" />
+
+### [`view.zen`](./view.ts#L32-L35)
+
+Zenmax the editor.
+
+This command:
+- does not require an active text editor.
 

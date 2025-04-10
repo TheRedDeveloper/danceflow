@@ -47,22 +47,33 @@ export const groupModeExceptions: string[] = [
   "danceflow.select.line.below.extend",
   "danceflow.select.line.above.extend",
   "danceflow.modes.set.select",
+  "danceflow.modes.set.move",
+  "danceflow.modes.set.inspect",
+  "danceflow.modes.set.modify",
 ]
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     "danceflow.cancel": [`escape`],
+    "danceflow.view.zen[!outline.defaultViewLocation && !timeline.defaultViewLocation]": [`⎈enter`],
 
     // Tool panels
-    "danceflow.togglePanel.git": [`⎈1`, `⎈⇧g`],
-    "danceflow.togglePanel.explorer": [`⎈2`, `⎈⇧e`],
-    "danceflow.togglePanel.chat": [`⎈3`, `⎈⇧c`],
-    "danceflow.togglePanel.search": [`⎈4`, `⎈⇧s`],
-    "danceflow.togglePanel.timeline": [`⎈5`, `⎈⇧t`],
-    "danceflow.togglePanel.outline": [`⎈6`, `⎈⇧l`],
-    "danceflow.togglePanel.debug": [`⎈7`, `⎈⇧b`],
-    "danceflow.togglePanel.extensions": [`⎈8`, `⎈⇧x`],
-    
+    "workbench.view.scm": [`⎈1`, `⎈⇧g`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.scm']": [`⎈1`, `⎈⇧g`],
+    "workbench.view.explorer": [`⎈2`, `⎈⇧e`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.explorer']": [`⎈2`, `⎈⇧e`],
+    "workbench.panel.chat": [`⎈3`, `⎈⇧c`],
+    "workbench.view.search": [`⎈4`, `⎈⇧s`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.search']": [`⎈4`, `⎈⇧s`],
+    "timeline.focus": [`⎈5`, `⎈⇧t`],
+    "workbench.action.toggleSidebarVisibility[timeline.active && activeViewlet != 'workbench.view.explorer']": [`⎈5`, `⎈⇧t`],
+    "outline.focus": [`⎈6`, `⎈⇧l`],
+    "workbench.action.toggleSidebarVisibility[outline.active && activeViewlet != 'workbench.view.explorer']": [`⎈6`, `⎈⇧l`],
+    "workbench.view.debug": [`⎈7`, `⎈⇧b`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug']": [`⎈7`, `⎈⇧b`],
+    "workbench.view.extensions": [`⎈8`, `⎈⇧x`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions']": [`⎈8`, `⎈⇧x`],
+
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
     "workbench.action.moveEditorToFirstGroup": [`⎈⎇p`],
@@ -73,8 +84,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.showAllSymbols": [`⎈t`],
     
     // Tabs
-    "workbench.action.quickOpenNavigateNextInEditorPicker": [`⎈tab`],
-    "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup": [`⎈⇧tab`],
+    "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup[!activeEditorGroupEmpty]": [`⎈tab`],
+    "workbench.action.quickOpenNavigateNextInEditorPicker[inEditorsPicker && inQuickOpen]": [`⎈tab`],
+    "workbench.action.quickOpenLeastRecentlyUsedEditorInGroup[!activeEditorGroupEmpty]": [`⎈⇧tab`],
+    "workbench.action.quickOpenNavigatePreviousInEditorPicker[inEditorsPicker && inQuickOpen]": [`⎈⇧tab`],
     "workbench.action.closeActiveEditor": [`⎈w`],
     
     // Files
@@ -88,8 +101,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "list.focusUp[listFocus && !inputFocus]": [`k`],
     "list.expand[listFocus && !inputFocus]": [`l`],
     "list.collapse[listFocus && !inputFocus]": [`h`],
-    "quickInput.previous[inQuickInput && quickInputType == 'quickPick']": [`k`],
-    "quickInput.next[inQuickInput && quickInputType == 'quickPick']": [`j`],
+    "quickInput.previous[inQuickInput && quickInputType == 'quickPick' && !inputFocus]": [`k`],
+    "quickInput.next[inQuickInput && quickInputType == 'quickPick' && !inputFocus]": [`j`],
     "explorer.newFile[filesExplorerFocus && !inputFocus]": [`a`],
     "explorer.newFolder[filesExplorerFocus && !inputFocus]": [`⇧a`],
     "renameFile[filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus]": [`r`],
@@ -107,6 +120,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "-workbench.action.focusSeventhEditorGroup": [`⎈7`],
     "-workbench.action.focusEighthEditorGroup": [`⎈8`],
     "-workbench.action.focusLastEditorGroup": [`⎈9`],
+    "-github.copilot.generate[editorTextFocus && github.copilot.activated && !commentEditorFocused]": [`⎈enter`],
+    "-editor.action.insertLineAfter[editorTextFocus && !editorReadonly]": [`⎈enter`],
+    "-explorer.openToSide[explorerViewletFocus && foldersViewVisible && !inputFocus]": [`⎈enter`],
   },
 
   editor: {
@@ -205,7 +221,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "tab": [`tab`],
     "outdent": [`⇧tab`],
     "editor.action.joinLines": [`⇧j`],
-    "REMOVEEMPTYLINES": [`-`],
+    "editor.edit.removeEmptyLines": [`-`],
     
     // Spacing operations
     "danceflow.add.space.before": [`⎇space`],
@@ -238,10 +254,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   
   selectedMove: {
     // Basic navigation
-    "danceflow.select.left.extend": [`h`],
-    "danceflow.select.down.extend": [`j`],
-    "danceflow.select.up.extend": [`k`],
-    "danceflow.select.right.extend": [`l`],
+    "danceflow.select.left.extend": [`h`, `left`],
+    "danceflow.select.down.extend": [`j`, `down`],
+    "danceflow.select.up.extend": [`k`, `up`],
+    "danceflow.select.right.extend": [`l`, `right`],
     
     // Word navigation
     "danceflow.seek.word.extend": [`w`],
@@ -271,10 +287,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   
   move: {
     // Basic navigation
-    "danceflow.select.left.jump": [`h`],
-    "danceflow.select.down.jump": [`j`],
-    "danceflow.select.up.jump": [`k`],
-    "danceflow.select.right.jump": [`l`],
+    "danceflow.select.left.jump": [`h`, `left`],
+    "danceflow.select.down.jump": [`j`, `down`],
+    "danceflow.select.up.jump": [`k`, `up`],
+    "danceflow.select.right.jump": [`l`, `right`],
     
     // Word navigation
     "danceflow.seek.word": [`w`],
@@ -309,13 +325,13 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Multiselection operations
     "danceflow.selections.select.orLeap": [`s`],
     "danceflow.selections.split": [`⎇s`],
-    "danceflow.selections.keepMatching": [`⇧k`],
-    "danceflow.selections.keepNotMatching": [`⇧⎇k`],
+    "danceflow.selections.filter.regexp": [`⇧k`],
+    "danceflow.selections.filter.regexp.inverse": [`⇧⎇k`],
     "danceflow.selections.merge": [`⇧m`],
     "danceflow.selections.splitLines.orLeap.backward": [`⇧s`],
     "danceflow.selections.reduce": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
-    "TRIM": [`⇧-`], // Should not require move mode
+    "danceflow.selections.trim": [`⇧-`], // Should not require move mode
     
     // Search
     "editor.action.nextMatchFindAction": [`n`],
@@ -331,29 +347,20 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   }
 }
 
-// TODO The to be implemented list:
-// danceflow.selections.keepMatching
-// danceflow.selections.keepNotMatching
-// danceflow.jumppoint.create
-// danceflow.jumppoint.previous
-// danceflow.jumppoint.next
-// danceflow.number.increment
-// danceflow.number.decrement
-// danceflow.history.recording.toggle
-// danceflow.history.recording.load
-// danceflow.history.recording.save
-// danceflow.edit.yank-delete.word
-// danceflow.edit.delete.word
-// danceflow.edit.yank-delete.line
-// danceflow.edit.delete.line
-// danceflow.openMenu{"menu": "enclose"}
-// danceflow.togglePanel.git
-// danceflow.togglePanel.explorer
-// danceflow.togglePanel.chat
-// danceflow.togglePanel.search
-// danceflow.togglePanel.timeline
-// danceflow.togglePanel.outline
-// danceflow.togglePanel.debug
-// danceflow.togglePanel.extensions
+// TODO danceflow.jumppoint.create
+// TODO danceflow.jumppoint.previous
+// TODO danceflow.jumppoint.next
+// TODO danceflow.number.increment
+// TODO danceflow.number.decrement
+// TODO danceflow.history.recording.toggle
+// TODO danceflow.history.recording.load
+// TODO danceflow.history.recording.save
+// TODO danceflow.edit.yank-delete.word
+// TODO danceflow.edit.delete.word
+// TODO danceflow.edit.yank-delete.line
+// TODO danceflow.edit.delete.line
+// TODO danceflow.openMenu{"menu": "enclose"}
+// TODO danceflow.selections.trim
+// TODO danceflow.edit.removeEmptyLines
 
 export default defaultKeybindings;
