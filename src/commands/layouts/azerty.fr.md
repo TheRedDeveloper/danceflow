@@ -54,6 +54,8 @@
 <tr><td><a href="#history.repeat.edit"><code>history.repeat.edit</code></a></td><td>Repeat last edit without a command</td><td><code>.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>NumPad_Decimal</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#history.undo"><code>history.undo</code></a></td><td>Undo</td><td><code>U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>U</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td rowspan=1><a href="#inspect"><code>inspect</code></a></td><td><a href="#inspect.renameToClipboard"><code>inspect.renameToClipboard</code></a></td><td>Renames the inspected symbol to the content of the clipboard</td><td></td></tr>
+<tr><td rowspan=1><a href="#jumppoint"><code>jumppoint</code></a></td><td><a href="#jumppoint.create"><code>jumppoint.create</code></a></td><td>Add current position to jump list</td><td></td></tr>
 <tr><td rowspan=9><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
 <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
 <tr><td><a href="#ifEmpty"><code>ifEmpty</code></a></td><td>Executes one of the specified commands depending on whether the current
@@ -640,6 +642,26 @@ This command:
 
 Default keybinding: `escape` (kakoune: move, recording)
 `s-q` (kakoune: move, recording)
+
+## [`inspect`](../inspect.ts)
+
+Inspects the symbol at the current cursor position.
+
+<a name="inspect.renameToClipboard" />
+
+### [`inspect.renameToClipboard`](../inspect.ts#L10-L13)
+
+Renames the inspected symbol to the content of the clipboard.
+
+## [`jumppoint`](../jumppoint.ts)
+
+Jumppoints are a way to navigate to a specific position in the editor.
+
+<a name="jumppoint.create" />
+
+### [`jumppoint.create`](../jumppoint.ts#L10-L13)
+
+Add current position to jump list.
 
 ## [`misc`](../misc.ts)
 

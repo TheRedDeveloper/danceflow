@@ -267,6 +267,10 @@ export class PerEditorState implements vscode.Disposable {
    */
   public async notifyDidBecomeInactive(newEditorIsActive: boolean) {
     if (!newEditorIsActive) {
+      if (this._mode.name === "inspect") {
+        this.setMode(this.extension.modes.defaultMode);
+      }
+
       this.extension.statusBar.activeModeSegment.setContent("<no active mode>");
 
       // Clear the mode context
@@ -293,8 +297,11 @@ export class PerEditorState implements vscode.Disposable {
    *
    * @deprecated Do not call -- internal implementation detail.
    */
-  public notifyDidChangeTextEditorSelection() {
+  public notifyDidChangeTextEditorSelection(event?: vscode.TextEditorSelectionChangeEvent) {
     this._updateDecorations(this._mode);
+    if (this._mode.name === "inspect" && event?.kind === vscode.TextEditorSelectionChangeKind.Mouse) {
+      this.setMode(this.extension.modes.defaultMode);
+    }
   }
 
   /**
@@ -305,6 +312,9 @@ export class PerEditorState implements vscode.Disposable {
    */
   public notifyDidChangeTextEditorVisibleRanges() {
     // this._updateOffscreenSelectionsIndicators(this._mode);
+    if (this._mode.name === "inspect") {
+      this.setMode(this.extension.modes.defaultMode);
+    }
   }
 
   /**
@@ -530,7 +540,7 @@ export class Editors implements vscode.Disposable {
   }
 
   private _handleDidChangeTextEditorSelection(e: vscode.TextEditorSelectionChangeEvent) {
-    this._editors.get(e.textEditor)?.notifyDidChangeTextEditorSelection();
+    this._editors.get(e.textEditor)?.notifyDidChangeTextEditorSelection(e);
   }
 
   private _handleDidChangeTextEditorVisibleRanges(e: vscode.TextEditorVisibleRangesChangeEvent) {

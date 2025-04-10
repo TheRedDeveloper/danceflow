@@ -247,30 +247,39 @@
   ✔ Remove state sidepanel @done(25-04-10 18:35)
   ✔ You should be able to move in Code Lens and Code Actions with them too @done(25-04-10 18:35)
 ✔ splitlines exclude Eol true @done(25-04-10 19:06)
-☐ Add to jump history, when changing more than one line
+☐ Add to jump history, when moving more than one line
+  ✔ Use vscode jumplist for now @done(25-04-10 19:47)
   ☐ `'` Create jumppoint
   ☐ `[` To previous jump location
   ☐ `]` To next jump location
 ☐ Update object select `m￼`
-  ☐ Arround is the default, inside needs another keypress
+  ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
   ☐ Add treesitter support out of the box
 ☐ Add enclose `'￼` functionality
-☐ Make select mode work with VSCode find
+✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:
-  ☐ `space` enter inspect mode or if a url/file is under the main cursor then follow it
-  ☐ it should select the hovered symbols and hide the cursors
+  ✔ `space` enter inspect mode @done(25-04-10 21:27)
+  ☐ if a url/file is under the main cursor then follow it (This is actually really hard)
+  ✔ it should hover the selected symbol @done(25-04-10 21:37)
   ☐ multiple cursors → main cursor inspector is shown, rename on all heads
-  ☐ `f` Go to definition
-  ☐ `t` Go to type definition
-  ☐ `z` Go to implementations
-  ☐ `g` Go to references
-  ☐ `r` Rename
+    ✔ Currently rename only on main cursor, would need  to work first @done(25-04-10 21:50)
+  ✔ `f` Go to definition @done(25-04-10 21:25)
+  ✔ `t` Go to type definition @done(25-04-10 21:25)
+  ✔ `z` Go to implementations @done(25-04-10 21:25)
+  ✔ `g` Go to references @done(25-04-10 21:25)
+  ✔ `r` Rename @done(25-04-10 21:25)
+    ✔ On main cursor @done(25-04-10 21:52)
+    ☐ On all cursors
+      ☐ Requires arbitrary renaming to work
   ☐ `⇧r` Rename to clipboard
+    ☐ Requires arbitrary renaming to work
   ☐ `y`/`⎈c` Copy the symbol
   ☐ `⇧y`/`⎈⇧c` Copy the symbol info
-  ☐ `space` Quick Fix if available
-  ☐ `esc` back to move mode
-  ☐ Any move or change key should exit inspect mode and run
+  ✔ `space` Quick Fix if available @done(25-04-10 21:25)
+  ✔ `esc` back to move mode @done(25-04-10 21:26)
+  ✔ Any move or change key should exit inspect mode and run @done(25-04-10 21:26)
+  ✔ Any mouse movement should exit inspect mode @done(25-04-10 21:26)
+  ✔ All the inspect commands should exit inspect mode @done(25-04-10 21:26)
 ☐ Scripting with live preview
   ☐ `/` to pipe each selection through a JavaScript Expression
   ☐ `⇧/` to evaluate all selections in a JavaScript Expression, showing result below in the prompt

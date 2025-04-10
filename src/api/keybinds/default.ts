@@ -35,6 +35,7 @@ export const groupModes: Partial<Record<KeybindingGroupName, string>> = {
   selectedMove: "select",
   move: "move",
   change: "move",
+  inspect: "move"
 }
 
 export const groupModeExceptions: string[] = [
@@ -281,8 +282,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.modes.set.move": [`v`],
 
     // Search
-    "editor.action.addSelectionToNextFindMatch": [`⎈n`],
-    "editor.action.addSelectionToPreviousFindMatch": [`⎈⇧n`],
+    "editor.action.addSelectionToNextFindMatch": [`n`],
+    "editor.action.addSelectionToPreviousFindMatch": [`⇧n`],
   },
   
   move: {
@@ -339,17 +340,14 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 
     // Jumppoints
     "danceflow.jumppoint.create": [`'`],
-    "danceflow.jumppoint.previous": [`[`],
-    "danceflow.jumppoint.next": [`]`],
+    "workbench.action.navigateBack": [`[`],
+    "workbench.action.navigateForward": [`]`],
   },
   ignore: {
     "danceflow.ignore": charTypingKeys,
   }
 }
 
-// TODO danceflow.jumppoint.create
-// TODO danceflow.jumppoint.previous
-// TODO danceflow.jumppoint.next
 // TODO danceflow.number.increment
 // TODO danceflow.number.decrement
 // TODO danceflow.history.recording.toggle

@@ -76,6 +76,68 @@ const selectionDecorationType = {
   },
 };
 
+const objectSelectors = {
+  "()": {
+    command: "danceflow.seek.object",
+    args: [{ input: "\\((?#inner)\\)" }],
+    text: "parenthesis block",
+  },
+  "{}": {
+    command: "danceflow.seek.object",
+    args: [{ input: "\\{(?#inner)\\}" }],
+    text: "braces block",
+  },
+  "[]": {
+    command: "danceflow.seek.object",
+    args: [{ input: "\\[(?#inner)\\]" }],
+    text: "brackets block",
+  },
+  "<>": {
+    command: "danceflow.seek.object",
+    args: [{ input: "<(?#inner)>" }],
+    text: "angle block",
+  },
+  '"': {
+    command: "danceflow.seek.object",
+    args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
+    text: "double quote string",
+  },
+  "'": {
+    command: "danceflow.seek.object",
+    args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
+    text: "single quote string",
+  },
+  "`": {
+    command: "danceflow.seek.object",
+    args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
+    text: "grave quote string",
+  },
+  "w": {
+    command: "danceflow.seek.object",
+    args: [{ input: "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)" }],
+    text: "word",
+  },
+  "W": {
+    command: "danceflow.seek.object",
+    args: [{ input: "[\\S]+(?<after>[^\\S\\n]+)" }],
+    text: "WORD",
+  },
+  "p": {
+    command: "danceflow.seek.object",
+    args: [{ input: "(?#predefined=paragraph)" }],
+    text: "paragraph",
+  },
+  "a": {
+    command: "danceflow.seek.object",
+    args: [{ input: "(?#predefined=argument)" }],
+    text: "argument",
+  },
+  "!": {
+    command: "danceflow.seek.object",
+    text: "custom object desc"
+  },
+}
+
 // Package information
 // ============================================================================
 
@@ -380,6 +442,12 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               activeGroups: ["interact", "change", "move", "ignore"]
             },
             inspect: {
+              hiddenSelectionsIndicatorsDecoration: {},
+              cursorStyle: "block-outline",
+              onEnterMode: [
+                ["editor.action.showHover"],
+              ],
+              selectionBehavior: "character",
               activeGroups: ["inspect", "interact", "change", "move", "ignore"]
             }
           },
@@ -424,201 +492,15 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             "match": {
               title: "Match",
               items: {
-                // Should be jump in move mode, extend in select mode, but jump for seek.enclosing is not implemented
                 "m": { command: "danceflow.seek.enclosing", text: "Goto matching bracket" },
-                "a": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match around" }], text: "Select around object" },
-                "i": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Select inside object" },
+                "i": { command: "danceflow.openMenu", args: [{ menu: "object", title: "Match inside", pass: [{ inner: true }] }], text: "Inside" },
+                ...objectSelectors
               },
             },
 
             "object": {
-              title: "Select object...",
-              items: ((command = "danceflow.seek.object") => ({
-                "()": {
-                  command,
-                  args: [{ input: "\\((?#inner)\\)" }],
-                  text: "parenthesis block",
-                },
-                "{}": {
-                  command,
-                  args: [{ input: "\\{(?#inner)\\}" }],
-                  text: "braces block",
-                },
-                "[]": {
-                  command,
-                  args: [{ input: "\\[(?#inner)\\]" }],
-                  text: "brackets block",
-                },
-                "<>": {
-                  command,
-                  args: [{ input: "<(?#inner)>" }],
-                  text: "angle block",
-                },
-                '"': {
-                  command,
-                  args: [{ input: "(?#noescape)\"(?#inner)(?#noescape)\"" }],
-                  text: "double quote string",
-                },
-                "'": {
-                  command,
-                  args: [{ input: "(?#noescape)'(?#inner)(?#noescape)'" }],
-                  text: "single quote string",
-                },
-                "`": {
-                  command,
-                  args: [{ input: "(?#noescape)`(?#inner)(?#noescape)`" }],
-                  text: "grave quote string",
-                },
-                "w": {
-                  command,
-                  args: [{ input: "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)" }],
-                  text: "word",
-                },
-                "W": {
-                  command,
-                  args: [{ input: "[\\S]+(?<after>[^\\S\\n]+)" }],
-                  text: "WORD",
-                },
-                "p": {
-                  command,
-                  args: [{ input: "(?#predefined=paragraph)" }],
-                  text: "paragraph",
-                },
-                "a": {
-                  command,
-                  args: [{ input: "(?#predefined=argument)" }],
-                  text: "argument",
-                },
-                "!": {
-                  command,
-                  text: "custom object desc"
-                },
-              }))(),
-            },
-
-            "goto": {
-              title: "Goto",
-              items: {
-                "g": {
-                  text: "to line number else file start",
-                  command: "danceflow.select.lineStart",
-                  "args": [{ "count": 1 }],
-                },
-                "e": {
-                  text: "to last line",
-                  command: "danceflow.select.lineEnd",
-                  args: [{ count: 2 ** 31 - 1 }],
-                },
-                "f": {
-                  text: "to file/URLs in selections",
-                  command: "danceflow.selections.open",
-                },
-                "h": {
-                  text: "to line start",
-                  command: "danceflow.select.lineStart",
-                },
-                "l": {
-                  text: "to line end",
-                  command: "danceflow.select.lineEnd",
-                },
-                "s": {
-                  text: "to first non-blank in line",
-                  command: "danceflow.select.lineStart",
-                  args: [{ skipBlank: true }]
-                },
-                "d": {
-                  text: "to definition",
-                  command: "editor.action.revealDefinition",
-                },
-                "r": {
-                  text: "to references",
-                  command: "editor.action.goToReferences",
-                },
-                "j": {
-                  text: "to last line",
-                  command: "danceflow.select.lastLine",
-                },
-                "t": {
-                  text: "to window top",
-                  command: "danceflow.select.firstVisibleLine",
-                },
-                "c": {
-                  text: "to window center",
-                  command: "danceflow.select.middleVisibleLine",
-                },
-                "b": {
-                  text: "to window bottom",
-                  command: "danceflow.select.lastVisibleLine",
-                },
-                "a": {
-                  text: "to last buffer",
-                  command: "workbench.action.openPreviousRecentlyUsedEditorInGroup",
-                },
-                "A": {
-                  text: "to last buffer...",
-                  command: "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup",
-                },
-                "p": {
-                  text: "to previous buffer",
-                  command: "workbench.action.previousEditor",
-                },
-                "n": {
-                  text: "to next buffer",
-                  command: "workbench.action.nextEditor",
-                },
-                ".": {
-                  text: "to last buffer modification position",
-                  command: "danceflow.selections.restore",
-                  args: [{ register: " modify" }],
-                },
-              },
-            },
-
-            "view": {
-              title: "View",
-              items: {
-                "cz": {
-                  text: "Align view center",
-                  command: "danceflow.view.line",
-                  args: [{ "at": "center" }],
-                },
-                "t": {
-                  text: "Align view top",
-                  command: "danceflow.view.line",
-                  args: [{ "at": "top" }],
-                },
-                "b": {
-                  text: "Align view bottom",
-                  command: "danceflow.view.line",
-                  args: [{ "at": "bottom" }],
-                },
-                "k": {
-                  text: "Scroll view up",
-                  command: "editorScroll",
-                  args: [{ "by": "line", "revealCursor": true, "to": "up" }],
-                },
-                "j": {
-                  text: "Scroll view down",
-                  command: "editorScroll",
-                  args: [{ "by": "line", "revealCursor": true, "to": "down" }],
-                },
-                "/": {
-                  text: "Search for regex pattern",
-                  command: "danceflow.search",
-                },
-                "?": {
-                  text: "Reverse search for regex pattern",
-                  command: "danceflow.search.backward",
-                },
-                "n": {
-                  text: "Select next search match",
-                  command: "danceflow.search.next",
-                },
-                "N": {
-                  text: "Select previous search match",
-                  command: "danceflow.search.previous",
-                },
-              },
+              title: "Object",
+              items: objectSelectors,
             },
           } as Record<string,
             { items: Record<string, { text: string; command: string; args?: any[] }> }>,

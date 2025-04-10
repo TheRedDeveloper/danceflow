@@ -476,6 +476,14 @@
               ]
             },
             "inspect": {
+              "hiddenSelectionsIndicatorsDecoration": {},
+              "cursorStyle": "block-outline",
+              "onEnterMode": [
+                [
+                  "editor.action.showHover"
+                ]
+              ],
+              "selectionBehavior": "character",
               "activeGroups": [
                 "inspect",
                 "interact",
@@ -531,16 +539,6 @@
                   "command": "danceflow.seek.enclosing",
                   "text": "Goto matching bracket"
                 },
-                "a": {
-                  "command": "danceflow.openMenu",
-                  "args": [
-                    {
-                      "menu": "object",
-                      "title": "Match around"
-                    }
-                  ],
-                  "text": "Select around object"
-                },
                 "i": {
                   "command": "danceflow.openMenu",
                   "args": [
@@ -554,13 +552,8 @@
                       ]
                     }
                   ],
-                  "text": "Select inside object"
-                }
-              }
-            },
-            "object": {
-              "title": "Select object...",
-              "items": {
+                  "text": "Inside"
+                },
                 "()": {
                   "command": "danceflow.seek.object",
                   "args": [
@@ -666,166 +659,111 @@
                 }
               }
             },
-            "goto": {
-              "title": "Goto",
+            "object": {
+              "title": "Object",
               "items": {
-                "g": {
-                  "text": "to line number else file start",
-                  "command": "danceflow.select.lineStart",
+                "()": {
+                  "command": "danceflow.seek.object",
                   "args": [
                     {
-                      "count": 1
+                      "input": "\\((?#inner)\\)"
                     }
-                  ]
+                  ],
+                  "text": "parenthesis block"
                 },
-                "e": {
-                  "text": "to last line",
-                  "command": "danceflow.select.lineEnd",
+                "{}": {
+                  "command": "danceflow.seek.object",
                   "args": [
                     {
-                      "count": 2147483647
+                      "input": "\\{(?#inner)\\}"
                     }
-                  ]
+                  ],
+                  "text": "braces block"
                 },
-                "f": {
-                  "text": "to file/URLs in selections",
-                  "command": "danceflow.selections.open"
-                },
-                "h": {
-                  "text": "to line start",
-                  "command": "danceflow.select.lineStart"
-                },
-                "l": {
-                  "text": "to line end",
-                  "command": "danceflow.select.lineEnd"
-                },
-                "s": {
-                  "text": "to first non-blank in line",
-                  "command": "danceflow.select.lineStart",
+                "[]": {
+                  "command": "danceflow.seek.object",
                   "args": [
                     {
-                      "skipBlank": true
+                      "input": "\\[(?#inner)\\]"
                     }
-                  ]
+                  ],
+                  "text": "brackets block"
                 },
-                "d": {
-                  "text": "to definition",
-                  "command": "editor.action.revealDefinition"
+                "<>": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "<(?#inner)>"
+                    }
+                  ],
+                  "text": "angle block"
                 },
-                "r": {
-                  "text": "to references",
-                  "command": "editor.action.goToReferences"
+                "\"": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)\"(?#inner)(?#noescape)\""
+                    }
+                  ],
+                  "text": "double quote string"
                 },
-                "j": {
-                  "text": "to last line",
-                  "command": "danceflow.select.lastLine"
+                "'": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)'(?#inner)(?#noescape)'"
+                    }
+                  ],
+                  "text": "single quote string"
                 },
-                "t": {
-                  "text": "to window top",
-                  "command": "danceflow.select.firstVisibleLine"
+                "`": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "(?#noescape)`(?#inner)(?#noescape)`"
+                    }
+                  ],
+                  "text": "grave quote string"
                 },
-                "c": {
-                  "text": "to window center",
-                  "command": "danceflow.select.middleVisibleLine"
+                "w": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "[\\p{L}_\\d]+(?<after>[^\\S\\n]+)"
+                    }
+                  ],
+                  "text": "word"
                 },
-                "b": {
-                  "text": "to window bottom",
-                  "command": "danceflow.select.lastVisibleLine"
-                },
-                "a": {
-                  "text": "to last buffer",
-                  "command": "workbench.action.openPreviousRecentlyUsedEditorInGroup"
-                },
-                "A": {
-                  "text": "to last buffer...",
-                  "command": "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup"
+                "W": {
+                  "command": "danceflow.seek.object",
+                  "args": [
+                    {
+                      "input": "[\\S]+(?<after>[^\\S\\n]+)"
+                    }
+                  ],
+                  "text": "WORD"
                 },
                 "p": {
-                  "text": "to previous buffer",
-                  "command": "workbench.action.previousEditor"
-                },
-                "n": {
-                  "text": "to next buffer",
-                  "command": "workbench.action.nextEditor"
-                },
-                ".": {
-                  "text": "to last buffer modification position",
-                  "command": "danceflow.selections.restore",
+                  "command": "danceflow.seek.object",
                   "args": [
                     {
-                      "register": " modify"
+                      "input": "(?#predefined=paragraph)"
                     }
-                  ]
-                }
-              }
-            },
-            "view": {
-              "title": "View",
-              "items": {
-                "cz": {
-                  "text": "Align view center",
-                  "command": "danceflow.view.line",
+                  ],
+                  "text": "paragraph"
+                },
+                "a": {
+                  "command": "danceflow.seek.object",
                   "args": [
                     {
-                      "at": "center"
+                      "input": "(?#predefined=argument)"
                     }
-                  ]
+                  ],
+                  "text": "argument"
                 },
-                "t": {
-                  "text": "Align view top",
-                  "command": "danceflow.view.line",
-                  "args": [
-                    {
-                      "at": "top"
-                    }
-                  ]
-                },
-                "b": {
-                  "text": "Align view bottom",
-                  "command": "danceflow.view.line",
-                  "args": [
-                    {
-                      "at": "bottom"
-                    }
-                  ]
-                },
-                "k": {
-                  "text": "Scroll view up",
-                  "command": "editorScroll",
-                  "args": [
-                    {
-                      "by": "line",
-                      "revealCursor": true,
-                      "to": "up"
-                    }
-                  ]
-                },
-                "j": {
-                  "text": "Scroll view down",
-                  "command": "editorScroll",
-                  "args": [
-                    {
-                      "by": "line",
-                      "revealCursor": true,
-                      "to": "down"
-                    }
-                  ]
-                },
-                "/": {
-                  "text": "Search for regex pattern",
-                  "command": "danceflow.search"
-                },
-                "?": {
-                  "text": "Reverse search for regex pattern",
-                  "command": "danceflow.search.backward"
-                },
-                "n": {
-                  "text": "Select next search match",
-                  "command": "danceflow.search.next"
-                },
-                "N": {
-                  "text": "Select previous search match",
-                  "command": "danceflow.search.previous"
+                "!": {
+                  "command": "danceflow.seek.object",
+                  "text": "custom object desc"
                 }
               }
             }
@@ -1237,6 +1175,16 @@
       {
         "command": "danceflow.history.undo.selections",
         "title": "Undo a change of selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.inspect.renameToClipboard",
+        "title": "Renames the inspected symbol to the content of the clipboard",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.jumppoint.create",
+        "title": "Add current position to jump list",
         "category": "Danceflow"
       },
       {
@@ -2255,6 +2203,14 @@
         },
         {
           "command": "danceflow.history.undo.selections",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
+          "command": "danceflow.inspect.renameToClipboard",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
+          "command": "danceflow.jumppoint.create",
           "when": "danceflow.mode == 'move'"
         },
         {
@@ -3319,62 +3275,158 @@
       },
       {
         "key": "f",
-        "command": "editor.action.revealDefinition",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.revealDefinition"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "t",
-        "command": "editor.action.goToTypeDefinition",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.goToTypeDefinition"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "z",
-        "command": "editor.action.goToImplementation",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.goToImplementation"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "g",
-        "command": "editor.action.goToReferences",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.goToReferences"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "r",
-        "command": "editor.action.rename",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.rename"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "shift+r",
-        "command": "danceflow.inspect.renameToClipboard",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.inspect.renameToClipboard"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "y",
-        "command": "danceflow.inspect.copySymbol",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.inspect.copySymbol"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "ctrl+c",
-        "command": "danceflow.inspect.copySymbol",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.inspect.copySymbol"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "shift+y",
-        "command": "danceflow.inspect.copyInfo",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.inspect.copyInfo"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "space",
-        "command": "editor.action.quickFix",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.quickFix"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "e",
-        "command": "editor.action.marker.next",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.marker.next"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
         "key": "shift+e",
-        "command": "editor.action.marker.prev",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "editor.action.marker.prev"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
         "when": "editorTextFocus && danceflow.inspect.active"
       },
       {
@@ -3887,7 +3939,7 @@
         "args": {
           "commands": [
             {
-              "command": "REMOVEEMPTYLINES"
+              "command": "editor.edit.removeEmptyLines"
             },
             "danceflow.modes.set.move"
           ]
@@ -4449,7 +4501,7 @@
         "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
-        "key": "ctrl+n",
+        "key": "n",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4462,7 +4514,7 @@
         "when": "editorTextFocus && danceflow.selectedMove.active"
       },
       {
-        "key": "ctrl+shift+n",
+        "key": "shift+n",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4875,7 +4927,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.selections.keepMatching"
+              "command": "danceflow.selections.filter.regexp"
             },
             "danceflow.modes.set.move"
           ]
@@ -4888,7 +4940,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.selections.keepNotMatching"
+              "command": "danceflow.selections.filter.regexp.inverse"
             },
             "danceflow.modes.set.move"
           ]
@@ -4953,7 +5005,7 @@
         "args": {
           "commands": [
             {
-              "command": "TRIM"
+              "command": "danceflow.selections.trim"
             },
             "danceflow.modes.set.move"
           ]
@@ -4971,7 +5023,7 @@
             "danceflow.modes.set.move"
           ]
         },
-        "when": "editorTextFocus && danceflow.move.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "shift+n",
@@ -4984,7 +5036,7 @@
             "danceflow.modes.set.move"
           ]
         },
-        "when": "editorTextFocus && danceflow.move.active"
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
         "key": "'",
@@ -5005,7 +5057,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.jumppoint.previous"
+              "command": "workbench.action.navigateBack"
             },
             "danceflow.modes.set.move"
           ]
@@ -5018,7 +5070,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.jumppoint.next"
+              "command": "workbench.action.navigateForward"
             },
             "danceflow.modes.set.move"
           ]
@@ -5158,12 +5210,12 @@
       {
         "key": "n",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
       },
       {
         "key": "shift+n",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
+        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.selectedMove.active && !danceflow.move.active"
       },
       {
         "key": "o",
