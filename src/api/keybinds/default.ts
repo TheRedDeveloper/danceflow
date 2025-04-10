@@ -339,7 +339,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.action.previousMatchFindAction": [`⇧n`],
 
     // Jumppoints
-    "danceflow.jumppoint.create": [`'`],
+    "danceflow.jumppoint.create": [`\\`],
     "workbench.action.navigateBack": [`[`],
     "workbench.action.navigateForward": [`]`],
   },

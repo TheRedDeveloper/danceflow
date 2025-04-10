@@ -766,6 +766,10 @@
                   "text": "custom object desc"
                 }
               }
+            },
+            "enclose": {
+              "title": "NOT IMPLEMENTED",
+              "items": {}
             }
           }
         },

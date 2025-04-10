@@ -168,7 +168,7 @@ interface—forked from [Danceflow](https://github.com/71/danceflow), inspired b
 
 #### Jumppoints
 
-`'` Create Jumppoint
+`\` Create Jumppoint
 
 `[` To last Jumppoint, `]` next Jumppoint
 

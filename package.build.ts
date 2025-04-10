@@ -497,11 +497,14 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 ...objectSelectors
               },
             },
-
             "object": {
               title: "Object",
               items: objectSelectors,
             },
+            "enclose": {
+              title: "NOT IMPLEMENTED", // TODO Implement enclose
+              items: {},
+            }
           } as Record<string,
             { items: Record<string, { text: string; command: string; args?: any[] }> }>,
         },
