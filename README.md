@@ -130,6 +130,10 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `x` Select line below, `⇧x` above
 
+`⎈h`/`⎈left` Select to line start, `⎈⎇h`/`⎈⎇left` extending
+
+`⎈l`/`⎈right` Select to line end, `⎈⎇l`/`⎈⎇right` extending
+
 `⎈d`/`⎈⇧u` Halfpage down, `⎈⎇d`/`⎈⎇⇧u` extending
 
 `⎈u`/`⎈⇧d` Halfpage up, `⎈⎇u`/`⎈⎇⇧d` extending
@@ -160,7 +164,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⇧-` Trim whitespaces from selection
 
-`⎇c` Copy selections to below, `⎇⇧c` above
+`⎇c`/`⎈⇧j`/`⎈⇧down` Copy selections to below, `⎇⇧c`/`⎈⇧k`/`⎈⇧up` above
 
 #### Multiselection
 

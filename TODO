@@ -258,7 +258,9 @@
 ☐ Add enclose `'￼` functionality
 ☐ Add select until end of line (⎈l & ⎈h, beginning)
 ☐ Update readme
-☐ Fix weird copying behavior (not copying character under cursor)
+✔ Fix weird copying behavior (not copying character under cursor) @done(25-04-14 13:07)
+✔ Fix weird change behavior (not going into change mode) @done(25-04-14 13:10)
+☐ Fix weird find behavior (not searching for character under cursor)
 ✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:
   ✔ `space` enter inspect mode @done(25-04-10 21:27)

@@ -51,13 +51,15 @@ export const groupModeExceptions: string[] = [
   "danceflow.modes.set.move",
   "danceflow.modes.set.inspect",
   "danceflow.modes.set.modify",
+  "danceflow.edit.yank-delete-modify",
+  "danceflow.edit.delete-modify",
 ]
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {
     "danceflow.cancel": [`escape`],
     "danceflow.view.zen[!outline.defaultViewLocation && !timeline.defaultViewLocation]": [`⎈enter`],
-
+    
     // Tool panels
     "workbench.view.scm": [`⎈1`, `⎈⇧g`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.scm']": [`⎈1`, `⎈⇧g`],
@@ -74,7 +76,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug']": [`⎈7`, `⎈⇧b`],
     "workbench.view.extensions": [`⎈8`, `⎈⇧x`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions']": [`⎈8`, `⎈⇧x`],
-
+    
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
     "workbench.action.moveEditorToFirstGroup": [`⎈⎇p`],
@@ -96,7 +98,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.openRecent": [`⎈r`],
     "workbench.action.gotoLine": [`⎈g`],
     "workbench.action.files.newUntitledFile": [`⎈⇧o`],
-
+    
     // Menus
     "list.focusDown[listFocus && !inputFocus]": [`j`],
     "list.focusUp[listFocus && !inputFocus]": [`k`],
@@ -107,7 +109,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "explorer.newFile[filesExplorerFocus && !inputFocus]": [`a`],
     "explorer.newFolder[filesExplorerFocus && !inputFocus]": [`⇧a`],
     "renameFile[filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus]": [`r`],
-
+    
     // Remove vscode default keybindings
     "-editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
     "-editor.action.inlineSuggest.commit[inInlineEditsPreviewEditor]": [`tab`],
@@ -124,14 +126,16 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "-github.copilot.generate[editorTextFocus && github.copilot.activated && !commentEditorFocused]": [`⎈enter`],
     "-editor.action.insertLineAfter[editorTextFocus && !editorReadonly]": [`⎈enter`],
     "-explorer.openToSide[explorerViewletFocus && foldersViewVisible && !inputFocus]": [`⎈enter`],
+    "-workbench.action.moveEditorToNextGroup": [`⎈⎇right`],
+    "-workbench.action.moveEditorToPreviousGroup": [`⎈⎇left`],
   },
 
   editor: {
     "danceflow.modes.set.move": [`escape`],
-
+    
     // Intellisense with ⎈space
     "editor.action.triggerSuggest[editorHasCompletionItemProvider && textInputFocus && !editorReadonly && !suggestWidgetVisible]": [`⎈space`],
-
+    
     // Copilot completions with ⇧space
     "editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor]" : [`⇧space`],
     "editor.action.inlineSuggest.jump[inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`⇧space`],
@@ -139,15 +143,15 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     // Intellisense with ⎈⇧space/⎈i
     "inlineChat.start[inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput]": [`⎈⇧space`, `⎈i`],
-
+    
     // Find/Replace
     "actions.find": [`⎈f`],
     "editor.action.startFindReplaceAction": [`⎈⎇f`],
-
+    
     // File
     "workbench.action.files.save": [`⎈s`],
     "C_Cpp.SwitchHeaderSource": [`⎈h`],
-
+    
     // Undo/Redo
     "danceflow.history.undo": [`⎈z`, `⎈⇧y`],
     "danceflow.history.redo": [`⎈⇧z`, `⎈y`],
@@ -169,7 +173,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   },
   
   interact: {
-    "editor.action.clipboardCopyAction": [`y`, `⎈c`],
+    "danceflow.selections.saveText": [`y`, `⎈c`],
     "danceflow.modes.set.inspect": [`space`],
     "danceflow.history.recording.toggle": [`⇧q`],
     "danceflow.history.recording.load": [`⎈q`],
@@ -210,8 +214,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.edit.newLine.above.modify": [`⇧o`], // Should not require move mode
     
     // Replace operations
-    "danceflow.edit.yank-delete-modify": [`c`],
-    "danceflow.edit.delete-modify": [`⎈⎇c`],
+    "danceflow.edit.yank-delete-modify": [`c`], // Should not require move mode
+    "danceflow.edit.delete-modify": [`⎈⎇c`], // Should not require move mode
     "danceflow.edit.replaceCharacters": [`r`],
     "danceflow.edit.yank-replace": [`⇧r`],
     "danceflow.edit.replace": [`⎈⇧r`],
@@ -241,7 +245,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Repeat operations
     "danceflow.history.recording.play": [`q`],
     "danceflow.history.repeat.edit": [`.`],
-
+    
     // Undo/Redo
     "danceflow.history.undo": [`u`],
     "danceflow.history.redo": [`⇧u`],
@@ -280,7 +284,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     // Mode
     "danceflow.modes.set.move": [`v`],
-
+    
     // Search
     "editor.action.addSelectionToNextFindMatch": [`n`],
     "editor.action.addSelectionToPreviousFindMatch": [`⇧n`],
@@ -292,7 +296,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.select.down.jump": [`j`, `down`],
     "danceflow.select.up.jump": [`k`, `up`],
     "danceflow.select.right.jump": [`l`, `right`],
-
+    
     "danceflow.select.left.extend": [`⎇h`, `⎇left`],
     "danceflow.select.down.extend": [`⎇j`, `⎇down`],
     "danceflow.select.up.extend": [`⎇k`, `⎇up`],
@@ -307,7 +311,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.seek.word.ws": [`⇧w`],
     "danceflow.seek.wordEnd.ws": [`⇧e`],
     "danceflow.seek.word.ws.backward": [`⇧b`],
-
+    
     "danceflow.seek.word.extend": [`⎇w`],
     "danceflow.seek.wordEnd.extend": [`⎇e`],
     "danceflow.seek.word.backward.extend": [`⎇b`],
@@ -320,7 +324,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.seek.included.backward": [`⇧f`],
     "danceflow.seek": [`t`],
     "danceflow.seek.backward": [`⇧t`],
-
+    
     "danceflow.seek.included.extend": [`⎇f`],
     "danceflow.seek.included.extend.backward": [`⎇⇧f`],
     "danceflow.seek.extend": [`⎇t`],
@@ -329,13 +333,19 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Line & Page navigation
     "danceflow.select.line.below.extend": [`x`], // Should not require move mode
     "danceflow.select.line.above.extend": [`⇧x`], // Should not require move mode
+    
+    "danceflow.select.lineStart": [`⎈h`, `⎈left`],
+    "danceflow.select.lineEnd": [`⎈l`, `⎈right`],
+    "danceflow.select.lineStart.extend": [`⎈⎇h`, `⎈⎇left`],
+    "danceflow.select.lineEnd.extend": [`⎈⎇l`, `⎈⎇right`],
+    
     "danceflow.select.halfPageDown.jump": [`⎈d`, `⎈⇧u`],
     "danceflow.select.halfPageUp.jump": [`⎈u`, `⎈⇧d`],
-    "editor.action.selectAll": [`⎈a`],
-    "editor.toggleFold": [`z`],
-
     "danceflow.select.halfPageDown.extend": [`⎈⎇d`, `⎈⎇⇧u`],
     "danceflow.select.halfPageUp.extend": [`⎈⎇u`, `⎈⎇⇧d`],
+    
+    "editor.action.selectAll": [`⎈a`],
+    "editor.toggleFold": [`z`],
     
     // Mode
     "danceflow.modes.set.select": [`v`], // Should not require move mode
@@ -353,11 +363,13 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.reduce": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
     "danceflow.selections.trim": [`⇧-`], // Should not require move mode
+    "danceflow.selections.copy": [`⎇c`, `⎈⇧j`, `⎈⇧down`],
+    "danceflow.selections.copy.above": [`⎇⇧c`, `⎈⇧k`, `⎈⇧up`],
     
     // Search
     "editor.action.nextMatchFindAction": [`n`],
     "editor.action.previousMatchFindAction": [`⇧n`],
-
+    
     // Jumppoints
     "danceflow.jumppoint.create": [`\\`],
     "workbench.action.navigateBack": [`[`],
