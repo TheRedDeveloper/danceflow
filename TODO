@@ -256,11 +256,57 @@
   ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
   ☐ Add treesitter support out of the box
 ☐ Add enclose `'￼` functionality
-☐ Add select until end of line (⎈l & ⎈h, beginning)
-☐ Update readme
+✔ Add select until end of line (⎈l & ⎈h, beginning) @done(25-04-14 14:30)
+✔ Update readme @done(25-04-14 14:30)
 ✔ Fix weird copying behavior (not copying character under cursor) @done(25-04-14 13:07)
 ✔ Fix weird change behavior (not going into change mode) @done(25-04-14 13:10)
-☐ Fix weird find behavior (not searching for character under cursor)
+☐ Fix VSCode not using character under cursor in forward selection
+  This is a core problem with visual studio code selecting while the cursor is a block
+  It uses normal carat selections but just shows a block, this means that the current
+  thing the cursor is over isn't actually selected, making it not work with other parts
+  of the editor like when I select something and press ⎈⇧f it doesn't use the thing my
+  cursor is under because it's not actually selected, we just pretend it is.  
+  Other extensions like Vim have a workaround of not actually using the block cursor,
+  but just showing their own block cursor.
+  We had the workaround of not using the VSCode features, but having our own.
+  This has issues with everything vscode including the AI features.
+  We could just leave this like this and not do the super complicated thing vim did
+  and actually just select the correct thing before ⎈⇧f is activated by overwriting it.
+  
+  These are our options
+    1. Refactor how selections are displayed and handled at their core
+    2. Pretend this is not a problem and overwrite keybindings that rely on this
+  
+  Let's choose option 2, as I don't want to deal with option 1.
+  If the "search in selection" or "add selection to chat" features which cannot be
+  supported become significant we can choose to deal with option 1 in the future.
+  
+  So to implement 2 we would have to have a list for which commands should be overwritten
+  such that the selection is adapted by reversing it, executing, and then reversing again.
+  This only applies for forward facing selections. Okay so we need to surround a command
+  with reverses only if the selection is forward. This means we need to split the keybinds in
+  two, with one normal one active when not foreward (empty/back) and one surrounded active when
+  it is foreward. This should be part of the when condition and needs to be implemented in
+  resolve.ts with the list being part of default.ts
+
+  Scratch that. There are only few commands requiring just to reverse the selection and
+  unreverse it after. Some functionality like the `n` key require much
+  deeper behavior. This behavior requires the implementation of a new danceflow command in order
+  to wrap the vscode command. Another thing that is kinda annoying is how future instances
+  are wrongly highlighted with forward selections due to our workaround.
+  ☐ Implement new danceflow command to wrap find, quickSearch and showAllSymbol in misc.ts
+  ☐ Implement complex command to customly wrap `n` and `⇧n` command in select mode
+
+  We should find a way to handle this highlighting by ourselves in the future using
+  custom decorations and deactivating the default highlighting.
+  ☐ Custom decoration for occurrences highlighting
+    ☐ Remove old occurrence highlighting
+
+  We should fix the mouse overselecting when word selecting forward somehow.
+  I'm not sure this is even possible with our workaround.
+  Just checked. It's probably possible.
+  ☐ Fix mouse overselecting when word selecting forward
+  
 ✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:
   ✔ `space` enter inspect mode @done(25-04-10 21:27)

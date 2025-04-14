@@ -38,7 +38,7 @@ export const groupModes: Partial<Record<KeybindingGroupName, string>> = {
   inspect: "move"
 }
 
-export const groupModeExceptions: string[] = [
+export const groupModeExceptions = new Set([
   "danceflow.modes.modify.before",
   "danceflow.modes.modify.after",
   "danceflow.modes.modify.lineStart",
@@ -53,7 +53,7 @@ export const groupModeExceptions: string[] = [
   "danceflow.modes.set.modify",
   "danceflow.edit.yank-delete-modify",
   "danceflow.edit.delete-modify",
-]
+])
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
   global: {

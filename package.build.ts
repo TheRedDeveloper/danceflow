@@ -4,7 +4,7 @@ import { processKeybindings } from "./src/api/keybinds/resolve";
 import { keybindingGroupNames, defaultKeybindings } from "./src/api/keybinds/default";
 import { germanKeybindings } from "./src/api/keybinds/german";
 
-console.log(JSON.stringify(germanKeybindings, undefined, 2));
+// console.log(JSON.stringify(germanKeybindings, undefined, 2));
 
 // Shared values
 // ============================================================================
@@ -415,7 +415,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
             select: {
               cursorStyle: "underline",
               selectionBehavior: "character",
-              activeGroups: ["interact", "selectedMove", "change", "ignore"],
+              activeGroups: ["interact", "change",  "selectedMove", "move", "ignore"],
             },
             move: {
               cursorStyle: "block",

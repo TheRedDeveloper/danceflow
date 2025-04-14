@@ -11,7 +11,6 @@ import {
 import {
   Builder
 } from '../../../meta';
-import { futimes } from 'fs';
 
 /**
  * Single resolved keybinding
@@ -541,7 +540,7 @@ export function weaveModeChange(bindings: ResolvedKeybindingGroups): ResolvedKey
   for (const group of keybindingGroupNames) {
     if (Object.keys(groupModes).includes(group)) {
       bindings[group] = bindings[group].map(binding => {
-        if (!groupModeExceptions.includes(binding.command)) {
+        if (!groupModeExceptions.has(binding.command)) {
           return makeMultiBinding(binding, `danceflow.modes.set.${groupModes[group]}`);
         }
         return binding;
