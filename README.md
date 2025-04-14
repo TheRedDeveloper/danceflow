@@ -92,41 +92,49 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Basic
 
-`h` Left
+`h` Left, `⎇h` extending
 
-`j` Down
+`j` Down, `⎇j` extending
 
-`k` Up
+`k` Up, `⎇k` extending
 
-`l` Right
+`l` Right, `⎇l` extending
 
 #### Words
 
-`w` Select ahead until next word
+`w` Select ahead until next word, `⎇w` extending
 
-`e` Select ahead to word end
+`e` Select ahead to word end, `⎇e` extending
 
-`b` Select back to word start
+`b` Select back to word start, `⎇b` extending
 
 `g` Get (select & copy) word, `⇧g` non-whitespace
 
-`⇧w` Select ahead until next non-whitespace, `⇧e` whitespace
+`⇧w` Select ahead until next non-whitespace, `⎇⇧w` extending
 
-`⇧b` Select back until whitespace
+`⇧e` Select ahead until next whitespace, `⎇⇧e` extending
+
+`⇧b` Select back until whitespace, `⎇⇧b` extending
 
 #### Characters
 
-`f◌` Select ahead to ◌, `⇧f◌` back to ◌
+`f◌` Select ahead to ◌, `⎇f◌` extending
 
-`t◌` Select ahead until ◌, `⇧t◌` back until ◌
+`⇧f◌` Select back to ◌, `⎇⇧f◌` extending
+
+`t◌` Select ahead until ◌, `⎇t◌` extending
+
+`⇧t◌` Select back until ◌, `⎇⇧t◌` extending
 
 #### Lines & Page
 
-72 `x` Select line below, `⇧x` above
+`x` Select line below, `⇧x` above
 
-48 `⎈d`/`⎈⇧u` Halfpage down, `⎈u`/`⎈⇧d` up
+`⎈d`/`⎈⇧u` Halfpage down, `⎈⎇d`/`⎈⎇⇧u` extending
 
-45 `z` Toggle fold at cursor
+`⎈u`/`⎈⇧d` Halfpage up, `⎈⎇u`/`⎈⎇⇧d` extending
+
+`z` Toggle fold at cursor
 
 #### Search
 
@@ -216,7 +224,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Lines
 
-`⎇j` move line down, `⎇k` up
+`⎈j`/`⎈down` move line down, `⎈k`/`⎈up` up
 
 `tab` Indent, `⇧tab` Unindent
 
@@ -248,7 +256,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Other
 
-`⎈k`/`⎈up` increment selected number, `⎈j`/`⎈down` decrement
+<!-- `⎈k`/`⎈up` increment selected number, `⎈j`/`⎈down` decrement -->
 
 `⎇⇧]` Cycle selection content forward, `⎇⇧[` backward
 

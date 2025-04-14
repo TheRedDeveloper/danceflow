@@ -256,6 +256,9 @@
   ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
   ☐ Add treesitter support out of the box
 ☐ Add enclose `'￼` functionality
+☐ Add select until end of line (⎈l & ⎈h, beginning)
+☐ Update readme
+☐ Fix weird copying behavior (not copying character under cursor)
 ✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:
   ✔ `space` enter inspect mode @done(25-04-10 21:27)

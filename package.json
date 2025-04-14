@@ -3843,7 +3843,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+j",
+        "key": "ctrl+j",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3856,7 +3856,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+down",
+        "key": "ctrl+down",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3869,7 +3869,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+k",
+        "key": "ctrl+k",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3882,7 +3882,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+up",
+        "key": "ctrl+up",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4158,58 +4158,6 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+k",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.number.increment"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "ctrl+up",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.number.increment"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "ctrl+j",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.number.decrement"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "ctrl+down",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.number.decrement"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
         "key": "h",
         "command": "runCommands",
         "args": {
@@ -4345,7 +4293,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.seek.word.backward"
+              "command": "danceflow.seek.word.backward.extend"
             },
             "danceflow.modes.set.select"
           ]
@@ -4631,6 +4579,110 @@
         "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
+        "key": "alt+h",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.left.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+left",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.left.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+j",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.down.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+down",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.down.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+k",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.up.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+up",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.up.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+l",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.right.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+right",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.right.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
         "key": "w",
         "command": "runCommands",
         "args": {
@@ -4735,6 +4787,84 @@
         "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
+        "key": "alt+w",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.word.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+e",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.wordEnd.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+b",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.word.backward.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+shift+w",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.word.ws.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+shift+e",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.wordEnd.ws.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+shift+b",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.word.ws.extend.backward"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
         "key": "f",
         "command": "runCommands",
         "args": {
@@ -4785,6 +4915,58 @@
           ]
         },
         "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
+      },
+      {
+        "key": "alt+f",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.included.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+shift+f",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.included.extend.backward"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+t",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "alt+shift+t",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.seek.extend.backward"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
       },
       {
         "key": "x",
@@ -4873,6 +5055,58 @@
           ]
         },
         "when": "editorTextFocus && danceflow.move.active && !danceflow.inspect.active"
+      },
+      {
+        "key": "ctrl+alt+d",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.halfPageDown.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "ctrl+alt+shift+u",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.halfPageDown.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "ctrl+alt+u",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.halfPageUp.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active"
+      },
+      {
+        "key": "ctrl+alt+shift+d",
+        "command": "runCommands",
+        "args": {
+          "commands": [
+            {
+              "command": "danceflow.select.halfPageUp.extend"
+            },
+            "danceflow.modes.set.move"
+          ]
+        },
+        "when": "editorTextFocus && danceflow.move.active && !danceflow.change.active"
       },
       {
         "key": "v",

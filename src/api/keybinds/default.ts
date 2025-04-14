@@ -217,8 +217,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.edit.replace": [`⎈⇧r`],
     
     // Line operations
-    "editor.action.moveLinesDownAction": [`⎇j`, `⎇down`],
-    "editor.action.moveLinesUpAction": [`⎇k`, `⎇up`],
+    "editor.action.moveLinesDownAction": [`⎈j`, `⎈down`],
+    "editor.action.moveLinesUpAction": [`⎈k`, `⎈up`],
     "tab": [`tab`],
     "outdent": [`⇧tab`],
     "editor.action.joinLines": [`⇧j`],
@@ -249,8 +249,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Other
     "danceflow.selections.rotate.contents": [`⎇⇧]`],
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
-    "danceflow.number.increment": [`⎈k`, `⎈up`],
-    "danceflow.number.decrement": [`⎈j`, `⎈down`],
+    // "danceflow.number.increment": [`⎈k`, `⎈up`],
+    // "danceflow.number.decrement": [`⎈j`, `⎈down`], // TODO FIND NEW KEYBINDS
   },
   
   selectedMove: {
@@ -263,7 +263,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Word navigation
     "danceflow.seek.word.extend": [`w`],
     "danceflow.seek.wordEnd.extend": [`e`],
-    "danceflow.seek.word.backward": [`b`],
+    "danceflow.seek.word.backward.extend": [`b`],
     "danceflow.seek.word.ws.extend": [`⇧w`],
     "danceflow.seek.wordEnd.ws.extend": [`⇧e`],
     "danceflow.seek.word.ws.extend.backward": [`⇧b`],
@@ -292,6 +292,11 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.select.down.jump": [`j`, `down`],
     "danceflow.select.up.jump": [`k`, `up`],
     "danceflow.select.right.jump": [`l`, `right`],
+
+    "danceflow.select.left.extend": [`⎇h`, `⎇left`],
+    "danceflow.select.down.extend": [`⎇j`, `⎇down`],
+    "danceflow.select.up.extend": [`⎇k`, `⎇up`],
+    "danceflow.select.right.extend": [`⎇l`, `⎇right`],
     
     // Word navigation
     "danceflow.seek.word": [`w`],
@@ -302,12 +307,24 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.seek.word.ws": [`⇧w`],
     "danceflow.seek.wordEnd.ws": [`⇧e`],
     "danceflow.seek.word.ws.backward": [`⇧b`],
+
+    "danceflow.seek.word.extend": [`⎇w`],
+    "danceflow.seek.wordEnd.extend": [`⎇e`],
+    "danceflow.seek.word.backward.extend": [`⎇b`],
+    "danceflow.seek.word.ws.extend": [`⎇⇧w`],
+    "danceflow.seek.wordEnd.ws.extend": [`⎇⇧e`],
+    "danceflow.seek.word.ws.extend.backward": [`⎇⇧b`],
     
     // Character navigation
     "danceflow.seek.included": [`f`],
     "danceflow.seek.included.backward": [`⇧f`],
     "danceflow.seek": [`t`],
     "danceflow.seek.backward": [`⇧t`],
+
+    "danceflow.seek.included.extend": [`⎇f`],
+    "danceflow.seek.included.extend.backward": [`⎇⇧f`],
+    "danceflow.seek.extend": [`⎇t`],
+    "danceflow.seek.extend.backward": [`⎇⇧t`],
     
     // Line & Page navigation
     "danceflow.select.line.below.extend": [`x`], // Should not require move mode
@@ -316,6 +333,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.select.halfPageUp.jump": [`⎈u`, `⎈⇧d`],
     "editor.action.selectAll": [`⎈a`],
     "editor.toggleFold": [`z`],
+
+    "danceflow.select.halfPageDown.extend": [`⎈⎇d`, `⎈⎇⇧u`],
+    "danceflow.select.halfPageUp.extend": [`⎈⎇u`, `⎈⎇⇧d`],
     
     // Mode
     "danceflow.modes.set.select": [`v`], // Should not require move mode
