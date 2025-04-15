@@ -83,8 +83,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.newWindow": [`⎈m`],
     
     // Search
-    "workbench.action.quickTextSearch": [`⎈⇧f`],
-    "workbench.action.showAllSymbols": [`⎈t`],
+    'danceflow.withCompleteSelection{"command":"workbench.action.quickTextSearch"}': [`⎈⇧f`],
+    'danceflow.withCompleteSelection{"command":"workbench.action.showAllSymbols"}': [`⎈t`],
     
     // Tabs
     "workbench.action.quickOpenPreviousRecentlyUsedEditorInGroup[!activeEditorGroupEmpty]": [`⎈tab`],
@@ -145,7 +145,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "inlineChat.start[inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput]": [`⎈⇧space`, `⎈i`],
     
     // Find/Replace
-    "actions.find": [`⎈f`],
+    'danceflow.withCompleteSelection{"command": "actions.find"}': [`⎈f`],
     "editor.action.startFindReplaceAction": [`⎈⎇f`],
     
     // File

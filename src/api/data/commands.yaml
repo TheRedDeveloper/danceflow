@@ -2787,6 +2787,14 @@ view.zen:
     en: |
       Zenmax the editor.
 
+withCompleteSelection:
+  title:
+    en: Execute a command with what is under the cursor selected too
+
+  doc:
+    en: |
+      Execute a command with what is under the cursor selected too.
+
 anonymous:
 
   - commands: |-

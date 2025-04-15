@@ -1234,6 +1234,11 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.withCompleteSelection",
+        "title": "Execute a command with what is under the cursor selected too",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.modes.modify.after",
         "title": "Modify after",
         "category": "Danceflow"
@@ -2251,6 +2256,10 @@
           "when": "danceflow.mode == 'move'"
         },
         {
+          "command": "danceflow.withCompleteSelection",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
           "command": "danceflow.modes.modify.after",
           "when": "danceflow.mode == 'move'"
         },
@@ -3042,11 +3051,17 @@
       },
       {
         "key": "ctrl+shift+f",
-        "command": "workbench.action.quickTextSearch"
+        "command": "danceflow.withCompleteSelection",
+        "args": {
+          "command": "workbench.action.quickTextSearch"
+        }
       },
       {
         "key": "ctrl+t",
-        "command": "workbench.action.showAllSymbols"
+        "command": "danceflow.withCompleteSelection",
+        "args": {
+          "command": "workbench.action.showAllSymbols"
+        }
       },
       {
         "key": "ctrl+tab",
@@ -3244,7 +3259,10 @@
       },
       {
         "key": "ctrl+f",
-        "command": "actions.find",
+        "command": "danceflow.withCompleteSelection",
+        "args": {
+          "command": "actions.find"
+        },
         "when": "editorTextFocus"
       },
       {

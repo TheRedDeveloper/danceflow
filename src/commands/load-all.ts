@@ -202,6 +202,7 @@ import {
   selectRegister as selectRegister,
   updateCount as updateCount,
   updateRegister as updateRegister,
+  withCompleteSelection as withCompleteSelection,
 } from "./misc";
 
 import {
@@ -715,6 +716,11 @@ export const commands: Commands = function () {
       "danceflow.view.zen",
       (_) => _.runAsync(async (_) => await view_zen()),
       CommandDescriptor.Flags.None,
+    ),
+    "danceflow.withCompleteSelection": new CommandDescriptor(
+      "danceflow.withCompleteSelection",
+      (_, argument) => _.runAsync(async (_) => await withCompleteSelection(_, argument["command"])),
+      CommandDescriptor.Flags.RequiresActiveEditor,
     ),
   };
 

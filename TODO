@@ -294,7 +294,7 @@
   deeper behavior. This behavior requires the implementation of a new danceflow command in order
   to wrap the vscode command. Another thing that is kinda annoying is how future instances
   are wrongly highlighted with forward selections due to our workaround.
-  ☐ Implement new danceflow command to wrap find, quickSearch and showAllSymbol in misc.ts
+  ✔ Implement new danceflow command to wrap find, quickSearch and showAllSymbol in misc.ts @done(25-04-15 12:23)
   ☐ Implement complex command to customly wrap `n` and `⇧n` command in select mode
 
   We should find a way to handle this highlighting by ourselves in the future using

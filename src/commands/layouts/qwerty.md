@@ -56,7 +56,7 @@
 <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td rowspan=1><a href="#inspect"><code>inspect</code></a></td><td><a href="#inspect.renameToClipboard"><code>inspect.renameToClipboard</code></a></td><td>Renames the inspected symbol to the content of the clipboard</td><td></td></tr>
 <tr><td rowspan=1><a href="#jumppoint"><code>jumppoint</code></a></td><td><a href="#jumppoint.create"><code>jumppoint.create</code></a></td><td>Add current position to jump list</td><td></td></tr>
-<tr><td rowspan=9><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
+<tr><td rowspan=10><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
 <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
 <tr><td><a href="#ifEmpty"><code>ifEmpty</code></a></td><td>Executes one of the specified commands depending on whether the current
 selections are empty</td><td></td></tr>
@@ -66,6 +66,7 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#selectRegister"><code>selectRegister</code></a></td><td>Select register for next command</td><td><code>Shift+'</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Danceflow count</td><td></td></tr>
 <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
+<tr><td><a href="#withCompleteSelection"><code>withCompleteSelection</code></a></td><td>Execute a command with what is under the cursor selected too</td><td></td></tr>
 <tr><td rowspan=12><a href="#modes"><code>modes</code></a></td><td><a href="../modes.ts#L26"><code>modes.modify.after</code></a></td><td>Modify after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L25"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../modes.ts#L28"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
@@ -915,6 +916,12 @@ This command:
 - accepts an argument of type `{}`.
 - takes an argument `otherwise` of type `command.Any[]`.
 - takes an argument `then` of type `command.Any[]`.
+
+<a name="withCompleteSelection" />
+
+### [`withCompleteSelection`](../misc.ts#L418-L425)
+
+Execute a command with what is under the cursor selected too.
 
 ## [`modes`](../modes.ts)
 

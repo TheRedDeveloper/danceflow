@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 import type { Argument, InputOr, RegisterOr } from ".";
-import { run as apiRun, buildCommands, command, compileFunction, Context, findMenu, keypressForRegister, Menu, notifyPromptActionRequested, prompt, promptNumber, runIsEnabled, Selections, showLockedMenu, showMenu, showMenuAfterDelay, validateMenu } from "../api";
+import { run as apiRun, buildCommands, command, compileFunction, Context, findMenu, keypressForRegister, Menu, notifyPromptActionRequested, prompt, promptNumber, runIsEnabled, SelectionBehavior, Selections, showLockedMenu, showMenu, showMenuAfterDelay, validateMenu } from "../api";
 import type { Extension } from "../state/extension";
 import type { Register } from "../state/registers";
 import { ArgumentError, CancellationError, InputError } from "../utils/errors";
@@ -413,4 +413,37 @@ export async function ifEmpty(
   }
 
   return otherwise !== undefined && await buildCommands(otherwise, _.extension)(argument, _);
+}
+
+/**
+ * Execute a command with what is under the cursor selected too.
+ */
+export async function withCompleteSelection(
+  _: Context,
+
+  command: Argument<command.Any>,
+) {
+  function runCommand() {
+    if (typeof command === "string") {
+      return vscode.commands.executeCommand(command);
+    } else if (Array.isArray(command)) {
+      return vscode.commands.executeCommand(command[0], ...(command.slice(1) ?? []));
+    } else if (typeof command === "object" && "command" in command) {
+      return vscode.commands.executeCommand(command.command, ...(command.args ?? []));
+    } else {
+      throw new ArgumentError("Invalid command type", "command");
+    }
+  }
+
+  if (_.mode.selectionBehavior === SelectionBehavior.Character) {
+    const oldSelections = [...Selections.current()];
+    Selections.updateByIndex((_, selection) =>
+      selection.isReversed || selection.isEmpty || Selections.isNonDirectional(selection)
+        ? selection
+        : new vscode.Selection(selection.end, selection.start));
+    await runCommand();
+    Selections.set(oldSelections);
+  } else {
+    await runCommand();
+  }
 }
