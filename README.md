@@ -188,11 +188,11 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Delete
 
-`d`/`⎈x` Cut, `⎈d`/`del`/`backspace` Delete
+`d`/`⎈x` Cut, `del`/`backspace` Delete
 
 `⇧d` Cut word, `⎈del`/`⎈backspace` Delete word
 
-`⎇d` Cut line, `⎈⎇⇧d` Delete line
+`⎇d` Cut line, `⎇del`/`⎇backspace` Delete line
 
 #### Paste
 

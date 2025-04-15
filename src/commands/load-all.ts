@@ -1381,6 +1381,12 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
+    "danceflow.selections.collapse",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".selections.filter", { expression: "i !== count" , $exclude: [] }], [".selections.reduce"]],
+  );
+  describeAdditionalCommand(
+    commands,
     "danceflow.selections.select.orLeap",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".ifEmpty", { then: [[".seek.leap", { $exclude: [] }]], otherwise: [[".selections.select", { $exclude: [] }]] }]],

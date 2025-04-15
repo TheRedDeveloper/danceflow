@@ -302,6 +302,7 @@ const filterHistory: string[] = [];
  * | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: move; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
  * | Clear secondary selections | `clear.secondary`       | `,` (core: move; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
  * | Clear main selections      | `clear.main`            | `a-,` (core: move; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+ * | Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i !== count"            , ... }], [".selections.reduce"]` |
  */
 export function filter(
   _: Context,

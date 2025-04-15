@@ -156,7 +156,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.history.undo": [`⎈z`, `⎈⇧y`],
     "danceflow.history.redo": [`⎈⇧z`, `⎈y`],
   },
-
   
   inspect: {
     "editor.action.revealDefinition": [`f`],
@@ -193,11 +192,11 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   change: {
     // Delete operations
     "danceflow.edit.yank-delete": [`d`, `⎈x`],
-    "danceflow.edit.delete": [`⎈d`, `del`, `backspace`],
+    "danceflow.edit.delete": [`del`, `backspace`],
     "danceflow.edit.yank-delete.word": [`⇧d`],
     "danceflow.edit.delete.word": [`⎈del`, `⎈backspace`],
     "danceflow.edit.yank-delete.line": [`⎇d`],
-    "danceflow.edit.delete.line": [`⎈⎇⇧d`],
+    "danceflow.edit.delete.line": [`⎇del`, `⎇backspace`],
     
     // Paste operations
     "danceflow.edit.paste.before.select": [`p`, `⎈v`],
@@ -360,7 +359,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.filter.regexp.inverse": [`⇧⎇k`],
     "danceflow.selections.merge": [`⇧m`],
     "danceflow.selections.splitLines.orLeap.backward": [`⇧s`],
-    "danceflow.selections.reduce": [`;`],
+    "danceflow.selections.collapse": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
     "danceflow.selections.trim": [`⇧-`], // Should not require move mode
     "danceflow.selections.copy": [`⎇c`, `⎈⇧j`, `⎈⇧down`],

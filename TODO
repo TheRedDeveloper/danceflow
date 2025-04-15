@@ -260,6 +260,8 @@
 ✔ Update readme @done(25-04-14 14:30)
 ✔ Fix weird copying behavior (not copying character under cursor) @done(25-04-14 13:07)
 ✔ Fix weird change behavior (not going into change mode) @done(25-04-14 13:10)
+✔ Fix ⎈d not working @done(25-04-15 16:42)
+✔ Fix ; not completely collapsing to only one cursor but instead collapsing every selection to a cursor @done(25-04-15 16:55)
 ☐ Fix VSCode not using character under cursor in forward selection
   This is a core problem with visual studio code selecting while the cursor is a block
   It uses normal carat selections but just shows a block, this means that the current
@@ -313,7 +315,7 @@
   ☐ if a url/file is under the main cursor then follow it (This is actually really hard)
   ✔ it should hover the selected symbol @done(25-04-10 21:37)
   ☐ multiple cursors → main cursor inspector is shown, rename on all heads
-    ✔ Currently rename only on main cursor, would need  to work first @done(25-04-10 21:50)
+    ✔ Currently rename only on main cursor, would need arbitrary renaming to work first @done(25-04-10 21:50)
   ✔ `f` Go to definition @done(25-04-10 21:25)
   ✔ `t` Go to type definition @done(25-04-10 21:25)
   ✔ `z` Go to implementations @done(25-04-10 21:25)
