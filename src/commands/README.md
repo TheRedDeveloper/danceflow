@@ -71,7 +71,7 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tr><td><a href="#history.undo.selections"><code>history.undo.selections</code></a></td><td>Undo a change of selections</td><td><code>Alt+U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td rowspan=1><a href="#inspect"><code>inspect</code></a></td><td><a href="#inspect.renameToClipboard"><code>inspect.renameToClipboard</code></a></td><td>Renames the inspected symbol to the content of the clipboard</td><td></td></tr>
 <tr><td rowspan=1><a href="#jumppoint"><code>jumppoint</code></a></td><td><a href="#jumppoint.create"><code>jumppoint.create</code></a></td><td>Add current position to jump list</td><td></td></tr>
-<tr><td rowspan=10><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
+<tr><td rowspan=11><a href="#misc"><code>misc</code></a></td><td><a href="#cancel"><code>cancel</code></a></td><td>Cancel Danceflow operation</td><td><code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'move' && !danceflow.isRecording && !markersNavigationVisible</code>)<code>Escape</code> (<code>editorTextFocus && danceflow.mode == 'input'</code>)</td></tr>
 <tr><td><a href="#changeInput"><code>changeInput</code></a></td><td>Change current input</td><td></td></tr>
 <tr><td><a href="#ifEmpty"><code>ifEmpty</code></a></td><td>Executes one of the specified commands depending on whether the current
 selections are empty</td><td></td></tr>
@@ -82,6 +82,7 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#updateCount"><code>updateCount</code></a></td><td>Update Danceflow count</td><td></td></tr>
 <tr><td><a href="#updateRegister"><code>updateRegister</code></a></td><td>Update the contents of a register</td><td></td></tr>
 <tr><td><a href="#withCompleteSelection"><code>withCompleteSelection</code></a></td><td>Execute a command with what is under the cursor selected too</td><td></td></tr>
+<tr><td><a href="#withCompleteSelectionSpawning"><code>withCompleteSelectionSpawning</code></a></td><td>Execute a command with what is under the cursor selected too</td><td></td></tr>
 <tr><td rowspan=12><a href="#modes"><code>modes</code></a></td><td><a href="./modes.ts#L26"><code>modes.modify.after</code></a></td><td>Modify after</td><td><code>A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./modes.ts#L25"><code>modes.modify.before</code></a></td><td>Modify before</td><td><code>I</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>I</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./modes.ts#L28"><code>modes.modify.lineEnd</code></a></td><td>Modify at line end</td><td><code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+A</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
@@ -693,7 +694,7 @@ commands:
 
 <a name="cancel" />
 
-### [`cancel`](./misc.ts#L20-L25)
+### [`cancel`](./misc.ts#L21-L26)
 
 Cancel Danceflow operation.
 
@@ -706,7 +707,7 @@ Default keybinding: `escape` (core: move, !recording, "!markersNavigationVisible
 
 <a name="ignore" />
 
-### [`ignore`](./misc.ts#L31-L34)
+### [`ignore`](./misc.ts#L32-L35)
 
 Ignore key.
 
@@ -715,7 +716,7 @@ This command:
 
 <a name="run" />
 
-### [`run`](./misc.ts#L40-L149)
+### [`run`](./misc.ts#L41-L150)
 
 Run code.
 
@@ -825,7 +826,7 @@ This command:
 
 <a name="selectRegister" />
 
-### [`selectRegister`](./misc.ts#L185-L199)
+### [`selectRegister`](./misc.ts#L186-L200)
 
 Select register for next command.
 
@@ -842,7 +843,7 @@ Default keybinding: `"` (core: move)
 
 <a name="updateRegister" />
 
-### [`updateRegister`](./misc.ts#L215-L226)
+### [`updateRegister`](./misc.ts#L216-L227)
 
 Update the contents of a register.
 
@@ -853,7 +854,7 @@ This command:
 
 <a name="updateCount" />
 
-### [`updateCount`](./misc.ts#L252-L281)
+### [`updateCount`](./misc.ts#L253-L282)
 
 Update Danceflow count.
 
@@ -882,7 +883,7 @@ This command:
 
 <a name="openMenu" />
 
-### [`openMenu`](./misc.ts#L309-L331)
+### [`openMenu`](./misc.ts#L310-L332)
 
 Open menu.
 
@@ -906,7 +907,7 @@ This command:
 
 <a name="changeInput" />
 
-### [`changeInput`](./misc.ts#L372-L386)
+### [`changeInput`](./misc.ts#L373-L387)
 
 Change current input.
 
@@ -923,7 +924,7 @@ This command:
 
 <a name="ifEmpty" />
 
-### [`ifEmpty`](./misc.ts#L396-L407)
+### [`ifEmpty`](./misc.ts#L397-L408)
 
 Executes one of the specified commands depending on whether the current
 selections are empty.
@@ -935,7 +936,13 @@ This command:
 
 <a name="withCompleteSelection" />
 
-### [`withCompleteSelection`](./misc.ts#L418-L425)
+### [`withCompleteSelection`](./misc.ts#L431-L438)
+
+Execute a command with what is under the cursor selected too.
+
+<a name="withCompleteSelectionSpawning" />
+
+### [`withCompleteSelectionSpawning`](./misc.ts#L452-L459)
 
 Execute a command with what is under the cursor selected too.
 
@@ -1548,7 +1555,7 @@ Filter selections.
 | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: move; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
 | Clear secondary selections | `clear.secondary`       | `,` (core: move; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
 | Clear main selections      | `clear.main`            | `a-,` (core: move; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
-| Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i !== count"            , ... }], [".selections.reduce"]` |
+| Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i === count"            , ... }], [".selections.reduce"]` |
 
 This command:
 - accepts an argument of type `{ expression?: string }`.

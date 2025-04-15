@@ -203,6 +203,7 @@ import {
   updateCount as updateCount,
   updateRegister as updateRegister,
   withCompleteSelection as withCompleteSelection,
+  withCompleteSelectionSpawning as withCompleteSelectionSpawning,
 } from "./misc";
 
 import {
@@ -720,6 +721,11 @@ export const commands: Commands = function () {
     "danceflow.withCompleteSelection": new CommandDescriptor(
       "danceflow.withCompleteSelection",
       (_, argument) => _.runAsync(async (_) => await withCompleteSelection(_, argument["command"])),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.withCompleteSelectionSpawning": new CommandDescriptor(
+      "danceflow.withCompleteSelectionSpawning",
+      (_, argument) => _.runAsync(async (_) => await withCompleteSelectionSpawning(_, argument["command"])),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
   };
@@ -1383,7 +1389,7 @@ export const commands: Commands = function () {
     commands,
     "danceflow.selections.collapse",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
-    [[".selections.filter", { expression: "i !== count" , $exclude: [] }], [".selections.reduce"]],
+    [[".selections.filter", { expression: "i === count" , $exclude: [] }], [".selections.reduce"]],
   );
   describeAdditionalCommand(
     commands,

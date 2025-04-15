@@ -262,6 +262,9 @@
 ✔ Fix weird change behavior (not going into change mode) @done(25-04-14 13:10)
 ✔ Fix ⎈d not working @done(25-04-15 16:42)
 ✔ Fix ; not completely collapsing to only one cursor but instead collapsing every selection to a cursor @done(25-04-15 16:55)
+✔ Intelliautocomplete is still tab it should be ⇧space @done(25-04-15 18:03)
+☐ Fix german not working on windows?
+✔ Fix that ; is still not really working @done(25-04-15 18:09)
 ☐ Fix VSCode not using character under cursor in forward selection
   This is a core problem with visual studio code selecting while the cursor is a block
   It uses normal carat selections but just shows a block, this means that the current
@@ -296,8 +299,17 @@
   deeper behavior. This behavior requires the implementation of a new danceflow command in order
   to wrap the vscode command. Another thing that is kinda annoying is how future instances
   are wrongly highlighted with forward selections due to our workaround.
-  ✔ Implement new danceflow command to wrap find, quickSearch and showAllSymbol in misc.ts @done(25-04-15 12:23)
-  ☐ Implement complex command to customly wrap `n` and `⇧n` command in select mode
+  ✔ Implement new command to wrap find, quickSearch and showAllSymbol in misc.ts @done(25-04-15 12:23)
+
+  For cursorspawinging actions if the selection is forward we need to do this
+    1. Extend right one to include the character under the cursor
+      Call the {extensionName}.select.right.extend command
+    2. Execute the command
+    3. Extend left one to restore how it normally works
+      Call the {extensionName}.select.left.extend command
+  Else
+    1. Execute the command
+  ☐ Implement new command to wrap `n` and `⇧n` command in misc.ts just like the one before
 
   We should find a way to handle this highlighting by ourselves in the future using
   custom decorations and deactivating the default highlighting.

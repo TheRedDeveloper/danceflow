@@ -144,7 +144,7 @@ const objectSelectors = {
 // Package information
 // ============================================================================
 
-const version = "0.5.15",
+const version = "0.1.0",
       preRelease = 1;
 
 export const pkg = (modules: Builder.ParsedModule[]) => ({
@@ -673,7 +673,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // Keybindings.
     // ========================================================================
 
-    keybindings: processKeybindings(germanKeybindings)
+    keybindings: processKeybindings(defaultKeybindings)
 
   },
 });

@@ -109,6 +109,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "explorer.newFile[filesExplorerFocus && !inputFocus]": [`a`],
     "explorer.newFolder[filesExplorerFocus && !inputFocus]": [`⇧a`],
     "renameFile[filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus]": [`r`],
+    "insertBestCompletion[atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on']": [`⇧space`],
     
     // Remove vscode default keybindings
     "-editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
@@ -128,6 +129,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "-explorer.openToSide[explorerViewletFocus && foldersViewVisible && !inputFocus]": [`⎈enter`],
     "-workbench.action.moveEditorToNextGroup": [`⎈⎇right`],
     "-workbench.action.moveEditorToPreviousGroup": [`⎈⎇left`],
+    "-editor.action.addSelectionToNextFindMatch[editorFocus]": [`⎈d`],
+    "-acceptSelectedSuggestion[suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus]": [`tab`],
+    "-insertBestCompletion[atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on']": [`tab`],
+    "-insertSnippet[editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode]": [`tab`],
   },
 
   editor: {
@@ -141,12 +146,16 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.action.inlineSuggest.jump[inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`⇧space`],
     "danceflow.ignore[!(inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor || inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible)]": [`⇧space`],
     
-    // Intellisense with ⎈⇧space/⎈i
+    // Intellisense complete with ⇧space
+    "acceptSelectedSuggestion[suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus]": [`⇧space`],
+    "insertSnippet[hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode]": [`⇧space`],
+
+    // Inline chat with ⎈⇧space/⎈i
     "inlineChat.start[inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput]": [`⎈⇧space`, `⎈i`],
     
     // Find/Replace
     'danceflow.withCompleteSelection{"command": "actions.find"}': [`⎈f`],
-    "editor.action.startFindReplaceAction": [`⎈⎇f`],
+    'danceflow.withCompleteSelection{"command": "editor.action.startFindReplaceAction"}': [`⎈⎇f`],
     
     // File
     "workbench.action.files.save": [`⎈s`],
@@ -285,8 +294,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.modes.set.move": [`v`],
     
     // Search
-    "editor.action.addSelectionToNextFindMatch": [`n`],
-    "editor.action.addSelectionToPreviousFindMatch": [`⇧n`],
+    'danceflow.withCompleteSelectionSpawning{"command": "editor.action.addSelectionToNextFindMatch"}': [`n`],
+    'danceflow.withCompleteSelectionSpawning{"command": "editor.action.addSelectionToPreviousFindMatch"}': [`⇧n`],
   },
   
   move: {

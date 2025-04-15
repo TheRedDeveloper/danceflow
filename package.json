@@ -1,7 +1,7 @@
 {
   "name": "danceflow",
   "description": "The ultimate Neovim alternative for VSCode. Custom modes, key bindings, and a clean interface—forked from Danceflow, inspired by Helix.",
-  "version": "0.5.15",
+  "version": "0.1.0",
   "license": "ISC",
   "author": {
     "name": "RedDev"
@@ -41,8 +41,8 @@
     "vscode:prepublish": "yarn run generate && yarn run compile && yarn run compile-web",
     "package": "vsce package --allow-star-activation",
     "publish": "vsce publish --allow-star-activation",
-    "package:pre": "vsce package --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15001",
-    "publish:pre": "vsce publish --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.5.15001"
+    "package:pre": "vsce package --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.1.0001",
+    "publish:pre": "vsce publish --allow-star-activation --pre-release --no-git-tag-version --no-update-package-json 0.1.0001"
   },
   "devDependencies": {
     "@types/glob": "^7.2.0",
@@ -1239,6 +1239,11 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.withCompleteSelectionSpawning",
+        "title": "Execute a command with what is under the cursor selected too",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.modes.modify.after",
         "title": "Modify after",
         "category": "Danceflow"
@@ -2265,6 +2270,10 @@
           "when": "danceflow.mode == 'move'"
         },
         {
+          "command": "danceflow.withCompleteSelectionSpawning",
+          "when": "danceflow.mode == 'move'"
+        },
+        {
           "command": "danceflow.modes.modify.after",
           "when": "danceflow.mode == 'move'"
         },
@@ -3158,6 +3167,11 @@
         "when": "filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
       },
       {
+        "key": "shift+space",
+        "command": "insertBestCompletion",
+        "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+      },
+      {
         "key": "tab",
         "command": "-editor.action.inlineSuggest.commit",
         "when": "inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible"
@@ -3232,6 +3246,26 @@
         "command": "-workbench.action.moveEditorToPreviousGroup"
       },
       {
+        "key": "ctrl+d",
+        "command": "-editor.action.addSelectionToNextFindMatch",
+        "when": "editorFocus"
+      },
+      {
+        "key": "tab",
+        "command": "-acceptSelectedSuggestion",
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
+      },
+      {
+        "key": "tab",
+        "command": "-insertBestCompletion",
+        "when": "atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on'"
+      },
+      {
+        "key": "tab",
+        "command": "-insertSnippet",
+        "when": "editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode"
+      },
+      {
         "key": "escape",
         "command": "danceflow.modes.set.move",
         "when": "editorTextFocus"
@@ -3257,6 +3291,16 @@
         "when": "(!(inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inInlineEditsPreviewEditor || inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible)) && editorTextFocus"
       },
       {
+        "key": "shift+space",
+        "command": "acceptSelectedSuggestion",
+        "when": "(suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus) && editorTextFocus"
+      },
+      {
+        "key": "shift+space",
+        "command": "insertSnippet",
+        "when": "(hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode) && editorTextFocus"
+      },
+      {
         "key": "ctrl+shift+space",
         "command": "inlineChat.start",
         "when": "(inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput) && editorTextFocus"
@@ -3276,7 +3320,10 @@
       },
       {
         "key": "ctrl+alt+f",
-        "command": "editor.action.startFindReplaceAction",
+        "command": "danceflow.withCompleteSelection",
+        "args": {
+          "command": "editor.action.startFindReplaceAction"
+        },
         "when": "editorTextFocus"
       },
       {
@@ -3954,7 +4001,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "[Minus]",
+        "key": "-",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4048,7 +4095,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "[Equal]",
+        "key": "=",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4061,7 +4108,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+[Equal]",
+        "key": "alt+=",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4074,7 +4121,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+[Equal]",
+        "key": "ctrl+=",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4087,7 +4134,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+shift+[Equal]",
+        "key": "ctrl+shift+=",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4152,7 +4199,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+[BracketRight]",
+        "key": "alt+shift+]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4165,7 +4212,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+[BracketLeft[BracketRight]",
+        "key": "alt+shift+[",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4474,7 +4521,10 @@
         "args": {
           "commands": [
             {
-              "command": "editor.action.addSelectionToNextFindMatch"
+              "command": "danceflow.withCompleteSelectionSpawning",
+              "args": {
+                "command": "editor.action.addSelectionToNextFindMatch"
+              }
             },
             "danceflow.modes.set.select"
           ]
@@ -4487,7 +4537,10 @@
         "args": {
           "commands": [
             {
-              "command": "editor.action.addSelectionToPreviousFindMatch"
+              "command": "danceflow.withCompleteSelectionSpawning",
+              "args": {
+                "command": "editor.action.addSelectionToPreviousFindMatch"
+              }
             },
             "danceflow.modes.set.select"
           ]
@@ -5332,7 +5385,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "[Semicolon]",
+        "key": ";",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5345,7 +5398,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "shift+[Semicolon]",
+        "key": "shift+;",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5358,7 +5411,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "shift+[Minus]",
+        "key": "shift+-",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5475,7 +5528,7 @@
         "when": "editorTextFocus && danceflow.move.active && !danceflow.selectedMove.active"
       },
       {
-        "key": "[Backslash]",
+        "key": "\\",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5488,7 +5541,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "[BracketLeft[BracketRight]",
+        "key": "[",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5501,7 +5554,7 @@
         "when": "editorTextFocus && danceflow.move.active"
       },
       {
-        "key": "[BracketRight]",
+        "key": "]",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -5884,72 +5937,72 @@
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[Minus]",
+        "key": "-",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
       },
       {
-        "key": "shift+[Minus]",
+        "key": "shift+-",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "[Equal]",
+        "key": "=",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
       },
       {
-        "key": "shift+[Equal]",
+        "key": "shift+=",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[BracketLeft[BracketRight]",
+        "key": "[",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+[BracketLeft[BracketRight]",
+        "key": "shift+[",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[BracketRight]",
+        "key": "]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+[BracketRight]",
+        "key": "shift+]",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[Backslash]",
+        "key": "\\",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+[Backslash]",
+        "key": "shift+\\",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "[Semicolon]",
+        "key": ";",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "shift+[Semicolon]",
+        "key": "shift+;",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active && !danceflow.move.active"
       },
       {
-        "key": "[Quote]",
+        "key": "'",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "shift+[Quote]",
+        "key": "shift+'",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
@@ -5974,12 +6027,12 @@
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "-",
+        "key": "/",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
-        "key": "shift+-",
+        "key": "shift+/",
         "command": "danceflow.ignore",
         "when": "editorTextFocus && danceflow.ignore.active"
       },

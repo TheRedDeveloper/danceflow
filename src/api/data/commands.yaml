@@ -2213,7 +2213,7 @@ selections.collapse:
     en: Collapse to single cursor
 
   commands: |-
-    [".selections.filter", { expression: "i !== count" , $exclude: [] }], [".selections.reduce"]
+    [".selections.filter", { expression: "i === count" , $exclude: [] }], [".selections.reduce"]
 
 selections.copy:
   title:
@@ -2298,7 +2298,7 @@ selections.filter:
       | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: move; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
       | Clear secondary selections | `clear.secondary`       | `,` (core: move; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
       | Clear main selections      | `clear.main`            | `a-,` (core: move; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
-      | Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i !== count"            , ... }], [".selections.reduce"]` |
+      | Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i === count"            , ... }], [".selections.reduce"]` |
 
 selections.filter.regexp:
   title:
@@ -2796,6 +2796,14 @@ view.zen:
       Zenmax the editor.
 
 withCompleteSelection:
+  title:
+    en: Execute a command with what is under the cursor selected too
+
+  doc:
+    en: |
+      Execute a command with what is under the cursor selected too.
+
+withCompleteSelectionSpawning:
   title:
     en: Execute a command with what is under the cursor selected too
 

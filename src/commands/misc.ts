@@ -4,6 +4,7 @@ import { run as apiRun, buildCommands, command, compileFunction, Context, findMe
 import type { Extension } from "../state/extension";
 import type { Register } from "../state/registers";
 import { ArgumentError, CancellationError, InputError } from "../utils/errors";
+import { extensionName } from "../utils/constants";
 
 /**
  * Miscellaneous commands that don't deserve their own category.
@@ -415,6 +416,18 @@ export async function ifEmpty(
   return otherwise !== undefined && await buildCommands(otherwise, _.extension)(argument, _);
 }
 
+function runCommand(command: command.Any) {
+  if (typeof command === "string") {
+    return vscode.commands.executeCommand(command);
+  } else if (Array.isArray(command)) {
+    return vscode.commands.executeCommand(command[0], ...(command.slice(1) ?? []));
+  } else if (typeof command === "object" && "command" in command) {
+    return vscode.commands.executeCommand(command.command, ...(command.args ?? []));
+  } else {
+    throw new ArgumentError("Invalid command type", "command");
+  }
+}
+
 /**
  * Execute a command with what is under the cursor selected too.
  */
@@ -423,27 +436,32 @@ export async function withCompleteSelection(
 
   command: Argument<command.Any>,
 ) {
-  function runCommand() {
-    if (typeof command === "string") {
-      return vscode.commands.executeCommand(command);
-    } else if (Array.isArray(command)) {
-      return vscode.commands.executeCommand(command[0], ...(command.slice(1) ?? []));
-    } else if (typeof command === "object" && "command" in command) {
-      return vscode.commands.executeCommand(command.command, ...(command.args ?? []));
-    } else {
-      throw new ArgumentError("Invalid command type", "command");
-    }
-  }
-
   if (_.mode.selectionBehavior === SelectionBehavior.Character) {
     const oldSelections = [...Selections.current()];
     Selections.updateByIndex((_, selection) =>
       selection.isReversed || selection.isEmpty || Selections.isNonDirectional(selection)
         ? selection
         : new vscode.Selection(selection.end, selection.start));
-    await runCommand();
+    await runCommand(command);
     Selections.set(oldSelections);
   } else {
-    await runCommand();
+    await runCommand(command);
+  }
+}
+
+/**
+ * Execute a command with what is under the cursor selected too.
+ */
+export async function withCompleteSelectionSpawning(
+  _: Context,
+
+  command: Argument<command.Any>,
+) {
+  if (_.mode.selectionBehavior === SelectionBehavior.Character) {
+    await vscode.commands.executeCommand(extensionName + ".select.right.extend");
+    await runCommand(command);
+    await vscode.commands.executeCommand(extensionName + ".select.left.extend");
+  } else {
+    await runCommand(command);
   }
 }
