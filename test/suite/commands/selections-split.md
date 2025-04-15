@@ -17,11 +17,11 @@ third line
 
 ```
 first line
-^^^^^^^^^^^ 0
+^^^^^^^^^^ 0
 second line
-^^^^^^^^^^^^ 1
+^^^^^^^^^^^ 1
 third line
-^^^^^^^^^^^ 2
+^^^^^^^^^^ 2
 
 ```
 
@@ -44,9 +44,9 @@ third line
 
 ```
 first line
-^^^^^^^^^^^ 0
+^^^^^^^^^^ 0
 second line
-^^^^^ 1 ^^^^ 2
+^^^^^ 1 ^^^ 2
 third line
 ^^^^^ 3
 
