@@ -226,7 +226,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.3.1",
     "ts-node": "^10.8.1",
-    "typescript": "^4.8.4",
+    "typescript": "^5.7.3",
     "unexpected": "^13.0.0",
     "vsce": "^2.7.0",
     "web-tree-sitter": "^0.20.8",
@@ -477,7 +477,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                       description: "Text shown in the menu.",
                     },
                     command: {
-                      type: "string",
+                      $ref: "vscode://schemas/keybindings#/definitions/commandNames",
                       description: "Command to execute on item selection.",
                     },
                     args: {
