@@ -62,20 +62,20 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     // Tool panels
     "workbench.view.scm": [`⎈1`, `⎈⇧g`],
-    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.scm']": [`⎈1`, `⎈⇧g`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.scm' && sideBarFocus]": [`⎈1`, `⎈⇧g`],
     "workbench.view.explorer": [`⎈2`, `⎈⇧e`],
-    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.explorer']": [`⎈2`, `⎈⇧e`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.explorer' && sideBarFocus]": [`⎈2`, `⎈⇧e`],
     "workbench.panel.chat": [`⎈3`, `⎈⇧c`],
     "workbench.view.search": [`⎈4`, `⎈⇧s`],
-    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.search']": [`⎈4`, `⎈⇧s`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.search' && sideBarFocus]": [`⎈4`, `⎈⇧s`],
     "timeline.focus": [`⎈5`, `⎈⇧t`],
-    "workbench.action.toggleSidebarVisibility[view.outline.visible && activeViewlet != 'workbench.view.explorer']": [`⎈5`, `⎈⇧t`], // TODO FIX TIMELINE AND OUTLINE NOT TOGGELING
+    "workbench.action.toggleSidebarVisibility[view.timeline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus]": [`⎈5`, `⎈⇧t`],
     "outline.focus": [`⎈6`, `⎈⇧l`],
-    "workbench.action.toggleSidebarVisibility[view.timeline.visible && activeViewlet != 'workbench.view.explorer']": [`⎈6`, `⎈⇧l`],
+    "workbench.action.toggleSidebarVisibility[view.outline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus]": [`⎈6`, `⎈⇧l`],
     "workbench.view.debug": [`⎈7`, `⎈⇧b`],
-    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug']": [`⎈7`, `⎈⇧b`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug' && sideBarFocus]": [`⎈7`, `⎈⇧b`],
     "workbench.view.extensions": [`⎈8`, `⎈⇧x`],
-    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions']": [`⎈8`, `⎈⇧x`],
+    "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions' && sideBarFocus]": [`⎈8`, `⎈⇧x`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -322,7 +322,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     "danceflow.seek.word.extend": [`⎇w`],
     "danceflow.seek.wordEnd.extend": [`⎇e`],
-    "danceflow.seek.word.backward.extend": [`⎇b`],
+    "danceflow.seek.word.extend.backward": [`⎇b`],
     "danceflow.seek.word.ws.extend": [`⎇⇧w`],
     "danceflow.seek.wordEnd.ws.extend": [`⎇⇧e`],
     "danceflow.seek.word.ws.extend.backward": [`⎇⇧b`],

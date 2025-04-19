@@ -2932,12 +2932,12 @@
       {
         "key": "ctrl+1",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.scm'"
+        "when": "activeViewlet == 'workbench.view.scm' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+g",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.scm'"
+        "when": "activeViewlet == 'workbench.view.scm' && sideBarFocus"
       },
       {
         "key": "ctrl+2",
@@ -2950,12 +2950,12 @@
       {
         "key": "ctrl+2",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.explorer'"
+        "when": "activeViewlet == 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+e",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.explorer'"
+        "when": "activeViewlet == 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+3",
@@ -2976,12 +2976,12 @@
       {
         "key": "ctrl+4",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.search'"
+        "when": "activeViewlet == 'workbench.view.search' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+s",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.search'"
+        "when": "activeViewlet == 'workbench.view.search' && sideBarFocus"
       },
       {
         "key": "ctrl+5",
@@ -2994,12 +2994,12 @@
       {
         "key": "ctrl+5",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+t",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+6",
@@ -3012,12 +3012,12 @@
       {
         "key": "ctrl+6",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+l",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "view.timeline.visible && activeViewlet != 'workbench.view.explorer'"
+        "when": "view.outline.visible && activeViewlet != 'workbench.view.explorer' && sideBarFocus"
       },
       {
         "key": "ctrl+7",
@@ -3030,12 +3030,12 @@
       {
         "key": "ctrl+7",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.debug'"
+        "when": "activeViewlet == 'workbench.view.debug' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+b",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.debug'"
+        "when": "activeViewlet == 'workbench.view.debug' && sideBarFocus"
       },
       {
         "key": "ctrl+8",
@@ -3048,12 +3048,12 @@
       {
         "key": "ctrl+8",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.extensions'"
+        "when": "activeViewlet == 'workbench.view.extensions' && sideBarFocus"
       },
       {
         "key": "ctrl+shift+x",
         "command": "workbench.action.toggleSidebarVisibility",
-        "when": "activeViewlet == 'workbench.view.extensions'"
+        "when": "activeViewlet == 'workbench.view.extensions' && sideBarFocus"
       },
       {
         "key": "ctrl+p",
@@ -3675,7 +3675,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "shift+d",
+        "key": "alt+d",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3688,7 +3688,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+del",
+        "key": "alt+del",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3701,7 +3701,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "ctrl+backspace",
+        "key": "alt+backspace",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3714,7 +3714,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+d",
+        "key": "shift+d",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3727,7 +3727,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+del",
+        "key": "shift+del",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -3740,7 +3740,7 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+backspace",
+        "key": "shift+backspace",
         "command": "runCommands",
         "args": {
           "commands": [
@@ -4891,7 +4891,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.seek.word.backward.extend"
+              "command": "danceflow.seek.word.extend.backward"
             },
             "danceflow.modes.set.move"
           ]

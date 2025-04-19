@@ -246,6 +246,7 @@
     ✔ `r`/`F2` is rename @done(25-04-10 10:36)
   ✔ Remove state sidepanel @done(25-04-10 18:35)
   ✔ You should be able to move in Code Lens and Code Actions with them too @done(25-04-10 18:35)
+  ✔ Fix that the sidepanel only disappears when focused @done(25-04-19 17:29)
 ✔ splitlines exclude Eol true @done(25-04-10 19:06)
 ☐ Update object select `m￼`
   ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
@@ -262,6 +263,7 @@
 ✔ Update the d key layout @done(25-04-19 17:01)
 ☐ Fix ü key not working
 ☐ Fix jumppoint create
+✔ Fix that ⎇b is broken @done(25-04-19 17:07)
 ☐ Test on US keyboard layout
 ✔ Fix that ; is still not really working @done(25-04-15 18:09)
 ☐ Fix VSCode not using character under cursor in forward selection
