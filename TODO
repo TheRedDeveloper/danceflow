@@ -259,6 +259,7 @@
 ✔ Fix ; not completely collapsing to only one cursor but instead collapsing every selection to a cursor @done(25-04-15 16:55)
 ✔ Intelliautocomplete is still tab it should be ⇧space @done(25-04-15 18:03)
 ☐ Fix german not working on windows?
+✔ Update the d key layout @done(25-04-19 17:01)
 ☐ Fix ü key not working
 ☐ Fix jumppoint create
 ☐ Test on US keyboard layout

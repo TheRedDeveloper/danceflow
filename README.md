@@ -190,15 +190,15 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `d`/`⎈x` Cut, `del`/`backspace` Delete
 
-`⇧d` Cut word, `⎈del`/`⎈backspace` Delete word
+`⎇d` Cut word, `⎇del`/`⎇backspace` Delete word
 
-`⎇d` Cut line, `⎇del`/`⎇backspace` Delete line
+`⇧d` Cut line, `⇧del`/`⇧backspace` Delete line
 
 #### Paste
 
 `p`/`⎈v` Paste before, `⇧p`/`⎈⇧v` after
 
-`⎇p` Dublicate line to below, `⎇⇧p` above
+`⎇p` Duplicate line to below, `⎇⇧p` above
 
 #### Undo/Redo
 

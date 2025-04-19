@@ -202,10 +202,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Delete operations
     "danceflow.edit.yank-delete": [`d`, `⎈x`],
     "danceflow.edit.delete": [`del`, `backspace`],
-    "danceflow.edit.yank-delete.word": [`⇧d`],
-    "danceflow.edit.delete.word": [`⎈del`, `⎈backspace`],
-    "danceflow.edit.yank-delete.line": [`⎇d`],
-    "danceflow.edit.delete.line": [`⎇del`, `⎇backspace`],
+    "danceflow.edit.yank-delete.word": [`⎇d`],
+    "danceflow.edit.delete.word": [`⎇del`, `⎇backspace`],
+    "danceflow.edit.yank-delete.line": [`⇧d`],
+    "danceflow.edit.delete.line": [`⇧del`, `⇧backspace`],
     
     // Paste operations
     "danceflow.edit.paste.before.select": [`p`, `⎈v`],
