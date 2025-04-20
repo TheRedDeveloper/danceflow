@@ -189,10 +189,6 @@ import {
 } from "./inspect";
 
 import {
-  create as jumppoint_create,
-} from "./jumppoint";
-
-import {
   cancel as cancel,
   changeInput as changeInput,
   ifEmpty as ifEmpty,
@@ -436,11 +432,6 @@ export const commands: Commands = function () {
     "danceflow.inspect.renameToClipboard": new CommandDescriptor(
       "danceflow.inspect.renameToClipboard",
       (_) => _.runAsync(async (_) => await inspect_renameToClipboard(_)),
-      CommandDescriptor.Flags.RequiresActiveEditor,
-    ),
-    "danceflow.jumppoint.create": new CommandDescriptor(
-      "danceflow.jumppoint.create",
-      (_) => _.runAsync(async (_) => await jumppoint_create(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "danceflow.modes.set": new CommandDescriptor(

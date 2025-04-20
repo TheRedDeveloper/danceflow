@@ -180,8 +180,6 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Jumppoints
 
-`\` Create Jumppoint
-
 `[` To last Jumppoint, `]` next Jumppoint
 
 ### Coding

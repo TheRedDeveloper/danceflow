@@ -637,14 +637,6 @@ inspect.renameToClipboard:
     en: |
       Renames the inspected symbol to the content of the clipboard.
 
-jumppoint.create:
-  title:
-    en: Add current position to jump list
-
-  doc:
-    en: |
-      Add current position to jump list.
-
 modes.modify.after:
   title:
     en: Modify after

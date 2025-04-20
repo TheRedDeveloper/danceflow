@@ -53,6 +53,9 @@ export const groupModeExceptions = new Set([
   "danceflow.modes.set.modify",
   "danceflow.edit.yank-delete-modify",
   "danceflow.edit.delete-modify",
+  "workbench.action.navigateForward",
+  "workbench.action.navigateBack",
+  "danceflow.ignore"
 ])
 
 export const defaultKeybindings: UnresolvedKeybindingGroups = {
@@ -110,6 +113,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "explorer.newFolder[filesExplorerFocus && !inputFocus]": [`⇧a`],
     "renameFile[filesExplorerFocus && foldersViewVisible && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus]": [`r`],
     "insertBestCompletion[atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on']": [`⇧space`],
+
+    // Jumppoints
+    "workbench.action.navigateBack[!editorTextFocus]": [`[`],
+    "workbench.action.navigateForward[!editorTextFocus]": [`]`],
     
     // Remove vscode default keybindings
     "-editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
@@ -379,9 +386,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.action.previousMatchFindAction": [`⇧n`],
     
     // Jumppoints
-    "danceflow.jumppoint.create": [`\\`],
-    "workbench.action.navigateBack": [`[`],
-    "workbench.action.navigateForward": [`]`],
+    "workbench.action.navigateBack[canNavigateBack]": [`[`],
+    "workbench.action.navigateForward[canNavigateForward]": [`]`],
+    "danceflow.ignore[!canNavigateBack]": [`[`],
+    "danceflow.ignore[!canNavigateForward]": [`]`],
   },
   ignore: {
     "danceflow.ignore": charTypingKeys,

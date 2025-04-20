@@ -261,8 +261,8 @@
 ✔ Intelliautocomplete is still tab it should be ⇧space @done(25-04-15 18:03)
 ☐ Fix german not working on windows?
 ✔ Update the d key layout @done(25-04-19 17:01)
-☐ Fix ü key not working
-☐ Fix jumppoint create
+✔ Fix ü key not working @done(25-04-20 04:52)
+✔ Remove jumppoint create @done(25-04-20 05:10)
 ✔ Fix that ⎇b is broken @done(25-04-19 17:07)
 ☐ Test on US keyboard layout
 ✔ Fix that ; is still not really working @done(25-04-15 18:09)
@@ -321,6 +321,8 @@
   I'm not sure this is even possible with our workaround.
   Just checked. It's probably possible.
   ☐ Fix mouse overselecting when word selecting forward
+
+  Actually maybe I should just fuck this shit and just do it right like the Vim Ext, perchance.
   
 ✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:

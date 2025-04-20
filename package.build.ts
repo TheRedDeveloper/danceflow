@@ -673,7 +673,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     // Keybindings.
     // ========================================================================
 
-    keybindings: processKeybindings(defaultKeybindings)
+    keybindings: processKeybindings(germanKeybindings)
 
   },
 });
