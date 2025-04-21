@@ -216,6 +216,7 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vscode/test-electron": "^2.1.3",
+    "@vscode/vsce": "^3.3.2",
     "chokidar": "^3.5.3",
     "dependency-cruiser": "^11.7.0",
     "esbuild": "^0.18.4",
@@ -228,7 +229,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
     "ts-node": "^10.8.1",
     "typescript": "^5.7.3",
     "unexpected": "^13.0.0",
-    "vsce": "^2.7.0",
     "web-tree-sitter": "^0.20.8",
     "yaml": "^2.1.1",
   },
@@ -662,13 +662,6 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
       category: "Danceflow",
       enablement: x.enablement,
     }))),
-
-    menus: {
-      commandPalette: modules.flatMap((module) => module.commands.map((x) => ({
-        command: x.id,
-        when: x.when,
-      }))),
-    },
 
     // Keybindings.
     // ========================================================================
