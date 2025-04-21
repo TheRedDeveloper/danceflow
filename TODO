@@ -247,6 +247,8 @@
   ✔ Remove state sidepanel @done(25-04-10 18:35)
   ✔ You should be able to move in Code Lens and Code Actions with them too @done(25-04-10 18:35)
   ✔ Fix that the sidepanel only disappears when focused @done(25-04-19 17:29)
+  ✔ When over a new line character the cursor should extend infinitely to the right. @done(25-04-22 00:47)
+  ☐ Make this optional
 ✔ splitlines exclude Eol true @done(25-04-10 19:06)
 ☐ Update object select `m￼`
   ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
@@ -310,7 +312,7 @@
       Call the {extensionName}.select.left.extend command
   Else
     1. Execute the command
-  ☐ Implement new command to wrap `n` and `⇧n` command in misc.ts just like the one before
+  ✔ Implement new command to wrap `n` and `⇧n` command in misc.ts just like the one before @done(25-04-20 11:07)
 
   We should find a way to handle this highlighting by ourselves in the future using
   custom decorations and deactivating the default highlighting.
@@ -330,7 +332,8 @@
   ☐ if a url/file is under the main cursor then follow it (This is actually really hard)
   ✔ it should hover the selected symbol @done(25-04-10 21:37)
   ☐ multiple cursors → main cursor inspector is shown, rename on all heads
-    ✔ Currently rename only on main cursor, would need arbitrary renaming to work first @done(25-04-10 21:50)
+    ✔ Currently rename only on main cursor
+    ☐ Requires arbitrary renaming to work
   ✔ `f` Go to definition @done(25-04-10 21:25)
   ✔ `t` Go to type definition @done(25-04-10 21:25)
   ✔ `z` Go to implementations @done(25-04-10 21:25)
@@ -353,5 +356,4 @@
   ☐ `⇧/` to evaluate all selections in a JavaScript Expression, showing result below in the prompt
   ☐ `⎈/` to create a JavaScript file with a run function somewhere which selections are piped through until the file is closed
   ☐ `⇧⎈/` create a javascript file with the selections as a constant *sels*
-☐ When over a new line character the cursor should extend infinitely to the right.
 ☐ There should be a tutorial

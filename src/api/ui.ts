@@ -1,4 +1,3 @@
-import { clear } from "console";
 import * as vscode from "vscode";
 
 export function isZen(): boolean {
