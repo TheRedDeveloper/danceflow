@@ -2,7 +2,7 @@ import * as vscode from "vscode";
 
 import type { Extension } from "./extension";
 import type { Mode } from "./modes";
-import { command, commands, Context, Positions, SelectionBehavior, Selections } from "../api";
+import { command, commands, Context, edit, Positions, SelectionBehavior, Selections } from "../api";
 import { extensionName } from "../utils/constants";
 import { assert } from "../utils/errors";
 import { keybindingGroupNames } from "../api/keybinds/default";
@@ -16,6 +16,7 @@ export class PerEditorState implements vscode.Disposable {
   private _isVisible = true;
   private _mode!: Mode;
   private _modeChangeSubscription!: vscode.Disposable;
+  private _documentChangeSubscription!: vscode.Disposable;
 
   /**
    * The corresponding visible `vscode.TextEditor`.
@@ -69,11 +70,19 @@ export class PerEditorState implements vscode.Disposable {
       this._storage.push(undefined);
     }
 
+    // Listen for document changes
+    this._documentChangeSubscription = vscode.workspace.onDidChangeTextDocument(e => {
+      if (e.document === this._editor.document) {
+        this._updateDecorations(this._mode);
+      }
+    });
+
     this.setMode(mode);
   }
 
   public dispose() {
     this._clearDecorations(this._mode);
+    this._documentChangeSubscription.dispose();
 
     const options = this._editor.options,
           mode = this._mode,
@@ -352,7 +361,7 @@ export class PerEditorState implements vscode.Disposable {
     }
 
     editor.setDecorations(this.extension.editors.characterDecorationType, empty);
-    editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationType, empty);
+    editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationBlockType, empty);
 
     if (mode.hiddenSelectionsIndicatorsDecorationType !== undefined) {
       editor.setDecorations(mode.hiddenSelectionsIndicatorsDecorationType, empty);
@@ -400,19 +409,17 @@ export class PerEditorState implements vscode.Disposable {
       const document = this._editor.document,
             ranges = [] as vscode.Range[];
 
-      for (let i = 0; i < allSelections.length; i++) {
-        const selection = allSelections[i];
-
+      for (const selection of allSelections) {
         if (!selection.isEmpty) {
           const end = Positions.next(selection.active, document);
 
           if (end !== undefined) {
-            const active = selection.active,
-                  start = active.character === 0 || active === selection.start
-                    ? active
-                    : new vscode.Position(active.line, active.character - 1);
+        const active = selection.active,
+          start = active.character === 0 || active === selection.start
+            ? active
+            : new vscode.Position(active.line, active.character - 1);
 
-            ranges.push(new vscode.Range(start, end));
+        ranges.push(new vscode.Range(start, end));
           }
         }
       }
@@ -422,8 +429,8 @@ export class PerEditorState implements vscode.Disposable {
       editor.setDecorations(this.extension.editors.characterDecorationType, []);
     }
 
-    // Handle infinite EOL cursor for block cursor style
-    if (mode.cursorStyle === vscode.TextEditorCursorStyle.Block) {
+    // Handle infinite EOL cursor
+    if (mode.eolHighlight !== "off") {
       const document = this._editor.document;
       const eolRanges: vscode.Range[] = [];
       
@@ -438,12 +445,28 @@ export class PerEditorState implements vscode.Disposable {
           eolRanges.push(new vscode.Range(cursorPos, cursorPos));
         }
       }
-      
-      // Apply the EOL cursor extension decoration
-      editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationType, eolRanges);
+
+      if (mode.eolHighlight === "indefinite") {
+        if (mode.cursorStyle === vscode.TextEditorCursorStyle.Block) {
+          editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationBlockType, eolRanges);
+          editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationUnderlineType, []);
+          editor.setDecorations(this.extension.editors.eolCursorDecorationSymbolType, []);
+        } else if (mode.cursorStyle === vscode.TextEditorCursorStyle.Underline) {
+          editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationBlockType, []);
+          editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationUnderlineType, eolRanges);
+          editor.setDecorations(this.extension.editors.eolCursorDecorationSymbolType, []);
+        } else {
+          vscode.window.showErrorMessage("EOL cursor extension is only supported for block and underline cursors.");
+        }
+      } else if (mode.eolHighlight === "symbol") {
+        editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationBlockType, []);
+        editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationUnderlineType, []);
+        editor.setDecorations(this.extension.editors.eolCursorDecorationSymbolType, eolRanges);
+      }
     } else {
-      // Clear EOL decorations when not using block cursor
-      editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationType, []);
+      editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationBlockType, []);
+      editor.setDecorations(this.extension.editors.eolCursorExtensionDecorationUnderlineType, []);
+      editor.setDecorations(this.extension.editors.eolCursorDecorationSymbolType, []);
     }
 
     editor.options.cursorStyle = mode.cursorStyle;
@@ -488,17 +511,42 @@ export class Editors implements vscode.Disposable {
   });
 
   /**
-   * Decoration type for extending cursor at EOL infinitely to the right
+   * Decoration type for extending block cursor at EOL infinitely to the right
    */
-  public readonly eolCursorExtensionDecorationType = vscode.window.createTextEditorDecorationType({
+  public readonly eolCursorExtensionDecorationBlockType = vscode.window.createTextEditorDecorationType({
     backgroundColor: new vscode.ThemeColor("editorCursor.background"),
     isWholeLine: false,
     after: {
-      contentText: '\u2001'.repeat(200), // Use special wide space characters to fill viewport
-      margin: '0',
+      contentText: '\u2001'.repeat(200),  // Use EM QUAD space
       backgroundColor: new vscode.ThemeColor("editorCursor.foreground"),
       border: "solid 1px",
       borderColor: new vscode.ThemeColor("editorCursor.foreground"),
+    }
+  });
+
+  /**
+   * Decoration type for extending underline cursor at EOL infinitely to the right
+   */
+  public readonly eolCursorExtensionDecorationUnderlineType = vscode.window.createTextEditorDecorationType({
+    backgroundColor: new vscode.ThemeColor("editorCursor.background"),
+    isWholeLine: false,
+    after: {
+      contentText: '\u2001'.repeat(200),
+      color: new vscode.ThemeColor("editorCursor.foreground"),
+      textDecoration: "underline"
+    }
+  });
+  
+  /**
+   * Decoration type for extending block cursor at EOL infinitely to the right
+   */
+  public readonly eolCursorDecorationSymbolType = vscode.window.createTextEditorDecorationType({
+    backgroundColor: new vscode.ThemeColor("editorCursor.background"),
+    isWholeLine: false,
+    after: {
+      contentText: '\u21B2',  // Use RETURN SYMBOL
+      color: new vscode.ThemeColor("editorCursor.foreground"),
+      fontWeight: "bold",
     }
   });
 
@@ -547,7 +595,7 @@ export class Editors implements vscode.Disposable {
     this._subscriptions.splice(0).forEach((d) => d.dispose());
     this._lastRemovedEditorStates.splice(0).forEach((s) => s.dispose());
     this.characterDecorationType.dispose();
-    this.eolCursorExtensionDecorationType.dispose();
+    this.eolCursorExtensionDecorationBlockType.dispose();
   }
 
   /**

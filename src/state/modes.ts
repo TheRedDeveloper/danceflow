@@ -26,6 +26,7 @@ export class Mode {
   private _onLeaveMode: readonly command.Any[] = [];
   private _decorations: readonly Mode.Decoration[] = [];
   private _activeGroups: readonly KeybindingGroupName[] = ['global'];
+  private _eolHighlight: Mode.Configuration.eolHighlightOption = "off";
 
   public get onChanged() {
     return this._onChanged.event;
@@ -77,6 +78,10 @@ export class Mode {
 
   public get activeGroups() {
     return this._activeGroups;
+  }
+
+  public get eolHighlight() {
+    return this._eolHighlight;
   }
 
   /**
@@ -305,6 +310,20 @@ export class Mode {
       changedProperties.push('activeGroups');
     }
 
+    // EOL highlight
+    const eolHighlight = map("eolHighlight", "eolHighlight", (value, validator) => {
+      if (typeof value === 'string' && ["off", "indefinite", "symbol"].includes(value)) {
+        return value;
+      }
+      validator.reportInvalidSetting(`invalid eolHighlight option "${value}"`, "eolHighlight");
+      return "off";
+    });
+
+    if (this._eolHighlight !== eolHighlight) {
+      this._eolHighlight = eolHighlight;
+      changedProperties.push("eolHighlight");
+    }
+
     // Events (subscribers don't care about changes to these properties, so we
     // don't add them to the `changedProperties`).
     this._onEnterMode = raw.onEnterMode ?? [];
@@ -524,6 +543,7 @@ export declare namespace Mode {
     onLeaveMode?: readonly command.Any[];
     selectionBehavior?: Configuration.SelectionBehavior | null;
     activeGroups?: KeybindingGroupName[] | null;
+    eolHighlight?: Configuration.eolHighlightOption| null;
   }
 
   /**
@@ -572,6 +592,8 @@ export declare namespace Mode {
       readonly fontStyle?: string;
       readonly isWholeLine?: boolean;
     }
+
+    export type eolHighlightOption = "off" | "indefinite" | "symbol";
   }
 }
 
@@ -586,6 +608,7 @@ export class Modes implements Iterable<Mode> {
     lineNumbers: "on",
     selectionBehavior: "caret",
     decorations: [],
+    eolHighlight: "off",
   };
   private readonly _vscodeMode = new Mode(this, "", undefined!);
 
@@ -771,6 +794,15 @@ export class Modes implements Iterable<Mode> {
       "editor.lineNumbers",
       (value, validator) => {
         this._vscodeModeDefaults.lineNumbers = value;
+        this._vscodeMode.apply({ ...this._vscodeModeDefaults }, validator);
+      },
+      true,
+    );
+
+    extension.observePreference<Mode.Configuration.eolHighlightOption>(
+      "editor.eolHighlight",
+      (value, validator) => {
+        this._vscodeModeDefaults.eolHighlight = value;
         this._vscodeMode.apply({ ...this._vscodeModeDefaults }, validator);
       },
       true,

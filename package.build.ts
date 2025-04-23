@@ -388,6 +388,13 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                     "Keys that should be ignored when not typing",
                   ]
                 }
+              },
+              eolHighlight: {
+                enum: ["off", "indefinite", "symbol"],
+                default: "off",
+                description: "Controls whether the cursor at the end of the line should be indefinite.",
+                markdownDescription:
+                  "Controls whether the cursor at the end of the line should be indefinite. "
               }
             },
             additionalProperties: false,
@@ -416,6 +423,8 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
               cursorStyle: "underline",
               selectionBehavior: "character",
               activeGroups: ["interact", "change",  "selectedMove", "move", "ignore"],
+              eolHighlight: "symbol",
+              lineNumbers: "relative",
             },
             move: {
               cursorStyle: "block",
@@ -442,7 +451,9 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                   ],
                 }],
               ],
-              activeGroups: ["interact", "change", "move", "ignore"]
+              activeGroups: ["interact", "change", "move", "ignore"],
+              eolHighlight: "symbol",
+              lineNumbers: "relative",
             },
             inspect: {
               hiddenSelectionsIndicatorsDecoration: {},
@@ -451,7 +462,9 @@ export const pkg = (modules: Builder.ParsedModule[]) => ({
                 ["editor.action.showHover"],
               ],
               selectionBehavior: "character",
-              activeGroups: ["inspect", "interact", "change", "move", "ignore"]
+              activeGroups: ["inspect", "interact", "change", "move", "ignore"],
+              eolHighlight: "symbol",
+              lineNumbers: "relative",
             }
           },
           description: "Controls the different modes available in Danceflow.",

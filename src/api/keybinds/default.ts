@@ -79,6 +79,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.debug' && sideBarFocus]": [`⎈7`, `⎈⇧b`],
     "workbench.view.extensions": [`⎈8`, `⎈⇧x`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions' && sideBarFocus]": [`⎈8`, `⎈⇧x`],
+    "workbench.action.toggleSidebarVisibility": [`⎈b`],
+    "workbench.action.togglePanel": [`⎈n`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -98,9 +100,11 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     // Files
     "workbench.action.files.openFile": [`⎈o`],
+    "workbench.action.files.openFolderViaWorkspace": [`⎈⇧o`],
     "workbench.action.openRecent": [`⎈r`],
     "workbench.action.gotoLine": [`⎈g`],
-    "workbench.action.files.newUntitledFile": [`⎈⇧o`],
+    "workbench.action.files.newUntitledFile": [`⎈⎇o`],
+    "workbench.action.files.saveFiles": [`⎈⇧s`],
     
     // Menus
     "list.focusDown[listFocus && !inputFocus]": [`j`],
@@ -140,6 +144,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "-acceptSelectedSuggestion[suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus]": [`tab`],
     "-insertBestCompletion[atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on']": [`tab`],
     "-insertSnippet[editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode]": [`tab`],
+    "-workbench.action.files.newUntitledFile": [`⎈n`],
+    "-workbench.action.newWindow": [`⎈⇧n`],
+    "-workbench.action.togglePanel": [`⎈j`],
   },
 
   editor: {
@@ -384,6 +391,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Search
     "editor.action.nextMatchFindAction": [`n`],
     "editor.action.previousMatchFindAction": [`⇧n`],
+
+    'danceflow.withCompleteSelectionSpawning{"command": "editor.action.addSelectionToNextFindMatch"}': [`⎇n`],
+    'danceflow.withCompleteSelectionSpawning{"command": "editor.action.addSelectionToPreviousFindMatch"}': [`⎇⇧n`],
     
     // Jumppoints
     "workbench.action.navigateBack[canNavigateBack]": [`[`],

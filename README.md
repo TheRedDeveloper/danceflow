@@ -53,6 +53,10 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⎈8`/`⎈⇧x` Toggle extensions
 
+`⎈b` Toggle sidebar
+
+`⎈n` Toggle panel
+
 #### Windows
 
 `⎈p` Pop this tab out into a new window
@@ -77,7 +81,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⎈s` Save file
 
-`⎈o` Open a file/folder
+`⎈o` Open a file, `⎈⇧o` folder
 
 `⎈r` Switch to recent project
 
@@ -85,8 +89,9 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⎈h` Switch between header and source file
 
-`⎈⇧o` Open a new temporary file
+`⎈⎇o` Open a new temporary file
 
+`⎈⇧s` Save all files
 
 ### Movement
 
@@ -158,7 +163,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `⇧;` Switch cursor side
 
-`⎈n` Select next ocurrence of selection, `⎈⇧n` previous ocurrence
+`⎇n` Select next ocurrence of selection, `⎇⇧n` previous ocurrence
 
 `m￼` Select object
 

@@ -248,7 +248,8 @@
   ✔ You should be able to move in Code Lens and Code Actions with them too @done(25-04-10 18:35)
   ✔ Fix that the sidepanel only disappears when focused @done(25-04-19 17:29)
   ✔ When over a new line character the cursor should extend infinitely to the right. @done(25-04-22 00:47)
-  ☐ Make this optional
+    ✔ Make this optional @done(25-04-23 18:17)
+    ✔ Actually make it an enum with the option of just using a symbol to indicate this @done(25-04-23 20:17)
 ✔ splitlines exclude Eol true @done(25-04-10 19:06)
 ☐ Update object select `m￼`
   ✔ Arround is the default, inside needs another keypress @done(25-04-10 20:18)
@@ -261,7 +262,9 @@
 ✔ Fix ⎈d not working @done(25-04-15 16:42)
 ✔ Fix ; not completely collapsing to only one cursor but instead collapsing every selection to a cursor @done(25-04-15 16:55)
 ✔ Intelliautocomplete is still tab it should be ⇧space @done(25-04-15 18:03)
-☐ Fix german not working on windows?
+✔ Fix ü key not working on windows? -> Giving weird oem_1 output @done(25-04-23 19:28)
+  ☐ Test this
+✔ Add functionality to missing ⎇n key @done(25-04-23 18:49)
 ✔ Update the d key layout @done(25-04-19 17:01)
 ✔ Fix ü key not working @done(25-04-20 04:52)
 ✔ Remove jumppoint create @done(25-04-20 05:10)
@@ -325,6 +328,8 @@
   ☐ Fix mouse overselecting when word selecting forward
 
   Actually maybe I should just fuck this shit and just do it right like the Vim Ext, perchance.
+  
+  I should actually be doing this properly if I have time to figure this out.
   
 ✔ Make select mode work with VSCode find @done(25-04-10 20:04)
 ☐ Add Inspect mode:
