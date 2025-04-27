@@ -175,13 +175,13 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `s` Select all regex matches in selection or leap ahead if nothing selected
 
-`⎇s` Split selection for lines or leap back if nothing selected
+`⇧s` Split selection for lines or leap back if nothing selected
 
 `⇧k` Keep selections matching regex
 
 `⇧m` Merge selections 
 
-`⇧s` Split by delimiter regex
+`⎇s` Split by delimiter regex
 
 #### Jumppoints
 
