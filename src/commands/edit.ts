@@ -596,3 +596,140 @@ export function addSpace_after(
     }
   });
 }
+
+/**
+ * Remove empty lines from selections.
+ *
+ * Removes all empty or whitespace-only lines that are within each selection.
+ * 
+ * @author Copilot
+ */
+export function removeEmptyLines(
+  _: Context,
+) {
+  return _.run(async () => {
+    // Store original selections
+    const originalSelections = _.selections;
+    const document = _.document;
+    
+    // We'll track which lines will be deleted and adjust selections accordingly
+    const deletedLines = new Set<number>();
+    const newSelections: vscode.Selection[] = [];
+    
+    // First pass: identify all empty lines to delete
+    await _.edit((builder, selections, document) => {
+      // Process each selection independently
+      for (const selection of selections) {
+        const startLine = selection.start.line;
+        let endLine = selection.end.line;
+        
+        // Skip if selection is on a single line
+        if (startLine === endLine) continue;
+        
+        // If the selection ends at column 0 of a line, don't include that line
+        // as it's not actually part of the visual selection
+        if (selection.end.character === 0 && endLine > startLine) {
+          endLine--;
+        }
+        
+        // Collect all ranges to delete
+        const rangesToDelete: vscode.Range[] = [];
+        
+        // Find all empty lines in the selection
+        for (let lineNum = startLine; lineNum <= endLine; lineNum++) {
+          // Check if we're still within the document bounds
+          if (lineNum >= document.lineCount) break;
+          
+          const line = document.lineAt(lineNum);
+          const lineText = line.text;
+          
+          // Check if the line is empty or contains only whitespace
+          if (lineText.trim().length === 0) {
+            // Record this line as empty
+            deletedLines.add(lineNum);
+            
+            // Get the full range of the line, including the line ending
+            rangesToDelete.push(line.rangeIncludingLineBreak);
+          }
+        }
+        
+        // Delete ranges in reverse order (from bottom to top)
+        // to avoid position shifts affecting other deletions
+        for (let i = rangesToDelete.length - 1; i >= 0; i--) {
+          builder.delete(rangesToDelete[i]);
+        }
+      }
+    });
+    
+    // Now calculate adjusted selections
+    for (const selection of originalSelections) {
+      let anchorLine = selection.anchor.line;
+      let anchorChar = selection.anchor.character;
+      let activeLine = selection.active.line;
+      let activeChar = selection.active.character;
+      
+      // Handle start point on an empty line
+      if (deletedLines.has(anchorLine)) {
+        // Find the next non-empty line
+        let nextLine = anchorLine + 1;
+        while (nextLine < document.lineCount && deletedLines.has(nextLine)) {
+          nextLine++;
+        }
+        
+        if (nextLine < document.lineCount) {
+          // Move to the beginning of the next non-empty line
+          anchorLine = nextLine;
+          anchorChar = 0;
+        } else {
+          // If no next line, move to the end of the previous available line
+          let prevLine = anchorLine - 1;
+          while (prevLine >= 0 && deletedLines.has(prevLine)) {
+            prevLine--;
+          }
+          anchorLine = prevLine >= 0 ? prevLine : 0;
+          anchorChar = prevLine >= 0 ? document.lineAt(prevLine).text.length : 0;
+        }
+      }
+      
+      // Handle end point on an empty line
+      if (deletedLines.has(activeLine)) {
+        // Find the next non-empty line
+        let nextLine = activeLine + 1;
+        while (nextLine < document.lineCount && deletedLines.has(nextLine)) {
+          nextLine++;
+        }
+        
+        if (nextLine < document.lineCount) {
+          // Move to the beginning of the next non-empty line
+          activeLine = nextLine;
+          activeChar = 0;
+        } else {
+          // If no next line, move to the end of the previous available line
+          let prevLine = activeLine - 1;
+          while (prevLine >= 0 && deletedLines.has(prevLine)) {
+            prevLine--;
+          }
+          activeLine = prevLine >= 0 ? prevLine : 0;
+          activeChar = prevLine >= 0 ? document.lineAt(prevLine).text.length : 0;
+        }
+      }
+      
+      // Adjust for lines deleted before this position
+      let anchorLineOffset = 0;
+      let activeLineOffset = 0;
+      
+      for (const deletedLine of deletedLines) {
+        if (deletedLine < anchorLine) anchorLineOffset++;
+        if (deletedLine < activeLine) activeLineOffset++;
+      }
+      
+      const newAnchor = new vscode.Position(anchorLine - anchorLineOffset, anchorChar);
+      const newActive = new vscode.Position(activeLine - activeLineOffset, activeChar);
+      
+      newSelections.push(new vscode.Selection(newAnchor, newActive));
+    }
+    
+    // Set the adjusted selections
+    _.selections = newSelections;
+  });
+}

@@ -171,6 +171,7 @@ import {
   join_select as edit_join_select,
   newLine_above as edit_newLine_above,
   newLine_below as edit_newLine_below,
+  removeEmptyLines as edit_removeEmptyLines,
   replaceCharacters as edit_replaceCharacters,
 } from "./edit";
 
@@ -379,6 +380,11 @@ export const commands: Commands = function () {
     "danceflow.edit.newLine.below": new CommandDescriptor(
       "danceflow.edit.newLine.below",
       (_, argument) => _.runAsync(async (_) => await edit_newLine_below(_, getRepetitions(_, argument), getShift(argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.edit.removeEmptyLines": new CommandDescriptor(
+      "danceflow.edit.removeEmptyLines",
+      (_) => _.runAsync(async (_) => await edit_removeEmptyLines(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "danceflow.edit.replaceCharacters": new CommandDescriptor(

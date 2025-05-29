@@ -243,7 +243,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "tab": [`tab`],
     "outdent": [`⇧tab`],
     "editor.action.joinLines": [`⇧j`],
-    "editor.edit.removeEmptyLines": [`-`],
+    "danceflow.edit.removeEmptyLines": [`-`],
     
     // Spacing operations
     "danceflow.edit.addSpace.before": [`⎇space`],
@@ -405,7 +405,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 // TODO danceflow.inspect.renameToClipboard
 // TODO danceflow.inspect.copySymbol
 // TODO danceflow.inspect.copyInfo
-// TODO editor.edit.removeEmptyLines
 // TODO danceflow.history.recording.toggle
 // TODO danceflow.history.recording.load
 // TODO danceflow.history.recording.save

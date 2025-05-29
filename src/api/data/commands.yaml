@@ -428,6 +428,16 @@ edit.pasteAll.before.select:
     qwerty: |-
       `s-a-p` (kakoune: move)
 
+edit.removeEmptyLines:
+  title:
+    en: Remove empty lines from selections
+
+  doc:
+    en: |+
+      Remove empty lines from selections.
+
+      Removes all empty or whitespace-only lines that are within each selection.
+
 edit.replace:
   title:
     en: Replace

@@ -1120,6 +1120,11 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.edit.removeEmptyLines",
+        "title": "Remove empty lines from selections",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.edit.replace",
         "title": "Replace",
         "category": "Danceflow"
@@ -3119,7 +3124,7 @@
         "args": {
           "commands": [
             {
-              "command": "editor.edit.removeEmptyLines"
+              "command": "danceflow.edit.removeEmptyLines"
             },
             "danceflow.modes.set.move"
           ]
@@ -3132,7 +3137,7 @@
         "args": {
           "commands": [
             {
-              "command": "editor.edit.removeEmptyLines"
+              "command": "danceflow.edit.removeEmptyLines"
             },
             "danceflow.modes.set.move"
           ]

@@ -11,7 +11,7 @@
 <tbody>
 <tr><td rowspan=2><a href="#dev"><code>dev</code></a></td><td><a href="#dev.copyLastErrorMessage"><code>dev.copyLastErrorMessage</code></a></td><td>Copies the last encountered error message</td><td></td></tr>
 <tr><td><a href="#dev.setSelectionBehavior"><code>dev.setSelectionBehavior</code></a></td><td>Set the selection behavior of the specified mode</td><td></td></tr>
-<tr><td rowspan=34><a href="#edit"><code>edit</code></a></td><td><a href="#edit.addSpace.after"><code>edit.addSpace.after</code></a></td><td>Add a space after each selection</td><td></td></tr>
+<tr><td rowspan=35><a href="#edit"><code>edit</code></a></td><td><a href="#edit.addSpace.after"><code>edit.addSpace.after</code></a></td><td>Add a space after each selection</td><td></td></tr>
 <tr><td><a href="#edit.addSpace.before"><code>edit.addSpace.before</code></a></td><td>Add a space before each selection</td><td></td></tr>
 <tr><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.swap"><code>edit.case.swap</code></a></td><td>Swap case</td><td><code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -44,6 +44,7 @@
 <tr><td><a href="#edit.join.select"><code>edit.join.select</code></a></td><td>Join lines and select inserted separators</td><td><code>Shift+Alt+J</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+J</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#edit.newLine.above"><code>edit.newLine.above</code></a></td><td>Insert new line above each selection</td><td><code>Shift+Alt+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.newLine.below"><code>edit.newLine.below</code></a></td><td>Insert new line below each selection</td><td><code>Alt+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="#edit.removeEmptyLines"><code>edit.removeEmptyLines</code></a></td><td>Remove empty lines from selections</td><td></td></tr>
 <tr><td><a href="#edit.replaceCharacters"><code>edit.replaceCharacters</code></a></td><td>Replace characters</td><td><code>R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td rowspan=11><a href="#history"><code>history</code></a></td><td><a href="../history.ts#L59"><code>history.repeat.seek</code></a></td><td>Repeat last seek</td><td><code>Alt+.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+.</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="../history.ts#L58"><code>history.repeat.selection</code></a></td><td>Repeat last selection change</td><td></td></tr>
@@ -544,6 +545,14 @@ Add a space after each selection.
 
 This command:
 - may be repeated with a given number of repetitions.
+
+<a name="edit.removeEmptyLines" />
+
+### [`edit.removeEmptyLines`](../edit.ts#L600-L609)
+
+Remove empty lines from selections.
+
+Removes all empty or whitespace-only lines that are within each selection.
 
 ## [`history`](../history.ts)
 
