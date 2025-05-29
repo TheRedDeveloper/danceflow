@@ -33,16 +33,29 @@ function transformKeySequence(key: string, mapping: Record<string, string>): str
 
 /**
  * Creates alternative key bindings for Windows keyboard layouts
- * by replacing [BracketLeft] with oem_1 where needed.
+ * by replacing bracket notation with oem_* codes where needed.
  * @param transformedKeys Array of transformed key combinations
  * @returns Array including both original and alternative bindings
  */
 function createAlternativeBindings(transformedKeys: string[]): string[] {
   const result = [...transformedKeys];
   
+  const replacements = {
+    '[BracketLeft]': 'oem_1',
+    '[BracketRight]': 'oem_plus',
+    '[Semicolon]': 'oem_3',
+    '[Quote]': 'oem_7',
+    '[Backslash]': 'oem_2',
+    '[Minus]': 'oem_4',
+    '[Equal]': 'oem_6',
+    '-': 'oem_minus'
+  };
+  
   for (const key of transformedKeys) {
-    if (key.includes('[BracketLeft]')) {
-      result.push(key.replace(/\[BracketLeft\]/g, 'oem_1'));
+    for (const [original, replacement] of Object.entries(replacements)) {
+      if (key.includes(original)) {
+        result.push(key.replace(new RegExp(original.replace(/[[\]]/g, '\\$&'), 'g'), replacement));
+      }
     }
   }
   

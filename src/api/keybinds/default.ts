@@ -68,7 +68,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.scm' && sideBarFocus]": [`⎈1`, `⎈⇧g`],
     "workbench.view.explorer": [`⎈2`, `⎈⇧e`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.explorer' && sideBarFocus]": [`⎈2`, `⎈⇧e`],
-    "workbench.panel.chat": [`⎈3`, `⎈⇧c`],
+    "workbench.panel.chat[!terminalFocus]": [`⎈⇧c`],
+    "workbench.panel.chat": [`⎈3`],
     "workbench.view.search": [`⎈4`, `⎈⇧s`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.search' && sideBarFocus]": [`⎈4`, `⎈⇧s`],
     "timeline.focus": [`⎈5`, `⎈⇧t`],
@@ -80,7 +81,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.view.extensions": [`⎈8`, `⎈⇧x`],
     "workbench.action.toggleSidebarVisibility[activeViewlet == 'workbench.view.extensions' && sideBarFocus]": [`⎈8`, `⎈⇧x`],
     "workbench.action.toggleSidebarVisibility": [`⎈b`],
-    "workbench.action.togglePanel": [`⎈n`],
+    "workbench.action.togglePanel": [`⎈o`],
     
     // Windows
     "workbench.action.moveEditorToNewWindow": [`⎈p`],
@@ -99,11 +100,9 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.closeActiveEditor": [`⎈w`],
     
     // Files
-    "workbench.action.files.openFile": [`⎈o`],
-    "workbench.action.files.openFolderViaWorkspace": [`⎈⇧o`],
     "workbench.action.openRecent": [`⎈r`],
     "workbench.action.gotoLine": [`⎈g`],
-    "workbench.action.files.newUntitledFile": [`⎈⎇o`],
+    "workbench.action.files.newUntitledFile": [`⎈n`],
     "workbench.action.files.saveFiles": [`⎈⇧s`],
     
     // Menus
@@ -123,6 +122,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "workbench.action.navigateForward[!editorTextFocus]": [`]`],
     
     // Remove vscode default keybindings
+    "-workbench.action.navigateBack[!editorTextFocus]": [`⇧,`],
     "-editor.action.inlineSuggest.commit[inlineEditIsVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionHasIndentationLessThanTabSize && inlineSuggestionVisible && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible || inlineEditIsVisible && inlineSuggestionVisible && tabShouldAcceptInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
     "-editor.action.inlineSuggest.commit[inInlineEditsPreviewEditor]": [`tab`],
     "-editor.action.inlineSuggest.jump[inlineEditIsVisible && tabShouldJumpToInlineEdit && !editorHoverFocused && !editorTabMovesFocus && !suggestWidgetVisible]": [`tab`],
@@ -144,7 +144,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "-acceptSelectedSuggestion[suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus]": [`tab`],
     "-insertBestCompletion[atEndOfWord && textInputFocus && !hasOtherSuggestions && !inSnippetMode && !suggestWidgetVisible && config.editor.tabCompletion == 'on']": [`tab`],
     "-insertSnippet[editorTextFocus && hasSnippetCompletions && !editorTabMovesFocus && !inSnippetMode]": [`tab`],
-    "-workbench.action.files.newUntitledFile": [`⎈n`],
     "-workbench.action.newWindow": [`⎈⇧n`],
     "-workbench.action.togglePanel": [`⎈j`],
   },
@@ -275,8 +274,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Other
     "danceflow.selections.rotate.contents": [`⎇⇧]`],
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
-    // "danceflow.number.increment": [`⎈k`, `⎈up`],
-    // "danceflow.number.decrement": [`⎈j`, `⎈down`], // TODO FIND NEW KEYBINDS
+    "danceflow.number.increment": [`⎇⇧k`, `⎇⇧up`],
+    "danceflow.number.decrement": [`⎇⇧j`, `⎇⇧down`],
   },
   
   selectedMove: {
@@ -289,7 +288,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Word navigation
     "danceflow.seek.word.extend": [`w`],
     "danceflow.seek.wordEnd.extend": [`e`],
-    "danceflow.seek.word.backward.extend": [`b`],
+    "danceflow.seek.word.extend.backward": [`b`],
     "danceflow.seek.word.ws.extend": [`⇧w`],
     "danceflow.seek.wordEnd.ws.extend": [`⇧e`],
     "danceflow.seek.word.ws.extend.backward": [`⇧b`],
@@ -397,6 +396,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     
     // Jumppoints
     "workbench.action.navigateBack[canNavigateBack]": [`[`],
+    "-workbench.action.navigateBack[canNavigateBack]": [`⇧,`],
     "workbench.action.navigateForward[canNavigateForward]": [`]`],
     "danceflow.ignore[!canNavigateBack]": [`[`],
     "danceflow.ignore[!canNavigateForward]": [`]`],
@@ -418,5 +418,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 // TODO danceflow.openMenu{"menu": "enclose"}
 // TODO danceflow.selections.trim
 // TODO danceflow.edit.removeEmptyLines
+// TODO danceflow.add.space.before
+// TODO danceflow.add.space.after
+// TODO danceflow.add.line.below
+// TODO danceflow.add.line.above
+
 
 export default defaultKeybindings;
