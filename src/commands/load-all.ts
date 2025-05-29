@@ -155,6 +155,8 @@ import {
 } from "./dev";
 
 import {
+  addSpace_after as edit_addSpace_after,
+  addSpace_before as edit_addSpace_before,
   align as edit_align,
   case_swap as edit_case_swap,
   case_toLower as edit_case_toLower,
@@ -297,6 +299,16 @@ export const commands: Commands = function () {
     "danceflow.dev.setSelectionBehavior": new CommandDescriptor(
       "danceflow.dev.setSelectionBehavior",
       (_, argument) => _.runAsync(async (_) => await dev_setSelectionBehavior(_, _.extension, argument["mode"], argument["value"])),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.edit.addSpace.after": new CommandDescriptor(
+      "danceflow.edit.addSpace.after",
+      (_, argument) => _.runAsync(async (_) => await edit_addSpace_after(_, getRepetitions(_, argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.edit.addSpace.before": new CommandDescriptor(
+      "danceflow.edit.addSpace.before",
+      (_, argument) => _.runAsync(async (_) => await edit_addSpace_before(_, getRepetitions(_, argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "danceflow.edit.align": new CommandDescriptor(

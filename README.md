@@ -193,10 +193,6 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 `d`/`⎈x` Cut, `del`/`backspace` Delete
 
-`⎇d` Cut word, `⎇del`/`⎇backspace` Delete word
-
-`⇧d` Cut line, `⇧del`/`⇧backspace` Delete line
-
 #### Paste
 
 `p`/`⎈v` Paste before, `⇧p`/`⎈⇧v` after
@@ -241,7 +237,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Spacing
 
-`enter` Add space before selection, `⇧enter` after selection
+`enter` Add line below selection, `⇧enter` above selection
 
 `⎇space` Add space before selection, `⎇⇧space` after selection
 

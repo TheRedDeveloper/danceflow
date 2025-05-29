@@ -568,3 +568,31 @@ async function insertLinesNativelyAndCopySelections(
 
   _.selections = selections;
 }
+
+/**
+ * Add a space before each selection.
+ */
+export function addSpace_before(
+  _: Context,
+  repetitions: number,
+) {
+  return edit((builder, selections) => {
+    for (const selection of selections) {
+      builder.insert(selection.start, " ".repeat(repetitions));
+    }
+  });
+}
+
+/**
+ * Add a space after each selection.
+ */
+export function addSpace_after(
+  _: Context,
+  repetitions: number,
+) {
+  return edit((builder, selections) => {
+    for (const selection of selections) {
+      builder.insert(selection.end, " ".repeat(repetitions));
+    }
+  });
+}

@@ -11,7 +11,9 @@
 <tbody>
 <tr><td rowspan=2><a href="#dev"><code>dev</code></a></td><td><a href="#dev.copyLastErrorMessage"><code>dev.copyLastErrorMessage</code></a></td><td>Copies the last encountered error message</td><td></td></tr>
 <tr><td><a href="#dev.setSelectionBehavior"><code>dev.setSelectionBehavior</code></a></td><td>Set the selection behavior of the specified mode</td><td></td></tr>
-<tr><td rowspan=32><a href="#edit"><code>edit</code></a></td><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td rowspan=34><a href="#edit"><code>edit</code></a></td><td><a href="#edit.addSpace.after"><code>edit.addSpace.after</code></a></td><td>Add a space after each selection</td><td></td></tr>
+<tr><td><a href="#edit.addSpace.before"><code>edit.addSpace.before</code></a></td><td>Add a space before each selection</td><td></td></tr>
+<tr><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.swap"><code>edit.case.swap</code></a></td><td>Swap case</td><td><code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.toLower"><code>edit.case.toLower</code></a></td><td>Transform to lower case</td><td><code>`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.toUpper"><code>edit.case.toUpper</code></a></td><td>Transform to upper case</td><td><code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -524,6 +526,24 @@ This command:
 - takes an argument `shift` of type `Shift`.
 
 Default keybinding: `a-o` (kakoune: move)
+
+<a name="edit.addSpace.before" />
+
+### [`edit.addSpace.before`](../edit.ts#L572-L578)
+
+Add a space before each selection.
+
+This command:
+- may be repeated with a given number of repetitions.
+
+<a name="edit.addSpace.after" />
+
+### [`edit.addSpace.after`](../edit.ts#L586-L592)
+
+Add a space after each selection.
+
+This command:
+- may be repeated with a given number of repetitions.
 
 ## [`history`](../history.ts)
 

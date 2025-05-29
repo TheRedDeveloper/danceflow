@@ -980,6 +980,16 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.edit.addSpace.after",
+        "title": "Add a space after each selection",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.edit.addSpace.before",
+        "title": "Add a space before each selection",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.edit.align",
         "title": "Align selections",
         "category": "Danceflow"
@@ -2856,84 +2866,6 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+d",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.yank-delete.word"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "alt+del",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.delete.word"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "alt+backspace",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.delete.word"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "shift+d",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.yank-delete.line"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "shift+del",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.delete.line"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
-        "key": "shift+backspace",
-        "command": "runCommands",
-        "args": {
-          "commands": [
-            {
-              "command": "danceflow.edit.delete.line"
-            },
-            "danceflow.modes.set.move"
-          ]
-        },
-        "when": "editorTextFocus && danceflow.change.active"
-      },
-      {
         "key": "p",
         "command": "runCommands",
         "args": {
@@ -3213,7 +3145,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.add.space.before"
+              "command": "danceflow.edit.addSpace.before"
             },
             "danceflow.modes.set.move"
           ]
@@ -3226,7 +3158,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.add.space.after"
+              "command": "danceflow.edit.addSpace.after"
             },
             "danceflow.modes.set.move"
           ]
@@ -3239,7 +3171,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.add.line.below"
+              "command": "danceflow.edit.newLine.below"
             },
             "danceflow.modes.set.move"
           ]
@@ -3252,7 +3184,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.add.line.above"
+              "command": "danceflow.edit.newLine.above"
             },
             "danceflow.modes.set.move"
           ]
@@ -5013,7 +4945,7 @@
       {
         "key": "shift+d",
         "command": "danceflow.ignore",
-        "when": "editorTextFocus && danceflow.ignore.active && !danceflow.change.active"
+        "when": "editorTextFocus && danceflow.ignore.active"
       },
       {
         "key": "e",

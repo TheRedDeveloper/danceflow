@@ -42,6 +42,22 @@ dev.setSelectionBehavior:
     en: |
       Set the selection behavior of the specified mode.
 
+edit.addSpace.after:
+  title:
+    en: Add a space after each selection
+
+  doc:
+    en: |
+      Add a space after each selection.
+
+edit.addSpace.before:
+  title:
+    en: Add a space before each selection
+
+  doc:
+    en: |
+      Add a space before each selection.
+
 edit.align:
   title:
     en: Align selections

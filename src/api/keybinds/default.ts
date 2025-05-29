@@ -215,10 +215,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Delete operations
     "danceflow.edit.yank-delete": [`d`, `⎈x`],
     "danceflow.edit.delete": [`del`, `backspace`],
-    "danceflow.edit.yank-delete.word": [`⎇d`],
-    "danceflow.edit.delete.word": [`⎇del`, `⎇backspace`],
-    "danceflow.edit.yank-delete.line": [`⇧d`],
-    "danceflow.edit.delete.line": [`⇧del`, `⇧backspace`],
     
     // Paste operations
     "danceflow.edit.paste.before.select": [`p`, `⎈v`],
@@ -250,10 +246,10 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "editor.edit.removeEmptyLines": [`-`],
     
     // Spacing operations
-    "danceflow.add.space.before": [`⎇space`],
-    "danceflow.add.space.after": [`⎇⇧space`],
-    "danceflow.add.line.below": [`enter`],
-    "danceflow.add.line.above": [`⇧enter`],
+    "danceflow.edit.addSpace.before": [`⎇space`],
+    "danceflow.edit.addSpace.after": [`⎇⇧space`],
+    "danceflow.edit.newLine.below": [`enter`],
+    "danceflow.edit.newLine.above": [`⇧enter`],
     
     // Formatting operations
     "editor.action.commentLine": [`⇧c`],
@@ -406,22 +402,20 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
   }
 }
 
-// TODO danceflow.number.increment
-// TODO danceflow.number.decrement
+// TODO danceflow.inspect.renameToClipboard
+// TODO danceflow.inspect.copySymbol
+// TODO danceflow.inspect.copyInfo
+// TODO editor.edit.removeEmptyLines
 // TODO danceflow.history.recording.toggle
 // TODO danceflow.history.recording.load
 // TODO danceflow.history.recording.save
-// TODO danceflow.edit.yank-delete.word
-// TODO danceflow.edit.delete.word
-// TODO danceflow.edit.yank-delete.line
-// TODO danceflow.edit.delete.line
-// TODO danceflow.openMenu{"menu": "enclose"}
 // TODO danceflow.selections.trim
-// TODO danceflow.edit.removeEmptyLines
-// TODO danceflow.add.space.before
-// TODO danceflow.add.space.after
-// TODO danceflow.add.line.below
-// TODO danceflow.add.line.above
+// TODO danceflow.number.increment
+// TODO danceflow.number.decrement
+// TODO danceflow.get.word (=eby)
+// TODO danceflow.get.word.ws (=⇧eby)
+// TODO danceflow.openMenu{"menu": "enclose"}
+
 
 
 export default defaultKeybindings;
