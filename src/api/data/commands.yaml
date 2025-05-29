@@ -356,6 +356,30 @@ edit.newLine.below.modify:
     qwerty: |-
       `o` (core: move; helix: select)
 
+edit.number.decrement:
+  title:
+    en: Decrement numbers within selections
+
+  doc:
+    en: |
+      Decrement numbers within selections.
+
+      This function first selects all numbers within the current selections,
+      then decrements those numbers by the specified amount.
+      If a repetitions count is provided, it will decrement by that amount.
+
+edit.number.increment:
+  title:
+    en: Increment numbers within selections
+
+  doc:
+    en: |
+      Increment numbers within selections.
+
+      This function first selects all numbers within the current selections,
+      then increments those numbers by the specified amount.
+      If a repetitions count is provided, it will increment by that amount.
+
 edit.paste.after:
   title:
     en: Paste after
@@ -460,6 +484,18 @@ edit.replaceCharacters:
       | Keybindings         | Commands                                             |
       | -----------         | --------                                             |
       | `r` (helix: select) | `[".edit.replaceCharacters"], [".modes.set.move"]` |
+
+edit.selectNumbers:
+  title:
+    en: Select all numbers within current selections
+
+  doc:
+    en: |
+      Select all numbers within current selections.
+
+      This is a helper function that finds whole numbers within each selection
+      and creates new selections that focus on just those numbers. It handles
+      negative numbers properly and avoids selecting decimal parts of numbers.
 
 edit.selectRegister-insert:
   title:

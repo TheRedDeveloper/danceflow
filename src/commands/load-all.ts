@@ -171,8 +171,11 @@ import {
   join_select as edit_join_select,
   newLine_above as edit_newLine_above,
   newLine_below as edit_newLine_below,
+  number_decrement as edit_number_decrement,
+  number_increment as edit_number_increment,
   removeEmptyLines as edit_removeEmptyLines,
   replaceCharacters as edit_replaceCharacters,
+  selectNumbers as edit_selectNumbers,
 } from "./edit";
 
 import {
@@ -382,6 +385,16 @@ export const commands: Commands = function () {
       (_, argument) => _.runAsync(async (_) => await edit_newLine_below(_, getRepetitions(_, argument), getShift(argument))),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
+    "danceflow.edit.number.decrement": new CommandDescriptor(
+      "danceflow.edit.number.decrement",
+      (_, argument) => _.runAsync(async (_) => await edit_number_decrement(_, getRepetitions(_, argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.edit.number.increment": new CommandDescriptor(
+      "danceflow.edit.number.increment",
+      (_, argument) => _.runAsync(async (_) => await edit_number_increment(_, getRepetitions(_, argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
     "danceflow.edit.removeEmptyLines": new CommandDescriptor(
       "danceflow.edit.removeEmptyLines",
       (_) => _.runAsync(async (_) => await edit_removeEmptyLines(_)),
@@ -390,6 +403,11 @@ export const commands: Commands = function () {
     "danceflow.edit.replaceCharacters": new CommandDescriptor(
       "danceflow.edit.replaceCharacters",
       (_, argument) => _.runAsync(async (_) => await edit_replaceCharacters(_, getRepetitions(_, argument), getInputOr("input", argument))),
+      CommandDescriptor.Flags.RequiresActiveEditor,
+    ),
+    "danceflow.edit.selectNumbers": new CommandDescriptor(
+      "danceflow.edit.selectNumbers",
+      (_) => _.runAsync(async (_) => await edit_selectNumbers(_)),
       CommandDescriptor.Flags.RequiresActiveEditor,
     ),
     "danceflow.history.recording.play": new CommandDescriptor(

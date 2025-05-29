@@ -1080,6 +1080,16 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.edit.number.decrement",
+        "title": "Decrement numbers within selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.edit.number.increment",
+        "title": "Increment numbers within selections",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.edit.paste.after",
         "title": "Paste after",
         "category": "Danceflow"
@@ -1132,6 +1142,11 @@
       {
         "command": "danceflow.edit.replaceCharacters",
         "title": "Replace characters",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.edit.selectNumbers",
+        "title": "Select all numbers within current selections",
         "category": "Danceflow"
       },
       {
@@ -3434,12 +3449,12 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+k",
+        "key": "ctrl+alt+k",
         "command": "runCommands",
         "args": {
           "commands": [
             {
-              "command": "danceflow.number.increment"
+              "command": "danceflow.edit.number.increment"
             },
             "danceflow.modes.set.move"
           ]
@@ -3452,7 +3467,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.number.increment"
+              "command": "danceflow.edit.number.increment"
             },
             "danceflow.modes.set.move"
           ]
@@ -3460,12 +3475,12 @@
         "when": "editorTextFocus && danceflow.change.active"
       },
       {
-        "key": "alt+shift+j",
+        "key": "ctrl+alt+j",
         "command": "runCommands",
         "args": {
           "commands": [
             {
-              "command": "danceflow.number.decrement"
+              "command": "danceflow.edit.number.decrement"
             },
             "danceflow.modes.set.move"
           ]
@@ -3478,7 +3493,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.number.decrement"
+              "command": "danceflow.edit.number.decrement"
             },
             "danceflow.modes.set.move"
           ]

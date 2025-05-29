@@ -26,7 +26,7 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tbody>
 <tr><td rowspan=2><a href="#dev"><code>dev</code></a></td><td><a href="#dev.copyLastErrorMessage"><code>dev.copyLastErrorMessage</code></a></td><td>Copies the last encountered error message</td><td></td></tr>
 <tr><td><a href="#dev.setSelectionBehavior"><code>dev.setSelectionBehavior</code></a></td><td>Set the selection behavior of the specified mode</td><td></td></tr>
-<tr><td rowspan=35><a href="#edit"><code>edit</code></a></td><td><a href="#edit.addSpace.after"><code>edit.addSpace.after</code></a></td><td>Add a space after each selection</td><td></td></tr>
+<tr><td rowspan=38><a href="#edit"><code>edit</code></a></td><td><a href="#edit.addSpace.after"><code>edit.addSpace.after</code></a></td><td>Add a space after each selection</td><td></td></tr>
 <tr><td><a href="#edit.addSpace.before"><code>edit.addSpace.before</code></a></td><td>Add a space before each selection</td><td></td></tr>
 <tr><td><a href="#edit.align"><code>edit.align</code></a></td><td>Align selections</td><td><code>Shift+7</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.case.swap"><code>edit.case.swap</code></a></td><td>Swap case</td><td><code>Alt+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+`</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -59,8 +59,11 @@ depending on the keyboard layout. The following layouts _will be_\* supported:
 <tr><td><a href="#edit.join.select"><code>edit.join.select</code></a></td><td>Join lines and select inserted separators</td><td><code>Shift+Alt+J</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+J</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#edit.newLine.above"><code>edit.newLine.above</code></a></td><td>Insert new line above each selection</td><td><code>Shift+Alt+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#edit.newLine.below"><code>edit.newLine.below</code></a></td><td>Insert new line below each selection</td><td><code>Alt+O</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="#edit.number.decrement"><code>edit.number.decrement</code></a></td><td>Decrement numbers within selections</td><td></td></tr>
+<tr><td><a href="#edit.number.increment"><code>edit.number.increment</code></a></td><td>Increment numbers within selections</td><td></td></tr>
 <tr><td><a href="#edit.removeEmptyLines"><code>edit.removeEmptyLines</code></a></td><td>Remove empty lines from selections</td><td></td></tr>
 <tr><td><a href="#edit.replaceCharacters"><code>edit.replaceCharacters</code></a></td><td>Replace characters</td><td><code>R</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="#edit.selectNumbers"><code>edit.selectNumbers</code></a></td><td>Select all numbers within current selections</td><td></td></tr>
 <tr><td rowspan=11><a href="#history"><code>history</code></a></td><td><a href="./history.ts#L59"><code>history.repeat.seek</code></a></td><td>Repeat last seek</td><td><code>Alt+.</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+.</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./history.ts#L58"><code>history.repeat.selection</code></a></td><td>Repeat last selection change</td><td></td></tr>
 <tr><td><a href="#history.recording.play"><code>history.recording.play</code></a></td><td>Replay recording</td><td><code>Q</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -568,6 +571,42 @@ This command:
 Remove empty lines from selections.
 
 Removes all empty or whitespace-only lines that are within each selection.
+
+<a name="edit.selectNumbers" />
+
+### [`edit.selectNumbers`](./edit.ts#L737-L744)
+
+Select all numbers within current selections.
+
+This is a helper function that finds whole numbers within each selection
+and creates new selections that focus on just those numbers. It handles
+negative numbers properly and avoids selecting decimal parts of numbers.
+
+<a name="edit.number.increment" />
+
+### [`edit.number.increment`](./edit.ts#L778-L788)
+
+Increment numbers within selections.
+
+This function first selects all numbers within the current selections,
+then increments those numbers by the specified amount.
+If a repetitions count is provided, it will increment by that amount.
+
+This command:
+- may be repeated with a given number of repetitions.
+
+<a name="edit.number.decrement" />
+
+### [`edit.number.decrement`](./edit.ts#L830-L840)
+
+Decrement numbers within selections.
+
+This function first selects all numbers within the current selections,
+then decrements those numbers by the specified amount.
+If a repetitions count is provided, it will decrement by that amount.
+
+This command:
+- may be repeated with a given number of repetitions.
 
 ## [`history`](./history.ts)
 

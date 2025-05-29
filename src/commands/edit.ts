@@ -733,3 +733,148 @@ export function removeEmptyLines(
     _.selections = newSelections;
   });
 }
+
+/**
+ * Select all numbers within current selections.
+ * 
+ * This is a helper function that finds whole numbers within each selection
+ * and creates new selections that focus on just those numbers. It handles
+ * negative numbers properly and avoids selecting decimal parts of numbers.
+ */
+export function selectNumbers(_: Context) {
+  return _.run(() => {
+    const document = _.document;
+    const currentSelections = _.selections;
+    const numberSelections: vscode.Selection[] = [];
+    
+    for (const selection of currentSelections) {
+      const text = document.getText(selection);
+      const selectionStart = document.offsetAt(selection.start);
+      
+      // Match all sequences of digits, including those with a leading minus sign
+      // But don't match numbers after a decimal point
+      const numberRegex = /(-?\d+)(?!\.\d)/g;
+      
+      let match;
+      while ((match = numberRegex.exec(text)) !== null) {
+        const matchStart = selectionStart + match.index;
+        const matchEnd = matchStart + match[0].length;
+        
+        const startPos = document.positionAt(matchStart);
+        const endPos = document.positionAt(matchEnd);
+        
+        numberSelections.push(new vscode.Selection(startPos, endPos));
+      }
+    }
+    
+    // If we found any numbers, update the selections
+    if (numberSelections.length > 0) {
+      _.selections = numberSelections;
+    }
+    // If no numbers were found, keep the original selections
+  });
+}
+
+/**
+ * Increment numbers within selections.
+ * 
+ * This function first selects all numbers within the current selections,
+ * then increments those numbers by the specified amount.
+ * If a repetitions count is provided, it will increment by that amount.
+ */
+export function number_increment(
+  _: Context,
+  repetitions: number,
+) {
+  return _.run(async () => {
+    // First select all numbers
+    await selectNumbers(_);
+    
+    // Track the selections and their new values
+    const originalSelections = _.selections;
+    const newSelections: vscode.Selection[] = [];
+    
+    // Then increment them
+    await edit((builder, selections, document) => {
+      for (let i = 0; i < selections.length; i++) {
+        const selection = selections[i];
+        const text = document.getText(selection);
+        
+        // Skip if not a valid number to avoid NaN
+        if (!/^-?\d+$/.test(text)) {
+          // Keep the original selection
+          newSelections.push(selection);
+          continue;
+        }
+        
+        const num = parseInt(text, 10);
+        const incremented = (num + repetitions).toString();
+        
+        // Record the new selection with adjusted length
+        const startPos = selection.start;
+        const endPos = document.positionAt(
+          document.offsetAt(startPos) + incremented.length
+        );
+        newSelections.push(new vscode.Selection(startPos, endPos));
+        
+        // Replace with the new value
+        builder.replace(selection, incremented);
+      }
+    });
+    
+    // Update selections to match the new values
+    _.selections = newSelections;
+  });
+}
+
+/**
+ * Decrement numbers within selections.
+ * 
+ * This function first selects all numbers within the current selections,
+ * then decrements those numbers by the specified amount.
+ * If a repetitions count is provided, it will decrement by that amount.
+ */
+export function number_decrement(
+  _: Context,
+  repetitions: number,
+) {
+  return _.run(async () => {
+    // First select all numbers
+    await selectNumbers(_);
+    
+    // Track the selections and their new values
+    const originalSelections = _.selections;
+    const newSelections: vscode.Selection[] = [];
+    
+    // Then decrement them
+    await edit((builder, selections, document) => {
+      for (let i = 0; i < selections.length; i++) {
+        const selection = selections[i];
+        const text = document.getText(selection);
+        
+        // Skip if not a valid number to avoid NaN
+        if (!/^-?\d+$/.test(text)) {
+          // Keep the original selection
+          newSelections.push(selection);
+          continue;
+        }
+        
+        const num = parseInt(text, 10);
+        const decremented = (num - repetitions).toString();
+        
+        // Record the new selection with adjusted length
+        const startPos = selection.start;
+        const endPos = document.positionAt(
+          document.offsetAt(startPos) + decremented.length
+        );
+        newSelections.push(new vscode.Selection(startPos, endPos));
+        
+        // Replace with the new value
+        builder.replace(selection, decremented);
+      }
+    });
+    
+    // Update selections to match the new values
+    _.selections = newSelections;
+  });
+}

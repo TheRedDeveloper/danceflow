@@ -259,7 +259,7 @@ interface—forked from [Dance](https://github.com/71/dance), inspired by [Helix
 
 #### Other
 
-`⎇⇧k`/`⎇⇧up` increment selected number, `⎇⇧j`/`⎇⇧down` decrement
+`⎈⇧k`/`⎇⇧up` increment selected number, `⎈⎇j`/`⎇⇧down` decrement
 
 `⎇⇧]` Cycle selection content forward, `⎇⇧[` backward
 

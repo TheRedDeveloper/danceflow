@@ -270,8 +270,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     // Other
     "danceflow.selections.rotate.contents": [`⎇⇧]`],
     "danceflow.selections.rotate.contents.reverse": [`⎇⇧[`],
-    "danceflow.number.increment": [`⎇⇧k`, `⎇⇧up`],
-    "danceflow.number.decrement": [`⎇⇧j`, `⎇⇧down`],
+    "danceflow.edit.number.increment": [`⎈⎇k`, `⎇⇧up`],
+    "danceflow.edit.number.decrement": [`⎈⎇j`, `⎇⇧down`],
   },
   
   selectedMove: {
