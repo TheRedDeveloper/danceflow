@@ -379,7 +379,7 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.selections.splitLines.orLeap.backward": [`⇧s`],
     "danceflow.selections.collapse": [`;`],
     "danceflow.selections.changeDirection": [`⇧;`], // Should not require move mode
-    "danceflow.selections.trim": [`⇧-`], // Should not require move mode
+    "danceflow.selections.trimWhitespace": [`⇧-`], // Should not require move mode
     "danceflow.selections.copy": [`⎇c`, `⎈⇧j`, `⎈⇧down`],
     "danceflow.selections.copy.above": [`⎇⇧c`, `⎈⇧k`, `⎈⇧up`],
     
@@ -408,7 +408,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 // TODO danceflow.history.recording.toggle
 // TODO danceflow.history.recording.load
 // TODO danceflow.history.recording.save
-// TODO danceflow.selections.trim
 // TODO danceflow.number.increment
 // TODO danceflow.number.decrement
 // TODO danceflow.get.word (=eby)

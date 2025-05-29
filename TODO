@@ -271,6 +271,7 @@
 ✔ Fix that ⎇b is broken @done(25-04-19 17:07)
 ☐ Test on US keyboard layout
 ✔ Fix that ; is still not really working @done(25-04-15 18:09)
+☐ Fix that shift+- not working on german because of the way ignores are duplicated
 ☐ Fix VSCode not using character under cursor in forward selection
   This is a core problem with visual studio code selecting while the cursor is a block
   It uses normal carat selections but just shows a block, this means that the current

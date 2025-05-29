@@ -4703,7 +4703,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.selections.trim"
+              "command": "danceflow.selections.trimWhitespace"
             },
             "danceflow.modes.set.move"
           ]
@@ -4716,7 +4716,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.selections.trim"
+              "command": "danceflow.selections.trimWhitespace"
             },
             "danceflow.modes.set.move"
           ]
