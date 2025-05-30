@@ -1072,6 +1072,18 @@ export const commands: Commands = function () {
   );
   describeAdditionalCommand(
     commands,
+    "danceflow.seek.select-yank.word",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]],
+  );
+  describeAdditionalCommand(
+    commands,
+    "danceflow.seek.select-yank.word.ws",
+    CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
+    [[".seek.word", { ws: true, direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, ws: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]],
+  );
+  describeAdditionalCommand(
+    commands,
     "danceflow.seek.askObject",
     CommandDescriptor.Flags.RequiresActiveEditor | CommandDescriptor.Flags.DoNotReplay,
     [[".openMenu", { menu: "object", title: "Select whole object..." }]],

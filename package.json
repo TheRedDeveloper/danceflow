@@ -1520,6 +1520,16 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.seek.select-yank.word",
+        "title": "Select and yank a whole word",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.select-yank.word.ws",
+        "title": "Select and yank a whole non-whitespace",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.seek.syntax.child.experimental",
         "title": "Select child syntax object",
         "category": "Danceflow"
@@ -4076,7 +4086,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.get.word"
+              "command": "danceflow.seek.select-yank.word"
             },
             "danceflow.modes.set.move"
           ]
@@ -4089,7 +4099,7 @@
         "args": {
           "commands": [
             {
-              "command": "danceflow.get.word.ws"
+              "command": "danceflow.seek.select-yank.word.ws"
             },
             "danceflow.modes.set.move"
           ]

@@ -1438,6 +1438,20 @@ seek.object:
       | Select to inner object end   | `askObject.inner.end`          | `a-]` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"                    }] }]` |
       | Extend to inner object end   | `askObject.inner.end.extend`   | `a-}` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"  , shift: "extend" }] }]` |
 
+seek.select-yank.word:
+  title:
+    en: Select and yank a whole word
+
+  commands: |-
+    [".seek.word", { direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]
+
+seek.select-yank.word.ws:
+  title:
+    en: Select and yank a whole non-whitespace
+
+  commands: |-
+    [".seek.word", { ws: true, direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, ws: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]
+
 seek.syntax.child.experimental:
   title:
     en: Select child syntax object
@@ -1513,6 +1527,13 @@ seek.word:
       | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: move), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
       | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: move), `s-e` (helix: move)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
       | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: move), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
+
+      #### Additional Commands
+
+      | Title                                  | Identifier               | Keybinding    | Commands                                                                                                                                        |
+      | -------------------------------------- | ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+      | Select and yank a whole word           | `select-yank.word`       |               | `[".seek.word", { direction: -1, ... }], [".seek.word", { stopAtEnd: true, ... }], [".selections.saveText", { +register }]`                     |
+      | Select and yank a whole non-whitespace | `select-yank.word.ws`    |               | `[".seek.word", { ws: true, direction: -1, ... }], [".seek.word", { stopAtEnd: true, ws: true, ... }], [".selections.saveText", { +register }]` |
 
 seek.word.backward:
   title:

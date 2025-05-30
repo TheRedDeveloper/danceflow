@@ -200,6 +200,13 @@ export function enclosing(
  * | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: move), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
  * | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: move), `s-e` (helix: move)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
  * | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: move), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
+ *
+ * #### Additional Commands
+ *
+ * | Title                                  | Identifier               | Keybinding    | Commands                                                                                                                                        |
+ * | -------------------------------------- | ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+ * | Select and yank a whole word           | `select-yank.word`       |               | `[".seek.word", { direction: -1, ... }], [".seek.word", { stopAtEnd: true, ... }], [".selections.saveText", { +register }]`                     |
+ * | Select and yank a whole non-whitespace | `select-yank.word.ws`    |               | `[".seek.word", { ws: true, direction: -1, ... }], [".seek.word", { stopAtEnd: true, ws: true, ... }], [".selections.saveText", { +register }]` |
  */
 export function word(
   _: Context,

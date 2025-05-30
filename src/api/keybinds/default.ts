@@ -323,8 +323,8 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
     "danceflow.seek.word": [`w`],
     "danceflow.seek.wordEnd": [`e`],
     "danceflow.seek.word.backward": [`b`],
-    "danceflow.get.word": [`g`],
-    "danceflow.get.word.ws": [`⇧g`],
+    "danceflow.seek.select-yank.word": [`g`],
+    "danceflow.seek.select-yank.word.ws": [`⇧g`],
     "danceflow.seek.word.ws": [`⇧w`],
     "danceflow.seek.wordEnd.ws": [`⇧e`],
     "danceflow.seek.word.ws.backward": [`⇧b`],
@@ -408,10 +408,6 @@ export const defaultKeybindings: UnresolvedKeybindingGroups = {
 // TODO danceflow.history.recording.toggle
 // TODO danceflow.history.recording.load
 // TODO danceflow.history.recording.save
-// TODO danceflow.number.increment
-// TODO danceflow.number.decrement
-// TODO danceflow.get.word (=eby)
-// TODO danceflow.get.word.ws (=⇧eby)
 // TODO danceflow.openMenu{"menu": "enclose"}
 
 
