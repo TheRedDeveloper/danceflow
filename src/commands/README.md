@@ -105,12 +105,12 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./search.ts#L22"><code>search.backward</code></a></td><td>Search backward</td><td><code>Alt+/</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+/</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./search.ts#L23"><code>search.backward.extend</code></a></td><td>Search backward (extend)</td><td><code>Shift+Alt+/</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+/</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./search.ts#L21"><code>search.extend</code></a></td><td>Search (extend)</td><td><code>Shift+/</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>/</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./search.ts#L158"><code>search.next.add</code></a></td><td>Add next match</td><td><code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>N</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./search.ts#L159"><code>search.previous</code></a></td><td>Select previous match</td><td><code>Alt+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./search.ts#L160"><code>search.previous.add</code></a></td><td>Add previous match</td><td><code>Shift+Alt+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./search.ts#L160"><code>search.next.add</code></a></td><td>Add next match</td><td><code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>N</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./search.ts#L161"><code>search.previous</code></a></td><td>Select previous match</td><td><code>Alt+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./search.ts#L162"><code>search.previous.add</code></a></td><td>Add previous match</td><td><code>Shift+Alt+N</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+N</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./search.ts#L90"><code>search.selection.smart</code></a></td><td>Search current selection (smart)</td><td><code>Shift+8</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>NumPad_Multiply</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#search.selection"><code>search.selection</code></a></td><td>Search current selection</td><td><code>Shift+Alt+8</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+NumPad_Multiply</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td rowspan=44><a href="#seek"><code>seek</code></a></td><td><a href="#seek.enclosing"><code>seek.enclosing</code></a></td><td>Select to next enclosing character</td><td><code>M</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td rowspan=46><a href="#seek"><code>seek</code></a></td><td><a href="#seek.enclosing"><code>seek.enclosing</code></a></td><td>Select to next enclosing character</td><td><code>M</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#seek.leap"><code>seek.leap</code></a></td><td>Leap forward</td><td></td></tr>
 <tr><td><a href="#seek.object"><code>seek.object</code></a></td><td>Select object</td><td></td></tr>
 <tr><td><a href="#seek.seek"><code>seek.seek</code></a></td><td>Select to character (excluded)</td><td><code>T</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
@@ -152,8 +152,10 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./seek.ts#L200"><code>seek.wordEnd.extend</code></a></td><td>Extend to next word end</td><td><code>Shift+E</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>E</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./seek.ts#L201"><code>seek.wordEnd.ws</code></a></td><td>Select to next non-whitespace word end</td><td><code>Alt+E</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+E</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./seek.ts#L202"><code>seek.wordEnd.ws.extend</code></a></td><td>Extend to next non-whitespace word end</td><td><code>Shift+Alt+E</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+E</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./seek.ts#L886"><code>seek.wordLabel.extend</code></a></td><td>Leap to word (extend)</td><td></td></tr>
 <tr><td><a href="#seek.syntax.experimental"><code>seek.syntax.experimental</code></a></td><td>Select syntax object</td><td></td></tr>
 <tr><td><a href="#seek.word"><code>seek.word</code></a></td><td>Select to next word start</td><td><code>W</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="#seek.wordLabel"><code>seek.wordLabel</code></a></td><td>Leap to word</td><td></td></tr>
 <tr><td rowspan=49><a href="#select"><code>select</code></a></td><td><a href="#select.buffer"><code>select.buffer</code></a></td><td>Select whole buffer</td><td><code>Shift+5</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+5</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#select.firstVisibleLine"><code>select.firstVisibleLine</code></a></td><td>Select to first visible line</td><td></td></tr>
 <tr><td><a href="#select.horizontally"><code>select.horizontally</code></a></td><td>Select horizontally</td><td></td></tr>
@@ -166,39 +168,39 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="#select.lineEnd"><code>select.lineEnd</code></a></td><td>Select to line end</td><td><code>Alt+L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>End</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#select.lineStart"><code>select.lineStart</code></a></td><td>Select to line start</td><td><code>Alt+H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Home</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#select.middleVisibleLine"><code>select.middleVisibleLine</code></a></td><td>Select to middle visible line</td><td></td></tr>
-<tr><td><a href="./select.ts#L510"><code>select.documentEnd.extend</code></a></td><td>Extend to last character</td><td></td></tr>
-<tr><td><a href="./select.ts#L509"><code>select.documentEnd.jump</code></a></td><td>Jump to last character</td><td></td></tr>
+<tr><td><a href="./select.ts#L513"><code>select.documentEnd.extend</code></a></td><td>Extend to last character</td><td></td></tr>
+<tr><td><a href="./select.ts#L512"><code>select.documentEnd.jump</code></a></td><td>Jump to last character</td><td></td></tr>
 <tr><td><a href="./select.ts#L42"><code>select.down.extend</code></a></td><td>Extend down</td><td><code>Shift+J</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Down</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>J</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Down</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L41"><code>select.down.jump</code></a></td><td>Jump down</td><td><code>J</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Down</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./select.ts#L463"><code>select.firstLine.extend</code></a></td><td>Extend to first line</td><td></td></tr>
-<tr><td><a href="./select.ts#L462"><code>select.firstLine.jump</code></a></td><td>Jump to first line</td><td></td></tr>
-<tr><td><a href="./select.ts#L575"><code>select.firstVisibleLine.extend</code></a></td><td>Extend to first visible line</td><td></td></tr>
-<tr><td><a href="./select.ts#L574"><code>select.firstVisibleLine.jump</code></a></td><td>Jump to first visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L466"><code>select.firstLine.extend</code></a></td><td>Extend to first line</td><td></td></tr>
+<tr><td><a href="./select.ts#L465"><code>select.firstLine.jump</code></a></td><td>Jump to first line</td><td></td></tr>
+<tr><td><a href="./select.ts#L578"><code>select.firstVisibleLine.extend</code></a></td><td>Extend to first visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L577"><code>select.firstVisibleLine.jump</code></a></td><td>Jump to first visible line</td><td></td></tr>
 <tr><td><a href="./select.ts#L46"><code>select.halfPageDown.extend</code></a></td><td>Half page down</td><td><code>Ctrl+D</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L45"><code>select.halfPageDown.jump</code></a></td><td>Half page down</td><td><code>Ctrl+D</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+D</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="./select.ts#L48"><code>select.halfPageUp.extend</code></a></td><td>Half page up</td><td><code>Ctrl+U</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L47"><code>select.halfPageUp.jump</code></a></td><td>Half page up</td><td><code>Ctrl+U</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+U</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
-<tr><td><a href="./select.ts#L554"><code>select.lastLine.extend</code></a></td><td>Extend to last line</td><td></td></tr>
-<tr><td><a href="./select.ts#L553"><code>select.lastLine.jump</code></a></td><td>Jump to last line</td><td></td></tr>
-<tr><td><a href="./select.ts#L609"><code>select.lastVisibleLine.extend</code></a></td><td>Extend to last visible line</td><td></td></tr>
-<tr><td><a href="./select.ts#L608"><code>select.lastVisibleLine.jump</code></a></td><td>Jump to last visible line</td><td></td></tr>
-<tr><td><a href="./select.ts#L229"><code>select.left.extend</code></a></td><td>Extend left</td><td><code>Shift+H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Left</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>H</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Left</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./select.ts#L228"><code>select.left.jump</code></a></td><td>Jump left</td><td><code>H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Left</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./select.ts#L508"><code>select.lineEnd.extend</code></a></td><td>Extend to line end</td><td><code>Shift+Alt+L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+End</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>End</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./select.ts#L459"><code>select.lineStart.extend</code></a></td><td>Extend to line start</td><td><code>Shift+Alt+H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Home</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Home</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./select.ts#L458"><code>select.lineStart.jump</code></a></td><td>Jump to line start</td><td></td></tr>
-<tr><td><a href="./select.ts#L461"><code>select.lineStart.skipBlank.extend</code></a></td><td>Extend to line start (skip blank)</td><td></td></tr>
-<tr><td><a href="./select.ts#L460"><code>select.lineStart.skipBlank.jump</code></a></td><td>Jump to line start (skip blank)</td><td></td></tr>
-<tr><td><a href="./select.ts#L592"><code>select.middleVisibleLine.extend</code></a></td><td>Extend to middle visible line</td><td></td></tr>
-<tr><td><a href="./select.ts#L591"><code>select.middleVisibleLine.jump</code></a></td><td>Jump to middle visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L557"><code>select.lastLine.extend</code></a></td><td>Extend to last line</td><td></td></tr>
+<tr><td><a href="./select.ts#L556"><code>select.lastLine.jump</code></a></td><td>Jump to last line</td><td></td></tr>
+<tr><td><a href="./select.ts#L612"><code>select.lastVisibleLine.extend</code></a></td><td>Extend to last visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L611"><code>select.lastVisibleLine.jump</code></a></td><td>Jump to last visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L232"><code>select.left.extend</code></a></td><td>Extend left</td><td><code>Shift+H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Left</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>H</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Left</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./select.ts#L231"><code>select.left.jump</code></a></td><td>Jump left</td><td><code>H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Left</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./select.ts#L511"><code>select.lineEnd.extend</code></a></td><td>Extend to line end</td><td><code>Shift+Alt+L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+End</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>End</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./select.ts#L462"><code>select.lineStart.extend</code></a></td><td>Extend to line start</td><td><code>Shift+Alt+H</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Home</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Home</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./select.ts#L461"><code>select.lineStart.jump</code></a></td><td>Jump to line start</td><td></td></tr>
+<tr><td><a href="./select.ts#L464"><code>select.lineStart.skipBlank.extend</code></a></td><td>Extend to line start (skip blank)</td><td></td></tr>
+<tr><td><a href="./select.ts#L463"><code>select.lineStart.skipBlank.jump</code></a></td><td>Jump to line start (skip blank)</td><td></td></tr>
+<tr><td><a href="./select.ts#L595"><code>select.middleVisibleLine.extend</code></a></td><td>Extend to middle visible line</td><td></td></tr>
+<tr><td><a href="./select.ts#L594"><code>select.middleVisibleLine.jump</code></a></td><td>Jump to middle visible line</td><td></td></tr>
 <tr><td><a href="./select.ts#L50"><code>select.pageDown.extend</code></a></td><td>Page down</td><td><code>Ctrl+F</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L49"><code>select.pageDown.jump</code></a></td><td>Page down</td><td><code>Ctrl+F</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+F</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
 <tr><td><a href="./select.ts#L52"><code>select.pageUp.extend</code></a></td><td>Page up</td><td><code>Ctrl+B</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L51"><code>select.pageUp.jump</code></a></td><td>Page up</td><td><code>Ctrl+B</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Ctrl+B</code> (<code>editorTextFocus && danceflow.mode == 'modify'</code>)</td></tr>
-<tr><td><a href="./select.ts#L227"><code>select.right.extend</code></a></td><td>Extend right</td><td><code>Shift+L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Right</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>L</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Right</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./select.ts#L226"><code>select.right.jump</code></a></td><td>Jump right</td><td><code>L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Right</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
-<tr><td><a href="./select.ts#L296"><code>select.to.extend</code></a></td><td>Extend to</td><td><code>Shift+G</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>G</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./select.ts#L295"><code>select.to.jump</code></a></td><td>Go to</td><td><code>G</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./select.ts#L230"><code>select.right.extend</code></a></td><td>Extend right</td><td><code>Shift+L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Right</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>L</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Right</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./select.ts#L229"><code>select.right.jump</code></a></td><td>Jump right</td><td><code>L</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Right</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./select.ts#L299"><code>select.to.extend</code></a></td><td>Extend to</td><td><code>Shift+G</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>G</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./select.ts#L298"><code>select.to.jump</code></a></td><td>Go to</td><td><code>G</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./select.ts#L44"><code>select.up.extend</code></a></td><td>Extend up</td><td><code>Shift+K</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Up</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>K</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)<code>Up</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./select.ts#L43"><code>select.up.jump</code></a></td><td>Jump up</td><td><code>K</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Up</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="#select.to"><code>select.to</code></a></td><td>Select to</td><td></td></tr>
@@ -220,21 +222,21 @@ selections are empty</td><td></td></tr>
 <tr><td><a href="./selections.ts#L304"><code>selections.clear.main</code></a></td><td>Clear main selections</td><td><code>Alt+,</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+,</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L303"><code>selections.clear.secondary</code></a></td><td>Clear secondary selections</td><td><code>,</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>,</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L305"><code>selections.collapse</code></a></td><td>Collapse to single cursor</td><td></td></tr>
-<tr><td><a href="./selections.ts#L810"><code>selections.copy.above</code></a></td><td>Copy selections above</td><td><code>Shift+Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./selections.ts#L662"><code>selections.faceBackward</code></a></td><td>Backward selections</td><td></td></tr>
-<tr><td><a href="./selections.ts#L661"><code>selections.faceForward</code></a></td><td>Forward selections</td><td><code>Shift+Alt+;</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./selections.ts#L816"><code>selections.copy.above</code></a></td><td>Copy selections above</td><td><code>Shift+Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+C</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./selections.ts#L668"><code>selections.faceBackward</code></a></td><td>Backward selections</td><td></td></tr>
+<tr><td><a href="./selections.ts#L667"><code>selections.faceForward</code></a></td><td>Forward selections</td><td><code>Shift+Alt+;</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L301"><code>selections.filter.regexp</code></a></td><td>Keep matching selections</td><td><code>Alt+K</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+K</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L302"><code>selections.filter.regexp.inverse</code></a></td><td>Clear matching selections</td><td><code>Shift+Alt+K</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+K</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./selections.ts#L888"><code>selections.hideIndices</code></a></td><td>Hide selection indices</td><td></td></tr>
-<tr><td><a href="./selections.ts#L701"><code>selections.orderAscending</code></a></td><td>Order selections ascending</td><td></td></tr>
-<tr><td><a href="./selections.ts#L700"><code>selections.orderDescending</code></a></td><td>Order selections descending</td><td></td></tr>
+<tr><td><a href="./selections.ts#L894"><code>selections.hideIndices</code></a></td><td>Hide selection indices</td><td></td></tr>
+<tr><td><a href="./selections.ts#L707"><code>selections.orderAscending</code></a></td><td>Order selections ascending</td><td></td></tr>
+<tr><td><a href="./selections.ts#L706"><code>selections.orderDescending</code></a></td><td>Order selections descending</td><td></td></tr>
 <tr><td><a href="./selections.ts#L258"><code>selections.pipe.append</code></a></td><td>Pipe and append</td><td><code>Shift+1</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+1</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L259"><code>selections.pipe.prepend</code></a></td><td>Pipe and prepend</td><td><code>Shift+Alt+1</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+Alt+1</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L257"><code>selections.pipe.replace</code></a></td><td>Pipe and replace</td><td><code>Shift+\</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+\</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./selections.ts#L580"><code>selections.reduce.edges</code></a></td><td>Reduce selections to their ends</td><td><code>Shift+Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
+<tr><td><a href="./selections.ts#L586"><code>selections.reduce.edges</code></a></td><td>Reduce selections to their ends</td><td><code>Shift+Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)</td></tr>
 <tr><td><a href="./selections.ts#L355"><code>selections.select.orLeap</code></a></td><td>Leap or select</td><td><code>S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>S</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
-<tr><td><a href="./selections.ts#L887"><code>selections.showIndices</code></a></td><td>Show selection indices</td><td></td></tr>
-<tr><td><a href="./selections.ts#L424"><code>selections.splitLines.orLeap.backward</code></a></td><td>Split selections at line boundaries or leap backwards</td><td><code>Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
+<tr><td><a href="./selections.ts#L893"><code>selections.showIndices</code></a></td><td>Show selection indices</td><td></td></tr>
+<tr><td><a href="./selections.ts#L430"><code>selections.splitLines.orLeap.backward</code></a></td><td>Split selections at line boundaries or leap backwards</td><td><code>Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Alt+S</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#selections.sort"><code>selections.sort</code></a></td><td>Sort selections</td><td></td></tr>
 <tr><td><a href="#selections.split"><code>selections.split</code></a></td><td>Split selections</td><td><code>Shift+S</code> (<code>editorTextFocus && danceflow.mode == 'move'</code>)<code>Shift+S</code> (<code>editorTextFocus && danceflow.mode == 'select'</code>)</td></tr>
 <tr><td><a href="#selections.splitLines"><code>selections.splitLines</code></a></td><td>Split selections at line boundaries</td><td></td></tr>
@@ -1102,7 +1104,7 @@ Default keybinding: `a-*` (core: move)
 
 <a name="search.next" />
 
-### [`search.next`](./search.ts#L151-L170)
+### [`search.next`](./search.ts#L153-L172)
 
 Select next match.
 
@@ -1292,6 +1294,23 @@ Inspired by [`leap.nvim`](https://github.com/ggandor/leap.nvim).
 This command:
 - takes an argument `labels` of type `string`.
 
+<a name="seek.wordLabel" />
+
+### [`seek.wordLabel`](./seek.ts#L877-L893)
+
+Leap to word.
+
+This is the same as goto word (gw) in helix.
+
+#### Variants
+
+| Title                 | Identifier         | Command                                         |
+| ----------------------| ------------------ | ----------------------------------------------- |
+| Leap to word (extend) | `wordLabel.extend` | `[".seek.wordLabel", { shift: "extend", ... }]` |
+
+This command:
+- takes an argument `labelChars` of type `string`.
+
 ## [`select`](./select.ts)
 
 Update selections based on their position in the document.
@@ -1337,7 +1356,7 @@ This command:
 
 <a name="select.horizontally" />
 
-### [`select.horizontally`](./select.ts#L216-L238)
+### [`select.horizontally`](./select.ts#L219-L241)
 
 Select horizontally.
 
@@ -1357,7 +1376,7 @@ This command:
 
 <a name="select.to" />
 
-### [`select.to`](./select.ts#L285-L303)
+### [`select.to`](./select.ts#L288-L306)
 
 Select to.
 
@@ -1377,7 +1396,7 @@ This command:
 
 <a name="select.line.below" />
 
-### [`select.line.below`](./select.ts#L313-L316)
+### [`select.line.below`](./select.ts#L316-L319)
 
 Select line below.
 
@@ -1386,7 +1405,7 @@ This command:
 
 <a name="select.line.below.extend" />
 
-### [`select.line.below.extend`](./select.ts#L341-L346)
+### [`select.line.below.extend`](./select.ts#L344-L349)
 
 Extend to line below.
 
@@ -1398,7 +1417,7 @@ Default keybinding: `x` (helix: move; helix: select)
 
 <a name="select.line.above" />
 
-### [`select.line.above`](./select.ts#L373-L376)
+### [`select.line.above`](./select.ts#L376-L379)
 
 Select line above.
 
@@ -1407,7 +1426,7 @@ This command:
 
 <a name="select.line.above.extend" />
 
-### [`select.line.above.extend`](./select.ts#L400-L403)
+### [`select.line.above.extend`](./select.ts#L403-L406)
 
 Extend to line above.
 
@@ -1416,7 +1435,7 @@ This command:
 
 <a name="select.lineStart" />
 
-### [`select.lineStart`](./select.ts#L449-L471)
+### [`select.lineStart`](./select.ts#L452-L474)
 
 Select to line start.
 
@@ -1441,7 +1460,7 @@ Default keybinding: `a-h` (kakoune: move)
 
 <a name="select.lineEnd" />
 
-### [`select.lineEnd`](./select.ts#L496-L518)
+### [`select.lineEnd`](./select.ts#L499-L521)
 
 Select to line end.
 
@@ -1464,7 +1483,7 @@ Default keybinding: `a-l` (kakoune: move)
 
 <a name="select.lastLine" />
 
-### [`select.lastLine`](./select.ts#L546-L556)
+### [`select.lastLine`](./select.ts#L549-L559)
 
 Select to last line.
 
@@ -1477,7 +1496,7 @@ Select to last line.
 
 <a name="select.firstVisibleLine" />
 
-### [`select.firstVisibleLine`](./select.ts#L567-L577)
+### [`select.firstVisibleLine`](./select.ts#L570-L580)
 
 Select to first visible line.
 
@@ -1490,7 +1509,7 @@ Select to first visible line.
 
 <a name="select.middleVisibleLine" />
 
-### [`select.middleVisibleLine`](./select.ts#L584-L594)
+### [`select.middleVisibleLine`](./select.ts#L587-L597)
 
 Select to middle visible line.
 
@@ -1503,7 +1522,7 @@ Select to middle visible line.
 
 <a name="select.lastVisibleLine" />
 
-### [`select.lastVisibleLine`](./select.ts#L601-L611)
+### [`select.lastVisibleLine`](./select.ts#L604-L614)
 
 Select to last visible line.
 
@@ -1634,7 +1653,7 @@ Default keybinding: `$` (core: move; helix: select)
 
 <a name="selections.select" />
 
-### [`selections.select`](./selections.ts#L348-L362)
+### [`selections.select`](./selections.ts#L348-L363)
 
 Select within selections.
 
@@ -1645,18 +1664,20 @@ Select within selections.
 | Leap or select | `select.orLeap` | `s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
 
 This command:
-- accepts an argument of type `{ re?: string | RegExp }`.
+- accepts a register (by default, it uses `slash`).
+- accepts an argument of type `{ re?: string | RegExp & { originalSource?: string } }`.
 - takes an argument `interactive` of type `boolean`.
 
 <a name="selections.split" />
 
-### [`selections.split`](./selections.ts#L381-L392)
+### [`selections.split`](./selections.ts#L384-L396)
 
 Split selections.
 
 
 This command:
-- accepts an argument of type `{ re?: string | RegExp }`.
+- accepts a register (by default, it uses `slash`).
+- accepts an argument of type `{ re?: string | RegExp & { originalSource?: string } }`.
 - takes an argument `excludeEmpty` of type `boolean`.
 - takes an argument `interactive` of type `boolean`.
 
@@ -1664,7 +1685,7 @@ Default keybinding: `s-s` (core: move; helix: select)
 
 <a name="selections.splitLines" />
 
-### [`selections.splitLines`](./selections.ts#L417-L433)
+### [`selections.splitLines`](./selections.ts#L423-L439)
 
 Split selections at line boundaries.
 
@@ -1680,7 +1701,7 @@ This command:
 
 <a name="selections.expandToLines" />
 
-### [`selections.expandToLines`](./selections.ts#L476-L483)
+### [`selections.expandToLines`](./selections.ts#L482-L489)
 
 Expand to lines.
 
@@ -1693,7 +1714,7 @@ Default keybinding: `x` (kakoune: move)
 
 <a name="selections.trimLines" />
 
-### [`selections.trimLines`](./selections.ts#L510-L517)
+### [`selections.trimLines`](./selections.ts#L516-L523)
 
 Trim lines.
 
@@ -1705,7 +1726,7 @@ Default keybinding: `a-x` (core: move; helix: select)
 
 <a name="selections.trimWhitespace" />
 
-### [`selections.trimWhitespace`](./selections.ts#L542-L549)
+### [`selections.trimWhitespace`](./selections.ts#L548-L555)
 
 Trim whitespace.
 
@@ -1717,7 +1738,7 @@ Default keybinding: `_` (core: move; helix: select)
 
 <a name="selections.reduce" />
 
-### [`selections.reduce`](./selections.ts#L568-L587)
+### [`selections.reduce`](./selections.ts#L574-L593)
 
 Reduce selections to their cursor.
 
@@ -1737,7 +1758,7 @@ Default keybinding: `;` (core: move; helix: select)
 
 <a name="selections.changeDirection" />
 
-### [`selections.changeDirection`](./selections.ts#L649-L664)
+### [`selections.changeDirection`](./selections.ts#L655-L670)
 
 Change direction of selections.
 
@@ -1755,7 +1776,7 @@ Default keybinding: `a-;` (core: move; helix: select)
 
 <a name="selections.changeOrder" />
 
-### [`selections.changeOrder`](./selections.ts#L689-L703)
+### [`selections.changeOrder`](./selections.ts#L695-L709)
 
 Reverse selections.
 
@@ -1769,7 +1790,7 @@ Reverse selections.
 
 <a name="selections.sort" />
 
-### [`selections.sort`](./selections.ts#L716-L728)
+### [`selections.sort`](./selections.ts#L722-L734)
 
 Sort selections.
 
@@ -1780,7 +1801,7 @@ This command:
 
 <a name="selections.copy" />
 
-### [`selections.copy`](./selections.ts#L801-L819)
+### [`selections.copy`](./selections.ts#L807-L825)
 
 Copy selections below.
 
@@ -1798,7 +1819,7 @@ Default keybinding: `s-c` (core: move; helix: select)
 
 <a name="selections.merge" />
 
-### [`selections.merge`](./selections.ts#L853-L858)
+### [`selections.merge`](./selections.ts#L859-L864)
 
 Merge contiguous selections.
 
@@ -1808,13 +1829,13 @@ Default keybinding: `a-_` (kakoune: move)
 
 <a name="selections.open" />
 
-### [`selections.open`](./selections.ts#L862-L865)
+### [`selections.open`](./selections.ts#L868-L871)
 
 Open selected file.
 
 <a name="selections.toggleIndices" />
 
-### [`selections.toggleIndices`](./selections.ts#L878-L895)
+### [`selections.toggleIndices`](./selections.ts#L884-L901)
 
 Toggle selection indices.
 

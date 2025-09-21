@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
 
       - name: Install dependencies
         run: yarn
@@ -32,8 +32,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
 
       - name: Install dependencies
         run: yarn
@@ -68,6 +71,7 @@ jobs:
 
       - name: Compute pre-release versions
         id: pre-release-versions
+        shell: bash
         run: |
           yarn
           echo MARKETPLACE=`node -e "console.log(JSON.parse(require('child_process').execFileSync(process.execPath, ['node_modules/vsce/vsce', 'show', 'reddev.danceflow', '--json'], { encoding: 'utf8' })).versions[0].version)"` >> "$GITHUB_OUTPUT"

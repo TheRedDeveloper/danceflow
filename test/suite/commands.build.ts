@@ -82,6 +82,11 @@ interface InitialDocument extends Section {
 }
 
 function parseMarkdownTests(contents: string, filename: string) {
+  // Strip the wrapping ````markdown...```` block if present
+  if (contents.startsWith("````markdown\n") && contents.endsWith("\n````")) {
+    contents = contents.slice("````markdown\n".length, -"\n````".length);
+  }
+  
   const re = /^#+ (.+)\n(?:\[.+?\]\(#(.+?)\)\n)?([\s\S]+?)^```\n([\s\S]+?)^```\n/gm,
         opre = /^- *([\w.:]+)( +.+)?$|^> *(.+)$/gm,
         initial = [] as InitialDocument[],
