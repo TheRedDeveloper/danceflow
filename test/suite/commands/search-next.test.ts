@@ -295,9 +295,9 @@ suite("./test/suite/commands/search-next.md", function () {
     // Ensure document is as expected.
     ExpectedDocument.assertEquals(editor, "./test/suite/commands/search-next.md:174:1", 6, String.raw`
       apple pineapple pear
-                |^^^^ 1
+                |^^^^ 0
       pear pineapple apple
-               |^^^^ 0
+               |^^^^ 1
       kiwi orange kiwi
     `);
   });

@@ -963,6 +963,1626 @@ run:
       If both `code` and `commands` are given, Danceflow will use `code` if arbitrary
       code execution is enabled, or `commands` otherwise.
 
+search:
+  title:
+    en: Search
+
+  keys:
+    qwerty: |-
+      `/` (core: move)
+      `NumPad_Divide` (core: move)
+
+  doc:
+    en: |
+      Search.
+
+
+      | Title                    | Identifier        | Keybinding                                   | Command                                                |
+      | ------------------------ | ----------------- | -------------------------------------------- | ------------------------------------------------------ |
+      | Search (extend)          | `extend`          | `?` (kakoune: move), `/` (helix: select)   | `[".search", {                shift: "extend", ... }]` |
+      | Search backward          | `backward`        | `a-/` (kakoune: move), `?` (helix: move) | `[".search", { direction: -1                 , ... }]` |
+      | Search backward (extend) | `backward.extend` | `a-?` (kakoune: move), `?` (helix: select) | `[".search", { direction: -1, shift: "extend", ... }]` |
+
+search.backward:
+  title:
+    en: Search backward
+
+  commands: |-
+    [".search", { direction: -1 , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-/` (kakoune: move)
+      `?` (helix: move)
+
+search.backward.extend:
+  title:
+    en: Search backward (extend)
+
+  commands: |-
+    [".search", { direction: -1, shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-?` (kakoune: move)
+      `?` (helix: select)
+
+search.extend:
+  title:
+    en: Search (extend)
+
+  commands: |-
+    [".search", { shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `?` (kakoune: move)
+      `/` (helix: select)
+
+search.next:
+  title:
+    en: Select next match
+
+  keys:
+    qwerty: |-
+      `n` (core: move)
+
+  doc:
+    en: |
+      Select next match.
+
+
+      | Title                 | Identifier     | Keybinding                                       | Command                                               |
+      | --------------------- | -------------- | ------------------------------------------------ | ----------------------------------------------------- |
+      | Add next match        | `next.add`     | `s-n` (kakoune: move), `n` (helix: select)     | `[".search.next", {                add: true, ... }]` |
+      | Select previous match | `previous`     | `a-n` (kakoune: move), `s-n` (helix: move)   | `[".search.next", { direction: -1           , ... }]` |
+      | Add previous match    | `previous.add` | `s-a-n` (kakoune: move), `s-n` (helix: select) | `[".search.next", { direction: -1, add: true, ... }]` |
+
+search.next.add:
+  title:
+    en: Add next match
+
+  commands: |-
+    [".search.next", { add: true, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-n` (kakoune: move)
+      `n` (helix: select)
+
+search.previous:
+  title:
+    en: Select previous match
+
+  commands: |-
+    [".search.next", { direction: -1 , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-n` (kakoune: move)
+      `s-n` (helix: move)
+
+search.previous.add:
+  title:
+    en: Add previous match
+
+  commands: |-
+    [".search.next", { direction: -1, add: true, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-n` (kakoune: move)
+      `s-n` (helix: select)
+
+search.selection:
+  title:
+    en: Search current selection
+
+  keys:
+    qwerty: |-
+      `a-*` (core: move)
+      `a-NumPad_Multiply` (core: move)
+
+  doc:
+    en: |
+      Search current selection.
+
+
+      | Title                            | Identifier        | Keybinding                                           | Command                                             |
+      | -------------------------------- | ----------------- | ---------------------------------------------------- | --------------------------------------------------- |
+      | Search current selection (smart) | `selection.smart` | `*` (core: move), `NumPad_Multiply` (core: move) | `[".search.selection", { smart: true, +register }]` |
+
+search.selection.smart:
+  title:
+    en: Search current selection (smart)
+
+  commands: |-
+    [".search.selection", { smart: true, $include: ["register"] }]
+
+  keys:
+    qwerty: |-
+      `*` (core: move)
+      `NumPad_Multiply` (core: move)
+
+seek:
+  title:
+    en: Select to character (excluded)
+
+  keys:
+    qwerty: |-
+      `t` (core: move)
+
+  doc:
+    en: |
+      Select to character (excluded).
+
+
+      #### Variants
+
+      | Title                                    | Identifier                 | Keybinding                                       | Command                                                             |
+      | ---------------------------------------- | -------------------------- | ------------------------------------------------ | ------------------------------------------------------------------- |
+      | Extend to character (excluded)           | `extend`                   | `s-t` (kakoune: move), `t` (helix: select)     | `[".seek", {                shift: "extend"               , ... }]` |
+      | Select to character (excluded, backward) | `backward`                 | `a-t` (kakoune: move), `s-t` (helix: move)   | `[".seek", {                                 direction: -1, ... }]` |
+      | Extend to character (excluded, backward) | `extend.backward`          | `s-a-t` (kakoune: move), `s-t` (helix: select) | `[".seek", {                shift: "extend", direction: -1, ... }]` |
+      | Select to character (included)           | `included`                 | `f` (core: move)                               | `[".seek", { include: true                                , ... }]` |
+      | Extend to character (included)           | `included.extend`          | `s-f` (kakoune: move), `f` (helix: select)     | `[".seek", { include: true, shift: "extend"               , ... }]` |
+      | Select to character (included, backward) | `included.backward`        | `a-f` (kakoune: move), `s-f` (helix: move)   | `[".seek", { include: true,                  direction: -1, ... }]` |
+      | Extend to character (included, backward) | `included.extend.backward` | `s-a-f` (kakoune: move), `s-f` (helix: select) | `[".seek", { include: true, shift: "extend", direction: -1, ... }]` |
+
+seek.askObject:
+  title:
+    en: Select whole object
+
+  commands: |-
+    [".openMenu", { menu: "object", title: "Select whole object..." }]
+
+  keys:
+    qwerty: |-
+      `a-a` (kakoune: move)
+      `a-a` (kakoune: modify)
+
+seek.askObject.end:
+  title:
+    en: Select to whole object end
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ where: "end" }] }]
+
+  keys:
+    qwerty: |-
+      `]` (kakoune: move)
+
+seek.askObject.end.extend:
+  title:
+    en: Extend to whole object end
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ where: "end" , shift: "extend" }] }]
+
+  keys:
+    qwerty: |-
+      `}` (kakoune: move)
+
+seek.askObject.inner:
+  title:
+    en: Select inner object
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]
+
+  keys:
+    qwerty: |-
+      `a-i` (kakoune: move)
+      `a-i` (kakoune: modify)
+
+seek.askObject.inner.end:
+  title:
+    en: Select to inner object end
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ inner: true, where: "end" }] }]
+
+  keys:
+    qwerty: |-
+      `a-]` (kakoune: move)
+
+seek.askObject.inner.end.extend:
+  title:
+    en: Extend to inner object end
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ inner: true, where: "end" , shift: "extend" }] }]
+
+  keys:
+    qwerty: |-
+      `a-}` (kakoune: move)
+
+seek.askObject.inner.start:
+  title:
+    en: Select to inner object start
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ inner: true, where: "start" }] }]
+
+  keys:
+    qwerty: |-
+      `a-[` (kakoune: move)
+
+seek.askObject.inner.start.extend:
+  title:
+    en: Extend to inner object start
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ inner: true, where: "start", shift: "extend" }] }]
+
+  keys:
+    qwerty: |-
+      `a-{` (kakoune: move)
+
+seek.askObject.start:
+  title:
+    en: Select to whole object start
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ where: "start" }] }]
+
+  keys:
+    qwerty: |-
+      `[` (kakoune: move)
+
+seek.askObject.start.extend:
+  title:
+    en: Extend to whole object start
+
+  commands: |-
+    [".openMenu", { menu: "object", pass: [{ where: "start", shift: "extend" }] }]
+
+  keys:
+    qwerty: |-
+      `{` (kakoune: move)
+
+seek.backward:
+  title:
+    en: Select to character (excluded, backward)
+
+  commands: |-
+    [".seek", { direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-t` (kakoune: move)
+      `s-t` (helix: move)
+
+seek.enclosing:
+  title:
+    en: Select to next enclosing character
+
+  keys:
+    qwerty: |-
+      `m` (kakoune: move)
+
+  doc:
+    en: |
+      Select to next enclosing character.
+
+
+      #### Variants
+
+      | Title                                  | Identifier                  | Keybinding                | Command                                                        |
+      | -------------------------------------- | --------------------------- | ------------------------- | -------------------------------------------------------------- |
+      | Extend to next enclosing character     | `enclosing.extend`          | `s-m` (kakoune: move)   | `[".seek.enclosing", { shift: "extend"               , ... }]` |
+      | Select to previous enclosing character | `enclosing.backward`        | `a-m` (kakoune: move)   | `[".seek.enclosing", {                  direction: -1, ... }]` |
+      | Extend to previous enclosing character | `enclosing.extend.backward` | `s-a-m` (kakoune: move) | `[".seek.enclosing", { shift: "extend", direction: -1, ... }]` |
+
+seek.enclosing.backward:
+  title:
+    en: Select to previous enclosing character
+
+  commands: |-
+    [".seek.enclosing", { direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-m` (kakoune: move)
+
+seek.enclosing.extend:
+  title:
+    en: Extend to next enclosing character
+
+  commands: |-
+    [".seek.enclosing", { shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-m` (kakoune: move)
+
+seek.enclosing.extend.backward:
+  title:
+    en: Extend to previous enclosing character
+
+  commands: |-
+    [".seek.enclosing", { shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-m` (kakoune: move)
+
+seek.extend:
+  title:
+    en: Extend to character (excluded)
+
+  commands: |-
+    [".seek", { shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-t` (kakoune: move)
+      `t` (helix: select)
+
+seek.extend.backward:
+  title:
+    en: Extend to character (excluded, backward)
+
+  commands: |-
+    [".seek", { shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-t` (kakoune: move)
+      `s-t` (helix: select)
+
+seek.included:
+  title:
+    en: Select to character (included)
+
+  commands: |-
+    [".seek", { include: true , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `f` (core: move)
+
+seek.included.backward:
+  title:
+    en: Select to character (included, backward)
+
+  commands: |-
+    [".seek", { include: true, direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-f` (kakoune: move)
+      `s-f` (helix: move)
+
+seek.included.extend:
+  title:
+    en: Extend to character (included)
+
+  commands: |-
+    [".seek", { include: true, shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-f` (kakoune: move)
+      `f` (helix: select)
+
+seek.included.extend.backward:
+  title:
+    en: Extend to character (included, backward)
+
+  commands: |-
+    [".seek", { include: true, shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-f` (kakoune: move)
+      `s-f` (helix: select)
+
+seek.leap:
+  title:
+    en: Leap forward
+
+  doc:
+    en: |
+      Leap forward.
+
+      Inspired by [`leap.nvim`](https://github.com/ggandor/leap.nvim).
+
+      #### Variants
+
+      | Title         | Identifier      | Command                                  |
+      | ------------- | --------------- | ---------------------------------------- |
+      | Leap backward | `leap.backward` | `[".seek.leap", { direction: -1, ... }]` |
+
+seek.leap.backward:
+  title:
+    en: Leap backward
+
+  commands: |-
+    [".seek.leap", { direction: -1, $exclude: [] }]
+
+seek.object:
+  title:
+    en: Select object
+
+  doc:
+    en: |
+      Select object.
+
+
+      #### Object patterns
+
+      - Pairs: `<regexp>(?#inner)<regexp>`.
+
+      - Character sets: `[<characters>]+`.
+
+        - Can be preceded by `(?<before>[<characters>]+)` and followed by
+          `(?<after>[<character>]+)` for whole objects.
+
+      - Matches that may only span a single line: `(?#singleline)<regexp>`.
+
+      - Predefined: `(?#predefined=<argument | paragraph | sentence>)`.
+
+      #### Variants
+
+      | Title                        | Identifier                     | Keybinding                                       | Command                                                                                       |
+      | ---------------------------- | ------------------------------ | ------------------------------------------------ | --------------------------------------------------------------------------------------------- |
+      | Select whole object          | `askObject`                    | `a-a` (kakoune: move), `a-a` (kakoune: modify) | `[".openMenu", { menu: "object",                          title: "Select whole object..." }]` |
+      | Select inner object          | `askObject.inner`              | `a-i` (kakoune: move), `a-i` (kakoune: modify) | `[".openMenu", { menu: "object", pass: [{ inner: true }], title: "Select inner object..." }]` |
+      | Select to whole object start | `askObject.start`              | `[` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start"                  }] }]` |
+      | Extend to whole object start | `askObject.start.extend`       | `{` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "start", shift: "extend" }] }]` |
+      | Select to inner object start | `askObject.inner.start`        | `a-[` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start"                  }] }]` |
+      | Extend to inner object start | `askObject.inner.start.extend` | `a-{` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "start", shift: "extend" }] }]` |
+      | Select to whole object end   | `askObject.end`                | `]` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"                    }] }]` |
+      | Extend to whole object end   | `askObject.end.extend`         | `}` (kakoune: move)                            | `[".openMenu", { menu: "object", pass: [{              where: "end"  , shift: "extend" }] }]` |
+      | Select to inner object end   | `askObject.inner.end`          | `a-]` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"                    }] }]` |
+      | Extend to inner object end   | `askObject.inner.end.extend`   | `a-}` (kakoune: move)                          | `[".openMenu", { menu: "object", pass: [{ inner: true, where: "end"  , shift: "extend" }] }]` |
+
+seek.select-yank.word:
+  title:
+    en: Select and yank a whole word
+
+  commands: |-
+    [".seek.word", { direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]
+
+seek.select-yank.word.ws:
+  title:
+    en: Select and yank a whole non-whitespace
+
+  commands: |-
+    [".seek.word", { ws: true, direction: -1, $exclude: ["register"] }], [".seek.word", { stopAtEnd: true, ws: true, $exclude: ["register"] }], [".selections.saveText", { $include: ["register"] }]
+
+seek.syntax.child.experimental:
+  title:
+    en: Select child syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "child" }]
+
+seek.syntax.experimental:
+  title:
+    en: Select syntax object
+
+  doc:
+    en: |
+      Select syntax object.
+
+      #### Variants
+
+      | Title                         | Identifier                     | Command                                                |
+      | ----------------------------- | ------------------------------ | ------------------------------------------------------ |
+      | Select next syntax object     | `syntax.next.experimental`     | `[".seek.syntax.experimental", { where: "next"     }]` |
+      | Select previous syntax object | `syntax.previous.experimental` | `[".seek.syntax.experimental", { where: "previous" }]` |
+      | Select parent syntax object   | `syntax.parent.experimental`   | `[".seek.syntax.experimental", { where: "parent"   }]` |
+      | Select child syntax object    | `syntax.child.experimental`    | `[".seek.syntax.experimental", { where: "child"    }]` |
+
+seek.syntax.next.experimental:
+  title:
+    en: Select next syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "next" }]
+
+seek.syntax.parent.experimental:
+  title:
+    en: Select parent syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "parent" }]
+
+seek.syntax.previous.experimental:
+  title:
+    en: Select previous syntax object
+
+  commands: |-
+    [".seek.syntax.experimental", { where: "previous" }]
+
+seek.word:
+  title:
+    en: Select to next word start
+
+  keys:
+    qwerty: |-
+      `w` (core: move)
+
+  doc:
+    en: |
+      Select to next word start.
+
+      Select the word and following whitespaces on the right of the end of each selection.
+
+
+      #### Variants
+
+      | Title                                        | Identifier                | Keybinding                                       | Command                                                                               |
+      | -------------------------------------------- | ------------------------- | ------------------------------------------------ | ------------------------------------------------------------------------------------- |
+      | Extend to next word start                    | `word.extend`             | `s-w` (kakoune: move), `w` (helix: select)     | `[".seek.word", {                             shift: "extend"               , ... }]` |
+      | Select to previous word start                | `word.backward`           | `b` (core: move)                               | `[".seek.word", {                                              direction: -1, ... }]` |
+      | Extend to previous word start                | `word.extend.backward`    | `s-b` (kakoune: move), `b` (helix: select)     | `[".seek.word", {                             shift: "extend", direction: -1, ... }]` |
+      | Select to next non-whitespace word start     | `word.ws`                 | `a-w` (kakoune: move), `s-w` (helix: move)   | `[".seek.word", {                   ws: true                                , ... }]` |
+      | Extend to next non-whitespace word start     | `word.ws.extend`          | `s-a-w` (kakoune: move), `s-w` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend"               , ... }]` |
+      | Select to previous non-whitespace word start | `word.ws.backward`        | `a-b` (kakoune: move), `s-b` (helix: move)   | `[".seek.word", {                   ws: true,                  direction: -1, ... }]` |
+      | Extend to previous non-whitespace word start | `word.ws.extend.backward` | `s-a-b` (kakoune: move), `s-b` (helix: select) | `[".seek.word", {                   ws: true, shift: "extend", direction: -1, ... }]` |
+      | Select to next word end                      | `wordEnd`                 | `e` (core: move)                               | `[".seek.word", { stopAtEnd: true                                           , ... }]` |
+      | Extend to next word end                      | `wordEnd.extend`          | `s-e` (kakoune: move), `e` (helix: select)     | `[".seek.word", { stopAtEnd: true ,           shift: "extend"               , ... }]` |
+      | Select to next non-whitespace word end       | `wordEnd.ws`              | `a-e` (kakoune: move), `s-e` (helix: move)   | `[".seek.word", { stopAtEnd: true , ws: true                                , ... }]` |
+      | Extend to next non-whitespace word end       | `wordEnd.ws.extend`       | `s-a-e` (kakoune: move), `s-e` (helix: select) | `[".seek.word", { stopAtEnd: true , ws: true, shift: "extend"               , ... }]` |
+
+      #### Additional Commands
+
+      | Title                                  | Identifier               | Keybinding    | Commands                                                                                                                                        |
+      | -------------------------------------- | ------------------------ | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+      | Select and yank a whole word           | `select-yank.word`       |               | `[".seek.word", { direction: -1, ... }], [".seek.word", { stopAtEnd: true, ... }], [".selections.saveText", { +register }]`                     |
+      | Select and yank a whole non-whitespace | `select-yank.word.ws`    |               | `[".seek.word", { ws: true, direction: -1, ... }], [".seek.word", { stopAtEnd: true, ws: true, ... }], [".selections.saveText", { +register }]` |
+
+seek.word.backward:
+  title:
+    en: Select to previous word start
+
+  commands: |-
+    [".seek.word", { direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `b` (core: move)
+
+seek.word.extend:
+  title:
+    en: Extend to next word start
+
+  commands: |-
+    [".seek.word", { shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-w` (kakoune: move)
+      `w` (helix: select)
+
+seek.word.extend.backward:
+  title:
+    en: Extend to previous word start
+
+  commands: |-
+    [".seek.word", { shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-b` (kakoune: move)
+      `b` (helix: select)
+
+seek.word.ws:
+  title:
+    en: Select to next non-whitespace word start
+
+  commands: |-
+    [".seek.word", { ws: true , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-w` (kakoune: move)
+      `s-w` (helix: move)
+
+seek.word.ws.backward:
+  title:
+    en: Select to previous non-whitespace word start
+
+  commands: |-
+    [".seek.word", { ws: true, direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-b` (kakoune: move)
+      `s-b` (helix: move)
+
+seek.word.ws.extend:
+  title:
+    en: Extend to next non-whitespace word start
+
+  commands: |-
+    [".seek.word", { ws: true, shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-w` (kakoune: move)
+      `s-w` (helix: select)
+
+seek.word.ws.extend.backward:
+  title:
+    en: Extend to previous non-whitespace word start
+
+  commands: |-
+    [".seek.word", { ws: true, shift: "extend", direction: -1, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-b` (kakoune: move)
+      `s-b` (helix: select)
+
+seek.wordEnd:
+  title:
+    en: Select to next word end
+
+  commands: |-
+    [".seek.word", { stopAtEnd: true , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `e` (core: move)
+
+seek.wordEnd.extend:
+  title:
+    en: Extend to next word end
+
+  commands: |-
+    [".seek.word", { stopAtEnd: true , shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-e` (kakoune: move)
+      `e` (helix: select)
+
+seek.wordEnd.ws:
+  title:
+    en: Select to next non-whitespace word end
+
+  commands: |-
+    [".seek.word", { stopAtEnd: true , ws: true , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-e` (kakoune: move)
+      `s-e` (helix: move)
+
+seek.wordEnd.ws.extend:
+  title:
+    en: Extend to next non-whitespace word end
+
+  commands: |-
+    [".seek.word", { stopAtEnd: true , ws: true, shift: "extend" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-e` (kakoune: move)
+      `s-e` (helix: select)
+
+seek.wordLabel:
+  title:
+    en: Leap to word
+
+  doc:
+    en: |
+      Leap to word.
+
+      This is the same as goto word (gw) in helix.
+
+      #### Variants
+
+      | Title                 | Identifier         | Command                                         |
+      | ----------------------| ------------------ | ----------------------------------------------- |
+      | Leap to word (extend) | `wordLabel.extend` | `[".seek.wordLabel", { shift: "extend", ... }]` |
+
+seek.wordLabel.extend:
+  title:
+    en: Leap to word (extend)
+
+  commands: |-
+    [".seek.wordLabel", { shift: "extend", $exclude: [] }]
+
+select.buffer:
+  title:
+    en: Select whole buffer
+
+  keys:
+    qwerty: |-
+      `%` (core: move; helix: select)
+
+  doc:
+    en: |+
+      Select whole buffer.
+
+select.documentEnd.extend:
+  title:
+    en: Extend to last character
+
+  commands: |-
+    [".select.lineEnd", { count: 2147483647, shift: "extend", $exclude: [] }]
+
+select.documentEnd.jump:
+  title:
+    en: Jump to last character
+
+  commands: |-
+    [".select.lineEnd", { count: 2147483647, shift: "jump" , $exclude: [] }]
+
+select.down.extend:
+  title:
+    en: Extend down
+
+  commands: |-
+    [".select.vertically", { direction: 1, shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-j` (kakoune: move)
+      `s-down` (kakoune: move)
+      `j` (helix: select)
+      `down` (helix: select)
+
+select.down.jump:
+  title:
+    en: Jump down
+
+  commands: |-
+    [".select.vertically", { direction: 1, shift: "jump" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `j` (core: move)  , `down` (core: move)
+
+select.firstLine.extend:
+  title:
+    en: Extend to first line
+
+  commands: |-
+    [".select.lineStart", { count: 0, shift: "extend", $exclude: [] }]
+
+select.firstLine.jump:
+  title:
+    en: Jump to first line
+
+  commands: |-
+    [".select.lineStart", { count: 0, shift: "jump" , $exclude: [] }]
+
+select.firstVisibleLine:
+  title:
+    en: Select to first visible line
+
+  doc:
+    en: |
+      Select to first visible line.
+
+      #### Variants
+
+      | Title                        | Identifier                | Command                                             |
+      | ---------------------------- | ------------------------- | --------------------------------------------------- |
+      | Jump to first visible line   | `firstVisibleLine.jump`   | `[".select.firstVisibleLine", { shift: "jump"   }]` |
+      | Extend to first visible line | `firstVisibleLine.extend` | `[".select.firstVisibleLine", { shift: "extend" }]` |
+
+select.firstVisibleLine.extend:
+  title:
+    en: Extend to first visible line
+
+  commands: |-
+    [".select.firstVisibleLine", { shift: "extend" }]
+
+select.firstVisibleLine.jump:
+  title:
+    en: Jump to first visible line
+
+  commands: |-
+    [".select.firstVisibleLine", { shift: "jump" }]
+
+select.halfPageDown.extend:
+  title:
+    en: Half page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "halfPage", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-d` (helix: select)
+
+select.halfPageDown.jump:
+  title:
+    en: Half page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "halfPage", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-d` (core: move; core: modify)
+
+select.halfPageUp.extend:
+  title:
+    en: Half page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-u` (helix: select)
+
+select.halfPageUp.jump:
+  title:
+    en: Half page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-u` (core: move; core: modify)
+
+select.horizontally:
+  title:
+    en: Select horizontally
+
+  doc:
+    en: |
+      Select horizontally.
+
+
+      #### Variants
+
+      | Title        | Identifier     | Keybinding                                                                                         | Command                                                             |
+      | ------------ | -------------- | -------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+      | Jump right   | `right.jump`   | `l` (core: move)  , `right` (core: move)                                                       | `[".select.horizontally", { direction:  1, shift: "jump"  , ... }]` |
+      | Extend right | `right.extend` | `s-l` (kakoune: move), `s-right` (kakoune: move), `l` (helix: select), `right` (helix: select) | `[".select.horizontally", { direction:  1, shift: "extend", ... }]` |
+      | Jump left    | `left.jump`    | `h` (core: move)  , `left` (core: move)                                                        | `[".select.horizontally", { direction: -1, shift: "jump"  , ... }]` |
+      | Extend left  | `left.extend`  | `s-h` (kakoune: move), `s-left` (kakoune: move), `h` (helix: select), `left` (helix: select)   | `[".select.horizontally", { direction: -1, shift: "extend", ... }]` |
+
+select.lastLine:
+  title:
+    en: Select to last line
+
+  doc:
+    en: |
+      Select to last line.
+
+      #### Variants
+
+      | Title               | Identifier        | Command                                     |
+      | ------------------- | ----------------- | ------------------------------------------- |
+      | Jump to last line   | `lastLine.jump`   | `[".select.lastLine", { shift: "jump"   }]` |
+      | Extend to last line | `lastLine.extend` | `[".select.lastLine", { shift: "extend" }]` |
+
+select.lastLine.extend:
+  title:
+    en: Extend to last line
+
+  commands: |-
+    [".select.lastLine", { shift: "extend" }]
+
+select.lastLine.jump:
+  title:
+    en: Jump to last line
+
+  commands: |-
+    [".select.lastLine", { shift: "jump" }]
+
+select.lastVisibleLine:
+  title:
+    en: Select to last visible line
+
+  doc:
+    en: |
+      Select to last visible line.
+
+      #### Variants
+
+      | Title                       | Identifier               | Command                                            |
+      | --------------------------- | ------------------------ | -------------------------------------------------- |
+      | Jump to last visible line   | `lastVisibleLine.jump`   | `[".select.lastVisibleLine", { shift: "jump"   }]` |
+      | Extend to last visible line | `lastVisibleLine.extend` | `[".select.lastVisibleLine", { shift: "extend" }]` |
+
+select.lastVisibleLine.extend:
+  title:
+    en: Extend to last visible line
+
+  commands: |-
+    [".select.lastVisibleLine", { shift: "extend" }]
+
+select.lastVisibleLine.jump:
+  title:
+    en: Jump to last visible line
+
+  commands: |-
+    [".select.lastVisibleLine", { shift: "jump" }]
+
+select.left.extend:
+  title:
+    en: Extend left
+
+  commands: |-
+    [".select.horizontally", { direction: -1, shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-h` (kakoune: move)
+      `s-left` (kakoune: move)
+      `h` (helix: select)
+      `left` (helix: select)
+
+select.left.jump:
+  title:
+    en: Jump left
+
+  commands: |-
+    [".select.horizontally", { direction: -1, shift: "jump" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `h` (core: move)  , `left` (core: move)
+
+select.line.above:
+  title:
+    en: Select line above
+
+  doc:
+    en: |
+      Select line above.
+
+select.line.above.extend:
+  title:
+    en: Extend to line above
+
+  doc:
+    en: |
+      Extend to line above.
+
+select.line.below:
+  title:
+    en: Select line below
+
+  doc:
+    en: |
+      Select line below.
+
+select.line.below.extend:
+  title:
+    en: Extend to line below
+
+  keys:
+    qwerty: |-
+      `x` (helix: move; helix: select)
+
+  doc:
+    en: |+
+      Extend to line below.
+
+select.lineEnd:
+  title:
+    en: Select to line end
+
+  keys:
+    qwerty: |-
+      `a-l` (kakoune: move)
+      `end` (core: move)
+
+  doc:
+    en: |
+      Select to line end.
+
+
+
+      #### Variants
+
+      | Title                    | Identifier           | Keybinding                                                                  | Command                                                         |
+      | ------------------------ | -------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------- |
+      | Extend to line end       | `lineEnd.extend`     | `s-a-l` (kakoune: move), `s-end` (kakoune: move), `end` (helix: select) | `[".select.lineEnd", {                 shift: "extend", ... }]` |
+      | Jump to last character   | `documentEnd.jump`   |                                                                             | `[".select.lineEnd", { count: MAX_INT, shift: "jump"  , ... }]` |
+      | Extend to last character | `documentEnd.extend` |                                                                             | `[".select.lineEnd", { count: MAX_INT, shift: "extend", ... }]` |
+
+select.lineEnd.extend:
+  title:
+    en: Extend to line end
+
+  commands: |-
+    [".select.lineEnd", { shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-l` (kakoune: move)
+      `s-end` (kakoune: move)
+      `end` (helix: select)
+
+select.lineStart:
+  title:
+    en: Select to line start
+
+  keys:
+    qwerty: |-
+      `a-h` (kakoune: move)
+      `home` (core: move)
+
+  doc:
+    en: |
+      Select to line start.
+
+
+      #### Variants
+
+      | Title                             | Identifier                   | Keybinding                                                                    | Command                                                            |
+      | --------------------              | ------------------           | ----------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+      | Jump to line start                | `lineStart.jump`             |                                                                               | `[".select.lineStart", {                  shift: "jump"  , ... }]` |
+      | Extend to line start              | `lineStart.extend`           | `s-a-h` (kakoune: move), `s-home` (kakoune: move), `home` (helix: select) | `[".select.lineStart", {                  shift: "extend", ... }]` |
+      | Jump to line start (skip blank)   | `lineStart.skipBlank.jump`   |                                                                               | `[".select.lineStart", { skipBlank: true, shift: "jump"  , ... }]` |
+      | Extend to line start (skip blank) | `lineStart.skipBlank.extend` |                                                                               | `[".select.lineStart", { skipBlank: true, shift: "extend", ... }]` |
+      | Jump to first line                | `firstLine.jump`             |                                                                               | `[".select.lineStart", { count: 0,        shift: "jump"  , ... }]` |
+      | Extend to first line              | `firstLine.extend`           |                                                                               | `[".select.lineStart", { count: 0,        shift: "extend", ... }]` |
+
+select.lineStart.extend:
+  title:
+    en: Extend to line start
+
+  commands: |-
+    [".select.lineStart", { shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-h` (kakoune: move)
+      `s-home` (kakoune: move)
+      `home` (helix: select)
+
+select.lineStart.jump:
+  title:
+    en: Jump to line start
+
+  commands: |-
+    [".select.lineStart", { shift: "jump" , $exclude: [] }]
+
+select.lineStart.skipBlank.extend:
+  title:
+    en: Extend to line start (skip blank)
+
+  commands: |-
+    [".select.lineStart", { skipBlank: true, shift: "extend", $exclude: [] }]
+
+select.lineStart.skipBlank.jump:
+  title:
+    en: Jump to line start (skip blank)
+
+  commands: |-
+    [".select.lineStart", { skipBlank: true, shift: "jump" , $exclude: [] }]
+
+select.middleVisibleLine:
+  title:
+    en: Select to middle visible line
+
+  doc:
+    en: |
+      Select to middle visible line.
+
+      #### Variants
+
+      | Title                         | Identifier                 | Command                                              |
+      | ----------------------------- | -------------------------- | ---------------------------------------------------- |
+      | Jump to middle visible line   | `middleVisibleLine.jump`   | `[".select.middleVisibleLine", { shift: "jump"   }]` |
+      | Extend to middle visible line | `middleVisibleLine.extend` | `[".select.middleVisibleLine", { shift: "extend" }]` |
+
+select.middleVisibleLine.extend:
+  title:
+    en: Extend to middle visible line
+
+  commands: |-
+    [".select.middleVisibleLine", { shift: "extend" }]
+
+select.middleVisibleLine.jump:
+  title:
+    en: Jump to middle visible line
+
+  commands: |-
+    [".select.middleVisibleLine", { shift: "jump" }]
+
+select.pageDown.extend:
+  title:
+    en: Page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "page", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-f` (helix: select)
+
+select.pageDown.jump:
+  title:
+    en: Page down
+
+  commands: |-
+    [".select.vertically", { direction: 1, by: "page", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-f` (core: move; core: modify)
+
+select.pageUp.extend:
+  title:
+    en: Page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "page", shift: "extend" }]
+
+  keys:
+    qwerty: |-
+      `c-b` (helix: select)
+
+select.pageUp.jump:
+  title:
+    en: Page up
+
+  commands: |-
+    [".select.vertically", { direction: -1, by: "page", shift: "jump" }]
+
+  keys:
+    qwerty: |-
+      `c-b` (core: move; core: modify)
+
+select.right.extend:
+  title:
+    en: Extend right
+
+  commands: |-
+    [".select.horizontally", { direction: 1, shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-l` (kakoune: move)
+      `s-right` (kakoune: move)
+      `l` (helix: select)
+      `right` (helix: select)
+
+select.right.jump:
+  title:
+    en: Jump right
+
+  commands: |-
+    [".select.horizontally", { direction: 1, shift: "jump" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `l` (core: move)  , `right` (core: move)
+
+select.to:
+  title:
+    en: Select to
+
+  doc:
+    en: |
+      Select to.
+
+      If a count is specified, this command will shift to the start of the given
+      line. If no count is specified, this command will shift open the `goto` menu.
+
+      #### Variants
+
+      | Title     | Identifier  | Keybinding                                   | Command                                    |
+      | --------- | ----------- | -------------------------------------------- | ------------------------------------------ |
+      | Go to     | `to.jump`   | `g` (core: move)                           | `[".select.to", { shift: "jump"  , ... }]` |
+      | Extend to | `to.extend` | `s-g` (kakoune: move), `g` (helix: select) | `[".select.to", { shift: "extend", ... }]` |
+
+select.to.extend:
+  title:
+    en: Extend to
+
+  commands: |-
+    [".select.to", { shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-g` (kakoune: move)
+      `g` (helix: select)
+
+select.to.jump:
+  title:
+    en: Go to
+
+  commands: |-
+    [".select.to", { shift: "jump" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `g` (core: move)
+
+select.up.extend:
+  title:
+    en: Extend up
+
+  commands: |-
+    [".select.vertically", { direction: -1, shift: "extend", $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-k` (kakoune: move)
+      `s-up` (kakoune: move)  , `k` (helix: select)
+      `up` (helix: select)
+
+select.up.jump:
+  title:
+    en: Jump up
+
+  commands: |-
+    [".select.vertically", { direction: -1, shift: "jump" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `k` (core: move)  , `up` (core: move)
+
+select.vertically:
+  title:
+    en: Select vertically
+
+  doc:
+    en: |
+      Select vertically.
+
+
+      #### Variants
+
+      | Title       | Identifier    | Keybinding                                                                                        | Command                                                           |
+      | ----------- | ------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+      | Jump down   | `down.jump`   | `j` (core: move)  , `down` (core: move)                                                       | `[".select.vertically", { direction:  1, shift: "jump"  , ... }]` |
+      | Extend down | `down.extend` | `s-j` (kakoune: move), `s-down` (kakoune: move), `j` (helix: select), `down` (helix: select)  | `[".select.vertically", { direction:  1, shift: "extend", ... }]` |
+      | Jump up     | `up.jump`     | `k` (core: move)  , `up` (core: move)                                                         | `[".select.vertically", { direction: -1, shift: "jump"  , ... }]` |
+      | Extend up   | `up.extend`   | `s-k` (kakoune: move), `s-up` (kakoune: move)  , `k` (helix: select), `up` (helix: select)    | `[".select.vertically", { direction: -1, shift: "extend", ... }]` |
+      | Half page down   | `halfPageDown.jump`   | `c-d` (core: move; core: modify)                                                | `[".select.vertically", { direction:  1, by: "halfPage", shift: "jump" }]`   |
+      | Half page down   | `halfPageDown.extend` | `c-d` (helix: select)                                                           | `[".select.vertically", { direction:  1, by: "halfPage", shift: "extend" }]` |
+      | Half page up     | `halfPageUp.jump`     | `c-u` (core: move; core: modify)                                                | `[".select.vertically", { direction: -1, by: "halfPage", shift: "jump" }]`   |
+      | Half page up     | `halfPageUp.extend`   | `c-u` (helix: select)                                                           | `[".select.vertically", { direction: -1, by: "halfPage", shift: "extend" }]` |
+      | Page down        | `pageDown.jump`       | `c-f` (core: move; core: modify)                                                | `[".select.vertically", { direction:  1, by: "page", shift: "jump" }]`      |
+      | Page down        | `pageDown.extend`     | `c-f` (helix: select)                                                           | `[".select.vertically", { direction:  1, by: "page", shift: "extend" }]`    |
+      | Page up          | `pageUp.jump`         | `c-b` (core: move; core: modify)                                                | `[".select.vertically", { direction: -1, by: "page", shift: "jump" }]`      |
+      | Page up          | `pageUp.extend`       | `c-b` (helix: select)                                                           | `[".select.vertically", { direction: -1, by: "page", shift: "extend" }]`    |
+
+selections.changeDirection:
+  title:
+    en: Change direction of selections
+
+  keys:
+    qwerty: |-
+      `a-;` (core: move; helix: select)
+
+  doc:
+    en: |
+      Change direction of selections.
+
+
+
+      #### Variants
+
+      | Title               | Identifier     | Keybinding              | Command                                              |
+      | ------------------- | -------------- | ----------------------- | ---------------------------------------------------- |
+      | Forward selections  | `faceForward`  | `a-:` (kakoune: move) | `[".selections.changeDirection", { direction:  1 }]` |
+      | Backward selections | `faceBackward` |                         | `[".selections.changeDirection", { direction: -1 }]` |
+
+selections.changeOrder:
+  title:
+    en: Reverse selections
+
+  doc:
+    en: |
+      Reverse selections.
+
+
+      #### Variants
+
+      | Title                       | Identifier        | Command                                          |
+      | --------------------------- | ----------------- | ------------------------------------------------ |
+      | Order selections descending | `orderDescending` | `[".selections.changeOrder", { direction:  1 }]` |
+      | Order selections ascending  | `orderAscending`  | `[".selections.changeOrder", { direction: -1 }]` |
+
+selections.clear.main:
+  title:
+    en: Clear main selections
+
+  commands: |-
+    [".selections.filter", { expression: "i !== count" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-,` (core: move; helix: select)
+
+selections.clear.secondary:
+  title:
+    en: Clear secondary selections
+
+  commands: |-
+    [".selections.filter", { expression: "i === count" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `,` (core: move; helix: select)
+
+selections.collapse:
+  title:
+    en: Collapse to single cursor
+
+  commands: |-
+    [".selections.filter", { expression: "i === count" , $exclude: [] }], [".selections.reduce"]
+
+selections.copy:
+  title:
+    en: Copy selections below
+
+  keys:
+    qwerty: |-
+      `s-c` (core: move; helix: select)
+
+  doc:
+    en: |
+      Copy selections below.
+
+
+      #### Variant
+
+      | Title                 | Identifier   | Keybinding                            | Command                                   |
+      | --------------------- | ------------ | ------------------------------------- | ----------------------------------------- |
+      | Copy selections above | `copy.above` | `s-a-c` (core: move; helix: select) | `[".selections.copy", { direction: -1 }]` |
+
+selections.copy.above:
+  title:
+    en: Copy selections above
+
+  commands: |-
+    [".selections.copy", { direction: -1 }]
+
+  keys:
+    qwerty: |-
+      `s-a-c` (core: move; helix: select)
+
+selections.expandToLines:
+  title:
+    en: Expand to lines
+
+  keys:
+    qwerty: |-
+      `x` (kakoune: move)
+      `s-x` (helix: move; helix: select)
+
+  doc:
+    en: |+
+      Expand to lines.
+
+      Expand selections to contain full lines (including end-of-line characters).
+
+selections.faceBackward:
+  title:
+    en: Backward selections
+
+  commands: |-
+    [".selections.changeDirection", { direction: -1 }]
+
+selections.faceForward:
+  title:
+    en: Forward selections
+
+  commands: |-
+    [".selections.changeDirection", { direction: 1 }]
+
+  keys:
+    qwerty: |-
+      `a-:` (kakoune: move)
+
+selections.filter:
+  title:
+    en: Filter selections
+
+  keys:
+    qwerty: |-
+      `$` (core: move; helix: select)
+
+  doc:
+    en: |
+      Filter selections.
+
+      #### Variants
+
+      | Title                      | Identifier              | Keybinding                            | Commands                                                                 |
+      | -------------------------- | ----------------------- | ------------------------------------- | ------------------------------------------------------------------------ |
+      | Keep matching selections   | `filter.regexp`         | `a-k` (core: move; helix: select)   | `[".selections.filter", { defaultExpression: "/"               , ... }]` |
+      | Clear matching selections  | `filter.regexp.inverse` | `s-a-k` (core: move; helix: select) | `[".selections.filter", { defaultExpression: "/", inverse: true, ... }]` |
+      | Clear secondary selections | `clear.secondary`       | `,` (core: move; helix: select)     | `[".selections.filter", { expression: "i === count"            , ... }]` |
+      | Clear main selections      | `clear.main`            | `a-,` (core: move; helix: select)   | `[".selections.filter", { expression: "i !== count"            , ... }]` |
+      | Collapse to single cursor  | `collapse`              |                                     | `[".selections.filter", { expression: "i === count"            , ... }], [".selections.reduce"]` |
+
+selections.filter.regexp:
+  title:
+    en: Keep matching selections
+
+  commands: |-
+    [".selections.filter", { defaultExpression: "/" , $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `a-k` (core: move; helix: select)
+
+selections.filter.regexp.inverse:
+  title:
+    en: Clear matching selections
+
+  commands: |-
+    [".selections.filter", { defaultExpression: "/", inverse: true, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-k` (core: move; helix: select)
+
+selections.hideIndices:
+  title:
+    en: Hide selection indices
+
+  commands: |-
+    [".selections.toggleIndices", { display: false, $exclude: [] }]
+
+selections.merge:
+  title:
+    en: Merge contiguous selections
+
+  keys:
+    qwerty: |-
+      `a-_` (kakoune: move)
+
+  doc:
+    en: |+
+      Merge contiguous selections.
+
+selections.open:
+  title:
+    en: Open selected file
+
+  doc:
+    en: |
+      Open selected file.
+
+selections.orderAscending:
+  title:
+    en: Order selections ascending
+
+  commands: |-
+    [".selections.changeOrder", { direction: -1 }]
+
+selections.orderDescending:
+  title:
+    en: Order selections descending
+
+  commands: |-
+    [".selections.changeOrder", { direction: 1 }]
+
+selections.pipe:
+  title:
+    en: Pipe selections
+
+  keys:
+    qwerty: |-
+      `a-|` (core: move; helix: select)
+
+  doc:
+    en: |
+      Pipe selections.
+
+      Run the specified command or code with the contents of each selection, and
+      save the result to a register.
+
+      See https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#changes-through-external-programs
+
+      #### Additional commands
+
+      | Title               | Identifier     | Keybinding                          | Commands                                                                                                                    |
+      | ------------------- | -------------- | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+      | Pipe and replace    | `pipe.replace` | `|` (core: move; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|",                                  ... }]` |
+      | Pipe and append     | `pipe.append`  | `!` (core: move; helix: select)   | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "end"  , shift: "select", ... }]` |
+      | Pipe and prepend    | `pipe.prepend` | `a-!` (core: move; helix: select) | `[".selections.pipe", { +expression,register }], [".edit.insert", { register: "|", where: "start", shift: "select", ... }]` |
+
+selections.pipe.append:
+  title:
+    en: Pipe and append
+
+  commands: |-
+    [".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", where: "end" , shift: "select", $exclude: ["expression","register"] }]
+
+  keys:
+    qwerty: |-
+      `!` (core: move; helix: select)
+
+selections.pipe.prepend:
+  title:
+    en: Pipe and prepend
+
+  commands: |-
+    [".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", where: "start", shift: "select", $exclude: ["expression","register"] }]
+
+  keys:
+    qwerty: |-
+      `a-!` (core: move; helix: select)
+
+selections.pipe.replace:
+  title:
+    en: Pipe and replace
+
+  commands: |-
+    [".selections.pipe", { $include: ["expression","register"] }], [".edit.insert", { register: "|", $exclude: ["expression","register"] }]
+
+  keys:
+    qwerty: |-
+      `|` (core: move; helix: select)
+
+selections.reduce:
+  title:
+    en: Reduce selections to their cursor
+
+  keys:
+    qwerty: |-
+      `;` (core: move; helix: select)
+
+  doc:
+    en: |
+      Reduce selections to their cursor.
+
+
+
+      #### Variant
+
+      | Title                           | Identifier     | Keybinding                | Command                                                        |
+      | ------------------------------- | -------------- | ------------------------- | -------------------------------------------------------------- |
+      | Reduce selections to their ends | `reduce.edges` | `s-a-s` (kakoune: move) | `[".selections.reduce", { where: "both", empty: false, ... }]` |
+
+selections.reduce.edges:
+  title:
+    en: Reduce selections to their ends
+
+  commands: |-
+    [".selections.reduce", { where: "both", empty: false, $exclude: [] }]
+
+  keys:
+    qwerty: |-
+      `s-a-s` (kakoune: move)
+
+selections.restore:
+  title:
+    en: Restore selections
+
+  keys:
+    qwerty: |-
+      `z` (kakoune: move)
+
+  doc:
+    en: |+
+      Restore selections.
+
+selections.restore.withCurrent:
+  title:
+    en: Combine register selections with current ones
+
+  keys:
+    qwerty: |-
+      `a-z` (kakoune: move)
+
+  doc:
+    en: |
+      Combine register selections with current ones.
+
+
+      The following keybinding is also available:
+
+      | Keybinding                | Command                                                       |
+      | ------------------------- | ------------------------------------------------------------- |
+      | `s-a-z` (kakoune: move) | `[".selections.restore.withCurrent", { reverse: true, ... }]` |
+
+      See https://github.com/mawww/kakoune/blob/master/doc/pages/keys.asciidoc#marks
+
 selections.rotate.both:
   title:
     en: Rotate selections clockwise
@@ -1052,6 +2672,160 @@ selections.rotate.selections.reverse:
   keys:
     qwerty: |-
       `(` (core: move; helix: select)
+
+selections.save:
+  title:
+    en: Save selections
+
+  keys:
+    qwerty: |-
+      `s-z` (kakoune: move)
+
+  doc:
+    en: |+
+      Save selections.
+
+selections.saveText:
+  title:
+    en: Copy selections text
+
+  keys:
+    qwerty: |-
+      `y` (core: move)
+
+  doc:
+    en: |
+      Copy selections text.
+
+      | Keybindings         | Commands                                          |
+      | -----------         | --------                                          |
+      | `y` (helix: select) | `[".selections.saveText"], [".modes.set.move"]` |
+
+selections.select:
+  title:
+    en: Select within selections
+
+  doc:
+    en: |
+      Select within selections.
+
+      #### Variants
+
+      | Title          | Identifier      | Keybinding                        | Command                                                                                           |
+      | -------------- | --------------- | --------------------------------- | ------------------------------------------------------------------------------------------------- |
+      | Leap or select | `select.orLeap` | `s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { ... }]], otherwise: [[".selections.select", { ... }]] }]` |
+
+selections.select.orLeap:
+  title:
+    en: Leap or select
+
+  commands: |-
+    [".ifEmpty", { then: [[".seek.leap", { $exclude: [] }]], otherwise: [[".selections.select", { $exclude: [] }]] }]
+
+  keys:
+    qwerty: |-
+      `s` (core: move; helix: select)
+
+selections.showIndices:
+  title:
+    en: Show selection indices
+
+  commands: |-
+    [".selections.toggleIndices", { display: true , $exclude: [] }]
+
+selections.sort:
+  title:
+    en: Sort selections
+
+  doc:
+    en: |+
+      Sort selections.
+
+
+selections.split:
+  title:
+    en: Split selections
+
+  keys:
+    qwerty: |-
+      `s-s` (core: move; helix: select)
+
+  doc:
+    en: |+
+      Split selections.
+
+selections.splitLines:
+  title:
+    en: Split selections at line boundaries
+
+  doc:
+    en: |
+      Split selections at line boundaries.
+
+      #### Variants
+
+      | Title                   | Identifier                   | Keybinding                          | Command                                                                                                              |
+      | ----------------------- | ---------------------------- | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+      | Split selections at line boundaries or leap backwards | `splitLines.orLeap.backward` | `a-s` (core: move; helix: select) | `[".ifEmpty", { then: [[".seek.leap", { direction: -1, ... }]], otherwise: [[".selections.splitLines", { ... }]] }]` |
+
+selections.splitLines.orLeap.backward:
+  title:
+    en: Split selections at line boundaries or leap backwards
+
+  commands: |-
+    [".ifEmpty", { then: [[".seek.leap", { direction: -1, $exclude: [] }]], otherwise: [[".selections.splitLines", { $exclude: [] }]] }]
+
+  keys:
+    qwerty: |-
+      `a-s` (core: move; helix: select)
+
+selections.toggleIndices:
+  title:
+    en: Toggle selection indices
+
+  keys:
+    qwerty: |-
+      `enter` (core: move; helix: select)
+
+  doc:
+    en: |
+      Toggle selection indices.
+
+
+      #### Variants
+
+      | Title                  | Identifier    | Command                                                  |
+      | ---------------------- | ------------- | -------------------------------------------------------- |
+      | Show selection indices | `showIndices` | `[".selections.toggleIndices", { display: true , ... }]` |
+      | Hide selection indices | `hideIndices` | `[".selections.toggleIndices", { display: false, ... }]` |
+
+selections.trimLines:
+  title:
+    en: Trim lines
+
+  keys:
+    qwerty: |-
+      `a-x` (core: move; helix: select)
+
+  doc:
+    en: |+
+      Trim lines.
+
+      Trim selections to only contain full lines (from start to line break).
+
+selections.trimWhitespace:
+  title:
+    en: Trim whitespace
+
+  keys:
+    qwerty: |-
+      `_` (core: move; helix: select)
+
+  doc:
+    en: |+
+      Trim whitespace.
+
+      Trim whitespace at beginning and end of selections.
 
 selectRegister:
   title:
@@ -1229,6 +3003,26 @@ anonymous:
         `d` (helix: select)
 
   - title:
+      en: Open match menu
+
+    commands: |-
+      [".openMenu", { menu: "match" }]
+
+    keys:
+      qwerty: |-
+        `m` (helix: move)
+
+  - title:
+      en: Open match menu with extend
+
+    commands: |-
+      [".openMenu", { menu: "match", pass: [{ shift: "extend" }] }]
+
+    keys:
+      qwerty: |-
+        `m` (helix: select)
+
+  - title:
       en: Show view menu
 
     commands: |-
@@ -1249,6 +3043,20 @@ anonymous:
       qwerty: |-
         `s-v` (kakoune: move)
         `s-z` (helix: move; helix: select)
+
+  - commands: |-
+      [".selections.restore.withCurrent", { reverse: true, $exclude: [] }]
+
+    keys:
+      qwerty: |-
+        `s-a-z` (kakoune: move)
+
+  - commands: |-
+      [".selections.saveText"], [".modes.set.move"]
+
+    keys:
+      qwerty: |-
+        `y` (helix: select)
 
   - title:
       en: Add the digit 0 to the counter

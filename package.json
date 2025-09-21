@@ -1350,6 +1350,721 @@
         "category": "Danceflow"
       },
       {
+        "command": "danceflow.search",
+        "title": "Search",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.backward",
+        "title": "Search backward",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.backward.extend",
+        "title": "Search backward (extend)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.extend",
+        "title": "Search (extend)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.next",
+        "title": "Select next match",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.next.add",
+        "title": "Add next match",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.previous",
+        "title": "Select previous match",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.previous.add",
+        "title": "Add previous match",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.selection",
+        "title": "Search current selection",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.search.selection.smart",
+        "title": "Search current selection (smart)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek",
+        "title": "Select to character (excluded)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject",
+        "title": "Select whole object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.end",
+        "title": "Select to whole object end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.end.extend",
+        "title": "Extend to whole object end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.inner",
+        "title": "Select inner object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.inner.end",
+        "title": "Select to inner object end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.inner.end.extend",
+        "title": "Extend to inner object end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.inner.start",
+        "title": "Select to inner object start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.inner.start.extend",
+        "title": "Extend to inner object start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.start",
+        "title": "Select to whole object start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.askObject.start.extend",
+        "title": "Extend to whole object start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.backward",
+        "title": "Select to character (excluded, backward)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.enclosing",
+        "title": "Select to next enclosing character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.enclosing.backward",
+        "title": "Select to previous enclosing character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.enclosing.extend",
+        "title": "Extend to next enclosing character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.enclosing.extend.backward",
+        "title": "Extend to previous enclosing character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.extend",
+        "title": "Extend to character (excluded)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.extend.backward",
+        "title": "Extend to character (excluded, backward)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.included",
+        "title": "Select to character (included)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.included.backward",
+        "title": "Select to character (included, backward)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.included.extend",
+        "title": "Extend to character (included)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.included.extend.backward",
+        "title": "Extend to character (included, backward)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.leap",
+        "title": "Leap forward",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.leap.backward",
+        "title": "Leap backward",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.object",
+        "title": "Select object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.select-yank.word",
+        "title": "Select and yank a whole word",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.select-yank.word.ws",
+        "title": "Select and yank a whole non-whitespace",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.syntax.child.experimental",
+        "title": "Select child syntax object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.syntax.experimental",
+        "title": "Select syntax object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.syntax.next.experimental",
+        "title": "Select next syntax object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.syntax.parent.experimental",
+        "title": "Select parent syntax object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.syntax.previous.experimental",
+        "title": "Select previous syntax object",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word",
+        "title": "Select to next word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.backward",
+        "title": "Select to previous word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.extend",
+        "title": "Extend to next word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.extend.backward",
+        "title": "Extend to previous word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.ws",
+        "title": "Select to next non-whitespace word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.ws.backward",
+        "title": "Select to previous non-whitespace word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.ws.extend",
+        "title": "Extend to next non-whitespace word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.word.ws.extend.backward",
+        "title": "Extend to previous non-whitespace word start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordEnd",
+        "title": "Select to next word end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordEnd.extend",
+        "title": "Extend to next word end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordEnd.ws",
+        "title": "Select to next non-whitespace word end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordEnd.ws.extend",
+        "title": "Extend to next non-whitespace word end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordLabel",
+        "title": "Leap to word",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.seek.wordLabel.extend",
+        "title": "Leap to word (extend)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.buffer",
+        "title": "Select whole buffer",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.documentEnd.extend",
+        "title": "Extend to last character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.documentEnd.jump",
+        "title": "Jump to last character",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.down.extend",
+        "title": "Extend down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.down.jump",
+        "title": "Jump down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.firstLine.extend",
+        "title": "Extend to first line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.firstLine.jump",
+        "title": "Jump to first line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.firstVisibleLine",
+        "title": "Select to first visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.firstVisibleLine.extend",
+        "title": "Extend to first visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.firstVisibleLine.jump",
+        "title": "Jump to first visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.halfPageDown.extend",
+        "title": "Half page down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.halfPageDown.jump",
+        "title": "Half page down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.halfPageUp.extend",
+        "title": "Half page up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.halfPageUp.jump",
+        "title": "Half page up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.horizontally",
+        "title": "Select horizontally",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastLine",
+        "title": "Select to last line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastLine.extend",
+        "title": "Extend to last line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastLine.jump",
+        "title": "Jump to last line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastVisibleLine",
+        "title": "Select to last visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastVisibleLine.extend",
+        "title": "Extend to last visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lastVisibleLine.jump",
+        "title": "Jump to last visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.left.extend",
+        "title": "Extend left",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.left.jump",
+        "title": "Jump left",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.line.above",
+        "title": "Select line above",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.line.above.extend",
+        "title": "Extend to line above",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.line.below",
+        "title": "Select line below",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.line.below.extend",
+        "title": "Extend to line below",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineEnd",
+        "title": "Select to line end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineEnd.extend",
+        "title": "Extend to line end",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineStart",
+        "title": "Select to line start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineStart.extend",
+        "title": "Extend to line start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineStart.jump",
+        "title": "Jump to line start",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineStart.skipBlank.extend",
+        "title": "Extend to line start (skip blank)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.lineStart.skipBlank.jump",
+        "title": "Jump to line start (skip blank)",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.middleVisibleLine",
+        "title": "Select to middle visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.middleVisibleLine.extend",
+        "title": "Extend to middle visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.middleVisibleLine.jump",
+        "title": "Jump to middle visible line",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.pageDown.extend",
+        "title": "Page down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.pageDown.jump",
+        "title": "Page down",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.pageUp.extend",
+        "title": "Page up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.pageUp.jump",
+        "title": "Page up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.right.extend",
+        "title": "Extend right",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.right.jump",
+        "title": "Jump right",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.to",
+        "title": "Select to",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.to.extend",
+        "title": "Extend to",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.to.jump",
+        "title": "Go to",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.up.extend",
+        "title": "Extend up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.up.jump",
+        "title": "Jump up",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.select.vertically",
+        "title": "Select vertically",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.changeDirection",
+        "title": "Change direction of selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.changeOrder",
+        "title": "Reverse selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.clear.main",
+        "title": "Clear main selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.clear.secondary",
+        "title": "Clear secondary selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.collapse",
+        "title": "Collapse to single cursor",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.copy",
+        "title": "Copy selections below",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.copy.above",
+        "title": "Copy selections above",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.expandToLines",
+        "title": "Expand to lines",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.faceBackward",
+        "title": "Backward selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.faceForward",
+        "title": "Forward selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.filter",
+        "title": "Filter selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.filter.regexp",
+        "title": "Keep matching selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.filter.regexp.inverse",
+        "title": "Clear matching selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.hideIndices",
+        "title": "Hide selection indices",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.merge",
+        "title": "Merge contiguous selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.open",
+        "title": "Open selected file",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.orderAscending",
+        "title": "Order selections ascending",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.orderDescending",
+        "title": "Order selections descending",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.pipe",
+        "title": "Pipe selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.pipe.append",
+        "title": "Pipe and append",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.pipe.prepend",
+        "title": "Pipe and prepend",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.pipe.replace",
+        "title": "Pipe and replace",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.reduce",
+        "title": "Reduce selections to their cursor",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.reduce.edges",
+        "title": "Reduce selections to their ends",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.restore",
+        "title": "Restore selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.restore.withCurrent",
+        "title": "Combine register selections with current ones",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.save",
+        "title": "Save selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.saveText",
+        "title": "Copy selections text",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.select",
+        "title": "Select within selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.select.orLeap",
+        "title": "Leap or select",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.showIndices",
+        "title": "Show selection indices",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.sort",
+        "title": "Sort selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.split",
+        "title": "Split selections",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.splitLines",
+        "title": "Split selections at line boundaries",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.splitLines.orLeap.backward",
+        "title": "Split selections at line boundaries or leap backwards",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.toggleIndices",
+        "title": "Toggle selection indices",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.trimLines",
+        "title": "Trim lines",
+        "category": "Danceflow"
+      },
+      {
+        "command": "danceflow.selections.trimWhitespace",
+        "title": "Trim whitespace",
+        "category": "Danceflow"
+      },
+      {
         "command": "danceflow.selections.rotate.both",
         "title": "Rotate selections clockwise",
         "category": "Danceflow"

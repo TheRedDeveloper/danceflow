@@ -179,9 +179,9 @@ kiwi orange kiwi
 
 ```
 apple pineapple pear
-          |^^^^ 1
+          |^^^^ 0
 pear pineapple apple
-         |^^^^ 0
+         |^^^^ 1
 kiwi orange kiwi
 ```
 

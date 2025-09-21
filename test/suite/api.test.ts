@@ -729,6 +729,78 @@ suite("API tests", function () {
 
   });
 
+  suite("./src/api/search/index.ts", function () {
+
+    test("function searchBackward", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken),
+            before = ExpectedDocument.parseIndented(14, String.raw`
+              abc
+            `);
+
+      await before.apply(editor);
+
+      await context.runAsync(async () => {
+        const [p1, [t1]] = searchBackward(/\w/, new vscode.Position(0, 1))!;
+
+        expect(p1, "to be at coords", 0, 0);
+        expect(t1, "to be", "a");
+
+        const [p2, [t2]] = searchBackward(/\w/, new vscode.Position(0, 2))!;
+
+        expect(p2, "to be at coords", 0, 1);
+        expect(t2, "to be", "b");
+
+        const [p3, [t3]] = searchBackward(/\w+/, new vscode.Position(0, 2))!;
+
+        expect(p3, "to be at coords", 0, 0);
+        expect(t3, "to be", "ab");
+
+        expect(
+          searchBackward(/\w/, new vscode.Position(0, 0)),
+          "to be undefined",
+        );
+      });
+
+      // No expected end document.
+    });
+
+    test("function searchForward", async function () {
+      const editorState = extension.editors.getState(editor)!,
+            context = new Context(editorState, cancellationToken),
+            before = ExpectedDocument.parseIndented(14, String.raw`
+              abc
+            `);
+
+      await before.apply(editor);
+
+      await context.runAsync(async () => {
+        const [p1, [t1]] = searchForward(/\w/, new vscode.Position(0, 0))!;
+
+        expect(p1, "to be at coords", 0, 0);
+        expect(t1, "to be", "a");
+
+        const [p2, [t2]] = searchForward(/\w/, new vscode.Position(0, 1))!;
+
+        expect(p2, "to be at coords", 0, 1);
+        expect(t2, "to be", "b");
+
+        const [p3, [t3]] = searchForward(/\w+/, new vscode.Position(0, 1))!;
+
+        expect(p3, "to be at coords", 0, 1);
+        expect(t3, "to be", "bc");
+
+        expect(
+          searchForward(/\w/, new vscode.Position(0, 3)),
+          "to be undefined",
+        );
+      });
+
+      // No expected end document.
+    });
+
+  });
+
   suite("./src/api/edit/linewise.ts", function () {
 
     test("function indentLines", async function () {
