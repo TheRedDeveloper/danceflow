@@ -2390,12 +2390,12 @@ selections.filter.regexp.inverse:
   title:
     en: Clear matching selections
 
+  commands: |-
+    [".selections.filter", { defaultExpression: "/", inverse: true, $exclude: [] }]
+
   keys:
     qwerty: |-
       `s-a-k` (core: move; helix: select)
-
-  commands: |-
-    [".selections.filter", { defaultExpression: "/", inverse: true, $exclude: [] }]
 
 selections.hideIndices:
   title:
@@ -3042,9 +3042,6 @@ anonymous:
       [".updateCount", { addDigits: 0 }]
 
     keys:
-      azerty: |-
-        `s-0` (core: move)
-        `NumPad0` (core: move)
       qwerty: |-
         `0` (core: move; helix: select)
         `NumPad0` (core: move; helix: select)
@@ -3056,9 +3053,6 @@ anonymous:
       [".updateCount", { addDigits: 1 }]
 
     keys:
-      azerty: |-
-        `s-1` (core: move)
-        `NumPad1` (core: move)
       qwerty: |-
         `1` (core: move; helix: select)
         `NumPad1` (core: move; helix: select)
@@ -3070,9 +3064,6 @@ anonymous:
       [".updateCount", { addDigits: 2 }]
 
     keys:
-      azerty: |-
-        `s-2` (core: move)
-        `NumPad2` (core: move)
       qwerty: |-
         `2` (core: move; helix: select)
         `NumPad2` (core: move; helix: select)
@@ -3084,9 +3075,6 @@ anonymous:
       [".updateCount", { addDigits: 3 }]
 
     keys:
-      azerty: |-
-        `s-3` (core: move)
-        `NumPad3` (core: move)
       qwerty: |-
         `3` (core: move; helix: select)
         `NumPad3` (core: move; helix: select)
@@ -3098,9 +3086,6 @@ anonymous:
       [".updateCount", { addDigits: 4 }]
 
     keys:
-      azerty: |-
-        `s-4` (core: move)
-        `NumPad4` (core: move)
       qwerty: |-
         `4` (core: move; helix: select)
         `NumPad4` (core: move; helix: select)
@@ -3112,9 +3097,6 @@ anonymous:
       [".updateCount", { addDigits: 5 }]
 
     keys:
-      azerty: |-
-        `s-5` (core: move)
-        `NumPad5` (core: move)
       qwerty: |-
         `5` (core: move; helix: select)
         `NumPad5` (core: move; helix: select)
@@ -3126,9 +3108,6 @@ anonymous:
       [".updateCount", { addDigits: 6 }]
 
     keys:
-      azerty: |-
-        `s-6` (core: move)
-        `NumPad6` (core: move)
       qwerty: |-
         `6` (core: move; helix: select)
         `NumPad6` (core: move; helix: select)
@@ -3140,9 +3119,6 @@ anonymous:
       [".updateCount", { addDigits: 7 }]
 
     keys:
-      azerty: |-
-        `s-7` (core: move)
-        `NumPad7` (core: move)
       qwerty: |-
         `7` (core: move; helix: select)
         `NumPad7` (core: move; helix: select)
@@ -3154,9 +3130,6 @@ anonymous:
       [".updateCount", { addDigits: 8 }]
 
     keys:
-      azerty: |-
-        `s-8` (core: move)
-        `NumPad8` (core: move)
       qwerty: |-
         `8` (core: move; helix: select)
         `NumPad8` (core: move; helix: select)
@@ -3168,9 +3141,6 @@ anonymous:
       [".updateCount", { addDigits: 9 }]
 
     keys:
-      azerty: |-
-        `s-9` (core: move)
-        `NumPad9` (core: move)
       qwerty: |-
         `9` (core: move; helix: select)
         `NumPad9` (core: move; helix: select)

@@ -54,5 +54,13 @@
         "CURRENT_LINE": "${lineNumber}",
       },
     },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug generate",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["ts-node", "./meta.ts"],
+      "skipFiles": ["<node_internals>/**"]
+    }
   ],
 }
